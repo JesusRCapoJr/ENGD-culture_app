@@ -1,0 +1,45 @@
+@startuml
+skinparam style strictuml
+
+class QuizSimulatorMain{
+handleCreateQuestion(id, answer, prompt)
+handleGetQuestionPrompt(questionId)
+handleCreateQuiz(id)
+handleAddQuestionToQuiz(questionId, quizId )
+handleUpdateQuestion(questionId, answer, prompt)
+handleGetQuizString(quizId)
+handleCreateQuizTester(id, searchString)
+handleGetQuizTesterScoreOnQuiz(quizTesterId, quizId)
+handleGetQuizTesterOverallScore(quizTesterId)
+}
+
+class Question {
+id
+answer
+prompt
+getId()
+getPrompt()
+getAnswer()
+updateQuestion(answer, prompt)
+}
+
+class Quiz {
+id
+ArrayList<Question> quizQuestions
+getId()
+addQuestionToQuiz(question)
+getQuizQuestions()
+}
+
+class QuizTester {
+id
+searchString
+getId()
+takeQuiz()
+}
+
+QuizSimulatorMain -> Question: *
+QuizSimulatorMain -> Quiz: *
+QuizSimulatorMain -> QuizTester: *
+Quiz-> Question: *
+@enduml
