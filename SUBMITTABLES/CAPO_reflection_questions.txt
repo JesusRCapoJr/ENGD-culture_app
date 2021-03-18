@@ -1,4 +1,4 @@
-Reflection Questions:
+Reflection Questions Test:
 
 1. Compare your original draft and the final draft. What is the biggest difference between the two?
 I was originally going to use a hashmap to store all of the grades for the gradetester and then calculate the total grade using the 
