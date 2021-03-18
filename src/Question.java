@@ -6,6 +6,7 @@
  */
 
 //AUTHOR: JESUS CAPO
+//Bruh
 
 public class Question {
 	private int id;
