@@ -1,21 +1,331 @@
-skinparam style strictuml
+@startuml
+skinparam classFontColor automatic 
 
-class QuizSimulatorMain{
-handleCreateQuestion( id,  answer,  prompt)
-handleGetQuestionPrompt( questionId)
-handleCreateQuiz( id)
-handleAddQuestionToQuiz( questionId,  quizId )
-handleUpdateQuestion( questionId,  answer,  prompt)
-handleGetQuizString( quizId)
-handleCreateQuizTester( id,  searchString)
-handleGetQuizTesterScoreOnQuiz(  quizTesterId,  quizId)
-handleGetQuizTesterOverallScore(  quizTesterId)
+Folder --> “*” Task  
+
+Folder --> “*”Label 
+
+Task --> “*” Label 
+
+Main --> PandativityFrame : constructs 
+
+Main --> Display: constructs 
+
+Display -->"5" Folder 
+
+PandativityFrame --|> JFrame 
+
+Display --|> JPanel 
+
+Display ..> NavigationPanel : constructs 
+
+Display ..> FolderLabelsPanel: constructs 
+
+Display ..> FolderTaskPanel: constructs 
+
+Display ..> HomeOverviewPanel : constructs 
+
+Display --> AddTaskButton 
+
+FolderOverviewPanel --|> HomeOverviewPanel 
+
+'Do we need it really? { 
+
+FolderLabelsPanel ..> ActionListener: constructs 
+
+FolderTaskPanel ..> ActionListener: constructs 
+
+HomeOverviewPanel ..> ActionListener: constructs 
+
+FolderOverviewPanel ..> ActionListener: constructs 
+
+'} 
+
+FolderLabelsPanel --> Button 
+
+FolderTaskPanel --> Button 
+
+HomeOverviewPanel --> Button 
+
+FolderOverviewPanel --> Button 
+
+Button ..> ActionListener: constructs 
+
+Button --> JButton 
+
+AddTaskButton --^ Button 
+
+AddLabelButton --^ Button 
+
+AddLabelButton ..> LabelButton 
+
+FolderButton --^ Button 
+
+AddTaskPanel --> “*”JComboBox 
+
+Display --> AddTaskPanel 
+
+FolderLabelsPanel --> LabelButton 
+
+LabelButton --> Label 
+
+LabelButton --|> Button 
+
+PandativityFrame --> Display 
+
+AddTaskPanel ..> Task: constructs 
+
+AddTaskButton..> AddTaskPanel:constructs 
+
+FolderLabelsPanel-->  AddLabelButton :constucts 
+
+FolderTaskPanel --> Task 
+
+NavigationPanel --> FolderButton: constucts  
+
+FolderButton ..> Display: calls 
+
+FolderOverviewPanel -->”*” FolderTaskPanel 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+note as N1 
+
+  Home = Red #EC3E3E 
+
+  Folder = LightBlue #12DDE5  
+
+  Both = LightGreen #12E531  
+
+ Neither = Default  
+
+ 
+
+end note 
+
+ 
+
+ 
+
+class Main { 
+
+private language 
+
+public static final LANGUAGE = language  
+
+'so it’ll be safe but at the cost of you have to restart the program to change the language 
+
+ 
+
+ '{method}  
+
+updateLanguage() 
+
+} 
+
+ 
+
+'--Data classes, Core-- 
+
+ 
+
+class Folder #12E531 {   
+
+tasks 
+
+  	 
+
+  {field} 
+
+  {method}  
+
+  {method}  
+
+} 
+
+  
+
+class Task { 
+
+title 
+
+description 
+
+due 
+
+priority 
+
+ArrayList Label 
+
+boolean finished 
+
+getTitle() 
+
+getDescription() 
+
+getDue() 
+
+getPriority() 
+
+getLabels() 
+
+setTitle() 
+
+setDescription() 
+
+setDue() 
+
+setPriority() 
+
+setLabels() 
+
+'returnNullPointer() 
+
+} 
+
+ 
+
+class Label{ 
+
+        text 
+
+color 
+
+shape 
+
+} 
+
+ 
+
+'--Frames and Panels-- 
+
+ 
+
+class PandativityFrame { 
+
+ 
+
+} 
+
+ 
+
+class Display{ 
+
+ 
+
+} 
+
+  
+
+class NavigationPanel #12E531{  
+
+ 
+
+} 
+
+class FolderLabelsPanel #12DDE5 { 
+
+ 
+
+} 
+
+class HomeOverviewPanel #EC3E3E{ 
+
+ 
+
+} 
+
+ 
+
+class AddTaskPanel #EC3E3E{ 
+
+titleBar 
+
+dueBar 
+
+size 
+
+location 
+
+'following to be figured out 
+
+folderDropList 
+
+descriptionDropdown 
+
+labelsDropList 
+
+} 
+
+ 
+
+'--Interactive stuff-- 
+
+ 
+
+Abstract Button{ 
+
+   	appearance 
+
+text 
+
+position 
+
+size 
+
+link 
+
+ 
+
+setAppearance() 
+
+setText() 
+
+setPosition() 
+
+setSize() 
+
+ 
+
+getAppearance()  
+
+getText() 
+
+getPosition() 
+
+getSize() 
+
+} 
+
+class AddTaskButton #12E531 { 
+
+ 
+
+} 
+
+class AddLabelButton #12E531 { 
+
+ 
+
+} 
+
+class FolderButton #12E531 { 
+
+ 
+
+} 
+
+class LabelButton #12E531 { 
+
+ 
+
 }
-
-class Question {
-
-}
-
-class Quiz {
-
-}
+@enduml

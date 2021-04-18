@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @author JESUS CAPO
  *
  */
-public class QuizSimulatorMain {
+public class AppMain {
 
 	
 	//DONE add instance variables
@@ -28,7 +28,7 @@ public class QuizSimulatorMain {
 											+ "update-question [questionId] [answer] [prompt]\n ";
 
 	public static void main(String[] args) {
-		QuizSimulatorMain simulator = new QuizSimulatorMain();
+		AppMain simulator = new AppMain();
 		System.out.println("Welcome to QuizTester.  Enter commands.  Type 'exit' to end.");
 		System.out.println("Enter [help] for a list of commands.");
 		System.out.println( HELP_STRING );
