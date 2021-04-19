@@ -9,12 +9,9 @@ import javax.swing.JFrame;
 //import util.Random;
 
 /**
- * The starting point for the BallWorlds application.
+ * The starting point for the Pandativty application. It opens the pandativity frame.
  * 
- * This exercise is based on one by David Mutchler, Salman Azhar and others at
- * Rose-Hulman Institute of Technology in January 2005. That exercise was itself
- * based on one from Lynn Andrea Stein's Rethinking CS101 project.
- * 
+ * This app is created by nathan Atkinson, Jesus Capo, John Chung, Steven Xia, and Kieya McClung.
  * @author Curt Clifton. Created Jan 22, 2011.
  */
 public class Main {
@@ -38,10 +35,11 @@ public class Main {
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.setVisible(true);
 		
-		//JFrame pandativityFrame = new PandativityFrame();
-		//pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JFrame pandativityFrame = new PandativityFrame();
+		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//pandativityFrame.setSize(new Dimension(1920,1080));
-		//pandativityFrame.setVisible(true);
+		pandativityFrame.setVisible(true);
+		
 		
 	}
 
