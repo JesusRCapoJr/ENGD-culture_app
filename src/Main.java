@@ -1,6 +1,7 @@
 //package ballworlds;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
@@ -17,13 +18,13 @@ import javax.swing.JFrame;
  * @author Curt Clifton. Created Jan 22, 2011.
  */
 public class Main {
-	private static final int NUMBER_OF_SIMULATIONS = 2;
-	private static final int MIN_WIDTH = 200;
-	private static final int MAX_WIDTH = 600;
-	private static final int MIN_HEIGHT = 100;
-	private static final int MAX_HEIGHT = 300;
-	private static final Color[] BACKGROUND_COLORS = { Color.RED,
-			Color.BLUE, Color.GREEN };
+//	private static final int NUMBER_OF_SIMULATIONS = 2;
+//	private static final int MIN_WIDTH = 200;
+//	private static final int MAX_WIDTH = 600;
+//	private static final int MIN_HEIGHT = 100;
+//	private static final int MAX_HEIGHT = 300;
+//	private static final Color[] BACKGROUND_COLORS = { Color.RED,
+//			Color.BLUE, Color.GREEN };
 
 	/**
 	 * Starts the application.
@@ -36,6 +37,17 @@ public class Main {
 		//JFrame frame = new BallWorldsFrame(worlds);
 		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//frame.setVisible(true);
+		
+		JFrame pandativityFrame = new PandativityFrame();
+		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//pandativityFrame.setSize(new Dimension(1920,1080));
+		pandativityFrame.setVisible(true);
+		
+		
+		
+	
+		
+		
 	}
 
 	/**
