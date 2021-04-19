@@ -2,6 +2,8 @@ import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -20,30 +22,16 @@ public abstract class Button extends JButton {
 	public Button() {
 		this.createAction();
 	}
-
-	public Button(JPanel panel, String text, Point upperLeftPosition) {
-		super(text);
+	
+	public Button(String text) {
 		this.setText(text);
-		this.setPanel(panel);
+		this.createAction();
+	}
+	
+	public Button(String text, Point upperLeftPosition) {
+		this.setText(text);
 		this.createAction();
 		this.setPosition(upperLeftPosition);
-	}
-
-	public void setPanel(JPanel inputPanel) { // Panel
-		this.panel = inputPanel;
-	}
-
-	public JPanel getPanel() {
-		return this.panel;
-	}
-
-	public void setText(String text) { // Text
-		this.text = text;
-
-	}
-
-	public String getText() {
-		return this.text;
 	}
 
 	public void setPosition(double x, double y) { // Position
@@ -62,21 +50,14 @@ public abstract class Button extends JButton {
 
 	}
 
-
-	public void createAction() {          // Action
+	public void createAction() {                  // Action
 		ActionListener al = new ActionListener() {
-			public boolean actionPerformed(ActionEvent e) {
-				return true;
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Put actions to be preformed on click here");		// what it does goes here
 				}
-			}
+			};
 	}
-//	public void setAction() {
-//
-//	}
-//	
-//	public void getAction() {    
-//
-//	}
+}
 
 	// getters
 	// public ??? getAppearance(){}
