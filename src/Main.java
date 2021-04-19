@@ -39,14 +39,9 @@ public class Main {
 		//frame.setVisible(true);
 		
 		//JFrame pandativityFrame = new PandativityFrame();
-		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//pandativityFrame.setSize(new Dimension(1920,1080));
-		pandativityFrame.setVisible(true);
-		
-		
-		
-	
-		
+		//pandativityFrame.setVisible(true);
 		
 	}
 
