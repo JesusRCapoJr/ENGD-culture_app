@@ -5,14 +5,14 @@ import javax.swing.JPanel;
 
 public class AddTaskPanel {
 	private JPanel gui; 
-	private double windowSizeX; 
-	private double windowSizeY; 
+	private double panelSizeX; 
+	private double panelSizeY; 
 	
-	public AddTaskPanel(double windowSizeX, double windowSizeY, JFrame world) {
+	public AddTaskPanel(double panelSizeX, double panelSizeY, JFrame world) {
 		this.gui = new JPanel(); 
 		world.add(gui); 
-		this.windowSizeX = windowSizeX; 
-		this.windowSizeY = windowSizeY; 
+		this.panelSizeX = panelSizeX; 
+		this.panelSizeY = panelSizeY; 
 		
 		//construct the whole window
 	}
