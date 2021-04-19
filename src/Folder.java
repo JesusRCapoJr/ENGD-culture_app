@@ -4,7 +4,7 @@ public class Folder {
 	private ArrayList<Task> tasks;
 	
 	public Folder() {
-		tasks = new ArrayList<Task>(); 
+		tasks = new ArrayList<Task>();  
 	}
 	
 	public void addTask(Task task) {
