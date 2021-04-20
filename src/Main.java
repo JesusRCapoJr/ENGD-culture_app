@@ -36,7 +36,7 @@ public class Main {
 		
 		JFrame pandativityFrame = new PandativityFrame();
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//pandativityFrame.setSize(new Dimension(1920,1080));
+		pandativityFrame.setSize(new Dimension(1920,1080));
 		pandativityFrame.setVisible(true);
 		
 		
