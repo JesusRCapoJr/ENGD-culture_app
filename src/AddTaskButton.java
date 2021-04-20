@@ -14,7 +14,7 @@ public class AddTaskButton extends Button{
 	private JFrame world;  
 	public static final double ADD_TASK_PANEL_X_RATIO = 0.3;
 	public static final double ADD_TASK_PANEL_Y_RATIO = 0.5;  
-	private static final Color BGC = new Color(0,0,0); 
+	private Color BGC = new Color(255,0,0,0); 
 	BufferedImage icon; 
 	
 	public AddTaskButton(JFrame world, double upperLeftX, double upperLeftY, double width, double height) {
@@ -28,7 +28,9 @@ public class AddTaskButton extends Button{
 		System.out.print(this.icon == null);
 		if(this.icon != null) {
 			this.setIcon(new ImageIcon(icon));
-			//this.setBorder(null);
+			this.setBorder(null);
+			
+			this.setBackground(BGC);
 		}
 	}
 	
