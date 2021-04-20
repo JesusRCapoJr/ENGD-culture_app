@@ -8,11 +8,12 @@ import java.awt.event.ActionEvent;
 import javax.imageio.ImageIO;
 import javax.swing.Action;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public abstract class Button extends JButton {
 	// TODO: implement appearance, link
-	public JPanel panel;
+	public JFrame world;
 	protected String text;
 	protected Point upperLeftPosition;
 	// protected ??? link
@@ -21,19 +22,22 @@ public abstract class Button extends JButton {
 	// Size is in Dimension, and text is in String
 
 	// setters
-	public Button() {
+	public Button() { //? 
+		super(); 
 		this.createAction();
 	}
 	
-	public Button(String text) {
+	public Button(String text) { //?
+		super(); 
 		this.setText(text);
 		this.createAction();
 	}
 	
-	public Button(String text, Point upperLeftPosition) {
-		this.setText(text);
+	public Button(JFrame world, double upperLeftX, double upperLeftY, double width, double height) {
+		super(); 
+		this.world = world; 
 		this.createAction();
-		this.setPosition(upperLeftPosition);
+		this.setBounds((int)upperLeftX, (int)upperLeftY, (int)width, (int)height);
 	}
 
 	public void setPosition(double x, double y) { // Position
