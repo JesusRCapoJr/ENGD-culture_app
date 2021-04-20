@@ -29,6 +29,7 @@ public class PandativityFrame extends JFrame{
 			
 			frame.setVisible(true);
 			
+			frame.add(new AddTaskButton(frame, 100, 100, 100, 100)); 
 
 		}
 

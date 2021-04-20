@@ -1,8 +1,11 @@
 import java.awt.Point;
 import java.awt.geom.Point2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import javax.imageio.ImageIO;
 import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -12,7 +15,6 @@ public abstract class Button extends JButton {
 	public JPanel panel;
 	protected String text;
 	protected Point upperLeftPosition;
-	// protected ??? appearance
 	// protected ??? link
 
 	// Getters, setters and variables for size and text are implemented by JButton.
