@@ -1,10 +1,13 @@
 //package ballworlds;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 //import util.Random;
 
@@ -37,8 +40,14 @@ public class Main {
 		JFrame pandativityFrame = new PandativityFrame();
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(1920,1080));
-		pandativityFrame.setVisible(true);
 		
+		//TEMPORARY CODE, EVENTUALLY MOVE TO COMPONENT
+		JPanel navigationPanel = new JPanel();
+		JButton testButton = new JButton("Words.");
+		navigationPanel.add(testButton);
+		pandativityFrame.add(navigationPanel, BorderLayout.NORTH);
+		pandativityFrame.setVisible(true);
+		//
 		
 	}
 

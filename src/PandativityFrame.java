@@ -1,4 +1,8 @@
+import java.awt.BorderLayout;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class PandativityFrame extends JFrame{
 
@@ -20,10 +24,12 @@ public class PandativityFrame extends JFrame{
 			int frameHeight = 400;
 
 			frame.setSize(frameWidth, frameHeight);
-			frame.setTitle("An Empty Frame");
+			frame.setTitle("Pandativity");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 			frame.setVisible(true);
+			
+
 		}
 
 	}
