@@ -11,8 +11,7 @@ import javax.swing.JFrame;
 /**
  * The starting point for the Pandativty application. It opens the pandativity frame.
  * 
- * This app is created by nathan Atkinson, Jesus Capo, John Chung, Steven Xia, and Kieya McClung.
- * @author Curt Clifton. Created Jan 22, 2011.
+ * This app is created by Nathan Atkinson, Jesus Capo, John Chung, Steven Xia, and Kieya McClung.
  */
 public class Main {
 //	private static final int NUMBER_OF_SIMULATIONS = 2;
