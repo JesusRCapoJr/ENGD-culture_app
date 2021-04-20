@@ -1,6 +1,6 @@
 import javax.swing.JFrame;
 
-public class PandativityFrame {
+public class PandativityFrame extends JFrame{
 
 	/**
 	 * The simplest Java graphics program. From Ch. 2 of Big Java.

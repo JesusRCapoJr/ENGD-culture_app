@@ -61,5 +61,3 @@ public abstract class Button extends JButton {
 
 	// getters
 	// public ??? getAppearance(){}
-
-}
