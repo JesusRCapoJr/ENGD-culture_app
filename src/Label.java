@@ -26,4 +26,8 @@ public class Label {
 	/*public void setShape(??? newShape) {
 		this.shape = newShape; 
 	}*/ 
+	
+	public String getText() {
+		return this.text; 
+	}
 }
