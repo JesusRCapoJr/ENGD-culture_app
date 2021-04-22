@@ -41,13 +41,13 @@ public class Main {
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(1920,1080));
 		
-		//TEMPORARY CODE, EVENTUALLY MOVE TO COMPONENT
+//		PandativityFrameUpdater updater = new PandativityFrameUpdater(pandativityFrame);
+//		updater.
 		JPanel navigationPanel = new JPanel();
-		JButton testButton = new JButton("Words.");
-		navigationPanel.add(testButton);
-		pandativityFrame.add(navigationPanel, BorderLayout.NORTH);
-		pandativityFrame.setVisible(true);
-		//
+//		JButton testButton = new JButton("Words.");
+//		navigationPanel.add(testButton);
+//		pandativityFrame.add(navigationPanel, BorderLayout.NORTH);
+//		pandativityFrame.setVisible(true);
 		
 	}
 
