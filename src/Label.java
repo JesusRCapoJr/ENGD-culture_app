@@ -5,13 +5,12 @@ import java.awt.Color;
 public class Label {
 	//TODO: implement shape. 
 	private String text; 
-	private Color color; 
+	private boolean isSelected; 
 	//private ??? shape; 
 	
-	public Label(String text, Color color/*, ??? shape*/) {
+	public Label(String text) {
 		this.text = text; 
-		this.color = color; 
-		//this.shape = shape; 
+		this.isSelected = true; 
 	}
 	
 	//setters 
@@ -19,19 +18,16 @@ public class Label {
 		this.text = newText; 
 	}
 	
-	public void setColor(Color newColor) {
-		this.color = newColor; 
-	}
-	
-	/*public void setShape(??? newShape) {
-		this.shape = newShape; 
-	}*/ 
 	
 	public String getText() {
 		return this.text; 
 	}
 	
-	public Color getColor() {
-		return this.color; 
+	public void changeState() {
+		this.isSelected = !this.isSelected; 
+	}
+	
+	public void setVisible() {
+		this.isSelected = true; 
 	}
 }
