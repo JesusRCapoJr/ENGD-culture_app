@@ -30,4 +30,8 @@ public class Label {
 	public String getText() {
 		return this.text; 
 	}
+	
+	public Color getColor() {
+		return this.color; 
+	}
 }
