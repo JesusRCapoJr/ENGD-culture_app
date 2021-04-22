@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Folder {
 	private ArrayList<Task> tasks;
+	private ArrayList<Label> labels; 
 	
 	public Folder() {
 		tasks = new ArrayList<Task>();  
@@ -13,6 +14,14 @@ public class Folder {
 	
 	public ArrayList<Task> getTasks() {
 		return this.tasks; 
+	}
+	
+	public void addLabel(Label label) {
+		this.labels.add(label); 
+	}
+	
+	public ArrayList<Label> getLabels(){
+		return this.labels; 
 	}
 	
 	/**
