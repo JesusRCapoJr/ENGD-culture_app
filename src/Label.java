@@ -5,7 +5,7 @@ import java.awt.Color;
 public class Label {
 	//TODO: implement shape. 
 	private String text; 
-	private boolean isSelected; 
+	private boolean isSelected;
 	//private ??? shape; 
 	
 	public Label(String text) {

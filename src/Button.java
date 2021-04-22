@@ -75,6 +75,7 @@ public abstract class Button extends JButton{
 				System.out.println("Put actions to be preformed on click here");		// what it does goes here
 				}
 			};
+			addActionListener(al); 
 	}
 }
 
