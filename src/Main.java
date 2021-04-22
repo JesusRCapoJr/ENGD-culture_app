@@ -42,7 +42,7 @@ public class Main {
 		pandativityFrame.setSize(new Dimension(1920,1080));
 		
 //		PandativityFrameUpdater updater = new PandativityFrameUpdater(pandativityFrame);
-//		updater.
+//		updater. Test
 		JPanel navigationPanel = new JPanel();
 //		JButton testButton = new JButton("Words.");
 //		navigationPanel.add(testButton);
