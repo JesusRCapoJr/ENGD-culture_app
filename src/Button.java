@@ -10,12 +10,14 @@ import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.Color;
 
 public abstract class Button extends JButton {
 	// TODO: implement appearance, link
 	public JFrame world;
 	protected String text;
 	protected Point upperLeftPosition;
+	protected Color color;
 	// protected ??? link
 
 	// Getters, setters and variables for size and text are implemented by JButton.
@@ -25,12 +27,14 @@ public abstract class Button extends JButton {
 	public Button() { //? 
 		super(); 
 		this.createAction();
+		color = new Color(255,255,255);
 	}
 	
 	public Button(String text) { //?
 		super(); 
 		this.setText(text);
 		this.createAction();
+		color = new Color(255,255,255);
 	}
 	
 	public Button(JFrame world, double upperLeftX, double upperLeftY, double width, double height) {
@@ -38,6 +42,7 @@ public abstract class Button extends JButton {
 		this.world = world; 
 		this.createAction();
 		this.setBounds((int)upperLeftX, (int)upperLeftY, (int)width, (int)height);
+		color = new Color(255,255,255);
 	}
 
 	public void setPosition(double x, double y) { // Position
@@ -54,6 +59,14 @@ public abstract class Button extends JButton {
 
 	public void setAppearance(/* appearance */) { // Appearance
 
+	}
+	public void changeColorState() { 
+		if (this.color == new Color(255,255,255)) {
+			this.color = new Color(0,0,0);
+		}
+		else {
+			this.color = new Color(255,255,255);
+		}
 	}
 
 	public void createAction() {                  // Action
