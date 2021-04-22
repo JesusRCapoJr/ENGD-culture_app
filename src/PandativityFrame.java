@@ -18,7 +18,7 @@ public class PandativityFrame extends JFrame{
 		 * @param args
 		 *            ignored
 		 */
-		public static void main(String[] args) {
+		public PandativityFrame() {
 			JFrame frame = new JFrame();
 			int frameWidth = 300;
 			int frameHeight = 400;
