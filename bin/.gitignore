@@ -1,5 +1,21 @@
+/AddLabelButton.class
+/AddTaskButton.class
+/AddTaskPanel.class
+/Button$1.class
+/Button.class
+/Display.class
+/Folder.class
+/FolderButton.class
+/FolderLabelsPanel.class
+/FolderOverviewPanel.class
+/FolderTaskPanel.class
+/HomeOverviewPanel.class
 /Label.class
-<<<<<<< HEAD
 /LabelButton$1.class
-=======
->>>>>>> branch 'master' of https://github.com/JesusRCapoJr/ENGD-culture_app.git
+/LabelButton.class
+/Main.class
+/NavigationPanel.class
+/PandativityFrame.class
+/PandativityFrameUpdater.class
+/Task.class
+/uml/
