@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 
-public abstract class Button extends JButton {
+public abstract class Button extends JButton{
 	// TODO: implement appearance, link
 	public JFrame world;
 	protected String text;
