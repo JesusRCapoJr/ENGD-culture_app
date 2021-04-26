@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -26,10 +28,12 @@ public class PandativityFrame extends JFrame{
 			frame.setSize(frameWidth, frameHeight);
 			frame.setTitle("Pandativity");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			
+			//frame.getContentPane().setBackground(Color.BLUE);
 			frame.setVisible(true);
 			
-			frame.add(new AddTaskButton(frame, 100, 100, 100, 100)); 
+			frame.add(new HomeOverviewPanel(this),BorderLayout.NORTH); 
+			add(Box.createGlue()); 
+			frame.add(new HomeOverviewPanel(this),BorderLayout.SOUTH); 
 			
 			frame.repaint();
 		}
