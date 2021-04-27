@@ -8,7 +8,7 @@ public class AddTaskPanel {
 	private double panelSizeX; 
 	private double panelSizeY; 
 	
-	public AddTaskPanel(double panelSizeX, double panelSizeY, JFrame world) {
+	public AddTaskPanel(double panelSizeX, double panelSizeY, JPanel world) {
 		this.gui = new JPanel(); 
 		world.add(gui); 
 		this.panelSizeX = panelSizeX; 

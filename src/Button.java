@@ -14,7 +14,7 @@ import java.awt.Color;
 
 public abstract class Button extends JButton{
 	// TODO: implement appearance, link
-	public JFrame world;
+	public JPanel world;
 	protected String text;
 	protected Point upperLeftPosition;
 	protected Color color;
@@ -37,7 +37,7 @@ public abstract class Button extends JButton{
 		color = new Color(255,255,255);
 	}
 	
-	public Button(JFrame world, double upperLeftX, double upperLeftY, double width, double height) {
+	public Button(JPanel world, double upperLeftX, double upperLeftY, double width, double height) {
 		super(); 
 		this.world = world; 
 		this.createAction();
