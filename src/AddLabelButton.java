@@ -21,6 +21,7 @@ public class AddLabelButton extends Button {
 			}
 		};
 		addActionListener(al);
+		
 	}
 
 	/*
