@@ -14,4 +14,31 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>texture/High Productive.gif</name>
+			<type>1</type>
+			<location>C:/Users/atkinsnp/Downloads/High Productive.gif</location>
+		</link>
+		<link>
+			<name>texture/low productive.gif</name>
+			<type>1</type>
+			<location>C:/Users/atkinsnp/Downloads/low productive.gif</location>
+		</link>
+		<link>
+			<name>texture/low-mid productive.gif</name>
+			<type>1</type>
+			<location>C:/Users/atkinsnp/Downloads/low-mid productive.gif</location>
+		</link>
+		<link>
+			<name>texture/mid productive.gif</name>
+			<type>1</type>
+			<location>C:/Users/atkinsnp/Downloads/mid productive.gif</location>
+		</link>
+		<link>
+			<name>texture/mid-high productive.gif</name>
+			<type>1</type>
+			<location>C:/Users/atkinsnp/Downloads/mid-high productive.gif</location>
+		</link>
+	</linkedResources>
 </projectDescription>
