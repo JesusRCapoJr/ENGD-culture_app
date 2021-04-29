@@ -19,7 +19,7 @@ public class AddTaskButton extends Button{
 	BufferedImage icon; 
 	
 	public AddTaskButton(JPanel world, double upperLeftX, double upperLeftY, double width, double height) {
-		super(world, upperLeftX, upperLeftY, width, height); 
+		super(upperLeftX, upperLeftY, width, height); 
 		this.world = world; 
 		try {
 			this.icon = ImageIO.read(new File("texture/test4.png")); 

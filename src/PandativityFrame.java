@@ -32,7 +32,7 @@ public class PandativityFrame extends JFrame{
 			
 			//world.add(new HomeOverviewPanel(world)); 
 //			add(Box.createGlue()); 
-			world.add(new HomeOverviewPanel(world));
+			world.add(new HomeOverviewPanel(world)); 
 			frame.repaint();
 		}
 

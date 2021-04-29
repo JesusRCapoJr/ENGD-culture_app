@@ -28,7 +28,7 @@ public class Main {
 	//multi monitor, looks good
 	public static final GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	public static final int WIDTH = gd.getDisplayMode().getWidth() / 2;
-	public static final int HEIGHT = gd.getDisplayMode().getHeight() / 2;
+	public static final int HEIGHT = gd.getDisplayMode().getHeight() / 2; 
 	private static final Color[] BACKGROUND_COLORS = { Color.RED, Color.BLUE, Color.GREEN };
 
 	/**

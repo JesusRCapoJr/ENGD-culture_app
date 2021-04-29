@@ -12,9 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 
-public abstract class Button extends JButton{
+public class Button extends JButton{
 	// TODO: implement appearance, link
-	public JPanel world;
+	//public JPanel world;
 	protected String text;
 	protected Point upperLeftPosition;
 	protected Color color;
@@ -37,9 +37,18 @@ public abstract class Button extends JButton{
 		color = new Color(255,255,255);
 	}
 	
-	public Button(JPanel world, double upperLeftX, double upperLeftY, double width, double height) {
+	public Button(double upperLeftX, double upperLeftY, double width, double height) {
 		super(); 
-		this.world = world; 
+		//this.world = world;
+		this.createAction();
+		this.setBounds((int)upperLeftX, (int)upperLeftY, (int)width, (int)height);
+		color = new Color(255,255,255);
+	}
+	
+	public Button(String text, double upperLeftX, double upperLeftY, double width, double height) {
+		super(); 
+		//this.world = world;
+		setText(text); 
 		this.createAction();
 		this.setBounds((int)upperLeftX, (int)upperLeftY, (int)width, (int)height);
 		color = new Color(255,255,255);
@@ -57,9 +66,9 @@ public abstract class Button extends JButton{
 		return this.upperLeftPosition;
 	}
 
-	public void setAppearance(/* appearance */) { // Appearance
-
-	}
+//	public void setAppearance(/* appearance */) { // Appearance
+//
+//	}
 	public void changeColorState() { 
 		if (this.color == new Color(255,255,255)) {
 			this.color = new Color(0,0,0);
