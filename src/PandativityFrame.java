@@ -30,6 +30,7 @@ public class PandativityFrame extends JFrame{
 			frame.add(world);
 			//frame.getContentPane().setBackground(Color.BLUE);
 			frame.setVisible(true);
+			frame.setResizable(false);
 			
 			//world.add(new HomeOverviewPanel(world)); 
 //			add(Box.createGlue()); 
