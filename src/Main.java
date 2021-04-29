@@ -3,6 +3,9 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -17,10 +20,16 @@ import javax.swing.JPanel;
  * This app is created by Nathan Atkinson, Jesus Capo, John Chung, Steven Xia, and Kieya McClung.
  */
 public class Main {
-	private static final int WIDTH = 1920;
-	private static final int HEIGHT = 300;
-	private static final Color[] BACKGROUND_COLORS = { Color.RED,
-			Color.BLUE, Color.GREEN };
+	//single monitor, fails for some reason
+//	public static final Dimension WIDTH_AND_HEIGHT = Toolkit. getDefaultToolkit(). getScreenSize(); 
+//	public static final int WIDTH = (int) WIDTH_AND_HEIGHT.getWidth(); 
+//	public static final int HEIGHT = (int) WIDTH_AND_HEIGHT.getHeight();
+	
+	//multi monitor, looks good
+	public static final GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	public static final int WIDTH = gd.getDisplayMode().getWidth();
+	public static final int HEIGHT = gd.getDisplayMode().getHeight();
+	private static final Color[] BACKGROUND_COLORS = { Color.RED, Color.BLUE, Color.GREEN };
 
 	/**
 	 * Starts the application.
@@ -33,6 +42,7 @@ public class Main {
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(WIDTH,HEIGHT));
 		JPanel navigationPanel = new JPanel();		
+		System.out.println("WIDTH: "+WIDTH+"; HEIGHT: "+HEIGHT);
 	}
 
 
