@@ -17,12 +17,6 @@ public class PandativityFrame extends JFrame{
 	 * Adapted from code by @author Cay Horstmann
 	 */
 
-		/**
-		 * Draws a frame.
-		 * 
-		 * @param args
-		 *            ignored
-		 */
 		public PandativityFrame() {
 			JFrame frame = new JFrame();
 			
