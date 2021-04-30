@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -41,6 +43,21 @@ public class Main {
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(WIDTH,HEIGHT));
 		JPanel navigationPanel = new JPanel();		
+		// sprite testing
+		Sprite sprite = null;
+		try {
+			sprite = new Sprite(pandativityFrame);
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			sprite.desplaySprite(0);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	//	
 	}
 
 

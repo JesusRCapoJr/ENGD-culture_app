@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ import javax.swing.SwingConstants;
 //import test.Dimension;
 
 public class Sprite {
-	private ArrayList<URL> fileList;
+	private ArrayList<File> fileList;
 	private double Score = 2;
 	private int width;
 	private int hight;
@@ -24,7 +26,8 @@ public class Sprite {
 	private double time = 3600;  //1hr in seconds
 	
 	
-	public Sprite(){
+	public Sprite(JFrame world) throws MalformedURLException{
+		this.world = world;
 		this.addFile("texture/low_productive.gif");
 		this.addFile("texture/low-mid_productive.gif");
 		this.addFile("texture/mid_productive.gif");
@@ -66,12 +69,12 @@ public class Sprite {
 		
 	}
 	
-	public void desplaySprite(int positionInList) {    //main code from git hub
+	public void desplaySprite(int positionInList) throws IOException {    //main code from git hub
 		//
 //		URL url = getClass().getResource("texture/High Productive.gif");
 		//
-		 URL url = this.fileList.get(positionInList);
-		 ImageIcon icon = new ImageIcon(url);
+		 File panaFile = this.fileList.get(positionInList);
+		 ImageIcon icon = new ImageIcon(panaFile.getCanonicalPath());
 		    JLabel label = new JLabel(icon,SwingConstants.CENTER);
 		 
 //		    JFrame f = new JFrame("Animation");
@@ -93,14 +96,8 @@ public class Sprite {
 	        world.setVisible(true);
 		    
 	}
-	public void addFile(String newFileString) {
-		URL newURL= null;
-		try {
-			newURL = new URL(newFileString);
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.fileList.add(newURL);
+	public void addFile(String newFileString) throws MalformedURLException {
+		File newFile = new File(newFileString);
+		this.fileList.add(newFile);
 	}
 }
