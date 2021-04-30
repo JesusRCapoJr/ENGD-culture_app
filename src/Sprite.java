@@ -3,31 +3,35 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import javax.swing.Icon;
+//import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+
+//import test.Dimension;
 
 public class Sprite {
-	private ArrayList<URL> URLList;
+	private ArrayList<URL> fileList;
 	private double Score = 2;
-	private double width;
-	private double hight;
-	private double yPoint;
-	private double xPoint;
+	private int width;
+	private int hight;
+	private int yPoint;
+	private int xPoint;
 	private Color BGC = new Color(255,255,255); 
 	private JFrame world;
 	private double time = 3600;  //1hr in seconds
 	
 	
 	public Sprite(){
-//		this.addURL("https://piskel-imgstore-b.appspot.com/img/c8720580-a8f7-11eb-ab35-094b3278c51b.gif");
-		this.addURL("texture/low_productive.gif");
-		this.addURL("texture/low-mid_productive.gif");
-		this.addURL("texture/mid_productive.gif");
-		this.addURL("texture/mid-high_productive.gif");
-		this.addURL("texture/High_Productive.gif");
+		this.addFile("texture/low_productive.gif");
+		this.addFile("texture/low-mid_productive.gif");
+		this.addFile("texture/mid_productive.gif");
+		this.addFile("texture/mid-high_productive.gif");
+		this.addFile("texture/High_Productive.gif");
+		this.yPoint = 20;
+		this.xPoint = 1600;
 	}
 	public void taskConpleted() {
 		Score++;
@@ -62,29 +66,41 @@ public class Sprite {
 		
 	}
 	
-	public void desplaySprite(int position) {    //main code from git hub
+	public void desplaySprite(int positionInList) {    //main code from git hub
 		//
 //		URL url = getClass().getResource("texture/High Productive.gif");
 		//
-		 URL url = this.URLList.get(position);
-		    Icon icon = new ImageIcon(url);
-		    JLabel label = new JLabel(icon);
+		 URL url = this.fileList.get(positionInList);
+		 ImageIcon icon = new ImageIcon(url);
+		    JLabel label = new JLabel(icon,SwingConstants.CENTER);
 		 
-		    JFrame f = new JFrame("Animation");
-		    f.getContentPane().add(label);
-		    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		    f.pack();
-		    f.setLocationRelativeTo(null);
-		    f.setVisible(true);
+//		    JFrame f = new JFrame("Animation");
+//		    f.getContentPane().add(label);
+//		    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		    f.pack();
+//		    f.setLocationRelativeTo(null);
+//		    f.setVisible(true);
+		    
+		    JPanel panel = new JPanel();
+	        panel.setBackground(BGC);
+	        panel.setPreferredSize(new java.awt.Dimension(width,hight));
+	        panel.setLocation(xPoint, yPoint);
+	        panel.add(label);
+	        
+	        
+	        world.getContentPane().add(panel);
+	        world.pack();
+	        world.setVisible(true);
+		    
 	}
-	public void addURL(String newURLString) {
+	public void addFile(String newFileString) {
 		URL newURL= null;
 		try {
-			newURL = new URL(newURLString);
+			newURL = new URL(newFileString);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.URLList.add(newURL);
+		this.fileList.add(newURL);
 	}
 }
