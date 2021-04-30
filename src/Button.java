@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.Color;
 
-public abstract class Button extends JButton{
+public class Button extends JButton{
 	// TODO: implement appearance, link
 	public JPanel world;
 	protected String text;
@@ -34,6 +34,14 @@ public abstract class Button extends JButton{
 		super(); 
 		this.setText(text);
 		this.createAction();
+		color = new Color(255,255,255);
+	}
+	
+	public Button(String text, double upperLeftX, double upperLeftY, double width, double height) {
+		super(); 
+		this.setText(text);
+		this.createAction();
+		this.setBounds((int)upperLeftX, (int)upperLeftY, (int)width, (int)height);
 		color = new Color(255,255,255);
 	}
 	

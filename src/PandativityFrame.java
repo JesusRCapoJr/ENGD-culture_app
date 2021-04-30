@@ -8,9 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.border.Border;
 
 public class PandativityFrame extends JFrame{
-
-	public final int BG_WIDTH = 300;
-	public final int BG_HEIGHT = 400;
+	
+//	public final int BG_WIDTH = 300;
+//	public final int BG_HEIGHT = 400;
 	/**
 	 * The simplest Java graphics program. From Ch. 2 of Big Java.
 	 * 
@@ -26,12 +26,12 @@ public class PandativityFrame extends JFrame{
 		public PandativityFrame() {
 			JFrame frame = new JFrame();
 			
-			frame.setSize(BG_WIDTH, BG_HEIGHT);
+			frame.setSize(Main.WIDTH, Main.HEIGHT);
 			frame.setTitle("Pandativity");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			
 			JPanel world = new JPanel(); 
-			world.setBounds(0,0,BG_WIDTH,BG_HEIGHT);
+			world.setBounds(0,0,Main.WIDTH,Main.HEIGHT);
 			world.setBackground(Color.CYAN);
 			frame.add(world);
 			//frame.getContentPane().setBackground(Color.BLUE);

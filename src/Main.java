@@ -3,6 +3,9 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -17,9 +20,11 @@ import javax.swing.JPanel;
  * This app is created by Nathan Atkinson, Jesus Capo, John Chung, Steven Xia, and Kieya McClung.
  */
 public class Main {
-	private static final int WIDTH = 1920;
-	private static final int HEIGHT = 300;
-	private static final Color[] BACKGROUND_COLORS = { Color.RED,
+	//private final Dimension dim = Toolkit.getDefaultToolkit().getScreenSize(); 
+	private final static GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	public static final int WIDTH = gd.getDisplayMode().getWidth();
+	public static final int HEIGHT = gd.getDisplayMode().getHeight();
+	public static final Color[] BACKGROUND_COLORS = { Color.RED,
 			Color.BLUE, Color.GREEN };
 
 	/**
