@@ -20,7 +20,10 @@ import javax.swing.JPanel;
  * This app is created by Nathan Atkinson, Jesus Capo, John Chung, Steven Xia, and Kieya McClung.
  */
 public class Main {
+	//Single monitor, fails for some reason
 	//private final Dimension dim = Toolkit.getDefaultToolkit().getScreenSize(); 
+	
+	//Multi monitor
 	private final static GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	public static final int WIDTH = gd.getDisplayMode().getWidth();
 	public static final int HEIGHT = gd.getDisplayMode().getHeight();
