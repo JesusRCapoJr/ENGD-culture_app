@@ -33,7 +33,7 @@ public class AddLabelButton extends Button {
 	public void addLabel() {
 		final String labelName = JOptionPane.showInputDialog("Name of Label: ");
 		Label newLabel = new Label(labelName);
-		//world.addLabel(newLabel) ??? what do I acces to add the label button
+		//world.addLabel(newLabel) ??? what do I access to add the label button
 		
 	}
 
