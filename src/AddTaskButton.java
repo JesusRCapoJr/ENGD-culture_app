@@ -30,7 +30,7 @@ public class AddTaskButton extends Button{
 		if(this.icon != null) {
 			this.setIcon(new ImageIcon(icon));
 			this.setBorder(null);
-			
+			//
 			this.setBackground(BGC);
 		}
 	}
