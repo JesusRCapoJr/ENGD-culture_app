@@ -23,11 +23,11 @@ public class Sprite {
 	
 	public Sprite(){
 //		this.addURL("https://piskel-imgstore-b.appspot.com/img/c8720580-a8f7-11eb-ab35-094b3278c51b.gif");
-		this.addURL("texture/low productive.gif");
-		this.addURL("texture/low-mid productive.gif");
-		this.addURL("texture/mid productive.gif");
-		this.addURL("texture/mid-high productive.gif");
-		this.addURL("texture/High Productive.gif");
+		this.addURL("texture/low_productive.gif");
+		this.addURL("texture/low-mid_productive.gif");
+		this.addURL("texture/mid_productive.gif");
+		this.addURL("texture/mid-high_productive.gif");
+		this.addURL("texture/High_Productive.gif");
 	}
 	public void taskConpleted() {
 		Score++;
