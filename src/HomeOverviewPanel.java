@@ -26,7 +26,7 @@ public class HomeOverviewPanel extends JPanel{
 //		add(Box.createHorizontalGlue());
 		super(); 
 		this.world = world; 
-		this.setBounds((int)(Main.WIDTH*THIS_W_RATIO), 0, Main.WIDTH, (int)(Main.HEIGHT*THIS_H_RATIO));
+		this.setBounds((int)(Main.getWidth()*THIS_W_RATIO), 0, Main.getWidth(), (int)(Main.getHeight()*THIS_H_RATIO));
 //		System.out.println("*(2/3): "+(int)(Main.HEIGHT*(2/3)));
 //		System.out.println("*2/3: "+(int)(Main.HEIGHT*2/3));
 //		System.out.println("*(3/4): "+(int)(Main.HEIGHT*(3/4)));
@@ -41,8 +41,8 @@ public class HomeOverviewPanel extends JPanel{
 		}
 		
 		int i = 0;
-		int thisW = (int) (Main.WIDTH*THIS_W_RATIO);
-		int thisH = (int) (Main.HEIGHT*THIS_H_RATIO); 
+		int thisW = (int) (Main.getWidth()*THIS_W_RATIO);
+		int thisH = (int) (Main.getHeight()*THIS_H_RATIO); 
 		int btnW = (int) (thisW*BUTTON_WIDTH_RATIO); 
 		int btnH = (int) ((thisH-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP);
 		for(Task t:allTasks) {

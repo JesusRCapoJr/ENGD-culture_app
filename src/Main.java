@@ -25,11 +25,11 @@ public class Main {
 	//Single monitor, fails for some reason
 	//private final Dimension dim = Toolkit.getDefaultToolkit().getScreenSize(); 
 	
-	//Multi monitor
-	private final static GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-	public static final int WIDTH = gd.getDisplayMode().getWidth();
-	public static final int HEIGHT = gd.getDisplayMode().getHeight();
-	public static final Color[] BACKGROUND_COLORS = { Color.RED,
+	//Multiple monitor
+	private static GraphicsDevice gd; 
+	private static int width; 
+	private static int height; 
+	private static final Color[] BACKGROUND_COLORS = { Color.RED,
 			Color.BLUE, Color.GREEN };
 
 	/**
@@ -39,9 +39,11 @@ public class Main {
 	 *            ignored
 	 */
 	public static void main(String[] args) {		
+		updateSize(); 
+		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
 		JFrame pandativityFrame = new PandativityFrame();
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		pandativityFrame.setSize(new Dimension(WIDTH,HEIGHT));
+		pandativityFrame.setSize(new Dimension(width,height));
 		JPanel navigationPanel = new JPanel();		
 		// sprite testing
 		Sprite sprite = null;
@@ -58,7 +60,23 @@ public class Main {
 			e.printStackTrace();
 		}
 	//	
+	
 	}
 
+	public static int getWidth() {
+		updateSize(); 
+		return width; 
+	}
+	
+	public static int getHeight() {
+		updateSize(); 
+		return height; 
+	}
+	
+	public static void updateSize() {
+		gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+		width = gd.getDisplayMode().getWidth()/2;
+		height = gd.getDisplayMode().getHeight()/2;
+	}
 
 }
