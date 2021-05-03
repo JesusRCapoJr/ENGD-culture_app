@@ -43,6 +43,7 @@ public class Button extends JButton{
 		this.createAction();
 		this.setBounds((int)upperLeftX, (int)upperLeftY, (int)width, (int)height);
 		color = new Color(255,255,255);
+		this.setLayout(null);
 	}
 	
 	public Button(JPanel world, double upperLeftX, double upperLeftY, double width, double height) {

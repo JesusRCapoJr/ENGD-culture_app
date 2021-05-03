@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 public class HomeOverviewPanel extends JPanel{
 	
 	private JPanel world; 
-	private final double THIS_W_RATIO = 0.75;
+	private final double THIS_W_RATIO = 0.25;
 	private final double THIS_H_RATIO = 0.666666667;
 	
 	ArrayList<Task> allTasks = new ArrayList<Task>(); 
@@ -26,7 +26,8 @@ public class HomeOverviewPanel extends JPanel{
 //		add(Box.createHorizontalGlue());
 		super(); 
 		this.world = world; 
-		this.setBounds((int)(Main.getWidth()*THIS_W_RATIO), 0, Main.getWidth(), (int)(Main.getHeight()*THIS_H_RATIO));
+		this.setBounds((int)(Main.getWidth()*(1-THIS_W_RATIO)), 0, Main.getWidth(), (int)(Main.getHeight()*THIS_H_RATIO));
+		this.setLayout(null);
 //		System.out.println("*(2/3): "+(int)(Main.HEIGHT*(2/3)));
 //		System.out.println("*2/3: "+(int)(Main.HEIGHT*2/3));
 //		System.out.println("*(3/4): "+(int)(Main.HEIGHT*(3/4)));
