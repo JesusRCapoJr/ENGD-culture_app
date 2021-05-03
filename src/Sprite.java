@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 //import test.Dimension;
 
 public class Sprite {
-	private ArrayList<File> fileList;
+	private ArrayList<File> fileList = new ArrayList<File>();
 	private double Score = 2;
 	private int width;
 	private int hight;
@@ -35,12 +35,13 @@ public class Sprite {
 		this.addFile("texture/High_Productive.gif");
 		this.yPoint = 20;
 		this.xPoint = 1600;
+		System.out.println("All files added");
 	}
 	public void taskConpleted() {
 		Score++;
 		time = 3600;
 	}
-	public void update() {// need a way to check time elapsed in the system
+	public void update() throws Exception {// need a way to check time elapsed in the system
 		//mabe use a time maker that updates and keeps track of the 
 		
 		if(time<1) {
@@ -51,21 +52,21 @@ public class Sprite {
 			Score=0;
 		}
 		
-//		if(this.Score<1) {//gifs for each score 0-1 = low
-//			this.desplaySprite(0);
-//		}
-//		else if(this.Score<2) {//gifs for each score 2 = low -mid
-//			this.desplaySprite(1);
-//		}
-//		else if(this.Score<3) {//gifs for each score 2-3 = mid
-//			this.desplaySprite(2);
-//		}
-//		else if(this.Score<4) {//gifs for each score 3-4 = mid-high
-//			this.desplaySprite(3);
-//		}
-//		else if(this.Score>4) {//gifs for each score 5+ = high
-//			this.desplaySprite(4);
-//		}
+		if(this.Score<1) {//gifs for each score 0-1 = low
+			this.desplaySprite(0);
+		}
+		else if(this.Score<2) {//gifs for each score 2 = low -mid
+			this.desplaySprite(1);
+		}
+		else if(this.Score<3) {//gifs for each score 2-3 = mid
+			this.desplaySprite(2);
+		}
+		else if(this.Score<4) {//gifs for each score 3-4 = mid-high
+			this.desplaySprite(3);
+		}
+		else if(this.Score>4) {//gifs for each score 5+ = high
+			this.desplaySprite(4);
+		}
 		
 	}
 	
@@ -74,7 +75,8 @@ public class Sprite {
 //		URL url = getClass().getResource("texture/High Productive.gif");
 		//
 		 File panaFile = this.fileList.get(positionInList);
-		 ImageIcon icon = new ImageIcon(panaFile.getCanonicalPath());
+		 System.out.println("panaFile.toString()");
+		 ImageIcon icon = new ImageIcon(panaFile.toString());
 		    JLabel label = new JLabel(icon,SwingConstants.CENTER);
 		 
 //		    JFrame f = new JFrame("Animation");

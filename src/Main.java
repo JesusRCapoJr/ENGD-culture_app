@@ -45,21 +45,20 @@ public class Main {
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(width,height));
 		JPanel navigationPanel = new JPanel();		
+		
 		// sprite testing
+		
 		Sprite sprite = null;
 		try {
+		
 			sprite = new Sprite(pandativityFrame);
-		} catch (MalformedURLException e) {
+			System.out.println("We are after the sprite");
+			sprite.update();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			sprite.desplaySprite(0);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	//	
+
 	
 	}
 
