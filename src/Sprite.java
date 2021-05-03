@@ -25,6 +25,7 @@ public class Sprite {
 	private Color BGC = new Color(255,255,255); 
 	private JFrame world;
 	private LocalTime updatedTime = null;  //1hr in seconds
+	private int timeCap = 5;
 	
 	//
 //	startTime = System.startTime;
@@ -52,7 +53,7 @@ public class Sprite {
 		//mabe use a time maker that updates and keeps track of the 
 		LocalTime timeDifrance = (java.time.LocalTime.now().minusSeconds(this.updatedTime.getSecond()));
 		
-		if(timeDifrance.getSecond() > 3600) {
+		if(timeDifrance.getSecond() > timeCap) {
 			Score--;
 			updatedTime = java.time.LocalTime.now();
 		}

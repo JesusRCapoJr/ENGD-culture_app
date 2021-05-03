@@ -52,13 +52,16 @@ public class Main {
 			sprite = new Sprite(pandativityFrame);
 			System.out.println("We are after the sprite");
 			sprite.Score = 5;
-			sprite.update();
+			
+			while(true){
+				sprite.update();
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-	
+		
 	}
 
 	public static int getWidth() {
@@ -76,5 +79,6 @@ public class Main {
 		width = gd.getDisplayMode().getWidth()/1;
 		height = gd.getDisplayMode().getHeight()/1;
 	}
+
 
 }
