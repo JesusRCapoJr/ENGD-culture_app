@@ -53,6 +53,7 @@ public class Main {
 		
 			sprite = new Sprite(pandativityFrame);
 			System.out.println("We are after the sprite");
+			sprite.Score = 1;
 			sprite.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

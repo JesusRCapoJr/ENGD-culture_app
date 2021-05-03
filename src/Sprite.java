@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 //import javax.swing.Icon;
@@ -16,7 +15,7 @@ import javax.swing.SwingConstants;
 
 public class Sprite {
 	private ArrayList<File> fileList = new ArrayList<File>();
-	private double Score = 2;
+	public double Score = 2;
 	private int width;
 	private int hight;
 	private int yPoint;
@@ -64,7 +63,7 @@ public class Sprite {
 		else if(this.Score<4) {//gifs for each score 3-4 = mid-high
 			this.desplaySprite(3);
 		}
-		else if(this.Score>4) {//gifs for each score 5+ = high
+		else if(this.Score>=4) {//gifs for each score 5+ = high
 			this.desplaySprite(4);
 		}
 		
@@ -75,7 +74,6 @@ public class Sprite {
 //		URL url = getClass().getResource("texture/High Productive.gif");
 		//
 		 File panaFile = this.fileList.get(positionInList);
-		 System.out.println("panaFile.toString()");
 		 ImageIcon icon = new ImageIcon(panaFile.toString());
 		    JLabel label = new JLabel(icon,SwingConstants.CENTER);
 		 
@@ -88,14 +86,18 @@ public class Sprite {
 		    
 		    JPanel panel = new JPanel();
 	        panel.setBackground(BGC);
-	        panel.setPreferredSize(new java.awt.Dimension(width,hight));
+//	        panel.setPreferredSize(new java.awt.Dimension(width,hight));
+	        panel.setSize(width, hight);
 	        panel.setLocation(xPoint, yPoint);
 	        panel.add(label);
 	        
-	        
-	        world.getContentPane().add(panel);
-	        world.pack();
+//	        world.setLocation(xPoint, yPoint);
+//	        world.getContentPane().add(panel);
+	        world.add(panel);
+	        world.pack(); 
+//	        world.setLocationRelativeTo(null);//usfull to line things up
 	        world.setVisible(true);
+//	        world.setLocation(xPoint, yPoint);
 		    
 	}
 	public void addFile(String newFileString) throws MalformedURLException {
