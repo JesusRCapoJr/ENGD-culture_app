@@ -1,3 +1,4 @@
+
 import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
@@ -17,6 +18,8 @@ public class Button extends JButton{
 	public JPanel world;
 	protected String text;
 	protected Point upperLeftPosition;
+	protected int width; 
+	protected int height; 
 	protected Color color;
 	// protected ??? link
 
@@ -41,7 +44,9 @@ public class Button extends JButton{
 		super(); 
 		this.setText(text);
 		this.createAction();
-		this.setBounds((int)upperLeftX, (int)upperLeftY, (int)width, (int)height);
+		this.width = (int)width; 
+		this.height = (int)height; 
+		this.setBounds((int)upperLeftX, (int)upperLeftY, this.width, this.height);
 		color = new Color(255,255,255);
 		this.setLayout(null);
 	}
@@ -50,8 +55,11 @@ public class Button extends JButton{
 		super(); 
 		this.world = world; 
 		this.createAction();
-		this.setBounds((int)upperLeftX, (int)upperLeftY, (int)width, (int)height);
+		this.width = (int)width; 
+		this.height = (int)height; 
+		this.setBounds((int)upperLeftX, (int)upperLeftY, this.width, this.height);
 		color = new Color(255,255,255);
+		this.setLayout(null);
 	}
 
 	public void setPosition(double x, double y) { // Position
@@ -90,3 +98,4 @@ public class Button extends JButton{
 
 	// getters
 	// public ??? getAppearance(){}
+

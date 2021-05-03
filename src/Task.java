@@ -54,6 +54,10 @@ public class Task {
 		return this.description; 
 	}
 	
+	public int getDescriptionSize() {
+		return 1; 
+	}
+	
 	//public ??? getDue()
 	
 	public int getPriority() {
