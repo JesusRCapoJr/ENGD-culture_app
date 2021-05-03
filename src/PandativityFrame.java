@@ -49,7 +49,7 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 			
 			//world.add(new HomeOverviewPanel(world)); 
 //			add(Box.createGlue()); 
-			frame.add(new HomeOverviewPanel(world));
+			world.add(new HomeOverviewPanel(world));
 			frame.repaint();
 		}
 

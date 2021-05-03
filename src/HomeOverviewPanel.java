@@ -22,19 +22,12 @@ public class HomeOverviewPanel extends JPanel{
 	//TODO: get allTasks/allFolders
 	
 	public HomeOverviewPanel(JPanel world) {
-//		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-//		add(Box.createHorizontalGlue());
 		super(); 
 		this.world = world; 
-		this.setBounds((int)(Main.getWidth()*(1-THIS_W_RATIO)), 0, Main.getWidth(), (int)(Main.getHeight()*THIS_H_RATIO));
+		this.setBounds((int)(Main.getWidth()*(1-THIS_W_RATIO)), 0, (int)(Main.getWidth()*THIS_W_RATIO), (int)(Main.getHeight()*THIS_H_RATIO));
 		this.setLayout(null);
-//		System.out.println("*(2/3): "+(int)(Main.HEIGHT*(2/3)));
-//		System.out.println("*2/3: "+(int)(Main.HEIGHT*2/3));
-//		System.out.println("*(3/4): "+(int)(Main.HEIGHT*(3/4)));
-//		System.out.println("*3/4: "+(int)(Main.HEIGHT*3/4));
-		
-//		Button btn = new AddTaskButton(world, 100, 100, 100, 100); 
-//		add(btn); 
+		System.out.println("This.bounds: ULX:"+(int)(Main.getWidth()*(1-THIS_W_RATIO))+" ULY:"+0+" W:"+(int)(Main.getWidth()*THIS_W_RATIO)+" H:"+(int)(Main.getHeight()*THIS_H_RATIO));
+
 		ArrayList<Label> labels = new ArrayList<Label>(); 
 		labels.add(new Label("wa")); 
 		for(int i=0; i<14; i++) {
@@ -47,7 +40,7 @@ public class HomeOverviewPanel extends JPanel{
 		int btnW = (int) (thisW*BUTTON_WIDTH_RATIO); 
 		int btnH = (int) ((thisH-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP);
 		for(Task t:allTasks) {
-			this.add(new Button("test "+i, (thisW-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH)); 
+			this.add(new Button(t.getTitle(), (thisW-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH)); 
 			i++; 
 		}
 		setVisible(true); 
