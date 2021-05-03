@@ -48,12 +48,10 @@ public class Main {
 		
 		// sprite testing
 		
-		Sprite sprite = null;
-		try {
-		
+		try {Sprite
 			sprite = new Sprite(pandativityFrame);
 			System.out.println("We are after the sprite");
-			sprite.Score = 1;
+			sprite.Score = 5;
 			sprite.update();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

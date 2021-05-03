@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 //import javax.swing.Icon;
@@ -15,14 +17,18 @@ import javax.swing.SwingConstants;
 
 public class Sprite {
 	private ArrayList<File> fileList = new ArrayList<File>();
-	public double Score = 2;
+	public double Score = 1;
 	private int width;
 	private int hight;
 	private int yPoint;
 	private int xPoint;
 	private Color BGC = new Color(255,255,255); 
 	private JFrame world;
-	private double time = 3600;  //1hr in seconds
+	private LocalTime updatedTime = null;  //1hr in seconds
+	
+	//
+//	startTime = System.startTime;
+	//
 	
 	
 	public Sprite(JFrame world) throws MalformedURLException{
@@ -35,17 +41,20 @@ public class Sprite {
 		this.yPoint = 20;
 		this.xPoint = 1600;
 		System.out.println("All files added");
+		updatedTime = java.time.LocalTime.now();
 	}
-	public void taskConpleted() {
+	public void taskConpleted() throws Exception {
 		Score++;
-		time = 3600;
+		updatedTime = java.time.LocalTime.now();
+		this.update();
 	}
 	public void update() throws Exception {// need a way to check time elapsed in the system
 		//mabe use a time maker that updates and keeps track of the 
+		LocalTime timeDifrance = (java.time.LocalTime.now().minusSeconds(this.updatedTime.getSecond()));
 		
-		if(time<1) {
+		if(timeDifrance.getSecond() > 3600) {
 			Score--;
-			time = 3600;
+			updatedTime = java.time.LocalTime.now();
 		}
 		if(Score<0) {
 			Score=0;
@@ -66,7 +75,7 @@ public class Sprite {
 		else if(this.Score>=4) {//gifs for each score 5+ = high
 			this.desplaySprite(4);
 		}
-		
+		//
 	}
 	
 	public void desplaySprite(int positionInList) throws IOException {    //main code from git hub
