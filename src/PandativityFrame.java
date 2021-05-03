@@ -32,7 +32,7 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 			frame.setSize(Main.getWidth(), Main.getHeight());
 			frame.setTitle("Pandativity");
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			//frame.setLayout(null);
+			frame.setLayout(null);
 			
 			JPanel world = new JPanel(new BorderLayout()); 
 			world.setBounds(0,0,Main.getWidth(),Main.getHeight());
@@ -49,7 +49,7 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 			
 			//world.add(new HomeOverviewPanel(world)); 
 //			add(Box.createGlue()); 
-			world.add(new HomeOverviewPanel(world));
+			frame.add(new HomeOverviewPanel(world));
 			frame.repaint();
 		}
 
