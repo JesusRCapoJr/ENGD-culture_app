@@ -76,8 +76,8 @@ public class Main {
 	
 	public static void updateSize() {
 		gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-		width = gd.getDisplayMode().getWidth()/1;
-		height = gd.getDisplayMode().getHeight()/1;
+		width = gd.getDisplayMode().getWidth()/2;
+		height = gd.getDisplayMode().getHeight()/2;
 	}
 
 
