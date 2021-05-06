@@ -46,6 +46,7 @@ public class Button extends JButton{
 		this.createAction();
 		this.width = (int)width; 
 		this.height = (int)height; 
+		this.upperLeftPosition = new Point((int)upperLeftX, (int)upperLeftY); 
 		this.setBounds((int)upperLeftX, (int)upperLeftY, this.width, this.height);
 		color = new Color(255,255,255);
 		this.setLayout(null);
@@ -57,6 +58,7 @@ public class Button extends JButton{
 		this.createAction();
 		this.width = (int)width; 
 		this.height = (int)height; 
+		this.upperLeftPosition = new Point((int)upperLeftX, (int)upperLeftY); 
 		this.setBounds((int)upperLeftX, (int)upperLeftY, this.width, this.height);
 		color = new Color(255,255,255);
 		this.setLayout(null);
