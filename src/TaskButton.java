@@ -4,14 +4,17 @@ import java.awt.event.ActionListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class TaskButton extends Button{
+public class TaskButton extends ToggleButton{
 	private Task task; 
 	private String description; 
+	private JLabel details; 
 
 	public TaskButton(JPanel world, Task task, double upperLeftX, double upperLeftY, double width, double height) {
 		super(task.getTitle(), upperLeftX, upperLeftY, width, height);
 		this.world = world; 
 		this.task = task; 
+		this.details = new JLabel(); 
+		world.add(details); 
 	}
 
 	@Override 
@@ -19,16 +22,28 @@ public class TaskButton extends Button{
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("TaskButton triggered"); 
-				updateDescription(); 
-				int l = task.getDescriptionSize(); 
-				JLabel details = new JLabel(); 
-				details.setText(task.getDescription());
-				details.setLocation((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-height*l/2);
-				world.add(details); 
-//				Button btn = new Button(task.getDescription(),upperLeftPosition.x-width, upperLeftPosition.y-height*l/2, width, height*l); 
+				if(toggle) {
+					HomeOverviewPanel.cleanAll(); 
+					details.setVisible(false);
+				}else {
+					displayTask(); 
 				}
-			}; 
-			addActionListener(al); 
+				toggle = !toggle; 
+			}
+		}; 
+		addActionListener(al); 
+	}
+	
+	public void displayTask() {
+		updateDescription(); 
+		
+		//int l = task.getDescriptionSize(); 
+		int l = 100; 
+		
+		details.setText(task.getDescription());
+		details.setLocation((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-height*l/2);
+		details.setSize(width, l);
+		details.setVisible(true);
 	}
 	
 	public void updateDescription(){
