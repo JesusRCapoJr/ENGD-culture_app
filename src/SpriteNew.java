@@ -63,21 +63,21 @@ public class SpriteNew {
 		}
 		
 		if(this.Score<1) {//gifs for each score 0-1 = low
-			this.desplaySprite(0);
+			this.displaySprite(0);
 		}
 		else if(this.Score<2) {//gifs for each score 2 = low -mid
-			this.desplaySprite(1);
+			this.displaySprite(1);
 		}
 		else if(this.Score<3) {//gifs for each score 2-3 = mid
-			this.desplaySprite(2);
+			this.displaySprite(2);
 		}
 		else if(this.Score<4) {//gifs for each score 3-4 = mid-high
-			this.desplaySprite(3);
+			this.displaySprite(3);
 		}
 		else if(this.Score>=4) {//gifs for each score 5+ = high
-			this.desplaySprite(4);
+			this.displaySprite(4);
 		}
-		
+		this.panel.revalidate();
 		//
 	}
 	
@@ -91,9 +91,10 @@ public class SpriteNew {
 	        world.pack(); 
 //	        world.setLocationRelativeTo(null);//usfull to line things up
 	        world.setVisible(true);
+	        world.setResizable(false);
 	}
 	
-	public void desplaySprite(int positionInList) throws IOException {    //main code from git hub
+	public void displaySprite(int positionInList) throws IOException {    //main code from git hub
 		 File panaFile = this.fileList.get((int) Score);
 		 ImageIcon icon = new ImageIcon(panaFile.toString());
 		 JLabel label = new JLabel(icon,SwingConstants.CENTER);
