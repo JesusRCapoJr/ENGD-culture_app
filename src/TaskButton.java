@@ -19,7 +19,7 @@ public class TaskButton extends Button{
 				int l = task.getDescriptionSize(); 
 				Button btn = new Button(task.getDescription(),upperLeftPosition.x-width, upperLeftPosition.y-height*l/2, width, height*l); 
 				}
-			};
+			}; 
 			addActionListener(al); 
 	}
 	
