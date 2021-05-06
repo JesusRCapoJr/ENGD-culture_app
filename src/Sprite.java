@@ -44,16 +44,16 @@ public class Sprite {
 		System.out.println("All files added");
 		updatedTime = java.time.LocalTime.now();
 	}
-	public void taskConpleted() throws Exception {
+	public void taskCompleted() throws Exception {
 		Score++;
 		updatedTime = java.time.LocalTime.now();
 		this.update();
 	}
 	public void update() throws Exception {// need a way to check time elapsed in the system
 		//mabe use a time maker that updates and keeps track of the 
-		LocalTime timeDifrance = (java.time.LocalTime.now().minusSeconds(this.updatedTime.getSecond()));
+		LocalTime timeDifference = (java.time.LocalTime.now().minusSeconds(this.updatedTime.getSecond()));
 		
-		if(timeDifrance.getSecond() > timeCap) {
+		if(timeDifference.getSecond() > timeCap) {
 			Score--;
 			updatedTime = java.time.LocalTime.now();
 		}
@@ -62,24 +62,24 @@ public class Sprite {
 		}
 		
 		if(this.Score<1) {//gifs for each score 0-1 = low
-			this.desplaySprite(0);
+			this.displaySprite(0);
 		}
 		else if(this.Score<2) {//gifs for each score 2 = low -mid
-			this.desplaySprite(1);
+			this.displaySprite(1);
 		}
 		else if(this.Score<3) {//gifs for each score 2-3 = mid
-			this.desplaySprite(2);
+			this.displaySprite(2);
 		}
 		else if(this.Score<4) {//gifs for each score 3-4 = mid-high
-			this.desplaySprite(3);
+			this.displaySprite(3);
 		}
 		else if(this.Score>=4) {//gifs for each score 5+ = high
-			this.desplaySprite(4);
+			this.displaySprite(4);
 		}
 		//
 	}
 	
-	public void desplaySprite(int positionInList) throws IOException {    //main code from git hub
+	public void displaySprite(int positionInList) throws IOException {    //main code from git hub
 		//
 //		URL url = getClass().getResource("texture/High Productive.gif");
 		//
@@ -106,7 +106,7 @@ public class Sprite {
 	        world.add(panel);
 	        world.pack(); 
 //	        world.setLocationRelativeTo(null);//usfull to line things up
-	        world.setVisible(true);
+	        //world.setVisible(true); //SET TO VISIBLE TO SHOW
 //	        world.setLocation(xPoint, yPoint);
 		    
 	}
