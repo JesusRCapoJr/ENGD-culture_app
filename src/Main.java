@@ -51,11 +51,11 @@ public class Main {
 		try {Sprite
 			sprite = new Sprite(pandativityFrame);
 			System.out.println("We are after the sprite");
-			sprite.Score = 5;
+			sprite.Score = 2;
 			
-			while(true){
-				sprite.update();
-			}
+//			while(true){
+//				sprite.update();
+//			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
