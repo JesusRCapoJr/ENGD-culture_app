@@ -91,7 +91,6 @@ public class SpriteNew {
 	        world.pack(); 
 //	        world.setLocationRelativeTo(null);//usfull to line things up
 	        world.setVisible(true);
-	        world.setResizable(false);
 	}
 	
 	public void displaySprite(int positionInList) throws IOException {    //main code from git hub
