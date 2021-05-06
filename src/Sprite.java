@@ -80,9 +80,7 @@ public class Sprite {
 	}
 	
 	public void displaySprite(int positionInList) throws IOException {    //main code from git hub
-		//
-//		URL url = getClass().getResource("texture/High Productive.gif");
-		//
+
 		 File panaFile = this.fileList.get(positionInList);
 		 ImageIcon icon = new ImageIcon(panaFile.toString());
 		    JLabel label = new JLabel(icon,SwingConstants.CENTER);

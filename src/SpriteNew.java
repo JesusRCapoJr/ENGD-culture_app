@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 
@@ -17,15 +16,16 @@ import javax.swing.SwingConstants;
 
 public class SpriteNew {
 	private ArrayList<File> fileList = new ArrayList<File>();
-	public double Score = 1;
-	private int width;
-	private int hight;
-	private int yPoint;
-	private int xPoint;
+	public double Score = 5;
+	private int width = 300;
+	private int hight = 200;
+	private int yPoint = 20;
+	private int xPoint = 1600;
 	private Color BGC = new Color(255,255,255); 
 	private JFrame world;
+	private JPanel panel = new JPanel();
 	private LocalTime updatedTime = null;  //1hr in seconds
-	private int timeCap = 5;
+	private int timeCap = 10;
 	
 	//
 //	startTime = System.startTime;
@@ -39,11 +39,9 @@ public class SpriteNew {
 		this.addFile("texture/mid_productive.gif");
 		this.addFile("texture/mid-high_productive.gif");
 		this.addFile("texture/High_Productive.gif");
-		this.yPoint = 20;
-		this.xPoint = 1600;
 		System.out.println("All files added");
 		updatedTime = java.time.LocalTime.now();
-		this.desplaySprite();
+		this.initializing();
 	}
 	public void taskConpleted() throws Exception {
 		Score++;
@@ -79,56 +77,52 @@ public class SpriteNew {
 		else if(this.Score>=4) {//gifs for each score 5+ = high
 			this.desplaySprite(4);
 		}
+		
 		//
 	}
-	public void desplaySprite() throws IOException {    //main code from git hub
-		//
-//		URL url = getClass().getResource("texture/High Productive.gif");
-		//
+	
+	public void initializing() { 
 		
-		
+	        panel.setBackground(BGC);
+	        panel.setSize(width, hight);
+	        panel.setLocation(xPoint, yPoint);
+	        world.setSize(width, hight);
+	        world.add(panel);
+	        world.pack(); 
+//	        world.setLocationRelativeTo(null);//usfull to line things up
+	        world.setVisible(true);
+	}
+	
+	public void desplaySprite(int positionInList) throws IOException {    //main code from git hub
 		 File panaFile = this.fileList.get((int) Score);
 		 ImageIcon icon = new ImageIcon(panaFile.toString());
 		 JLabel label = new JLabel(icon,SwingConstants.CENTER);
-		
-		    
-		    JPanel panel = new JPanel();
-	        panel.setBackground(BGC);
+		 	this.panel.removeAll();
+		 	this.panel.add(label);
+		 	this.panel.setVisible(true);
 
-	        panel.setSize(width, hight);
-	        panel.setLocation(xPoint, yPoint);
-	        panel.add(label);
-
-	        world.add(panel);
-	        world.pack(); 
-//	        world.setLocationRelativeTo(null);//usfull to line things up
-	        world.setVisible(true);
 		    
 	}
-	public void desplaySprite(int positionInList) throws IOException {    //main code from git hub
-		//
-//		URL url = getClass().getResource("texture/High Productive.gif");
-		//
-		
-		this.world.removeAll();
-		 File panaFile = this.fileList.get(positionInList);
-		 ImageIcon icon = new ImageIcon(panaFile.toString());
-		 JLabel label = new JLabel(icon,SwingConstants.CENTER);
-		
-		    
-		    JPanel panel = new JPanel();
-	        panel.setBackground(BGC);
-
-	        panel.setSize(width, hight);
-	        panel.setLocation(xPoint, yPoint);
-	        panel.add(label);
-
-	        world.add(panel);
-	        world.pack(); 
-//	        world.setLocationRelativeTo(null);//usfull to line things up
-	        world.setVisible(true);
-		    
-	}
+//	public void desplaySprite(int positionInList) throws IOException {    //main code from git hub
+//		this.world.removeAll();//bad idea
+//		 File panaFile = this.fileList.get(positionInList);
+//		 ImageIcon icon = new ImageIcon(panaFile.toString());
+//		 JLabel label = new JLabel(icon,SwingConstants.CENTER);
+//		
+//		    
+//		    JPanel panel = new JPanel();
+//	        panel.setBackground(BGC);
+//
+//	        panel.setSize(width, hight);
+//	        panel.setLocation(xPoint, yPoint);
+//	        panel.add(label);
+//
+//	        world.add(panel);
+//	        world.pack(); 
+////	        world.setLocationRelativeTo(null);//usfull to line things up
+//	        world.setVisible(true);
+//		    
+//	}
 	public void addFile(String newFileString) throws MalformedURLException {
 		File newFile = new File(newFileString);
 		this.fileList.add(newFile);

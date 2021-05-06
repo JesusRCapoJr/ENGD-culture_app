@@ -38,6 +38,7 @@ public class Main {
 	 * @param args
 	 *            ignored
 	 */
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {		
 		updateSize(); 
 		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
@@ -48,14 +49,22 @@ public class Main {
 		
 		// sprite testing
 		
-		try {Sprite
-			sprite = new Sprite(pandativityFrame);
+		try {SpriteNew
+			sprite = new SpriteNew(pandativityFrame);
 			System.out.println("We are after the sprite");
 			sprite.Score = 2;
 			
-//			while(true){
-//				sprite.update();
-//			}
+			for(int i = 0; i<10 ; i++){
+				sprite.update();
+				Thread.sleep(1 * 1000);
+			}
+			sprite.taskConpleted();
+			
+			for(int i = 0; i<500 ; i++){
+				sprite.update();
+				Thread.sleep(3 * 1000);
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
