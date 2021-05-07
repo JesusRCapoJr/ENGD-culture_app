@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,6 +9,7 @@ import javax.swing.border.Border;
 public class TaskButton extends ToggleButton{
 	private Task task; 
 	private String description; 
+	private JPanel btnPanel = new JPanel(); 
 	private JLabel details; 
 
 	public TaskButton(JPanel world, Task task, double upperLeftX, double upperLeftY, double width, double height) {
@@ -23,15 +25,15 @@ public class TaskButton extends ToggleButton{
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("TaskButton triggered: "); 
-				if(toggle) {
+				world.add(details); 
+				if(isSelected()) {
 					HomeOverviewPanel.cleanAll(); 
-					details.setVisible(false);
-					//world.repaint();
-				}else {
 					displayTask(); 
 					//world.repaint();
+				}else {
+					btnPanel.setVisible(false);;
+					//world.repaint();
 				}
-				toggle = !toggle; 
 			}
 		}; 
 		addActionListener(al); 
@@ -43,10 +45,19 @@ public class TaskButton extends ToggleButton{
 		//int l = task.getDescriptionSize(); 
 		int l = 100; 
 		
-		details.setText(task.getDescription());
-		details.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-height*l/2, width, l);
-		//details.setSize(width, l);
+		btnPanel.setBackground(Color.GRAY);
+		btnPanel.setBounds(100, 100, 200, 300);
+		world.add(btnPanel); 
+		btnPanel.setVisible(true);
+		//world.setVisible(false);
+		
+		//details.setText(task.getDescription());
+		details.setText("aiwhfoifheiufhjalzhsie");
+		details.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
+		details.setSize(width, l);
 		details.setVisible(true);
+		btnPanel.add(details); 
+		
 	}
 	
 	public void updateDescription(){
