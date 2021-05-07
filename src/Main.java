@@ -87,6 +87,7 @@ public class Main {
 		gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 		width = gd.getDisplayMode().getWidth()/2;
 		height = gd.getDisplayMode().getHeight()/2;
+		//System.out.println("Width: "+width*2+"Height: "+height*2); 
 	}
 
 

@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 public class TaskButton extends ToggleButton{
 	private Task task; 
@@ -21,14 +22,14 @@ public class TaskButton extends ToggleButton{
 	public void createAction() {                  // Action
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("TaskButton triggered"); 
+				System.out.println("TaskButton triggered: "); 
 				if(toggle) {
 					HomeOverviewPanel.cleanAll(); 
 					details.setVisible(false);
-					world.repaint();
+					//world.repaint();
 				}else {
 					displayTask(); 
-					world.repaint();
+					//world.repaint();
 				}
 				toggle = !toggle; 
 			}
@@ -43,8 +44,8 @@ public class TaskButton extends ToggleButton{
 		int l = 100; 
 		
 		details.setText(task.getDescription());
-		details.setLocation((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-height*l/2);
-		details.setSize(width, l);
+		details.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-height*l/2, width, l);
+		//details.setSize(width, l);
 		details.setVisible(true);
 	}
 	
