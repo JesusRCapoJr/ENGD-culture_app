@@ -13,14 +13,14 @@ public class NathanTest2 extends JFrame {
 	
 	public NathanTest2() {
 		getContentPane().setBackground(new Color(107, 142, 35));
-		getContentPane().setLayout(null);
 		
 		JButton btnNewButton = new JButton("New button");
+		btnNewButton.setBounds(10, 35, 60, 60);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(10, 35, 60, 60);
+		getContentPane().setLayout(null);
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("New button");
@@ -40,8 +40,8 @@ public class NathanTest2 extends JFrame {
 		getContentPane().add(panel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(105, 105, 105));
 		panel_1.setBounds(1132, 175, 244, 578);
+		panel_1.setBackground(new Color(105, 105, 105));
 		getContentPane().add(panel_1);
 		
 		JButton btnNewButton_4 = new JButton("New button");
@@ -73,26 +73,11 @@ public class NathanTest2 extends JFrame {
 		panel_1.add(btnNewButton_4_7);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(new Color(255, 255, 255));
 		panel_2.setBounds(1132, 10, 244, 155);
+		panel_2.setBackground(new Color(255, 255, 255));
 		//
-		SpriteForPanels sprite = new SpriteForPanels(frame2, panel_2);
-		sprite.Score = 2;
-		sprite.update();
-
 	//
 		getContentPane().add(panel_2);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(112, 128, 144));
-		panel_3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-//				TaskWindow.initialize();
-			}
-		});
-		panel_3.setBounds(922, 10, 200, 116);
-		getContentPane().add(panel_3);
 		
 		JButton btnNewButton_3_1 = new JButton("New button");
 		btnNewButton_3_1.setBounds(650, 35, 150, 60);
