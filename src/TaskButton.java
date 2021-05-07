@@ -25,8 +25,10 @@ public class TaskButton extends ToggleButton{
 				if(toggle) {
 					HomeOverviewPanel.cleanAll(); 
 					details.setVisible(false);
+					world.repaint();
 				}else {
 					displayTask(); 
+					world.repaint();
 				}
 				toggle = !toggle; 
 			}

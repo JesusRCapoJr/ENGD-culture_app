@@ -64,7 +64,7 @@ public class HomeOverviewPanel extends JPanel{
 		int btnH = (int) ((thisH-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP + thisH / (allTasks.size()*3.5));
 		for(Task t:allTasks) {
 			TaskButton btn = new TaskButton(world, t, (thisW-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
-			this.allTaskss.add(btn); 
+			allTaskss.add(btn); 
 			this.add(btn); 
 			i++; 
 		}
