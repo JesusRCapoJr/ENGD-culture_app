@@ -11,6 +11,7 @@ public class TaskButton extends ToggleButton{
 	private String description; 
 	private JPanel btnPanel = new JPanel(); 
 	private JLabel details; 
+	private boolean selected; 
 
 	public TaskButton(JPanel world, Task task, double upperLeftX, double upperLeftY, double width, double height) {
 		super(task.getTitle(), upperLeftX, upperLeftY, width, height);
@@ -18,6 +19,7 @@ public class TaskButton extends ToggleButton{
 		this.task = task; 
 		this.details = new JLabel(); 
 		world.add(details); 
+		selected = false; 
 	}
 
 	@Override 
@@ -25,13 +27,13 @@ public class TaskButton extends ToggleButton{
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("TaskButton triggered: "); 
-				world.add(details); 
-				if(isSelected()) {
-					HomeOverviewPanel.cleanAll(); 
+				selected = !selected; 
+				if(selected) {
 					displayTask(); 
 					//world.repaint();
 				}else {
-					btnPanel.setVisible(false);;
+					btnPanel.setVisible(false);
+					HomeOverviewPanel.cleanAll(); 
 					//world.repaint();
 				}
 			}
@@ -53,7 +55,8 @@ public class TaskButton extends ToggleButton{
 		
 		//details.setText(task.getDescription());
 		details.setText("aiwhfoifheiufhjalzhsie");
-		details.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
+		//details.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
+		details.setBounds(0,0,width,l);
 		details.setSize(width, l);
 		details.setVisible(true);
 		btnPanel.add(details); 
