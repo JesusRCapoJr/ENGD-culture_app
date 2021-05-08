@@ -14,7 +14,7 @@ public class TaskButton extends ToggleButton{
 	private boolean selected; 
 
 	public TaskButton(JPanel world, Task task, double upperLeftX, double upperLeftY, double width, double height) {
-		super(task.getTitle(), upperLeftX, upperLeftY, width, height);
+		super(task.getTitle(), upperLeftX, upperLeftY, width, height); 
 		this.world = world; 
 		this.task = task; 
 		this.details = new JLabel(); 
@@ -29,32 +29,36 @@ public class TaskButton extends ToggleButton{
 				System.out.println("TaskButton triggered: "); 
 				selected = !selected; 
 				if(selected) {
+					HomeOverviewPanel.cleanAll();
 					displayTask(); 
-					//world.repaint();
+					setSelected(true); 
 				}else {
-					btnPanel.setVisible(false);
-					HomeOverviewPanel.cleanAll(); 
-					//world.repaint();
+					unClick(); 
 				}
 			}
 		}; 
 		addActionListener(al); 
 	}
 	
+	public void updateDescription(){
+		this.description = this.task.getDescription();
+	}
+	
 	public void displayTask() {
 		updateDescription(); 
 		
-		//int l = task.getDescriptionSize(); 
-		int l = 100; 
+		int l = task.getDescriptionRows(width) * 8; 
+		//int l = 100; 
 		
 		btnPanel.setBackground(Color.GRAY);
-		btnPanel.setBounds(100, 100, 200, 300);
+		btnPanel.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
+		System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
 		world.add(btnPanel); 
 		btnPanel.setVisible(true);
 		//world.setVisible(false);
 		
-		//details.setText(task.getDescription());
-		details.setText("aiwhfoifheiufhjalzhsie");
+		details.setText(task.getDescription());
+		//details.setText("aiwhfoifheiufhjalzhsie");
 		//details.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
 		details.setBounds(0,0,width,l);
 		details.setSize(width, l);
@@ -63,7 +67,8 @@ public class TaskButton extends ToggleButton{
 		
 	}
 	
-	public void updateDescription(){
-		this.description = this.task.getDescription();
+	public void unClick() {
+		btnPanel.setVisible(false);
+		this.setSelected(false);
 	}
 }
