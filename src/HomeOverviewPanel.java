@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import javax.swing.Box;
@@ -13,15 +14,17 @@ import javax.swing.JPanel;
 public class HomeOverviewPanel extends JPanel{
 	
 	private JPanel world; 
-	private final double THIS_W_RATIO = 0.25;
+	private final double THIS_W_RATIO = 0.5;
 	private final double THIS_H_RATIO = 0.666666667;
 	
 	ArrayList<Task> allTasks = new ArrayList<Task>(); 
-	private static ButtonGroup allTaskss = new ButtonGroup(); 
+	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
 	ArrayList<Folder> allFolders = new ArrayList<Folder>(); 
-	private final double BUTTON_WIDTH_RATIO = 0.8; 
+	private final double BUTTON_WIDTH_RATIO = 0.4; 
 	private final double BUTTON_CAP = 20; 
 	private final int BUTTON_GAP = 10; 
+	
+	private static HashMap<TaskButton, Boolean> allTaskButtons = new HashMap<TaskButton, Boolean>(); 
 	//TODO: get allTasks/allFolders
 	
 	public HomeOverviewPanel(JPanel world) {
@@ -63,8 +66,8 @@ public class HomeOverviewPanel extends JPanel{
 		int btnW = (int) (thisW*BUTTON_WIDTH_RATIO); 
 		int btnH = (int) ((thisH-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP + thisH / (allTasks.size()*3.5));
 		for(Task t:allTasks) {
-			TaskButton btn = new TaskButton(world, t, (thisW-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
-			allTaskss.add(btn); 
+			TaskButton btn = new TaskButton(this, t, thisW/2 + (thisW/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
+			allTaskButtons.put(btn, false); 
 			this.add(btn); 
 			i++; 
 		}
@@ -73,7 +76,10 @@ public class HomeOverviewPanel extends JPanel{
 	}
 	
 	public static void cleanAll() {
-		allTaskss.clearSelection();
+		for(TaskButton i: allTaskButtons.keySet()) {
+			allTaskButtons.put(i, false); 
+			i.unClick();
+		}
 	}
- 
+	
 }

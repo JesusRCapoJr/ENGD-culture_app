@@ -54,8 +54,8 @@ public class Task {
 		return this.description; 
 	}
 	
-	public int getDescriptionSize() {
-		return 1; 
+	public int getDescriptionRows(int columnLength) {
+		return this.description.length()/(columnLength/8) + 1; 
 	}
 	
 	//public ??? getDue()
