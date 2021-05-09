@@ -216,10 +216,22 @@ public class NathanTest {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 //				TaskWindow.initialize();
+					new KieyaAddTaskTestWindow();
 			}
 		});
 		AddTaskPanel.setBounds(10, 149, 704, 686);
 		frame.getContentPane().add(AddTaskPanel);
+		AddTaskPanel.setLayout(null);
+		
+		JButton btnNewButton_4 = new JButton("Add New Task");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				new KieyaAddTaskTestWindow().setVisible(true);
+				
+			}
+		});
+		btnNewButton_4.setBounds(10, 5, 684, 671);
+		AddTaskPanel.add(btnNewButton_4);
 		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setValue(50);
