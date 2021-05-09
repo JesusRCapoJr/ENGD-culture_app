@@ -191,10 +191,13 @@ public class NathanTest {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		final JPanel OverviewPanel = new JPanel();                    /// might not be finle
-		OverviewPanel.setBackground(new Color(105, 105, 105));
-		OverviewPanel.setBounds(724, 208, 806, 627);
-		frame.getContentPane().add(OverviewPanel);
+//		final JPanel OverviewPanel = new JPanel();                    /// might not be finle
+//		OverviewPanel.setBackground(new Color(105, 105, 105));
+//		OverviewPanel.setBounds(724, 208, 806, 627);
+//		frame.getContentPane().add(OverviewPanel);
+		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
+		frame.add(overviewPanel); 
+		overviewPanel.setBackground(new Color(105, 105, 105));
 		
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(new Color(255, 255, 255));

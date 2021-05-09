@@ -48,18 +48,36 @@ public class TaskButton extends ToggleButton{
 	public void displayTask() {
 		updateDescription(); 
 		
-		int l = task.getDescriptionRows(width) * 8 + 12; //Constant shift of 12 to account for the text not showing up on top
+		int l = 20; 
+		String choppedDescription = ""; 
+		
+		try {
+			//l = task.getDescriptionRows(width) * 8 + 12; //Constant shift of 12 to account for the text not showing up on top
+			int i=0; 
+			while(i < description.length()) {
+				if(i == 0) {
+					choppedDescription += description.substring(i, Math.min(description.length(), i+(width-14*8)/8)) + "\n"; 
+					i += (width-14*8)/8; 
+				}else {
+					choppedDescription += description.substring(i, Math.min(description.length(), i+width/8)) + "\n"; 
+					i += width/8; 
+				}
+				l += 20; 
+			}
+		} catch(Exception e) {
+			choppedDescription = null; 
+		}
 		
 		btnPanel.setBackground(Color.GRAY);
 		btnPanel.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
-		System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
+		//System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
 		world.add(btnPanel); 
 		btnPanel.setVisible(true);
 		
-		System.out.println(this.description); 
+		//System.out.println(this.description); 
 		details.setBounds(0,0,width,l);
 		//details.setSize(width, l); //This method is useless
-		details.setText(this.description);
+		details.setText("Description: "+choppedDescription);
 		//details.setHorizontalAlignment(SwingConstants.LEADING); 
 		//details.setVerticalAlignment(SwingConstants.CENTER); 
 		details.setVisible(true);

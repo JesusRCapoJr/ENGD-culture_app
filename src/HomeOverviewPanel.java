@@ -23,6 +23,7 @@ public class HomeOverviewPanel extends JPanel{
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
 	private final double BUTTON_CAP = 20; 
 	private final int BUTTON_GAP = 10; 
+	private Random rnd = new Random(); 
 	
 	private static HashMap<TaskButton, Boolean> allTaskButtons = new HashMap<TaskButton, Boolean>(); 
 	//TODO: get allTasks/allFolders
@@ -30,15 +31,26 @@ public class HomeOverviewPanel extends JPanel{
 	public HomeOverviewPanel(JPanel world) {
 		super(); 
 		this.world = world; 
-		Random rnd = new Random(); 
 		this.setBounds((int)(Main.getWidth()*(1-THIS_W_RATIO)), 0, (int)(Main.getWidth()*THIS_W_RATIO), (int)(Main.getHeight()*THIS_H_RATIO));
 		this.setLayout(null);
-		System.out.println("This.bounds: ULX:"+(int)(Main.getWidth()*(1-THIS_W_RATIO))+" ULY:"+0+" W:"+(int)(Main.getWidth()*THIS_W_RATIO)+" H:"+(int)(Main.getHeight()*THIS_H_RATIO));
+		//System.out.println("This.bounds: ULX:"+(int)(Main.getWidth()*(1-THIS_W_RATIO))+" ULY:"+0+" W:"+(int)(Main.getWidth()*THIS_W_RATIO)+" H:"+(int)(Main.getHeight()*THIS_H_RATIO));
 
+		constructAll(); 
+	}
+	
+	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height) {
+		super();
+		this.setBounds(upperLeftX, upperLeftY, width, height);
+		this.setLayout(null);
+		
+		constructAll(); 
+	}
+	
+	public void constructAll() {
 		ArrayList<Label> labels = new ArrayList<Label>(); 
 		labels.add(new Label("wa")); 
 		for(int i=0; i<14; i++) {
-			Task tsk = new Task("title"+i,"decription",2,labels); 
+			Task tsk = new Task("task"+i,"description",2,labels); 
 			allTasks.add(tsk);
 			int j = rnd.nextInt(7); 
 			switch(j) {
@@ -46,10 +58,10 @@ public class HomeOverviewPanel extends JPanel{
 					tsk.setDescription("wawawawawawa");
 					break; 
 				case 1: 
-					tsk.setDescription("dadada");
+					tsk.setDescription("MA textbook P2.2, P3.4");
 					break;
 				case 2: 
-					tsk.setDescription("wula!");
+					tsk.setDescription(null);
 					break;
 				case 3: 
 					tsk.setDescription("meow");
