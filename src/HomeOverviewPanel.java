@@ -16,6 +16,8 @@ public class HomeOverviewPanel extends JPanel{
 	private JPanel world; 
 	private final double THIS_W_RATIO = 0.5;
 	private final double THIS_H_RATIO = 0.666666667;
+	private int width; 
+	private int height; 
 	
 	private ArrayList<Task> allTasks = new ArrayList<Task>(); 
 	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
@@ -33,6 +35,8 @@ public class HomeOverviewPanel extends JPanel{
 		this.world = world; 
 		this.setBounds((int)(Main.getWidth()*(1-THIS_W_RATIO)), 0, (int)(Main.getWidth()*THIS_W_RATIO), (int)(Main.getHeight()*THIS_H_RATIO));
 		this.setLayout(null);
+		this.width = (int) (Main.getWidth()*THIS_W_RATIO);
+		this.height = (int) (Main.getHeight()*THIS_H_RATIO); 
 		//System.out.println("This.bounds: ULX:"+(int)(Main.getWidth()*(1-THIS_W_RATIO))+" ULY:"+0+" W:"+(int)(Main.getWidth()*THIS_W_RATIO)+" H:"+(int)(Main.getHeight()*THIS_H_RATIO));
 
 		constructAll(); 
@@ -42,6 +46,8 @@ public class HomeOverviewPanel extends JPanel{
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
 		this.setLayout(null);
+		this.width = width;
+		this.height = height; 
 		
 		constructAll(); 
 	}
@@ -73,12 +79,11 @@ public class HomeOverviewPanel extends JPanel{
 		}
 		
 		int i = 0;
-		int thisW = (int) (Main.getWidth()*THIS_W_RATIO);
-		int thisH = (int) (Main.getHeight()*THIS_H_RATIO); 
-		int btnW = (int) (thisW*BUTTON_WIDTH_RATIO); 
-		int btnH = (int) ((thisH-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP + thisH / (allTasks.size()*3.5));
+
+		int btnW = (int) (width*BUTTON_WIDTH_RATIO); 
+		int btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP + height / (allTasks.size()*3.5));
 		for(Task t:allTasks) {
-			TaskButton btn = new TaskButton(this, t, thisW/2 + (thisW/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
+			TaskButton btn = new TaskButton(this, t, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
 			allTaskButtons.put(btn, false); 
 			this.add(btn); 
 			i++; 
