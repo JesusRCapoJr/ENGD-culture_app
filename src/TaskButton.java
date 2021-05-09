@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 public class TaskButton extends ToggleButton{
@@ -26,7 +27,7 @@ public class TaskButton extends ToggleButton{
 	public void createAction() {                  // Action
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("TaskButton triggered: "); 
+				//System.out.println("TaskButton triggered: "); 
 				selected = !selected; 
 				if(selected) {
 					HomeOverviewPanel.cleanAll();
@@ -47,22 +48,22 @@ public class TaskButton extends ToggleButton{
 	public void displayTask() {
 		updateDescription(); 
 		
-		int l = task.getDescriptionRows(width) * 8; 
-		//int l = 100; 
+		int l = task.getDescriptionRows(width) * 8 + 12; //Constant shift of 12 to account for the text not showing up on top
 		
 		btnPanel.setBackground(Color.GRAY);
 		btnPanel.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
 		System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
 		world.add(btnPanel); 
 		btnPanel.setVisible(true);
-		//world.setVisible(false);
 		
-		details.setText(task.getDescription());
-		//details.setText("aiwhfoifheiufhjalzhsie");
-		//details.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
+		System.out.println(this.description); 
 		details.setBounds(0,0,width,l);
-		details.setSize(width, l);
+		//details.setSize(width, l); //This method is useless
+		details.setText(this.description);
+		//details.setHorizontalAlignment(SwingConstants.LEADING); 
+		//details.setVerticalAlignment(SwingConstants.CENTER); 
 		details.setVisible(true);
+		
 		btnPanel.add(details); 
 		
 	}
