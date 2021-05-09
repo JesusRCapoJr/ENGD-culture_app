@@ -17,9 +17,9 @@ public class HomeOverviewPanel extends JPanel{
 	private final double THIS_W_RATIO = 0.5;
 	private final double THIS_H_RATIO = 0.666666667;
 	
-	ArrayList<Task> allTasks = new ArrayList<Task>(); 
+	private ArrayList<Task> allTasks = new ArrayList<Task>(); 
 	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
-	ArrayList<Folder> allFolders = new ArrayList<Folder>(); 
+	private ArrayList<Folder> allFolders = new ArrayList<Folder>(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
 	private final double BUTTON_CAP = 20; 
 	private final int BUTTON_GAP = 10; 
@@ -80,6 +80,10 @@ public class HomeOverviewPanel extends JPanel{
 			allTaskButtons.put(i, false); 
 			i.unClick();
 		}
+	}
+	
+	public void addTask(Task task) {
+		this.allTasks.add(task); 
 	}
 	
 }
