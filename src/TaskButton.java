@@ -56,10 +56,10 @@ public class TaskButton extends ToggleButton{
 			int i=0; 
 			while(i < description.length()) {
 				if(i == 0) {
-					choppedDescription += description.substring(i, Math.min(description.length(), i+(width-14*8)/8)) + "\n"; 
+					choppedDescription += (description.substring(i, Math.min(description.length(), i+(width-14*8)/8)) + "\n"); 
 					i += (width-14*8)/8; 
 				}else {
-					choppedDescription += description.substring(i, Math.min(description.length(), i+width/8)) + "\n"; 
+					choppedDescription += (description.substring(i, Math.min(description.length(), i+width/8)) + "\n"); 
 					i += width/8; 
 				}
 				l += 20; 
