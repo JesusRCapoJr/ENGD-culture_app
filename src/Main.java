@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,6 +32,10 @@ public class Main {
 	private static int height; 
 	private static final Color[] BACKGROUND_COLORS = { Color.RED,
 			Color.BLUE, Color.GREEN };
+	private static HashMap<Folder, ArrayList<Task>> folder2Tasks = new HashMap<Folder, ArrayList<Task>>();
+	private static HashMap<Task, ArrayList<Label>> task2Labels = new HashMap<Task, ArrayList<Label>>(); 
+	private static HashMap<Label, ArrayList<Task>> label2Tasks = new HashMap<Label, ArrayList<Task>>(); 
+	
 
 	/**
 	 * Starts the application.
@@ -89,6 +94,56 @@ public class Main {
 		height = gd.getDisplayMode().getHeight()/2;
 		//System.out.println("Width: "+width*2+"Height: "+height*2); 
 	}
-
+	
+	public static ArrayList<Task> getTasksByFolder(Folder folder) {
+		return folder2Tasks.get(folder); 
+	}
+	
+	public static ArrayList<Label> getLabelsByTask(Task task){
+		return task2Labels.get(task); 
+	}
+	
+	public static ArrayList<Task> getTasksByLabel(Label label){
+		return label2Tasks.get(label); 
+	}
+	
+	public static void addTaskToFolder(Task task, Folder folder) {
+		registerFolder(folder); 
+		folder2Tasks.get(folder).add(task); 
+	}
+	
+	public static void addLabelToTask(Label label, Task task) {
+		registerLabel(label); 
+		task2Labels.get(task).add(label); 
+		label2Tasks.get(label).add(task); 
+	}
+	
+	/**
+	 * Returns true if the folder is registered successfully, false if not, meaning the folder is already registered 
+	 * @param folder
+	 * @return
+	 */
+	public static boolean registerFolder(Folder folder) {
+		if(folder2Tasks.containsKey(folder)) {
+			return false; 
+		}else {
+			folder2Tasks.put(folder, new ArrayList<Task>()); 
+			return true; 
+		}
+	}
+	
+	/**
+	 * Returns true if the label is registered successfully, false if not, meaning the label is already registered 
+	 * @param folder
+	 * @return
+	 */
+	public static boolean registerLabel(Label label) {
+		if(label2Tasks.containsKey(label)) {
+			return false; 
+		}else {
+			label2Tasks.put(label, new ArrayList<Task>()); 
+			return true; 
+		}
+	}
 
 }
