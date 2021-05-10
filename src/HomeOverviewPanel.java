@@ -70,7 +70,7 @@ public class HomeOverviewPanel extends JPanel{
 					tsk.setDescription(null);
 					break;
 				case 3: 
-					tsk.setDescription("meow");
+					tsk.setDescription("meowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
 					break;
 				default: 
 					tsk.setDescription("bruh");

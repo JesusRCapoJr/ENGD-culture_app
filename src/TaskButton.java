@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
@@ -11,15 +12,15 @@ public class TaskButton extends ToggleButton{
 	private Task task; 
 	private String description; 
 	private JPanel btnPanel = new JPanel(); 
-	private JLabel details; 
+	private JTextArea details; 
 	private boolean selected; 
-	private final int FONT_SIZE = 12; 
+	private final int FONT_SIZE = 8; 
 
 	public TaskButton(JPanel world, Task task, double upperLeftX, double upperLeftY, double width, double height) {
 		super(task.getTitle(), upperLeftX, upperLeftY, width, height); 
 		this.world = world; 
 		this.task = task; 
-		this.details = new JLabel(); 
+		this.details = new JTextArea(); 
 		world.add(details); 
 		selected = false; 
 	}
@@ -49,21 +50,19 @@ public class TaskButton extends ToggleButton{
 	public void displayTask() {
 		updateDescription(); 
 		
-		int l = 20; 
-		String choppedDescription = ""; 
+		int l = 20*this.task.getDescriptionRows(width, "Description: ".length()*FONT_SIZE, FONT_SIZE); 
+		String choppedDescription = this.task.getDescriptionByRows(width, "Description: ".length()*FONT_SIZE, FONT_SIZE); 
 		
 		btnPanel.setBackground(Color.GRAY);
+		btnPanel.setLayout(null);
 		btnPanel.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
 		System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
 		world.add(btnPanel); 
 		btnPanel.setVisible(true);
 		
-		//System.out.println(this.description); 
-		details.setBounds(0,0,width,l);
-		//details.setSize(width, l); //This method is useless
-		details.setText("Description: "+this.task.getDescriptionByRows(width, "Description: ".length()*FONT_SIZE, FONT_SIZE));
-		//details.setHorizontalAlignment(SwingConstants.LEADING); 
-		//details.setVerticalAlignment(SwingConstants.CENTER); 
+		details.setBounds(10,0,width,l);
+		details.setText("Description: "+choppedDescription);
+		details.setBackground(Color.GRAY);
 		details.setVisible(true);
 		
 		btnPanel.add(details); 

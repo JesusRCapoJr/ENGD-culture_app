@@ -8,6 +8,7 @@ public class Task {
 	private int priority; 
 	private ArrayList<Label> labels; 
 	private boolean finished; 
+	private int rows = 1; 
 	
 	public Task(String title, String description,/*??? due,*/ int priority, ArrayList<Label> labels) {
 		this.title = title; 
@@ -55,22 +56,29 @@ public class Task {
 	}
 	
 	public String getDescriptionByRows(int columnLength, int firstRowOffset, int fontSize) {
+		rows = 1; 
 		int i = 0; 
-		String choppedDescription = "<html>"; 
+		String choppedDescription = ""; 
 		if(this.description == null) {
 			return null; 
 		}else {
 			while(i < description.length()) {
 				if(i == 0) {
-					choppedDescription += (description.substring(i, Math.min(description.length(), i+(columnLength-firstRowOffset)/fontSize)) + "<br>"); 
+					choppedDescription += (description.substring(i, Math.min(description.length(), i+(columnLength-firstRowOffset)/fontSize)) + "\n"); 
 					i += (columnLength-firstRowOffset)/fontSize; 
 				}else {
-					choppedDescription += (description.substring(i, Math.min(description.length(), i+columnLength/fontSize)) + "<br>"); 
+					choppedDescription += (description.substring(i, Math.min(description.length(), i+columnLength/fontSize)) + "\n"); 
 					i += columnLength/fontSize; 
+					rows++; 
 				}
 			}
-			return choppedDescription+"</html>"; 
+			return choppedDescription; 
 		}
+	}
+	
+	public int getDescriptionRows(int columnLength, int firstRowOffset, int fontSize) {
+		getDescriptionByRows(columnLength, firstRowOffset, fontSize); 
+		return rows; 
 	}
 	
 	//public ??? getDue()
@@ -82,4 +90,5 @@ public class Task {
 	public ArrayList<Label> getLabels(){
 		return this.labels; 
 	}
+	
 }
