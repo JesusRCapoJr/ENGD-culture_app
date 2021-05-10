@@ -56,20 +56,20 @@ public class Task {
 	
 	public String getDescriptionByRows(int columnLength, int firstRowOffset, int fontSize) {
 		int i = 0; 
-		String choppedDescription = ""; 
+		String choppedDescription = "<html>"; 
 		if(this.description == null) {
 			return null; 
 		}else {
 			while(i < description.length()) {
 				if(i == 0) {
-					choppedDescription += (description.substring(i, Math.min(description.length(), i+(columnLength-firstRowOffset)/fontSize)) + "\n"); 
+					choppedDescription += (description.substring(i, Math.min(description.length(), i+(columnLength-firstRowOffset)/fontSize)) + "<br>"); 
 					i += (columnLength-firstRowOffset)/fontSize; 
 				}else {
-					choppedDescription += (description.substring(i, Math.min(description.length(), i+columnLength/fontSize)) + "\n"); 
+					choppedDescription += (description.substring(i, Math.min(description.length(), i+columnLength/fontSize)) + "<br>"); 
 					i += columnLength/fontSize; 
 				}
 			}
-			return choppedDescription; 
+			return choppedDescription+"</html>"; 
 		}
 	}
 	
