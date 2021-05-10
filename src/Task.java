@@ -54,8 +54,23 @@ public class Task {
 		return this.description; 
 	}
 	
-	public int getDescriptionRows(int columnLength) {
-		return this.description.length()/(columnLength/8) + 1; 
+	public String getDescriptionByRows(int columnLength, int firstRowOffset, int fontSize) {
+		int i = 0; 
+		String choppedDescription = ""; 
+		if(this.description == null) {
+			return null; 
+		}else {
+			while(i < description.length()) {
+				if(i == 0) {
+					choppedDescription += (description.substring(i, Math.min(description.length(), i+(columnLength-firstRowOffset)/fontSize)) + "\n"); 
+					i += (columnLength-firstRowOffset)/fontSize; 
+				}else {
+					choppedDescription += (description.substring(i, Math.min(description.length(), i+columnLength/fontSize)) + "\n"); 
+					i += columnLength/fontSize; 
+				}
+			}
+			return choppedDescription; 
+		}
 	}
 	
 	//public ??? getDue()

@@ -13,6 +13,7 @@ public class TaskButton extends ToggleButton{
 	private JPanel btnPanel = new JPanel(); 
 	private JLabel details; 
 	private boolean selected; 
+	private final int FONT_SIZE = 12; 
 
 	public TaskButton(JPanel world, Task task, double upperLeftX, double upperLeftY, double width, double height) {
 		super(task.getTitle(), upperLeftX, upperLeftY, width, height); 
@@ -51,33 +52,16 @@ public class TaskButton extends ToggleButton{
 		int l = 20; 
 		String choppedDescription = ""; 
 		
-		try {
-			//l = task.getDescriptionRows(width) * 8 + 12; //Constant shift of 12 to account for the text not showing up on top
-			int i=0; 
-			while(i < description.length()) {
-				if(i == 0) {
-					choppedDescription += (description.substring(i, Math.min(description.length(), i+(width-14*8)/8)) + "\n"); 
-					i += (width-14*8)/8; 
-				}else {
-					choppedDescription += (description.substring(i, Math.min(description.length(), i+width/8)) + "\n"); 
-					i += width/8; 
-				}
-				l += 20; 
-			}
-		} catch(Exception e) {
-			choppedDescription = null; 
-		}
-		
 		btnPanel.setBackground(Color.GRAY);
 		btnPanel.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
-		//System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
+		System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
 		world.add(btnPanel); 
 		btnPanel.setVisible(true);
 		
 		//System.out.println(this.description); 
 		details.setBounds(0,0,width,l);
 		//details.setSize(width, l); //This method is useless
-		details.setText("Description: "+choppedDescription);
+		details.setText("Description: "+this.task.getDescriptionByRows(width, "Description: ".length()*FONT_SIZE, FONT_SIZE));
 		//details.setHorizontalAlignment(SwingConstants.LEADING); 
 		//details.setVerticalAlignment(SwingConstants.CENTER); 
 		details.setVisible(true);
@@ -88,6 +72,7 @@ public class TaskButton extends ToggleButton{
 	
 	public void unClick() {
 		btnPanel.setVisible(false);
+		selected = false; 
 		this.setSelected(false);
 	}
 }
