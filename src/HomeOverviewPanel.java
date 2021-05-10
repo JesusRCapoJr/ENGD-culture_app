@@ -30,17 +30,18 @@ public class HomeOverviewPanel extends JPanel{
 	private static HashMap<TaskButton, Boolean> allTaskButtons = new HashMap<TaskButton, Boolean>(); 
 	//TODO: get allTasks/allFolders
 	
-	public HomeOverviewPanel(JPanel world) {
-		super(); 
-		this.world = world; 
-		this.setBounds((int)(Main.getWidth()*(1-THIS_W_RATIO)), 0, (int)(Main.getWidth()*THIS_W_RATIO), (int)(Main.getHeight()*THIS_H_RATIO));
-		this.setLayout(null);
-		this.width = (int) (Main.getWidth()*THIS_W_RATIO);
-		this.height = (int) (Main.getHeight()*THIS_H_RATIO); 
-		//System.out.println("This.bounds: ULX:"+(int)(Main.getWidth()*(1-THIS_W_RATIO))+" ULY:"+0+" W:"+(int)(Main.getWidth()*THIS_W_RATIO)+" H:"+(int)(Main.getHeight()*THIS_H_RATIO));
-
-		constructAll(); 
-	}
+//	public HomeOverviewPanel(JPanel world) {
+//		super(); 
+//		this.world = world; 
+//		this.setBounds((int)(Main.getWidth()*(1-THIS_W_RATIO)), 0, (int)(Main.getWidth()*THIS_W_RATIO), (int)(Main.getHeight()*THIS_H_RATIO));
+//		this.setLayout(null);
+//		this.width = (int) (Main.getWidth()*THIS_W_RATIO);
+//		this.height = (int) (Main.getHeight()*THIS_H_RATIO); 
+//		//System.out.println("This.bounds: ULX:"+(int)(Main.getWidth()*(1-THIS_W_RATIO))+" ULY:"+0+" W:"+(int)(Main.getWidth()*THIS_W_RATIO)+" H:"+(int)(Main.getHeight()*THIS_H_RATIO));
+//
+//		constructAll(); 
+//	}
+//	Using bounds just makes a hack lot more sense 
 	
 	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height) {
 		super();
