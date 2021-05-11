@@ -3,13 +3,19 @@ import java.util.ArrayList;
 public class Folder {
 	private ArrayList<Task> tasks;
 	private ArrayList<Label> labels; 
+	private String title; 
 	
-	public Folder() {
+	public Folder(String title) {
 		tasks = new ArrayList<Task>();  
+		this.title = title; 
 	}
 	
 	public void addTask(Task task) {
 		this.tasks.add(task); 
+	}
+	
+	public String getTitle() {
+		return this.title; 
 	}
 	
 	public ArrayList<Task> getTasks() {
