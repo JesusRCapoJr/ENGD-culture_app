@@ -48,18 +48,19 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public KieyaAddTaskTestWindow() {
+		setAlwaysOnTop(true);
 		setResizable(false);
-		setBounds(17, 180, 831, 573);
+		setBounds(17, 180, 786, 437);
 		contentPane = new JPanel();
-		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBackground(new Color(51, 102, 51));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
 		txtEnterTaskName = new JTextField();
 		txtEnterTaskName.setHorizontalAlignment(SwingConstants.LEFT);
 		txtEnterTaskName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtEnterTaskName.setBackground(Color.WHITE);
-		txtEnterTaskName.setForeground(Color.BLACK);
+		txtEnterTaskName.setBackground(Color.LIGHT_GRAY);
+		txtEnterTaskName.setForeground(new Color(0, 0, 0));
 		txtEnterTaskName.setText("Enter Task Name");
 		txtEnterTaskName.setColumns(10);
 		
@@ -79,6 +80,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"Priority", "Low", "Medium", "High"}));
 		
 		txtAddDueDate = new JTextField();
+		txtAddDueDate.setBackground(Color.LIGHT_GRAY);
 		txtAddDueDate.setText("Add Due Date");
 		txtAddDueDate.setColumns(10);
 		
@@ -92,56 +94,80 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setBackground(Color.LIGHT_GRAY);
 		textArea.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
 		textArea.setLineWrap(true);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Task Completed");
-		chckbxNewCheckBox.setBackground(Color.LIGHT_GRAY);
+		chckbxNewCheckBox.setBackground(new Color(51, 102, 51));
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		SpringLayout sl_contentPane = new SpringLayout();
-		sl_contentPane.putConstraint(SpringLayout.NORTH, btnNewButton, 1, SpringLayout.NORTH, comboBox);
-		sl_contentPane.putConstraint(SpringLayout.WEST, btnNewButton, 582, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnNewButton, -159, SpringLayout.SOUTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, btnNewButton, 0, SpringLayout.EAST, textArea);
-		sl_contentPane.putConstraint(SpringLayout.EAST, comboBox_2, 0, SpringLayout.EAST, txtEnterTaskName);
-		sl_contentPane.putConstraint(SpringLayout.WEST, comboBox_2, 12, SpringLayout.EAST, comboBox_1);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtEnterTaskName, 8, SpringLayout.EAST, chckbxNewCheckBox);
-		sl_contentPane.putConstraint(SpringLayout.EAST, txtEnterTaskName, -20, SpringLayout.WEST, txtAddDueDate);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtAddDueDate, 23, SpringLayout.NORTH, chckbxNewCheckBox);
-		sl_contentPane.putConstraint(SpringLayout.WEST, txtAddDueDate, 524, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, txtAddDueDate, 0, SpringLayout.EAST, textArea);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, chckbxNewCheckBox, 22, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, chckbxNewCheckBox, -31, SpringLayout.NORTH, lblNewLabel);
-		sl_contentPane.putConstraint(SpringLayout.WEST, textArea, 15, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, textArea, -36, SpringLayout.EAST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, txtEnterTaskName, 18, SpringLayout.NORTH, chckbxNewCheckBox);
-		sl_contentPane.putConstraint(SpringLayout.WEST, chckbxNewCheckBox, 15, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, chckbxNewCheckBox, -520, SpringLayout.EAST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, comboBox_2, 0, SpringLayout.NORTH, comboBox);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, comboBox_2, 0, SpringLayout.SOUTH, comboBox);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, comboBox_1, 1, SpringLayout.NORTH, comboBox);
-		sl_contentPane.putConstraint(SpringLayout.WEST, comboBox_1, 6, SpringLayout.EAST, comboBox);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, comboBox_1, 381, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, comboBox_1, 286, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, lblNewLabel, 113, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.WEST, lblNewLabel, 15, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, lblNewLabel, 300, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, comboBox, 355, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.WEST, comboBox, 15, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, comboBox, 382, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.EAST, comboBox, 156, SpringLayout.WEST, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.NORTH, textArea, 143, SpringLayout.NORTH, contentPane);
-		sl_contentPane.putConstraint(SpringLayout.SOUTH, textArea, 336, SpringLayout.NORTH, contentPane);
-		contentPane.setLayout(sl_contentPane);
-		contentPane.add(textArea);
-		contentPane.add(comboBox);
-		contentPane.add(comboBox_1);
-		contentPane.add(chckbxNewCheckBox);
-		contentPane.add(txtEnterTaskName);
-		contentPane.add(comboBox_2);
-		contentPane.add(btnNewButton);
-		contentPane.add(txtAddDueDate);
-		contentPane.add(lblNewLabel);
+		
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("");
+		chckbxNewCheckBox_1.setBackground(new Color(51, 102, 51));
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(15)
+							.addComponent(chckbxNewCheckBox, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(txtEnterTaskName, GroupLayout.PREFERRED_SIZE, 395, GroupLayout.PREFERRED_SIZE)
+							.addGap(38)
+							.addComponent(txtAddDueDate))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(27)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(chckbxNewCheckBox_1))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(15)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
+									.addGap(121)
+									.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(textArea, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 745, GroupLayout.PREFERRED_SIZE))))
+					.addContainerGap(57, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(38)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(14)
+									.addComponent(chckbxNewCheckBox))
+								.addComponent(txtEnterTaskName, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
+							.addGap(21)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addGap(2)
+									.addComponent(chckbxNewCheckBox_1))))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(45)
+							.addComponent(txtAddDueDate, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)))
+					.addGap(6)
+					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE)
+					.addGap(19)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(1)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+							.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))))
+		);
+		contentPane.setLayout(gl_contentPane);
 	}
 }
 
