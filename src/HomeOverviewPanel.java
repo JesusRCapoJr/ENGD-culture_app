@@ -3,6 +3,7 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Set;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,15 +20,16 @@ public class HomeOverviewPanel extends JPanel{
 	private int width; 
 	private int height; 
 	
-	private ArrayList<Task> allTasks = new ArrayList<Task>(); 
 	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
-	private ArrayList<Folder> allFolders = new ArrayList<Folder>(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
 	private final double BUTTON_CAP = 20; 
 	private final int BUTTON_GAP = 10; 
 	private Random rnd = new Random(); 
 	
-	private static HashMap<TaskButton, Boolean> allTaskButtons = new HashMap<TaskButton, Boolean>(); 
+	private int btnW; 
+	private int btnH;
+	
+	private static ArrayList<TaskButton> allTaskButtons = new ArrayList<TaskButton>(); 
 	//TODO: get allTasks/allFolders
 	
 //	public HomeOverviewPanel(JPanel world) {
@@ -49,11 +51,40 @@ public class HomeOverviewPanel extends JPanel{
 		this.setLayout(null);
 		this.width = width;
 		this.height = height; 
+		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
+		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
 		
 		constructAll(); 
 	}
 	
 	public void constructAll() {
+		int i = 0; 
+		for(Folder folder:Main.getAllFolers()) {
+			for(Task task:Main.getTasksByFolder(folder)) {
+				constructButton(i,task); 
+			}
+		}
+		test(); 
+	}
+	
+	public static void cleanAll() {
+		for(TaskButton i: allTaskButtons) {
+			i.unClick();
+		}
+	}
+	
+	
+	public void constructButton(int i, Task task) {
+		TaskButton btn = new TaskButton(this, task, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
+		allTaskButtons.add(btn); 
+		this.add(btn); 
+	}
+	
+	/**
+	 * For test only
+	 */
+	public void test() { 
+		ArrayList<Task> allTasks = new ArrayList<Task>(); 
 		ArrayList<Label> labels = new ArrayList<Label>(); 
 		labels.add(new Label("wa")); 
 		for(int i=0; i<14; i++) {
@@ -79,29 +110,13 @@ public class HomeOverviewPanel extends JPanel{
 		 
 		}
 		
-		int i = 0;
-
-		int btnW = (int) (width*BUTTON_WIDTH_RATIO); 
-		int btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP + height / (allTasks.size()*3.5));
+		int i = 0; 
 		for(Task t:allTasks) {
-			TaskButton btn = new TaskButton(this, t, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
-			allTaskButtons.put(btn, false); 
-			this.add(btn); 
+			constructButton(i, t); 
 			i++; 
 		}
+		
 		setVisible(true); 
 		this.setBackground(Color.BLUE);
 	}
-	
-	public static void cleanAll() {
-		for(TaskButton i: allTaskButtons.keySet()) {
-			allTaskButtons.put(i, false); 
-			i.unClick();
-		}
-	}
-	
-	public void addTask(Task task) {
-		this.allTasks.add(task); 
-	}
-	
 }

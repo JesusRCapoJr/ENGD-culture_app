@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -93,6 +94,10 @@ public class Main {
 		width = gd.getDisplayMode().getWidth()/2;
 		height = gd.getDisplayMode().getHeight()/2;
 		//System.out.println("Width: "+width*2+"Height: "+height*2); 
+	}
+	
+	public static Set<Folder> getAllFolers(){
+		return folder2Tasks.keySet(); 
 	}
 	
 	public static ArrayList<Task> getTasksByFolder(Folder folder) {
