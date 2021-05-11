@@ -52,7 +52,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		setResizable(false);
 		setBounds(17, 180, 786, 437);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(51, 102, 51));
+		contentPane.setBackground(new Color(102, 153, 51));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -99,7 +99,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		textArea.setLineWrap(true);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Task Completed");
-		chckbxNewCheckBox.setBackground(new Color(51, 102, 51));
+		chckbxNewCheckBox.setBackground(new Color(102, 153, 0));
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("");
