@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 //import util.Random;
+//Hello lemons and words!
 
 /**
  * The starting point for the Pandativty application. It opens the pandativity frame.
@@ -51,7 +52,8 @@ public class Main {
 		JFrame pandativityFrame = new PandativityFrame();
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(width,height));
-		JPanel navigationPanel = new JPanel();		
+		JPanel navigationPanel = new JPanel();	
+		JPanel testPanel = new JPanel();
 		
 		// sprite testing
 		
