@@ -142,13 +142,18 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.awt.Color;
 import javax.swing.JProgressBar;
 import java.awt.Component;
+
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 
 public class NathanTest {
 
@@ -196,7 +201,7 @@ public class NathanTest {
 //		OverviewPanel.setBounds(724, 208, 806, 627);
 //		frame.getContentPane().add(OverviewPanel);
 		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
-		frame.add(overviewPanel); 
+		frame.getContentPane().add(overviewPanel); 
 		overviewPanel.setBackground(new Color(105, 105, 105));
 		
 		JPanel SpritePanel = new JPanel();
@@ -226,14 +231,19 @@ public class NathanTest {
 		frame.getContentPane().add(AddTaskPanel);
 		AddTaskPanel.setLayout(null);
 		
-		JButton btnNewButton_4 = new JButton("Add New Task");
+		JButton btnNewButton_4 = new JButton();
+		//
+			BufferedImage icon = ImageIO.read(new File("texture/plus.png")); 
+		
+			btnNewButton_4.setIcon(new ImageIcon(icon));
+		//
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new KieyaAddTaskTestWindow().setVisible(true);
 				
 			}
 		});
-		btnNewButton_4.setBounds(10, 5, 684, 671);
+		btnNewButton_4.setBounds(489, 501, 215, 185);
 		AddTaskPanel.add(btnNewButton_4);
 		
 		JProgressBar progressBar = new JProgressBar();
@@ -280,4 +290,3 @@ public class NathanTest {
 		});
 	}
 }
-//>>>>>>> 0bbfffc7b2110a2d967fe7e06e518b8ab34a6d01
