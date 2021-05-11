@@ -12,6 +12,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -38,6 +43,7 @@ public class Main {
 	private static HashMap<Task, ArrayList<Label>> task2Labels = new HashMap<Task, ArrayList<Label>>(); 
 	private static HashMap<Label, ArrayList<Task>> label2Tasks = new HashMap<Label, ArrayList<Task>>(); 
 	
+	
 
 	/**
 	 * Starts the application.
@@ -53,33 +59,52 @@ public class Main {
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(width,height));
 		JPanel navigationPanel = new JPanel();	
-		JPanel testPanel = new JPanel();
+		int data1=10;
+		String data2 ="lemon";
 		
-		// sprite testing
 		
-		try {SpriteNew
-			sprite = new SpriteNew(pandativityFrame);
-			System.out.println("We are after the sprite");
-			sprite.Score = 2;
-			
-			for(int i = 0; i<10 ; i++){
-				sprite.update();
-				Thread.sleep(1 * 1000);
-			}
-			sprite.taskConpleted();
-			
-			for(int i = 0; i<500 ; i++){
-				sprite.update();
-				Thread.sleep(3 * 1000);
-			}
-			
+		
+		try {
+			//DATA
+            FileOutputStream data = new FileOutputStream("data.txt");
+
+            ObjectOutputStream output = new ObjectOutputStream(data);
+
+            output.writeInt(data1);
+            output.writeObject(data2);
+
+            FileInputStream fileStream = new FileInputStream("data.txt");
+            ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+
+            System.out.println(objectStream.readInt());
+            System.out.println(objectStream.readObject());
+
+            output.close();
+            objectStream.close();
+            
+//			//TEST SPRITE
+//			SpriteNew sprite = new SpriteNew(pandativityFrame);
+//			System.out.println("We are after the sprite");
+//			sprite.Score = 2;
+//			
+//			for(int i = 0; i<10 ; i++){
+//				sprite.update();
+//				Thread.sleep(1 * 1000);
+//			}
+//			sprite.taskConpleted();
+//			
+//			for(int i = 0; i<500 ; i++){
+//				sprite.update();
+//				Thread.sleep(3 * 1000);
+//			}
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			e.getStackTrace();
 		}
-
-		
 	}
+
 
 	public static int getWidth() {
 		updateSize(); 
