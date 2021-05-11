@@ -56,7 +56,7 @@ public class Task {
 	}
 	
 	public String getDescriptionByRows(int columnLength, int fontSize) {
-		System.out.println("columnLength "+columnLength+/*", firstRowOffset "+firstRowOffset+*/", fontSize "+fontSize); 
+		//System.out.println("columnLength "+columnLength+/*", firstRowOffset "+firstRowOffset+*/", fontSize "+fontSize); 
 		rows = 1; 
 		int i = 0; 
 		String choppedDescription = "\n"; 

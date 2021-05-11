@@ -30,7 +30,7 @@ public class TaskButton extends ToggleButton{
 		this.details = new JTextArea(); 
 		world.add(btnPanel); 
 		selected = false; 
-		System.out.println("TaskButton Bounds: "+upperLeftX+", "+upperLeftY+", "+width+", "+height); 
+		//System.out.println("TaskButton Bounds: "+upperLeftX+", "+upperLeftY+", "+width+", "+height); 
 	}
 
 	@Override 
