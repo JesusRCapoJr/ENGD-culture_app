@@ -100,6 +100,10 @@ public class Main {
 		return folder2Tasks.keySet(); 
 	}
 	
+	public static Set<Label> getAllLabels(){
+		return label2Tasks.keySet(); 
+	}
+	
 	public static ArrayList<Task> getTasksByFolder(Folder folder) {
 		return folder2Tasks.get(folder); 
 	}
