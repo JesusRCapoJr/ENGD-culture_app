@@ -1,7 +1,13 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Task {
+public class Task implements Serializable{
 //	//TODO: implement due. Argue on setLabels() method
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8052698667359727655L;
 	private String title; 
 	private String description; 
 	//private ??? due; 
