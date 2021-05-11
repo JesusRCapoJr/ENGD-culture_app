@@ -103,7 +103,7 @@ public class Main {
 	}
 	
 	public static Set<Label> getAllLabels(){
-		return label2Tasks.keySet(); 
+		return label2Tasks.keySet();  
 	}
 	
 	public static ArrayList<Task> getTasksByFolder(Folder folder) {
