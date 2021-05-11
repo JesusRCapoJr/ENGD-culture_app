@@ -23,7 +23,7 @@ public class HomeOverviewPanel extends JPanel{
 	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
 	private final double BUTTON_CAP = 20; 
-	private final int BUTTON_GAP = 10; 
+	private final int BUTTON_GAP = 1; 
 	private Random rnd = new Random(); 
 	
 	private int btnW; 
@@ -48,6 +48,7 @@ public class HomeOverviewPanel extends JPanel{
 	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height) {
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
+		//this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.setLayout(null);
 		this.width = width;
 		this.height = height; 
@@ -58,12 +59,12 @@ public class HomeOverviewPanel extends JPanel{
 	}
 	
 	public void constructAll() {
-		int i = 0; 
-		for(Folder folder:Main.getAllFolers()) {
-			for(Task task:Main.getTasksByFolder(folder)) {
-				constructButton(i,task); 
-			}
-		}
+//		int i = 0; 
+//		for(Folder folder:Main.getAllFolers()) {
+//			for(Task task:Main.getTasksByFolder(folder)) {
+//				constructButton(i,task); 
+//			}
+//		}
 		test(); 
 	}
 	
@@ -75,6 +76,8 @@ public class HomeOverviewPanel extends JPanel{
 	
 	
 	public void constructButton(int i, Task task) {
+		//System.out.println(width); 
+		//System.out.println("TaskButton Const");
 		TaskButton btn = new TaskButton(this, task, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
 		allTaskButtons.add(btn); 
 		this.add(btn); 
@@ -88,7 +91,7 @@ public class HomeOverviewPanel extends JPanel{
 		ArrayList<Label> labels = new ArrayList<Label>(); 
 		labels.add(new Label("wa")); 
 		for(int i=0; i<14; i++) {
-			Task tsk = new Task("task"+i,"description",2,labels); 
+			Task tsk = new Task("task "+i,"description",2,labels); 
 			allTasks.add(tsk);
 			int j = rnd.nextInt(7); 
 			switch(j) {
@@ -102,7 +105,7 @@ public class HomeOverviewPanel extends JPanel{
 					tsk.setDescription(null);
 					break;
 				case 3: 
-					tsk.setDescription("meowwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww");
+					tsk.setDescription("1 meow meow meow meow 4 meow meow meow meow 8 meow meow meow meow 12 meow meow meow meow 16 meow meow meow meow 20 meow meow meow meow ");
 					break;
 				default: 
 					tsk.setDescription("bruh");

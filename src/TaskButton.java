@@ -15,14 +15,22 @@ public class TaskButton extends ToggleButton{
 	private JTextArea details; 
 	private boolean selected; 
 	private final int FONT_SIZE = 8; 
-
+	private final int SHELL = 2; 
+	
+	public TaskButton(JPanel world, Task task) {
+		super(task.getTitle()); 
+		this.world = world; 
+		this.task = task; 
+	}
+	
 	public TaskButton(JPanel world, Task task, double upperLeftX, double upperLeftY, double width, double height) {
 		super(task.getTitle(), upperLeftX, upperLeftY, width, height); 
 		this.world = world; 
 		this.task = task; 
 		this.details = new JTextArea(); 
-		world.add(details); 
+		world.add(btnPanel); 
 		selected = false; 
+		System.out.println("TaskButton Bounds: "+upperLeftX+", "+upperLeftY+", "+width+", "+height); 
 	}
 
 	@Override 
@@ -30,13 +38,13 @@ public class TaskButton extends ToggleButton{
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println("TaskButton triggered: "); 
-				selected = !selected; 
 				if(selected) {
+					unClick(); 
+				}else {
 					HomeOverviewPanel.cleanAll();
 					displayTask(); 
 					setSelected(true); 
-				}else {
-					unClick(); 
+					selected = true; 
 				}
 			}
 		}; 
@@ -50,19 +58,36 @@ public class TaskButton extends ToggleButton{
 	public void displayTask() {
 		updateDescription(); 
 		
-		int l = 20*this.task.getDescriptionRows(width, "Description: ".length()*FONT_SIZE, FONT_SIZE); 
-		String choppedDescription = this.task.getDescriptionByRows(width, "Description: ".length()*FONT_SIZE, FONT_SIZE); 
+		int l = FONT_SIZE*this.task.getDescriptionRows(width/2, FONT_SIZE)+16; 
+		String choppedDescription = this.task.getDescriptionByRows(width, FONT_SIZE); 
 		
 		btnPanel.setBackground(Color.GRAY);
 		btnPanel.setLayout(null);
-		btnPanel.setBounds((int)upperLeftPosition.getX()-width, (int)upperLeftPosition.getY()-(l-height)/2, width, l);
-		System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
-		world.add(btnPanel); 
+		int theoraticalY = (int)upperLeftPosition.getY()-(l-height)/2-SHELL; 
+		if(theoraticalY > 0 && theoraticalY+l+2*SHELL < world.getHeight()) {
+			btnPanel.setBounds((int)(upperLeftPosition.getX()-width-SHELL-2), 
+					theoraticalY, 
+					width+2*SHELL, 
+					l+2*SHELL);
+		}else if(theoraticalY <= 0) {
+			btnPanel.setBounds((int)(upperLeftPosition.getX()-width-SHELL-2), 
+					0, 
+					width+2*SHELL, 
+					l+2*SHELL);
+		}else {
+			btnPanel.setBounds((int)(upperLeftPosition.getX()-width-SHELL-2), 
+					theoraticalY - (world.getHeight() - (l+2*SHELL)), 
+					width+2*SHELL, 
+					l+2*SHELL);
+		}
+		
+		//System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
+		//world.add(btnPanel); 
 		btnPanel.setVisible(true);
 		
-		details.setBounds(10,0,width,l);
+		details.setBounds(SHELL,SHELL,width,l);
 		details.setText("Description: "+choppedDescription);
-		details.setBackground(Color.GRAY);
+		details.setBackground(Color.YELLOW);
 		details.setVisible(true);
 		
 		btnPanel.add(details); 

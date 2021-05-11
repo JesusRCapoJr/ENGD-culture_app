@@ -55,29 +55,30 @@ public class Task {
 		return this.description; 
 	}
 	
-	public String getDescriptionByRows(int columnLength, int firstRowOffset, int fontSize) {
+	public String getDescriptionByRows(int columnLength, int fontSize) {
+		System.out.println("columnLength "+columnLength+/*", firstRowOffset "+firstRowOffset+*/", fontSize "+fontSize); 
 		rows = 1; 
 		int i = 0; 
-		String choppedDescription = ""; 
+		String choppedDescription = "\n"; 
 		if(this.description == null) {
 			return null; 
 		}else {
 			while(i < description.length()) {
-				if(i == 0) {
-					choppedDescription += (description.substring(i, Math.min(description.length(), i+(columnLength-firstRowOffset)/fontSize)) + "\n"); 
-					i += (columnLength-firstRowOffset)/fontSize; 
-				}else {
+				//if(i == 0) {
+//					choppedDescription += (description.substring(i, Math.min(description.length(), i+(columnLength-firstRowOffset)/fontSize)) + "\n"); 
+//					i += (columnLength-firstRowOffset)/fontSize; 
+				//}else {
 					choppedDescription += (description.substring(i, Math.min(description.length(), i+columnLength/fontSize)) + "\n"); 
 					i += columnLength/fontSize; 
 					rows++; 
-				}
+				//}
 			}
 			return choppedDescription; 
 		}
 	}
 	
-	public int getDescriptionRows(int columnLength, int firstRowOffset, int fontSize) {
-		getDescriptionByRows(columnLength, firstRowOffset, fontSize); 
+	public int getDescriptionRows(int columnLength, int fontSize) {
+		getDescriptionByRows(columnLength, fontSize); 
 		return rows; 
 	}
 	

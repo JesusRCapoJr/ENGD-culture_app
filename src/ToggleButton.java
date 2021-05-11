@@ -22,6 +22,13 @@ public class ToggleButton extends JToggleButton{
 		// Size is in Dimension, and text is in String
 
 		// setters
+		public ToggleButton(String text) { //?
+			super(); 
+			this.setText(text);
+			this.createAction();
+			color = new Color(255,255,255);
+		}
+		
 		public ToggleButton(String text, double upperLeftX, double upperLeftY, double width, double height) {
 			super(); 
 			this.setText(text);
