@@ -200,10 +200,10 @@ public class NathanTest {
 //		OverviewPanel.setBackground(new Color(105, 105, 105));
 //		OverviewPanel.setBounds(724, 208, 806, 627);
 //		frame.getContentPane().add(OverviewPanel);
-		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
-		frame.getContentPane().add(overviewPanel); 
-		overviewPanel.setBackground(new Color(105, 105, 105));
-		
+//		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
+//		frame.getContentPane().add(overviewPanel); 
+//		overviewPanel.setBackground(new Color(105, 105, 105));
+//		
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(new Color(255, 255, 255));
 		SpritePanel.setBounds(1028, 10, 241, 176);
@@ -224,7 +224,9 @@ public class NathanTest {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 //				TaskWindow.initialize();
-					new KieyaAddTaskTestWindow();
+//					new KieyaAddTaskTestWindow();
+//				Task task = new Task();
+//				new KieyaAddTaskTestWindow(task);
 			}
 		});
 		AddTaskPanel.setBounds(10, 149, 704, 686);
@@ -240,7 +242,9 @@ public class NathanTest {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
-				new KieyaAddTaskTestWindow(task).setVisible(true);
+//				new KieyaAddTaskTestWindow(task).setVisible(true);
+				TEST_KieyaAddTaskTestWindow2 frame = new TEST_KieyaAddTaskTestWindow2(task);
+				frame.setVisible(true);
 				
 			}
 		});
