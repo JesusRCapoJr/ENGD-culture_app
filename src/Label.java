@@ -1,8 +1,11 @@
-
-
 import java.awt.Color;
+import java.io.Serializable;
 
-public class Label {
+public class Label implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 841123753420201744L;
 	//TODO: implement shape. 
 	private String text; 
 	private boolean isSelected;
