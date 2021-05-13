@@ -1,6 +1,8 @@
 import javax.swing.JPanel;
 import javax.swing.JCheckBox;
 import javax.swing.SwingConstants;
+
+import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
@@ -13,18 +15,18 @@ public class TaskPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public TaskPanel(Task pairedTask) {
-		
+
+		this.pairedTask = pairedTask;
 		addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.out.println("TaskPanel got clicked.");
 			}
 		});
-		
-		this.pairedTask = pairedTask;
+
 		FlowLayout flowLayout = (FlowLayout) getLayout();
 		flowLayout.setAlignment(FlowLayout.LEADING);
-		flowLayout.setHgap(5);
+		flowLayout.setHgap(1);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Completed");
 		chckbxNewCheckBox.setHorizontalAlignment(SwingConstants.LEFT);
@@ -33,9 +35,10 @@ public class TaskPanel extends JPanel {
 		JLabel TaskTitle = new JLabel(pairedTask.getTitle());
 		add(TaskTitle);
 		
-		JLabel DueDate = new JLabel(pairedTask.getDueDate());
+		JLabel DueDate = new JLabel(pairedTask.getDescription());
 		add(DueDate);
-
+		
+		System.out.println(pairedTask.getTitle() + " got created");
 	}
 
 }
