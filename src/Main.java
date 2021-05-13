@@ -62,47 +62,51 @@ public class Main {
 		int data1=10;
 		String data2 ="lemon";
 		
+		Saver saver = new Saver();
+		saver.saveString("Chicken");
+		//saver.saveInt(17879873);
+		saver.readString();
 		
-		
-		try {
-			//DATA
-            FileOutputStream data = new FileOutputStream("data.txt");
-
-            ObjectOutputStream output = new ObjectOutputStream(data);
-
-            output.writeInt(data1);
-            output.writeObject(data2);
-
-            FileInputStream fileStream = new FileInputStream("data.txt");
-            ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-
-            System.out.println(objectStream.readInt());
-            System.out.println(objectStream.readObject());
-
-            output.close();
-            objectStream.close();
-            
-//			//TEST SPRITE
-//			SpriteNew sprite = new SpriteNew(pandativityFrame);
-//			System.out.println("We are after the sprite");
-//			sprite.Score = 2;
-//			
-//			for(int i = 0; i<10 ; i++){
-//				sprite.update();
-//				Thread.sleep(1 * 1000);
-//			}
-//			sprite.taskConpleted();
-//			
-//			for(int i = 0; i<500 ; i++){
-//				sprite.update();
-//				Thread.sleep(3 * 1000);
-//			}
-		
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			e.getStackTrace();
-		}
+//		
+//		try {
+//			//DATA
+//            FileOutputStream data = new FileOutputStream("data.txt");
+//
+//            ObjectOutputStream output = new ObjectOutputStream(data);
+//
+//            output.writeInt(data1);
+//            output.writeObject(data2);
+//
+//            FileInputStream fileStream = new FileInputStream("data.txt");
+//            ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+//
+//            System.out.println(objectStream.readInt());
+//            System.out.println(objectStream.readObject());
+//
+//            output.close();
+//            objectStream.close();
+//            
+////			//TEST SPRITE
+////			SpriteNew sprite = new SpriteNew(pandativityFrame);
+////			System.out.println("We are after the sprite");
+////			sprite.Score = 2;
+////			
+////			for(int i = 0; i<10 ; i++){
+////				sprite.update();
+////				Thread.sleep(1 * 1000);
+////			}
+////			sprite.taskConpleted();
+////			
+////			for(int i = 0; i<500 ; i++){
+////				sprite.update();
+////				Thread.sleep(3 * 1000);
+////			}
+//		
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			e.getStackTrace();
+//		}
 	}
 
 
