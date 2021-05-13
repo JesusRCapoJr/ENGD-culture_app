@@ -91,7 +91,8 @@ public class JohnHomeOverviewPanel extends JPanel{
 		ArrayList<Label> labels = new ArrayList<Label>(); 
 		labels.add(new Label("wa")); 
 		for(int i=0; i<14; i++) {
-			Task tsk = new Task("task "+i,"description",2,labels); 
+			//Task tsk = new Task("task "+i,"description",2,labels); 
+			Task tsk = new Task();
 			allTasks.add(tsk);
 			int j = rnd.nextInt(7); 
 			switch(j) {
