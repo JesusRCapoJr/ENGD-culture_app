@@ -1,5 +1,4 @@
- import java.util.ArrayList;
-import java.io.Serializable;
+ import java.io.Serializable;
 
 public class Task implements Serializable{
 //	//TODO: implement due. Argue on setLabels() method
@@ -26,7 +25,7 @@ public class Task implements Serializable{
 		this.setTitle(new String("Add Title Here"));
 		this.setDescription(new String("Add Description Here"));
 		this.setDueDate(new String("yyyy/mm/dd"));
-		this.setPriority(0);
+		this.setPriority(new String("Priority"));
 		this.setLabel(new String("Lable"));
 		this.setCompleted(false);
 	}
@@ -58,16 +57,18 @@ public class Task implements Serializable{
 		else if(newPriority.matches(new String("Low"))) {
 			this.priority = 1;
 		}
-		if(newPriority.matches(new String("Medium"))) {
+		else if(newPriority.matches(new String("Medium"))) {
 			this.priority = 2;
 		}
-		if(newPriority.matches(new String("Hight"))) {
+		else if (newPriority.matches(new String("Hight"))) {
 			this.priority = 3;
 		}
-		this.priority = newPriority; 
+		else {
+			this.priority = 4;
+		}
 	}
 	
-	public void setLabel(String label) {
+	public void setLabel(String lable) {
 		if (lable.matches("Lable")) {
 			this.lable = null;
 		}
@@ -128,9 +129,9 @@ public class Task implements Serializable{
 		return this.priority; 
 	}
 	
-//	public Label getLabels(){
-//		return this.label; 
-//	}
+	public String getLabels(){
+		return this.lable; 
+	}
 
 	
 	public String getDueDate() {
