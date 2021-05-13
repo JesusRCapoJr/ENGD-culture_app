@@ -1,6 +1,11 @@
 import java.util.ArrayList;
+import java.io.Serializable;
 
-public class Folder {
+public class Folder implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5502867876331652655L;
 	private ArrayList<Task> tasks;
 	private ArrayList<Label> labels; 
 	private String title; 
