@@ -25,11 +25,10 @@ public class Task implements Serializable{
 //		this.label = label; 
 		this.setTitle(new String("Add Title Here"));
 		this.setDescription(new String("Add Description Here"));
-		this.setLabel(new String("Lable"));
 		this.setDueDate(new String("yyyy/mm/dd"));
-		this.setCompleted(false);
 		this.setPriority(0);
-		
+		this.setLabel(new String("Lable"));
+		this.setCompleted(false);
 	}
 	
 //	public Task(String title, String description,/*??? due,*/ int priority, String label) {
@@ -52,7 +51,19 @@ public class Task implements Serializable{
 		//this.due = due; 
 	}
 	
-	public void setPriority(int newPriority) {
+	public void setPriority(String newPriority) {
+		if(newPriority.matches(new String("Priority"))) {
+			this.priority = 0;
+		}
+		else if(newPriority.matches(new String("Low"))) {
+			this.priority = 1;
+		}
+		if(newPriority.matches(new String("Medium"))) {
+			this.priority = 2;
+		}
+		if(newPriority.matches(new String("Hight"))) {
+			this.priority = 3;
+		}
 		this.priority = newPriority; 
 	}
 	
