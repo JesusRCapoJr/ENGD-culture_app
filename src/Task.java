@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+ import java.util.ArrayList;
 import java.io.Serializable;
 
 public class Task implements Serializable{
@@ -8,29 +8,37 @@ public class Task implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = -8052698667359727655L;
-	private String title; 
-	private String description; 
-	//private ??? due; 
-	private int priority; 
-	private ArrayList<Label> labels; 
-	private boolean finished; 
+	private String title;
+	private String description;
+	private String dueDate; //yyyy/mm/dd
+	private int priority;
+//	private Label label; 
+	private String lable;
+	private boolean completed;
 	private int rows = 1; 
 	
-	public Task(String title, String description,/*??? due,*/ int priority, ArrayList<Label> labels) {
-		this.title = title; 
-		this.description = description; 
-		//this.due = due; 
-		this.priority = priority; 
-		this.labels = labels; 
+	public Task() {
+//		this.title = title; 
+//		this.description = description; 
+//		//this.due = due; 
+//		this.priority = priority; 
+//		this.label = label; 
+		this.setTitle(new String("Add Title Here"));
+		this.setDescription(new String("Add Description Here"));
+		this.setLabel(new String("Lable"));
+		this.setDueDate(new String("yyyy/mm/dd"));
+		this.setCompleted(false);
+		this.setPriority(0);
+		
 	}
 	
-	public Task(String title, /*??? due,*/ int priority, ArrayList<Label> labels) {
-		this.title = title; 
-		//this.due = due; 
-		this.priority = priority; 
-		this.labels = labels; 
-	}
-	
+//	public Task(String title, String description,/*??? due,*/ int priority, String label) {
+//		this.title = title; 
+//		//this.due = due; 
+//		this.priority = priority; 
+//		this.label = label; 
+//	}
+//	
 	//setters 
 	public void setTitle(String newTitle) {
 		this.title = newTitle; 
@@ -48,9 +56,24 @@ public class Task implements Serializable{
 		this.priority = newPriority; 
 	}
 	
-	public void setLabels() {
+	public void setLabel(String label) {
+		if (lable.matches("Lable")) {
+			this.lable = null;
+		}
+		else {
+			this.lable = lable;
+		}
 		//TODO: Do we want to completely reset every time? Or do we want to add and delete one by one? 
 	}
+	
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
+	}
+	
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+
 	
 	//getters
 	public String getTitle() {
@@ -94,8 +117,17 @@ public class Task implements Serializable{
 		return this.priority; 
 	}
 	
-	public ArrayList<Label> getLabels(){
-		return this.labels; 
-	}
+//	public Label getLabels(){
+//		return this.label; 
+//	}
+
 	
+	public String getDueDate() {
+		return dueDate;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
 }
