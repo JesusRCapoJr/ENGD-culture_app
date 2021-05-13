@@ -14,8 +14,9 @@ public class TaskPanel extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public TaskPanel(Task pairedTask) {
-
+	public TaskPanel(Task pairedTask, int upperLeftX, int upperLeftY, int width, int height) {
+		super();
+		this.setBounds(upperLeftX, upperLeftY, width, height);
 		this.pairedTask = pairedTask;
 		addMouseListener(new MouseAdapter() {
 			@Override
@@ -37,6 +38,7 @@ public class TaskPanel extends JPanel {
 		
 		JLabel DueDate = new JLabel(pairedTask.getDescription());
 		add(DueDate);
+		
 		
 		System.out.println(pairedTask.getTitle() + " got created");
 	}
