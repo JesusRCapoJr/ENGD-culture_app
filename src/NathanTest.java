@@ -239,7 +239,8 @@ public class NathanTest {
 		//
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new KieyaAddTaskTestWindow().setVisible(true);
+				Task task = new Task();
+				new KieyaAddTaskTestWindow(task).setVisible(true);
 				
 			}
 		});
