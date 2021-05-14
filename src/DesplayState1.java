@@ -134,7 +134,7 @@ import java.awt.EventQueue;
 import java.awt.Rectangle;
 
 import javax.swing.JFrame;
-import javax.swing.JLsabel;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
