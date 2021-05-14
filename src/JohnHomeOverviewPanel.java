@@ -29,7 +29,7 @@ public class JohnHomeOverviewPanel extends JPanel{
 	private int btnW; 
 	private int btnH;
 	
-	private static ArrayList<TaskButton> allTaskButtons = new ArrayList<TaskButton>(); 
+	private static ArrayList<TaskPanel> allTaskPanels = new ArrayList<TaskPanel>(); 
 	//TODO: get allTasks/allFolders
 	
 //	public HomeOverviewPanel(JPanel world) {
@@ -69,18 +69,22 @@ public class JohnHomeOverviewPanel extends JPanel{
 	}
 	
 	public static void cleanAll() {
-		for(TaskButton i: allTaskButtons) {
-			i.unClick();
+		for(TaskPanel i: allTaskPanels) {
+			//i.unClick(); don't need right now
 		}
 	}
 	
 	
-	public void constructButton(int i, Task task) {
+	public void constructPanel(int i, Task task) {
 		//System.out.println(width); 
 		//System.out.println("TaskButton Const");
-		TaskButton btn = new TaskButton(this, task, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
-		allTaskButtons.add(btn); 
-		this.add(btn); 
+		
+		//COMMENTED OUT BY JESUS
+		//TaskPanel pnl = new TaskPanel(task); -----------------------------------------------------
+		
+		//allTaskPanels.add(pnl); 
+		//this.add(pnl); 
+		//COMMENTED OUT BY JESUS
 	}
 	
 	/**
@@ -91,7 +95,8 @@ public class JohnHomeOverviewPanel extends JPanel{
 		ArrayList<Label> labels = new ArrayList<Label>(); 
 		labels.add(new Label("wa")); 
 		for(int i=0; i<14; i++) {
-			Task tsk = new Task("task "+i,"description",2,labels); 
+			//Task tsk = new Task("task "+i,"description",2,labels); 
+			Task tsk = new Task();
 			allTasks.add(tsk);
 			int j = rnd.nextInt(7); 
 			switch(j) {
@@ -115,7 +120,7 @@ public class JohnHomeOverviewPanel extends JPanel{
 		
 		int i = 0; 
 		for(Task t:allTasks) {
-			constructButton(i, t); 
+			constructPanel(i, t); 
 			i++; 
 		}
 		

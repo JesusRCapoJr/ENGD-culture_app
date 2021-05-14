@@ -55,54 +55,64 @@ public class Main {
 	public static void main(String[] args) {		
 		updateSize(); 
 		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
+		
+		//READ DATA FROM FILES
+
+		final Saver saver = new Saver();
+		saver.read();
+		
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+	        public void run() {
+	        	saver.save(); 
+	            System.out.println("Saved");
+	        }
+	    }, "Shutdown-thread"));
+		
 		JFrame pandativityFrame = new PandativityFrame();
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(width,height));
 		JPanel navigationPanel = new JPanel();	
-		int data1=10;
-		String data2 ="lemon";
 		
-		
-		
-		try {
-			//DATA
-            FileOutputStream data = new FileOutputStream("data.txt");
-
-            ObjectOutputStream output = new ObjectOutputStream(data);
-
-            output.writeInt(data1);
-            output.writeObject(data2);
-
-            FileInputStream fileStream = new FileInputStream("data.txt");
-            ObjectInputStream objectStream = new ObjectInputStream(fileStream);
-
-            System.out.println(objectStream.readInt());
-            System.out.println(objectStream.readObject());
-
-            output.close();
-            objectStream.close();
-            
-//			//TEST SPRITE
-//			SpriteNew sprite = new SpriteNew(pandativityFrame);
-//			System.out.println("We are after the sprite");
-//			sprite.Score = 2;
-//			
-//			for(int i = 0; i<10 ; i++){
-//				sprite.update();
-//				Thread.sleep(1 * 1000);
-//			}
-//			sprite.taskConpleted();
-//			
-//			for(int i = 0; i<500 ; i++){
-//				sprite.update();
-//				Thread.sleep(3 * 1000);
-//			}
-		
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			e.getStackTrace();
-		}
+//		
+//		try {
+//			//DATA
+//            FileOutputStream data = new FileOutputStream("data.txt");
+//
+//            ObjectOutputStream output = new ObjectOutputStream(data);
+//
+//            output.writeInt(data1);
+//            output.writeObject(data2);
+//
+//            FileInputStream fileStream = new FileInputStream("data.txt");
+//            ObjectInputStream objectStream = new ObjectInputStream(fileStream);
+//
+//            System.out.println(objectStream.readInt());
+//            System.out.println(objectStream.readObject());
+//
+//            output.close();
+//            objectStream.close();
+//            
+////			//TEST SPRITE
+////			SpriteNew sprite = new SpriteNew(pandativityFrame);
+////			System.out.println("We are after the sprite");
+////			sprite.Score = 2;
+////			
+////			for(int i = 0; i<10 ; i++){
+////				sprite.update();
+////				Thread.sleep(1 * 1000);
+////			}
+////			sprite.taskConpleted();
+////			
+////			for(int i = 0; i<500 ; i++){
+////				sprite.update();
+////				Thread.sleep(3 * 1000);
+////			}
+//		
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			e.getStackTrace();
+//		}
 	}
 
 

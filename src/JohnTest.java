@@ -55,14 +55,14 @@ public class JohnTest {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-//		final JPanel OverviewPanel = new JPanel();           
-//		OverviewPanel.setBackground(new Color(105, 105, 105));
-//		OverviewPanel.setBounds(724, 208, 806, 627);
-//		frame.getContentPane().add(OverviewPanel);
-		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
+		JohnHomeOverviewPanel overviewPanel = new JohnHomeOverviewPanel(724, 208, 806, 627); 
 		frame.getContentPane().add(overviewPanel); 
 		overviewPanel.setBackground(new Color(105, 105, 105));
 		
+		//TaskPanel testPanel = new TaskPanel(new Task(null, 0, null));
+		//frame.getContentPane().add(testPanel);
+		//testPanel.setBackground(new Color(105,105,105));
+	
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(new Color(255, 255, 255));
 		SpritePanel.setBounds(1028, 10, 241, 176);
@@ -83,7 +83,8 @@ public class JohnTest {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 //				TaskWindow.initialize();
-					new KieyaAddTaskTestWindow();
+				Task task = new Task();
+					new KieyaAddTaskTestWindow(task);
 			}
 		});
 		AddTaskPanel.setBounds(10, 149, 704, 686);
@@ -98,7 +99,8 @@ public class JohnTest {
 		//
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new KieyaAddTaskTestWindow().setVisible(true);
+				Task task = new Task();
+				new KieyaAddTaskTestWindow(task).setVisible(true);
 				
 			}
 		});
