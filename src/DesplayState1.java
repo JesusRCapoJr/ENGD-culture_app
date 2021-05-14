@@ -302,7 +302,9 @@ public class DesplayState1 {
 	}
 	
 	private void runNewFolder() {
-		frame.setVisible(false);
+//		frame.setVisible(false);
+		this.reborn();
+		
 		try {
 			new DesplayState2(frame);
 		} catch (Exception e1) {
@@ -319,5 +321,17 @@ public class DesplayState1 {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	public void reborn() {
+		frame.getContentPane().removeAll();
+		frame.setBounds(0, 0, 1920, 1080);
+		frame.setVisible(true);
+		frame.repaint();
+//		frame.add(world);
+//		
+//		world.removeAll();
+//		world.repaint();
+//		world.setBounds(0, 0, Main.getWidth(), Main.getHeight());
+//		world.setBackground(Color.MAGENTA); 
 	}
 }
