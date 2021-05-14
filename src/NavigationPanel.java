@@ -16,7 +16,7 @@ public class NavigationPanel extends JPanel{
 	}
 	
 	public void constructAll() {
-		for(Folder folder:Main.getAllFolers()) {
+		for(Folder folder:Main.getAllFolders()) {
 			
 		}
 	}

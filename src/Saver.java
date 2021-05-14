@@ -13,20 +13,16 @@ import java.util.ArrayList;
 
 public class Saver {
 	
-	private FileOutputStream data;
-	private FileOutputStream tasks;
-	private FileOutputStream folders;
-	private FileOutputStream labels;
+//	private FileOutputStream importedData;
+//	private FileOutputStream importedTasks;
+//	private FileOutputStream importedFolders;
+//	private FileOutputStream labels;
 	
 	private ArrayList<String> testList;
 	private ArrayList<String> gotList;
 
 	public Saver() {
 		try {
-			this.data = new FileOutputStream("data.txt",true);
-			this.tasks = new FileOutputStream("tasks.txt",true);
-			this.folders = new FileOutputStream("folders.txt",true);
-			this.labels = new FileOutputStream("labels.txt",true);
 			
 			this.testList = new ArrayList<String>();
 			
@@ -40,16 +36,27 @@ public class Saver {
 	}
 	
 	
-	public void save() {
+	public void save(ArrayList<String> preferenceList, ArrayList<String> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
 	try {
-		ObjectOutputStream dataWriter = new ObjectOutputStream(this.data);
-		ObjectOutputStream tasksWriter = new ObjectOutputStream(this.tasks);
+		FileOutputStream data = new FileOutputStream("data.txt",false);
+		FileOutputStream tasks = new FileOutputStream("tasks.txt",false);
+		FileOutputStream folders = new FileOutputStream("folders.txt",false);
+		FileOutputStream labels = new FileOutputStream("labels.txt",false);
 		
-		dataWriter.writeObject("something");
-		tasksWriter.writeObject(testList);
+		ObjectOutputStream dataWriter = new ObjectOutputStream(data);
+		ObjectOutputStream taskWriter = new ObjectOutputStream(tasks);
+		ObjectOutputStream folderWriter = new ObjectOutputStream(folders);
+		ObjectOutputStream labelWriter = new ObjectOutputStream(labels);
+		
+		dataWriter.writeObject(preferenceList);
+		taskWriter.writeObject(taskList);
+		folderWriter.writeObject(folderList);
+		labelWriter.writeObject(labelList);
 		
 		dataWriter.close();
-		tasksWriter.close();
+		taskWriter.close();
+		folderWriter.close();
+		labelWriter.close();
 		
 	}
 	catch (Exception e) {

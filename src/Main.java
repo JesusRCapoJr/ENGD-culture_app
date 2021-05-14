@@ -39,6 +39,11 @@ public class Main {
 	private static int height; 
 	private static final Color[] BACKGROUND_COLORS = { Color.RED,
 			Color.BLUE, Color.GREEN };
+	private static ArrayList<Task> tasksList = new ArrayList<Task>();
+	private static ArrayList<Folder> foldersList = new ArrayList<Folder>();
+	private static ArrayList<Label> labelsList = new ArrayList<Label>();
+	private static ArrayList<String> preferencesList = new ArrayList<String>();
+			
 	private static HashMap<Folder, ArrayList<Task>> folder2Tasks = new HashMap<Folder, ArrayList<Task>>();
 	private static HashMap<Task, ArrayList<Label>> task2Labels = new HashMap<Task, ArrayList<Label>>(); 
 	private static HashMap<Label, ArrayList<Task>> label2Tasks = new HashMap<Label, ArrayList<Task>>(); 
@@ -63,7 +68,7 @@ public class Main {
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 	        public void run() {
-	        	saver.save(); 
+	        	saver.save(preferencesList,tasksList,foldersList,labelsList); 
 	            System.out.println("Saved");
 	        }
 	    }, "Shutdown-thread"));
@@ -133,7 +138,7 @@ public class Main {
 		//System.out.println("Width: "+width*2+"Height: "+height*2); 
 	}
 	
-	public static Set<Folder> getAllFolers(){
+	public static Set<Folder> getAllFolders(){
 		return folder2Tasks.keySet(); 
 	}
 	
