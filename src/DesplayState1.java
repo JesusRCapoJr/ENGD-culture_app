@@ -264,7 +264,7 @@ public class DesplayState1 {
 		
 		JButton Folder_1 = new JButton("Folder 1");
 		Folder_1.setBounds(10, 10, 120, 60);
-		panel.add(Folder_1);
+		panel.add(Folder_1); 
 		Folder_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				runNewFolder();
