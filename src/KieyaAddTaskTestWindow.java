@@ -191,11 +191,14 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 	private void setTaskInformation() {
 		// TODO Auto-generated method stub
+		
+		
 		task.setDescription(taskAreaDescription);
 		task.setDueDate(txtAddDueDate.toString());
 		task.setLabel(comboBox_1.getSelectedItem().toString());
 		task.setTitle(txtEnterTaskName.toString());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
+		
 		
 		
 		
