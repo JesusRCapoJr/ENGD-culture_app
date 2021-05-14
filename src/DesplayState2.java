@@ -153,7 +153,7 @@ public class DesplayState2 {
 		this.reborn();
 		
 		try {
-			new DesplayState1();
+			new DesplayState1(this.frame);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

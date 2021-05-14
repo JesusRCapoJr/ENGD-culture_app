@@ -174,6 +174,21 @@ public class DesplayState1 {
 	 * @throws Throwable 
 	 */
 	public DesplayState1() throws Throwable {
+		frame = new JFrame();
+//		frame.getContentPane().setBackground(new Color(107, 142, 35));
+//		frame.setBounds(0, 0, 1920, 1080);
+//		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frame.getContentPane().setLayout(null);
+		initialize();
+	}
+	
+	public DesplayState1(JFrame frame) throws Throwable {
+		this.frame = frame;
+//		this.frame.getContentPane().setBackground(new Color(107, 142, 35));
+//		this.frame.setBounds(0, 0, 1920, 1080);
+//		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.frame.getContentPane().setLayout(null);
+//		
 		initialize();
 	}
 
@@ -183,7 +198,7 @@ public class DesplayState1 {
 	 * @throws Throwable 
 	 */
 	private void initialize() throws Throwable {
-		frame = new JFrame();
+//		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(107, 142, 35));
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -240,7 +255,7 @@ public class DesplayState1 {
 				
 			}
 		});
-		AddNewTask.setBounds(489, 501, 215, 185);
+		AddNewTask.setBounds(534, 516, 170, 170);
 		AddTaskPanel.add(AddNewTask);
 		
 		JProgressBar PandaProgressBar = new JProgressBar();
@@ -298,10 +313,10 @@ public class DesplayState1 {
 			}
 		});
 		
-		JLabel BackDrop = new JLabel("");
-		BackDrop.setIcon(new ImageIcon(DesplayState1.class.getResource("texture/BackDrop.png"))); // change to backround
-		BackDrop.setBounds(0, 0, 1540, 845);
-		frame.getContentPane().add(BackDrop);
+//		JLabel BackDrop = new JLabel("");
+//		BackDrop.setIcon(new ImageIcon(DesplayState1.class.getResource("texture/BackDrop.png"))); // change to backround
+//		BackDrop.setBounds(0, 0, 1540, 845);
+//		frame.getContentPane().add(BackDrop);
 
 	}
 	
