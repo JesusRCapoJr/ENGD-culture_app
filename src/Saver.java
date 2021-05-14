@@ -12,27 +12,9 @@ import java.util.ArrayList;
 
 
 public class Saver {
-	
-//	private FileOutputStream importedData;
-//	private FileOutputStream importedTasks;
-//	private FileOutputStream importedFolders;
-//	private FileOutputStream labels;
-	
-	private ArrayList<String> testList;
-	private ArrayList<String> gotList;
 
 	public Saver() {
-		try {
-			
-			this.testList = new ArrayList<String>();
-			
-			this.testList.add("Lemon");
-			this.testList.add("Words");
-			this.testList.add("qdlwijwijiewfiewflifefefjfkewlkjflkwf;qhfhf the world is lemon");
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 	}
 	
 	
@@ -65,22 +47,40 @@ public class Saver {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void read() {
+	public void read(ArrayList<String> preferenceList, ArrayList<Task> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
 		try {
 			
-          FileInputStream dataStream = new FileInputStream("data.txt");
-          ObjectInputStream dataReader = new ObjectInputStream(dataStream);
+          FileInputStream dataStream = new FileInputStream("data.txt") ;
+          FileInputStream taskStream = new FileInputStream("tasks.txt");
+          FileInputStream folderStream = new FileInputStream("folders.txt");
+          FileInputStream labelStream = new FileInputStream("labels.txt");
           
-          FileInputStream tasksStream = new FileInputStream("tasks.txt");
-          ObjectInputStream tasksReader = new ObjectInputStream(tasksStream);
-            
-          this.gotList = (ArrayList<String>) tasksReader.readObject();
-	      System.out.println(dataReader.readObject());
-	      System.out.println(this.gotList.get(1));
-	      System.out.println(this.gotList.get(2));
+          ObjectInputStream dataReader = new ObjectInputStream(dataStream);
+          ObjectInputStream taskReader = new ObjectInputStream(taskStream);
+          ObjectInputStream folderReader = new ObjectInputStream(folderStream);
+          ObjectInputStream labelReader = new ObjectInputStream(labelStream);
+          
+          
+          for (String preference : (ArrayList<String>)dataReader.readObject()) {
+        	  preferenceList.add(preference);
+          }
+          
+          for (Task task : (ArrayList<Task>)taskReader.readObject()) {
+        	  taskList.add(task);
+          }
+          
+          for (Folder folder : (ArrayList<Folder>)folderReader.readObject()) {
+        	  folderList.add(folder);
+          }
+          
+          for (Label label : (ArrayList<Label>)labelReader.readObject()) {
+        	  labelList.add(label);
+          }
 	      
           dataReader.close();
-          tasksReader.close();
+          taskReader.close();
+          folderReader.close();
+          labelReader.close();
 		
 		} catch (Exception e) {
 			e.printStackTrace();
