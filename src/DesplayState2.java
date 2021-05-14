@@ -3,11 +3,15 @@ import java.awt.EventQueue;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.JFrame;
 import java.awt.Color;
 import javax.swing.JPanel;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JProgressBar;
 
@@ -144,12 +148,28 @@ public class DesplayState2 {
 		progressBar.setBounds(1263, 192, 241, 14);
 		frame.getContentPane().add(progressBar);
 		frame.setBounds(0, 0, 1920, 1080);
-		frame.pack();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+//		
+		JButton AddNewTask = new JButton();
+			BufferedImage icon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
+			AddNewTask.setIcon(new ImageIcon(icon));
+		AddNewTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Task task = new Task();
+//				task.setFolder(folder);
+				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task);
+				frame2.setVisible(true);
+				
+			}
+		});
+		AddNewTask.setBounds(1024, 516, 170, 170);
+		panel.add(AddNewTask);
 	}
+	//
+	
 	private void backToHome() throws Throwable {
-//		frame.setVisible(false);
 		this.reborn();
 		
 		try {
