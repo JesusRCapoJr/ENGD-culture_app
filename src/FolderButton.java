@@ -27,7 +27,7 @@ public class FolderButton extends Button {
 				folderPanel.setBounds(0,0,Main.getWidth(),Main.getHeight());
 				folderPanel.setBackground(Color.PINK);
 				frame.reborn(); 
-				frame.add(folderPanel);
+				frame.add(folderPanel); 
 				folderPanel.setVisible(true);
 				}
 			};
