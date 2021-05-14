@@ -1,5 +1,8 @@
 
 import java.awt.EventQueue;
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -76,22 +79,52 @@ public class DesplayState2 {
 		JButton BackToHome = new JButton("Home");
 		BackToHome.setBounds(10, 10, 175, 89);
 		panel_3.add(BackToHome);
+		BackToHome.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					backToHome();
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		
-		JButton Folder4 = new JButton("Folder 4");
+		JButton Folder4 = new JButton("Folder 4");        //need to send it to the right folder form the array list of folders
 		Folder4.setBounds(1020, 10, 175, 89);
 		panel_3.add(Folder4);
+		Folder4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				runNewFolder(folder);                     //change
+			}
+		});
 		
 		JButton Folder1 = new JButton("Folder 1");
 		Folder1.setBounds(263, 10, 175, 89);
 		panel_3.add(Folder1);
+		Folder1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				runNewFolder(folder);                     //change
+			}
+		});
 		
 		JButton Folder3 = new JButton("Folder 3");
 		Folder3.setBounds(766, 10, 175, 89);
 		panel_3.add(Folder3);
+		Folder3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				runNewFolder(folder);                     //change
+			}
+		});
 		
 		JButton Folder2 = new JButton("Folder 2");
 		Folder2.setBounds(520, 10, 175, 89);
 		panel_3.add(Folder2);
+		Folder2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				runNewFolder(folder);                     //change
+			}
+		});
 		
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(Color.WHITE);
@@ -114,5 +147,42 @@ public class DesplayState2 {
 		frame.pack();
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	private void backToHome() throws Throwable {
+//		frame.setVisible(false);
+		this.reborn();
+		
+		try {
+			new DesplayState1();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	private void runNewFolder(Folder folder) {
+		this.reborn();
+		try {
+			new DesplayState2(frame , folder);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	public void reborn() {
+		Rectangle bounds = this.frame.getContentPane().getBounds();
+		frame.getContentPane().removeAll();
+		frame.setBounds(0, 0, 1920, 1080);
+		frame.setVisible(true);
+		frame.repaint();
+		frame.getContentPane().repaint();
+		frame.getContentPane().setBounds(bounds);
+		
+//		frame.add(world);
+//		
+//		world.removeAll();
+//		world.repaint();
+//		world.setBounds(0, 0, Main.getWidth(), Main.getHeight());
+
 	}
 }

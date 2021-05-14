@@ -36,7 +36,7 @@ public class Saver {
 	}
 	
 	
-	public void save(ArrayList<String> preferenceList, ArrayList<String> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
+	public void save(ArrayList<String> preferenceList, ArrayList<Task> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
 	try {
 		FileOutputStream data = new FileOutputStream("data.txt",false);
 		FileOutputStream tasks = new FileOutputStream("tasks.txt",false);
