@@ -131,9 +131,10 @@
 //}
 //=======
 import java.awt.EventQueue;
-import java.awt.Point;
+import java.awt.Rectangle;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -145,11 +146,7 @@ import java.io.File;
 import java.awt.Color;
 import javax.swing.JProgressBar;
 import javax.imageio.ImageIO;
-import javax.swing.Box;
-import javax.swing.SwingConstants;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 public class DesplayState1 {
 
@@ -192,14 +189,14 @@ public class DesplayState1 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-//		final JPanel OverviewPanel = new JPanel();                    /// might not be finle
-//		OverviewPanel.setBackground(new Color(105, 105, 105));
-//		OverviewPanel.setBounds(724, 208, 806, 627);
-//		frame.getContentPane().add(OverviewPanel);
-//		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
-//		frame.getContentPane().add(overviewPanel); 
-//		overviewPanel.setBackground(new Color(105, 105, 105));
-//		
+		final JPanel OverviewPanel = new JPanel();                    /// might not be finle
+		OverviewPanel.setBackground(new Color(105, 105, 105));
+		OverviewPanel.setBounds(724, 208, 806, 627);
+		frame.getContentPane().add(OverviewPanel);
+		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
+		frame.getContentPane().add(overviewPanel); 
+		overviewPanel.setBackground(new Color(105, 105, 105));
+		
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(new Color(255, 255, 255));
 		SpritePanel.setBounds(1028, 10, 241, 176);
@@ -294,10 +291,10 @@ public class DesplayState1 {
 			}
 		});
 		
-//		JLabel BackDrop = new JLabel("");
-//		BackDrop.setIcon(new ImageIcon(DesplayState1.class.getResource("texture/BackDrop.png"))); // change to backround
-//		BackDrop.setBounds(0, 0, 1540, 845);
-//		frame.getContentPane().add(BackDrop);
+		JLabel BackDrop = new JLabel("");
+		BackDrop.setIcon(new ImageIcon(DesplayState1.class.getResource("texture/BackDrop.png"))); // change to backround
+		BackDrop.setBounds(0, 0, 1540, 845);
+		frame.getContentPane().add(BackDrop);
 
 	}
 	
@@ -314,7 +311,7 @@ public class DesplayState1 {
 	}
 	
 	private void runNewFolder(Folder folder) {
-		frame.setVisible(false);
+		this.reborn();
 		try {
 			new DesplayState2(frame , folder);
 		} catch (Exception e1) {
@@ -323,15 +320,19 @@ public class DesplayState1 {
 		}
 	}
 	public void reborn() {
+		Rectangle bounds = this.frame.getContentPane().getBounds();
 		frame.getContentPane().removeAll();
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setVisible(true);
 		frame.repaint();
+		frame.getContentPane().repaint();
+		frame.getContentPane().setBounds(bounds);
+		
 //		frame.add(world);
 //		
 //		world.removeAll();
 //		world.repaint();
 //		world.setBounds(0, 0, Main.getWidth(), Main.getHeight());
-//		world.setBackground(Color.MAGENTA); 
+
 	}
 }
