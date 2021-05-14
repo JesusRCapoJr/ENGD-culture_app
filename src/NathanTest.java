@@ -154,6 +154,7 @@ import javax.swing.Box;
 import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
 public class NathanTest {
 
@@ -282,6 +283,11 @@ public class NathanTest {
 		JButton btnNewButton_3 = new JButton("Add New Folder");
 		btnNewButton_3.setBounds(574, 10, 120, 60);
 		panel.add(btnNewButton_3);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(NathanTest.class.getResource("/uml/example_uml.png"))); // change to backround
+		lblNewLabel.setBounds(0, 0, 1540, 845);
+		frame.getContentPane().add(lblNewLabel);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				frame.setVisible(false);
