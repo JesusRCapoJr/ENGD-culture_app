@@ -50,7 +50,7 @@ public class Saver {
 	public void read(ArrayList<String> preferenceList, ArrayList<Task> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
 		try {
 			
-          FileInputStream dataStream = new FileInputStream("data.txt");
+          FileInputStream dataStream = new FileInputStream("data.txt") ;
           FileInputStream taskStream = new FileInputStream("tasks.txt");
           FileInputStream folderStream = new FileInputStream("folders.txt");
           FileInputStream labelStream = new FileInputStream("labels.txt");
