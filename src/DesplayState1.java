@@ -150,7 +150,7 @@ import javax.swing.ImageIcon;
 
 public class DesplayState1 {
 
-	private JFrame frame;
+	private static JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -255,6 +255,13 @@ public class DesplayState1 {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		//Steven: To be used after Jesus found how to save and write
+//		for(Folder f: Main.getAllFolers()) {
+//			FolderButton aFolderBtn = new FolderButton(f,this.frame); 
+//			aFolderBtn.setBounds(10, 10, 120, 60);
+//			panel.add(aFolderBtn); 
+//		}
+		
 		JButton Folder_1 = new JButton("Folder 1");
 		Folder_1.setBounds(10, 10, 120, 60);
 		panel.add(Folder_1);
@@ -319,8 +326,9 @@ public class DesplayState1 {
 			e1.printStackTrace();
 		}
 	}
-	public void reborn() {
-		Rectangle bounds = this.frame.getContentPane().getBounds();
+	
+	public static void reborn() {
+		Rectangle bounds = frame.getContentPane().getBounds();
 		frame.getContentPane().removeAll();
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setVisible(true);
