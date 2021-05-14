@@ -26,7 +26,7 @@ public class FolderButton extends Button {
 				JPanel folderPanel = new JPanel(); 
 				folderPanel.setBounds(0,0,Main.getWidth(),Main.getHeight());
 				folderPanel.setBackground(Color.PINK);
-				frame.reborn();
+				frame.getContentPane().removeAll();
 				frame.add(folderPanel);
 				folderPanel.setVisible(true);
 				}
