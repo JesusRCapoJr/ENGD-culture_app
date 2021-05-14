@@ -74,10 +74,10 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		txtEnterTaskName.setText("Enter Task Name");
 		txtEnterTaskName.setColumns(10);
 
-		String[] folderNames = new String[Main.getAllFolers().size()];
+		String[] folderNames = new String[Main.getAllFolders().size()];
 
 		int i = 0;
-		for (Folder currentFolder : Main.getAllFolers()) {
+		for (Folder currentFolder : Main.getAllFolders()) {
 			folderNames[i] = currentFolder.getTitle();
 			i++;
 
@@ -196,6 +196,9 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		task.setLabel(comboBox_1.getSelectedItem().toString());
 		task.setTitle(txtEnterTaskName.toString());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
+		
+		
+		
 	
 	}
 }
