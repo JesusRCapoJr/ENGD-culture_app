@@ -156,7 +156,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-public class NathanTest {
+public class DesplayState1 {
 
 	private JFrame frame;
 
@@ -167,7 +167,7 @@ public class NathanTest {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					NathanTest window = new NathanTest();
+					DesplayState1 window = new DesplayState1();
 //					window.frame.getComponentAt(new Point(1300,100));
 					window.frame.setVisible(true);
 				} catch (Throwable e) {
@@ -181,7 +181,7 @@ public class NathanTest {
 	 * Create the application.
 	 * @throws Throwable 
 	 */
-	public NathanTest() throws Throwable {
+	public DesplayState1() throws Throwable {
 		initialize();
 	}
 
@@ -234,13 +234,13 @@ public class NathanTest {
 		frame.getContentPane().add(AddTaskPanel);
 		AddTaskPanel.setLayout(null);
 		
-		JButton btnNewButton_4 = new JButton();
+		JButton AddNewTask = new JButton();
 		//
 			BufferedImage icon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
 		
-			btnNewButton_4.setIcon(new ImageIcon(icon));
+			AddNewTask.setIcon(new ImageIcon(icon));
 		//
-		btnNewButton_4.addActionListener(new ActionListener() {
+		AddNewTask.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
 //				new KieyaAddTaskTestWindow(task).setVisible(true);
@@ -252,14 +252,14 @@ public class NathanTest {
 				
 			}
 		});
-		btnNewButton_4.setBounds(489, 501, 215, 185);
-		AddTaskPanel.add(btnNewButton_4);
+		AddNewTask.setBounds(489, 501, 215, 185);
+		AddTaskPanel.add(AddNewTask);
 		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setValue(50);
-		progressBar.setBackground(new Color(34, 139, 34));
-		progressBar.setBounds(1028, 183, 241, 14);
-		frame.getContentPane().add(progressBar);
+		JProgressBar PandaProgressBar = new JProgressBar();
+		PandaProgressBar.setValue(50);
+		PandaProgressBar.setBackground(new Color(34, 139, 34));
+		PandaProgressBar.setBounds(1028, 183, 241, 14);
+		frame.getContentPane().add(PandaProgressBar);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(160, 82, 45));
@@ -267,31 +267,31 @@ public class NathanTest {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Folder 1");
-		btnNewButton.setBounds(10, 10, 120, 60);
-		panel.add(btnNewButton);
+		JButton Folder_1 = new JButton("Folder 1");
+		Folder_1.setBounds(10, 10, 120, 60);
+		panel.add(Folder_1);
 		
-		JButton btnNewButton_2 = new JButton("Folder 2");
-		btnNewButton_2.setBounds(200, 10, 120, 60);
-		panel.add(btnNewButton_2);
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton Folder_2 = new JButton("Folder 2");
+		Folder_2.setBounds(200, 10, 120, 60);
+		panel.add(Folder_2);
+		Folder_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
-		JButton btnNewButton_1 = new JButton("Folder 2");
-		btnNewButton_1.setBounds(386, 10, 120, 60);
-		panel.add(btnNewButton_1);
+		JButton Folder_3 = new JButton("Folder 3");
+		Folder_3.setBounds(386, 10, 120, 60);
+		panel.add(Folder_3);
 		
-		JButton btnNewButton_3 = new JButton("Add New Folder");
-		btnNewButton_3.setBounds(574, 10, 120, 60);
-		panel.add(btnNewButton_3);
+		JButton Folder_4 = new JButton("Folder 4");
+		Folder_4.setBounds(574, 10, 120, 60);
+		panel.add(Folder_4);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(NathanTest.class.getResource("texture/BackDrop.png"))); // change to backround
-		lblNewLabel.setBounds(0, 0, 1540, 845);
-		frame.getContentPane().add(lblNewLabel);
-		btnNewButton.addActionListener(new ActionListener() {
+		JLabel BackDrop = new JLabel("");
+		BackDrop.setIcon(new ImageIcon(DesplayState1.class.getResource("texture/BackDrop.png"))); // change to backround
+		BackDrop.setBounds(0, 0, 1540, 845);
+		frame.getContentPane().add(BackDrop);
+		Folder_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 //				frame.setVisible(false);
 				try {
