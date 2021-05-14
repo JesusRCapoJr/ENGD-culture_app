@@ -38,8 +38,14 @@ public class FolderButton extends Button {
 	public void constructAll() throws Exception {
 		//constructs everything 
 		//world.add(new Button("Wow!",100,100,100,100)); 
+		Folder la = new Folder("la"); 
+		Task tsk = new Task(); 
+		world.add(new FolderOverviewPanel(10, 131, 1205, 704, la)); 
+		Main.registerFolder(la); 
+		Main.addTaskToFolder(tsk, la);
+		
 		DesplayState1.reborn();
-		new DesplayState2(frame,this.folder);
+//		new DesplayState2(frame,this.folder);
 //		panel.setBackground(new Color(143, 188, 143));
 //		panel.setBounds(10, 131, 1205, 704);
 //		frame.getContentPane().add(panel);
@@ -54,6 +60,7 @@ public class FolderButton extends Button {
 //		panel_3.setBounds(10, 10, 1205, 109);
 //		frame.getContentPane().add(panel_3);
 //		panel_3.setLayout(null);
+		
 	}
 //	/**
 //	 * For test. Should be adapted into some FolderPanel in the future unless we decide on not having that
