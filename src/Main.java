@@ -63,7 +63,7 @@ public class Main {
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 	        public void run() {
-	        	saver.save();
+	        	saver.save(); 
 	            System.out.println("Saved");
 	        }
 	    }, "Shutdown-thread"));
