@@ -42,7 +42,7 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 			world.setLayout(null);
 			world.setBackground(Color.CYAN);
 		
-			world.add(new HomeOverviewPanel((int)(Main.getWidth()*0.75), 0, (int)(Main.getWidth()*0.25), (int)(Main.getHeight()*0.66))); 
+			frame.add(new HomeOverviewPanel((int)(Main.getWidth()*0.75), 0, (int)(Main.getWidth()*0.25), (int)(Main.getHeight()*0.66))); 
 		
 			world.repaint();
 			
@@ -86,8 +86,14 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 		public void reborn() {
 			frame.getContentPane().removeAll();
 			frame.setBounds(0, 0, Main.getWidth(), Main.getHeight());
-			frame.add(world); 
+			frame.setVisible(true);
+			frame.repaint();
+			frame.add(world);
+			
+			world.removeAll();
+			world.repaint();
 			world.setBounds(0, 0, Main.getWidth(), Main.getHeight());
+			world.setBackground(Color.MAGENTA); 
 		}
 		
 		/**
