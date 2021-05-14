@@ -164,7 +164,7 @@ public class DesplayState2 {
 				
 			}
 		});
-		AddNewTask.setBounds(1023, 516, 170, 170);
+		AddNewTask.setBounds(1024, 516, 170, 170);
 		panel.add(AddNewTask);
 	}
 	//
