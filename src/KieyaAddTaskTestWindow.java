@@ -58,6 +58,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	 * Create the frame.
 	 */
 	public KieyaAddTaskTestWindow(Task task) {
+		this.task = task;
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setBounds(17, 180, 741, 393);
@@ -121,6 +122,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setTaskInformation();
+				
 			}
 		});
 		
@@ -128,6 +130,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Task Completed");
 		chckbxNewCheckBox.setBackground(new Color(102, 153, 0));
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
+//		chckbxNewCheckBox.addActionListener(new ActionListener() {
+//		 public void actionPerformed(ActionEvent arg0) {
+//			checkTaskCompletion();
+//		}
+//		});
 		
 		txtDue = new JTextField();
 		txtDue.setEditable(false);
@@ -188,9 +195,22 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+	
+//	private void checkTaskCompletion() {
+//		if(chckbxNewCheckBox.isEnabled()== true) {
+//			
+//		}
+//	}
 
 	private void setTaskInformation() {
 		// TODO Auto-generated method stub
+		
+		
+		Label newLabel = new Label(comboBox_1.getSelectedItem().toString());
+		if (Main.registerLabel(newLabel) == false ) {
+			Main.addLabelToTask(newLabel, task);
+		}
+		
 		
 		
 		task.setDescription(taskAreaDescription);
@@ -198,10 +218,6 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		task.setLabel(comboBox_1.getSelectedItem().toString());
 		task.setTitle(txtEnterTaskName.toString());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
-		
-		
-		
-		
 	
 	}
 }
