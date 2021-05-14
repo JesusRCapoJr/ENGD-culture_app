@@ -277,6 +277,7 @@ public class DesplayState1 {
 //			panel.add(aFolderBtn); 
 //		}
 		
+		
 		JButton Folder_1 = new JButton("Folder 1");
 		Folder_1.setBounds(10, 10, 120, 60);
 		panel.add(Folder_1); 
