@@ -89,18 +89,11 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 			frame.setVisible(true);
 			frame.repaint();
 			frame.add(world);
-			 
+			
 			world.removeAll();
 			world.repaint();
 			world.setBounds(0, 0, Main.getWidth(), Main.getHeight());
 			world.setBackground(Color.MAGENTA); 
-		}
-		
-		/**
-		 * returns the world
-		 */
-		public JPanel getWorld() {
-			return world; 
 		}
 		
 		/**

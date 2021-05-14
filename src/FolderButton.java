@@ -23,15 +23,22 @@ public class FolderButton extends Button {
 				//System.out.println("Put actions to be performed on click here");		// what it does goes here
 				//PandativityFrame.reborn();
 				//There's gotta be some FolderViewPanel??? 
-				JPanel folderPanel = new JPanel(); 
-				folderPanel.setBounds(0,0,Main.getWidth(),Main.getHeight());
-				folderPanel.setBackground(Color.PINK);
-				frame.reborn(); 
-				frame.add(folderPanel); 
-				folderPanel.setVisible(true);
+				test(); 
 				}
 			};
 		addActionListener(al); 
+	}
+	
+	/**
+	 * For test. Should be adapted into some FolderPanel in the future unless we decide on not having that
+	 */
+	public void test() {
+		JPanel folderPanel = new JPanel(); 
+		folderPanel.setBounds(0,0,Main.getWidth(),Main.getHeight());
+		folderPanel.setBackground(Color.PINK);
+		frame.reborn(); 
+		frame.add(folderPanel); 
+		folderPanel.setVisible(true);
 	}
 
 }
