@@ -12,10 +12,12 @@ import java.io.OutputStreamWriter;
 public class Saver {
 	
 	private FileOutputStream data;
+	private FileOutputStream tasks;
 
 	public Saver() {
 		try {
 			this.data = new FileOutputStream("data.txt");
+			this.tasks = new FileOutputStream("tasks.txt");
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -38,48 +40,43 @@ public class Saver {
 //		}
 //		
 //	}
-	public void saveString(String string) {
-	try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-        this.data, "utf-8"))) {
-		writer.write("something");
+	public void save() {
+	try {
+		ObjectOutputStream dataWriter = new ObjectOutputStream(this.data);
+		ObjectOutputStream tasksWriter = new ObjectOutputStream(this.tasks);
+		
+		dataWriter.writeObject("something");
+		tasksWriter.writeObject("words");
+		
+		dataWriter.close();
+		tasksWriter.close();
+		
 	}
 	catch (Exception e) {
 		e.printStackTrace();
 	}
 	}
 	
-	public void saveInt(int num) {
+	public void read() {
 		try {
 			
-			ObjectOutputStream writer = new ObjectOutputStream(this.data);
-            writer.writeInt(num);
+          FileInputStream dataStream = new FileInputStream("data.txt");
+          ObjectInputStream dataReader = new ObjectInputStream(dataStream);
+          
+          FileInputStream tasksStream = new FileInputStream("tasks.txt");
+          ObjectInputStream tasksReader = new ObjectInputStream(tasksStream);
             
-            writer.close();
-            writer=null;
-            System.gc();
+          
+	      System.out.println(dataReader.readObject());
+	      System.out.println(tasksReader.readObject());
+	      
+          dataReader.close();
+          tasksReader.close();
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void readString() {
-		try {
-            FileInputStream fileStream = new FileInputStream("data.txt");
-            ObjectInputStream reader = new ObjectInputStream(fileStream);
-            
-            System.out.println(reader.readObject());
-            System.out.println(reader.readInt());
-            
-            reader.close();
-            fileStream.close();
-            fileStream=null;
-            reader=null;
-            System.gc();
-//          fileStream.close();
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
 	}
-}

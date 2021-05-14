@@ -243,7 +243,10 @@ public class NathanTest {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
 //				new KieyaAddTaskTestWindow(task).setVisible(true);
-				TEST_KieyaAddTaskTestWindow2 frame = new TEST_KieyaAddTaskTestWindow2(task);
+				
+				//TEST WINDOW
+				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task);
+				
 				frame.setVisible(true);
 				
 			}

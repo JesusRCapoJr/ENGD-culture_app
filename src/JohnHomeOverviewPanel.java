@@ -78,9 +78,13 @@ public class JohnHomeOverviewPanel extends JPanel{
 	public void constructPanel(int i, Task task) {
 		//System.out.println(width); 
 		//System.out.println("TaskButton Const");
-		TaskPanel pnl = new TaskPanel(task); 
-		allTaskPanels.add(pnl); 
-		this.add(pnl); 
+		
+		//COMMENTED OUT BY JESUS
+		//TaskPanel pnl = new TaskPanel(task); -----------------------------------------------------
+		
+		//allTaskPanels.add(pnl); 
+		//this.add(pnl); 
+		//COMMENTED OUT BY JESUS
 	}
 	
 	/**

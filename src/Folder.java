@@ -45,16 +45,20 @@ public class Folder implements Serializable{
 	public ArrayList<Task> getTasksByLabels(ArrayList<Label> labels){
 		ArrayList<Task> tasksFound = new ArrayList<Task>(); 
 		for(Task i: tasks) {
-			ArrayList<Label> labelsInTask = i.getLabels();  
-			boolean matches = true; 
-			for(Label ii: labels) {
-				if(!labelsInTask.contains(ii)) {
-					matches = false; 
-				}
-			}
-			if(matches) {
-				tasksFound.add(i); 
-			}
+			
+			//COMMENTED OUT BY JESUS
+			//ArrayList<Label> labelsInTask = i.getLabels();  -----------------------------------------------------
+			
+//			boolean matches = true; 
+//			for(Label ii: labels) {
+//				if(!labelsInTask.contains(ii)) {
+//					matches = false; 
+//				}
+//			}
+//			if(matches) {
+//				tasksFound.add(i); 
+//			}
+			//COMMENTED OUT BY JESUS
 		}
 		
 		return tasksFound; 

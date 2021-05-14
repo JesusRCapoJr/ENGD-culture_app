@@ -63,9 +63,8 @@ public class Main {
 		String data2 ="lemon";
 		
 		Saver saver = new Saver();
-		saver.saveString("Chicken");
-		//saver.saveInt(17879873);
-		saver.readString();
+		saver.save();
+		saver.read();
 		
 //		
 //		try {
