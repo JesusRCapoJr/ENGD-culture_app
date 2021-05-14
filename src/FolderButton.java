@@ -13,7 +13,7 @@ public class FolderButton extends Button {
 		super(); 
 		this.folder = folder;
 		this.frame = frame; 
-		//this.world = PandativityFrame.getWorld(); 
+		this.world = PandativityFrame.getWorld(); 
 		this.setText(folder.getTitle());
 		this.createAction();
 	}
@@ -23,7 +23,8 @@ public class FolderButton extends Button {
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println("Put actions to be performed on click here");		// what it does goes here
 				//(IGNORE: Actually can not do for some wierd reason)There's gotta be some FolderViewPanel??? 
-				//PandativityFrame.reborn(); 
+				PandativityFrame.reborn();  //For testing only
+				//DesplayState1.reborn();
 				try {
 					constructAll();
 				} catch (Exception e1) {
@@ -40,11 +41,16 @@ public class FolderButton extends Button {
 		//world.add(new Button("Wow!",100,100,100,100)); 
 		Folder la = new Folder("la"); 
 		Task tsk = new Task(); 
-		world.add(new FolderOverviewPanel(10, 131, 1205, 704, la)); 
+		tsk.setTitle("audwhaufhka");
+		Task tsk2 = new Task(); 
+		tsk2.setTitle("efesgf");
+		la.addTask(tsk);
+		world.add(new FolderOverviewPanel(10, 131/2, 1205/2, 704/2, la)); 
 		Main.registerFolder(la); 
-		Main.addTaskToFolder(tsk, la);
 		
-		DesplayState1.reborn();
+		
+		
+		
 //		new DesplayState2(frame,this.folder);
 //		panel.setBackground(new Color(143, 188, 143));
 //		panel.setBounds(10, 131, 1205, 704);

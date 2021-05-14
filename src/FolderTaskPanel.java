@@ -21,6 +21,8 @@ public class FolderTaskPanel extends JPanel{
 	}
 	
 	public void constructAll() {
-		
+		this.add(new TaskButton(this, this.myTask, 0, 0, width, height)); 
+		System.out.println("Task constructed"); 
+		this.repaint();
 	}
 }

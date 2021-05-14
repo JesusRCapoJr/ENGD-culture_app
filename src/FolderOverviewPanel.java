@@ -13,20 +13,24 @@ public class FolderOverviewPanel extends JPanel{
 	public FolderOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, Folder folder) {
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
+		System.out.println("Overview construct 1"); 
 		this.setLayout(null);
 		this.width = width;
 		this.height = height;
 		this.myFolder = folder; 
 		this.setBackground(Color.GREEN);
 		
-		constructAll(); 
+		this.constructAll(); 
+		System.out.println("Overview constructed"); 
 	}
 	
 	public void constructAll() {
 		int iULY = 10; 
-		for(Task task:Main.getTasksByFolder(myFolder)) {
+		for(Task task:myFolder.getTasks()) {
 			this.add(new FolderTaskPanel(10, iULY, width, btnHeight, task)); 
+			System.out.println("Overview construct 2"); 
 			iULY += btnHeight+GAP; 
 		}
+		this.repaint();
 	}
 }
