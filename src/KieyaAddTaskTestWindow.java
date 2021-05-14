@@ -42,8 +42,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 			public void run() {
 				try {
 					
-					KieyaAddTaskTestWindow frame = new KieyaAddTaskTestWindow(this.task);
-					frame.setVisible(true);
+					//COMMENTED OUT BY JESUS
+					//KieyaAddTaskTestWindow frame = new KieyaAddTaskTestWindow(this.task); 
+					//frame.setVisible(true); -----------------------------------------------------
+					//COMMENTED OUT BY JESUS
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
