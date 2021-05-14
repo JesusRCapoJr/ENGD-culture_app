@@ -236,7 +236,7 @@ public class NathanTest {
 		
 		JButton btnNewButton_4 = new JButton();
 		//
-			BufferedImage icon = ImageIO.read(new File("texture/plus.png")); 
+			BufferedImage icon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
 		
 			btnNewButton_4.setIcon(new ImageIcon(icon));
 		//
@@ -288,7 +288,7 @@ public class NathanTest {
 		panel.add(btnNewButton_3);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(NathanTest.class.getResource("/uml/example_uml.png"))); // change to backround
+		lblNewLabel.setIcon(new ImageIcon(NathanTest.class.getResource("texture/BackDrop.png"))); // change to backround
 		lblNewLabel.setBounds(0, 0, 1540, 845);
 		frame.getContentPane().add(lblNewLabel);
 		btnNewButton.addActionListener(new ActionListener() {
