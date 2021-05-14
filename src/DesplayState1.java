@@ -138,17 +138,12 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.IOException;
 import java.awt.Color;
 import javax.swing.JProgressBar;
-import java.awt.Component;
-
 import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.SwingConstants;
@@ -243,12 +238,8 @@ public class DesplayState1 {
 		AddNewTask.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
-//				new KieyaAddTaskTestWindow(task).setVisible(true);
-				
-				//TEST WINDOW
 				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task);
-				
-				frame.setVisible(true);
+				frame2.setVisible(true);
 				
 			}
 		});
@@ -270,37 +261,63 @@ public class DesplayState1 {
 		JButton Folder_1 = new JButton("Folder 1");
 		Folder_1.setBounds(10, 10, 120, 60);
 		panel.add(Folder_1);
+		Folder_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				runNewFolder();
+			}
+		});
 		
 		JButton Folder_2 = new JButton("Folder 2");
 		Folder_2.setBounds(200, 10, 120, 60);
 		panel.add(Folder_2);
 		Folder_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				runNewFolder();
 			}
 		});
 		
 		JButton Folder_3 = new JButton("Folder 3");
 		Folder_3.setBounds(386, 10, 120, 60);
 		panel.add(Folder_3);
+		Folder_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				runNewFolder();
+			}
+		});
 		
 		JButton Folder_4 = new JButton("Folder 4");
 		Folder_4.setBounds(574, 10, 120, 60);
 		panel.add(Folder_4);
-		
-		JLabel BackDrop = new JLabel("");
-		BackDrop.setIcon(new ImageIcon(DesplayState1.class.getResource("texture/BackDrop.png"))); // change to backround
-		BackDrop.setBounds(0, 0, 1540, 845);
-		frame.getContentPane().add(BackDrop);
-		Folder_1.addActionListener(new ActionListener() {
+		Folder_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				frame.setVisible(false);
-				try {
-					new DesplayState2(frame);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				runNewFolder();
 			}
 		});
+		
+//		JLabel BackDrop = new JLabel("");
+//		BackDrop.setIcon(new ImageIcon(DesplayState1.class.getResource("texture/BackDrop.png"))); // change to backround
+//		BackDrop.setBounds(0, 0, 1540, 845);
+//		frame.getContentPane().add(BackDrop);
+
+	}
+	
+	private void runNewFolder() {
+		frame.setVisible(false);
+		try {
+			new DesplayState2(frame);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	private void runNewFolder(Folder folder) {
+		frame.setVisible(false);
+		try {
+			new DesplayState2(frame , folder);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 }
