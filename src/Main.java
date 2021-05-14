@@ -166,10 +166,10 @@ public class Main {
 		return label2Tasks.get(label); 
 	}
 	
-//	public static void addTaskToFolder(Task task, Folder folder) {
-//		registerFolder(folder); 
-//		folder2Tasks.get(folder).add(task); 
-//	}
+	public static void addTaskToFolder(Task task, Folder folder) {
+		registerFolder(folder); 
+		folder2Tasks.get(folder).add(task); 
+	}
 	
 	public static void addLabelToTask(Label label, Task task) {
 		registerLabel(label); 
@@ -182,14 +182,14 @@ public class Main {
 	 * @param folder
 	 * @return
 	 */
-//	public static boolean registerFolder(Folder folder) {
-//		if(folder2Tasks.containsKey(folder)) {
-//			return false; 
-//		}else {
-//			folder2Tasks.put(folder, new ArrayList<Task>()); 
-//			return true; 
-//		}
-//	}
+	public static boolean registerFolder(Folder folder) {
+		if(folder2Tasks.containsKey(folder)) {
+			return false; 
+		}else {
+			folder2Tasks.put(folder, new ArrayList<Task>()); 
+			return true; 
+		}
+	}
 	
 	/**
 	 * Returns true if the label is registered successfully, false if not, meaning the label is already registered 

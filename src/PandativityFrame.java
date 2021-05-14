@@ -53,7 +53,7 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 			frame.setResizable(true);
 			frame.repaint();
 			
-			//test(); 
+			test(); 
 		}
 
 		@Override
@@ -99,12 +99,12 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 		public static JPanel getWorld() {
 			return world; 
 		}
-//		/**
-//		 * For test only
-//		 */
-//		public void test() {
-//			FolderButton btn = new FolderButton(new Folder("Bruh")); 
-//			btn.setBounds(20, 20, 100, 50);
-//			world.add(btn);  
-//		}
+		/**
+		 * For test only
+		 */
+		public void test() {
+			FolderButton btn = new FolderButton(new Folder("Bruh"), frame); 
+			btn.setBounds(20, 20, 100, 50);
+			world.add(btn);  
+		}
 	}

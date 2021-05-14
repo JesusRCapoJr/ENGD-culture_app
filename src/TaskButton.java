@@ -83,11 +83,11 @@ public class TaskButton extends ToggleButton{
 		
 		//System.out.println("btnPanel Bounds: "+((int)upperLeftPosition.getX()-width)+", "+((int)upperLeftPosition.getY()-(l-height)/2)+", "+width+", "+l); 
 		//world.add(btnPanel); 
-		btnPanel.setVisible(true);
+		btnPanel.setVisible(true);  
 		
 		details.setBounds(SHELL,SHELL,width,l);
 		details.setText("Description: "+choppedDescription);
-		details.setBackground(Color.YELLOW);
+		details.setBackground(Color.YELLOW);   
 		details.setVisible(true);
 		
 		btnPanel.add(details); 

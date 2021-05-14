@@ -81,6 +81,10 @@ public class HomeOverviewPanel extends JPanel{
 		TaskButton btn = new TaskButton(this, task, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
 		allTaskButtons.add(btn); 
 		this.add(btn); 
+		
+		
+		CheckButton chkbtn = new CheckButton("", task, (width/2 + (width/2-btnW)/2)-50, (i+1)*BUTTON_GAP+i*btnH, btnW-275, btnH);
+		this.add(chkbtn);
 	}
 	
 	/**
