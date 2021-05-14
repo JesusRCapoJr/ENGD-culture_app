@@ -16,7 +16,7 @@ public class CheckButton extends JToggleButton{
 		protected int width; 
 		protected int height; 
 		protected Color color;
-		protected boolean toggle; 
+		private boolean toggle; 
 		// protected ??? link
 
 		// Getters, setters and variables for size and text are implemented by JButton.
@@ -42,7 +42,7 @@ public class CheckButton extends JToggleButton{
 			color = new Color(255,255,255);
 			this.setLayout(null);
 			this.toggle = false; 
-			System.out.println("Check button created");
+			//System.out.println("Check button created");
 		}
 
 		public void setPosition(double x, double y) { // Position
@@ -60,19 +60,22 @@ public class CheckButton extends JToggleButton{
 		public void setAppearance(/* appearance */) { // Appearance
 
 		}
-		public void changeColorState() { 
-			if (this.color == new Color(255,255,255)) {
-				this.color = new Color(0,0,0);
+		private void changeState() { 
+			if (this.toggle == false) {
+				this.task.setCompleted(true);
+				System.out.println("changed to true");
 			}
 			else {
-				this.color = new Color(255,255,255);
+				this.task.setCompleted(false);
+				System.out.println("changed to false");
 			}
 		}
 
 		public void createAction() {                  // Action
 			ActionListener al = new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("Put actions to be preformed on click here");		// what it does goes here
+					//System.out.println("Put actions to be preformed on click here");
+					changeState();
 					}
 				};
 				addActionListener(al); 
