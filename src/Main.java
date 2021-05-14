@@ -55,16 +55,23 @@ public class Main {
 	public static void main(String[] args) {		
 		updateSize(); 
 		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
+		
+		//READ DATA FROM FILES
+
+		final Saver saver = new Saver();
+		saver.read();
+		
+		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+	        public void run() {
+	        	saver.save();
+	            System.out.println("Saved");
+	        }
+	    }, "Shutdown-thread"));
+		
 		JFrame pandativityFrame = new PandativityFrame();
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(width,height));
 		JPanel navigationPanel = new JPanel();	
-		int data1=10;
-		String data2 ="lemon";
-		
-		Saver saver = new Saver();
-		saver.save();
-		saver.read();
 		
 //		
 //		try {
