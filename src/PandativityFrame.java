@@ -14,8 +14,8 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 	
 //	public final int BG_WIDTH = 300;
 //	public final int BG_HEIGHT = 400;
-	private JPanel world; 
-	private JFrame frame; 
+	private static JPanel world; 
+	private static JFrame frame; 
 	
 	/**
 	 * The simplest Java graphics program. From Ch. 2 of Big Java.
@@ -83,7 +83,7 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 		/**
 		 * Erases the world
 		 */
-		public void reborn() {
+		public static void reborn() {
 			frame.getContentPane().removeAll();
 			frame.setBounds(0, 0, Main.getWidth(), Main.getHeight());
 			frame.setVisible(true);
@@ -96,11 +96,14 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 			world.setBackground(Color.MAGENTA); 
 		}
 		
+		public static JPanel getWorld() {
+			return world; 
+		}
 		/**
 		 * For test only
 		 */
 		public void test() {
-			FolderButton btn = new FolderButton(new Folder("Bruh"), this); 
+			FolderButton btn = new FolderButton(new Folder("Bruh")); 
 			btn.setBounds(20, 20, 100, 50);
 			world.add(btn);  
 		}
