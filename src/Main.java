@@ -61,10 +61,15 @@ public class Main {
 		updateSize(); 
 		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
 		
+		//INITIALIZE FILES
+		Task testTask = new Task();
+		testTask.setTitle("Lemon");
+		tasksList.add(testTask);
+		
 		//READ DATA FROM FILES
 
 		final Saver saver = new Saver();
-		saver.read();
+		saver.read(preferencesList,tasksList,foldersList,labelsList);
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 	        public void run() {
@@ -73,6 +78,9 @@ public class Main {
 	        }
 	    }, "Shutdown-thread"));
 		
+		System.out.println(tasksList.get(0).getTitle());
+		
+		//SETUP FRAMES
 		JFrame pandativityFrame = new PandativityFrame();
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(width,height));
@@ -158,10 +166,10 @@ public class Main {
 		return label2Tasks.get(label); 
 	}
 	
-	public static void addTaskToFolder(Task task, Folder folder) {
-		registerFolder(folder); 
-		folder2Tasks.get(folder).add(task); 
-	}
+//	public static void addTaskToFolder(Task task, Folder folder) {
+//		registerFolder(folder); 
+//		folder2Tasks.get(folder).add(task); 
+//	}
 	
 	public static void addLabelToTask(Label label, Task task) {
 		registerLabel(label); 
@@ -174,14 +182,14 @@ public class Main {
 	 * @param folder
 	 * @return
 	 */
-	public static boolean registerFolder(Folder folder) {
-		if(folder2Tasks.containsKey(folder)) {
-			return false; 
-		}else {
-			folder2Tasks.put(folder, new ArrayList<Task>()); 
-			return true; 
-		}
-	}
+//	public static boolean registerFolder(Folder folder) {
+//		if(folder2Tasks.containsKey(folder)) {
+//			return false; 
+//		}else {
+//			folder2Tasks.put(folder, new ArrayList<Task>()); 
+//			return true; 
+//		}
+//	}
 	
 	/**
 	 * Returns true if the label is registered successfully, false if not, meaning the label is already registered 

@@ -87,7 +87,7 @@ public class TaskButton extends ToggleButton{
 		
 		details.setBounds(SHELL,SHELL,width,l);
 		details.setText("Description: "+choppedDescription);
-		details.setBackground(Color.YELLOW);
+		details.setBackground(Color.YELLOW);   
 		details.setVisible(true);
 		
 		btnPanel.add(details); 
