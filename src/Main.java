@@ -56,20 +56,27 @@ public class Main {
 	 * @param args
 	 *            ignored
 	 */
-	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {		
 		updateSize(); 
 		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
 		
 		//INITIALIZE FILES
-		Task testTask = new Task();
-		testTask.setTitle("Lemon");
-		tasksList.add(testTask);
+//		Folder folder1 = new Folder("folder1");
+//		Folder folder2 = new Folder("folder2");
+//		Folder folder3 = new Folder("folder3");
+//		Folder folder4 = new Folder("folder4");
+		
+		
+//		foldersList.add(folder1);
+//		foldersList.add(folder2);
+//		foldersList.add(folder3);
+//		foldersList.add(folder4);
 		
 		//READ DATA FROM FILES
 
 		final Saver saver = new Saver();
 		saver.read(preferencesList,tasksList,foldersList,labelsList);
+		System.out.println(foldersList.get(1).getTitle());
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 	        public void run() {
@@ -77,8 +84,6 @@ public class Main {
 	            System.out.println("Saved");
 	        }
 	    }, "Shutdown-thread"));
-		
-		System.out.println(tasksList.get(0).getTitle());
 		
 		//SETUP FRAMES
 		JFrame pandativityFrame = new PandativityFrame();

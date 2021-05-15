@@ -19,6 +19,8 @@ public class DesplayState2 {
 
 	private JFrame frame = new JFrame();
 	private Folder folder;
+	private int folderID;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -40,8 +42,9 @@ public class DesplayState2 {
 	 * @throws Exception 
 	 * @wbp.parser.entryPoint
 	 */
-	public DesplayState2(JFrame MainFrame) throws Exception {
+	public DesplayState2(JFrame MainFrame, int folderID) throws Exception {
 		frame = MainFrame;
+		this.folderID=folderID;
 		initialize();
 	}
 	
@@ -56,6 +59,28 @@ public class DesplayState2 {
 	 * @throws Exception 
 	 */
 	public void initialize() throws Exception {
+		
+		Color homeColor = new Color(200, 250, 200);
+		Color folder1Color = new Color(255, 255, 255);
+		Color folder2Color = new Color(255, 255, 255);
+		Color folder3Color = new Color(255, 255, 255);
+		Color folder4Color = new Color(255, 255, 255);
+		
+		switch(this.folderID) {
+			case 1:
+				folder1Color = Color.YELLOW;
+				break;
+			case 2:
+				folder2Color = Color.YELLOW;
+				break;
+			case 3:
+				folder3Color = Color.YELLOW;
+				break;
+			case 4:
+				folder4Color = Color.YELLOW;
+				break;
+		}
+		
 //		frame.removeAll();
 //		frame.getComponent(0);
 //		frame.getContentPane().setBackground(new Color(34, 139, 34));
@@ -81,6 +106,7 @@ public class DesplayState2 {
 		panel_3.setLayout(null);
 		
 		JButton BackToHome = new JButton("Home");
+		BackToHome.setBackground(homeColor);
 		BackToHome.setBounds(10, 10, 175, 89);
 		panel_3.add(BackToHome);
 		BackToHome.addActionListener(new ActionListener() {
@@ -94,39 +120,43 @@ public class DesplayState2 {
 			}
 		});
 		
-		JButton Folder4 = new JButton("Folder 4");        //need to send it to the right folder form the array list of folders
-		Folder4.setBounds(1020, 10, 175, 89);
-		panel_3.add(Folder4);
-		Folder4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder);                     //change
-			}
-		});
-		
 		JButton Folder1 = new JButton("Folder 1");
+		Folder1.setBackground(folder1Color);
 		Folder1.setBounds(263, 10, 175, 89);
 		panel_3.add(Folder1);
 		Folder1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder);                     //change
-			}
-		});
-		
-		JButton Folder3 = new JButton("Folder 3");
-		Folder3.setBounds(766, 10, 175, 89);
-		panel_3.add(Folder3);
-		Folder3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder);                     //change
+				runNewFolder(folder, 1);                     //change
 			}
 		});
 		
 		JButton Folder2 = new JButton("Folder 2");
+		Folder2.setBackground(folder2Color);
 		Folder2.setBounds(520, 10, 175, 89);
 		panel_3.add(Folder2);
 		Folder2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder);                     //change
+				runNewFolder(folder, 2);                     //change
+			}
+		});
+		
+		JButton Folder3 = new JButton("Folder 3");
+		Folder3.setBackground(folder3Color);
+		Folder3.setBounds(766, 10, 175, 89);
+		panel_3.add(Folder3);
+		Folder3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				runNewFolder(folder, 3);                     //change
+			}
+		});
+		
+		JButton Folder4 = new JButton("Folder 4");        //need to send it to the right folder form the array list of folders
+		Folder4.setBackground(folder4Color);
+		Folder4.setBounds(1020, 10, 175, 89);
+		panel_3.add(Folder4);
+		Folder4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				runNewFolder(folder, 4);                     //change
 			}
 		});
 		
@@ -180,10 +210,10 @@ public class DesplayState2 {
 		}
 	}
 	
-	private void runNewFolder(Folder folder) {
+	private void runNewFolder(Folder folder, int folderID) {
 		this.reborn();
 		try {
-			new DesplayState2(frame , folder);
+			new DesplayState2(frame, folderID);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

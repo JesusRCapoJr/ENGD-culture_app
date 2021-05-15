@@ -283,7 +283,7 @@ public class DesplayState1 {
 		panel.add(Folder_1); 
 		Folder_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runNewFolder();
+				runNewFolder(1);
 			}
 		});
 		
@@ -292,7 +292,7 @@ public class DesplayState1 {
 		panel.add(Folder_2);
 		Folder_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runNewFolder();
+				runNewFolder(2);
 			}
 		});
 		
@@ -301,7 +301,7 @@ public class DesplayState1 {
 		panel.add(Folder_3);
 		Folder_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runNewFolder();
+				runNewFolder(3);
 			}
 		});
 		
@@ -310,7 +310,7 @@ public class DesplayState1 {
 		panel.add(Folder_4);
 		Folder_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runNewFolder();
+				runNewFolder(4);
 			}
 		});
 		
@@ -321,27 +321,27 @@ public class DesplayState1 {
 
 	}
 	
-	private void runNewFolder() {
+	private void runNewFolder(int folderID) {
 //		frame.setVisible(false);
-		this.reborn();
+		reborn();
 		
 		try {
-			new DesplayState2(frame);
+			new DesplayState2(frame,folderID);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
 	
-	private void runNewFolder(Folder folder) {
-		this.reborn();
-		try {
-			new DesplayState2(frame , folder);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	}
+//	private void runNewFolder(Folder folder, int folderID) {
+//		reborn();
+//		try {
+//			new DesplayState2(frame , folder, folderID);
+//		} catch (Exception e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//	}
 	
 	public static void reborn() {
 		Rectangle bounds = frame.getContentPane().getBounds();

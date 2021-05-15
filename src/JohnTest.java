@@ -142,7 +142,7 @@ public class JohnTest {
 			public void actionPerformed(ActionEvent e) {
 //				frame.setVisible(false);
 				try {
-					new DesplayState2(frame);
+					new DesplayState2(frame,1);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
