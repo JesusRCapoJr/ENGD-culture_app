@@ -75,11 +75,18 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		txtEnterTaskName.setText("Enter Task Name");
 		txtEnterTaskName.setColumns(10);
 
+		
 		String[] folderNames = new String[Main.getAllFolders().size()];
-
+		
+		//testing to see if I can access files, it says the foldersize is zero -Kieya
+		System.out.print(Main.getAllFolders().size());
+		//System.out.println(Main.getAllFolders().get(0).getTitle());
+		
 		int i = 0;
+		
 		for (Folder currentFolder : Main.getAllFolders()) {
 			folderNames[i] = currentFolder.getTitle();
+			System.out.print(currentFolder.getTitle());
 			i++;
 
 		}
@@ -205,13 +212,18 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private void setTaskInformation() {
 		// TODO Auto-generated method stub
 		
+		Label currentLabel = new Label(comboBox_1.getSelectedItem().toString());
 		
-		Label newLabel = new Label(comboBox_1.getSelectedItem().toString());
-		if (Main.registerLabel(newLabel) == false ) {
-			Main.addLabelToTask(newLabel, task);
+		Integer folderIndex = comboBox.getSelectedIndex();
+		// how do I access the folderlistfrom the saver, they should have an id right);
+		
+		// Main.addTaskToFolder(task,//folder  )
+		
+		if (Main.registerLabel(currentLabel) == false ) {
+			Main.addLabelToTask(currentLabel, task);
 		}
 		
-		
+		//Main.addTaskToFolder(task, folder);
 		
 		task.setDescription(taskAreaDescription);
 		task.setDueDate(txtAddDueDate.toString());
@@ -219,5 +231,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		task.setTitle(txtEnterTaskName.toString());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
 	
+		this.setVisible(false);
+		
 	}
 }

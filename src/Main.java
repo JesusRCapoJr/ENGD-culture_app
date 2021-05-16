@@ -151,9 +151,16 @@ public class Main {
 		//System.out.println("Width: "+width*2+"Height: "+height*2); 
 	}
 	
-	public static Set<Folder> getAllFolders(){
-		return folder2Tasks.keySet(); 
+	//should this return the folder list not folder2tasks? - Kieya
+//	public static Set<Folder> getAllFolders(){
+//		return folder2Tasks.keySet(); 
+//		
+//	}
+	public static ArrayList<Folder> getAllFolders(){
+		return foldersList; 
+		
 	}
+	
 	
 	public static Set<Label> getAllLabels(){
 		return label2Tasks.keySet();  
