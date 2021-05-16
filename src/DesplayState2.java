@@ -1,6 +1,7 @@
 
 import java.awt.EventQueue;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -14,6 +15,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,6 +29,7 @@ public class DesplayState2 {
 	private Folder folder;
 	private int folderID;
 	private ArrayList<Color> folderButtonColors;
+	private DesplayState2 thisDesplay;
 	
 	/**
 	 * Launch the application.
@@ -50,8 +54,10 @@ public class DesplayState2 {
 	 */
 	public DesplayState2(JFrame MainFrame, int folderID) throws Exception {
 		frame = MainFrame;
+		this.thisDesplay=this;
 		this.folderButtonColors = new ArrayList<Color>();
 		this.folderID=folderID;
+		this.folder=Main.getAllFolders().get(folderID-1);
 		initialize();
 	}
 	
@@ -137,6 +143,7 @@ public class DesplayState2 {
 			}
 		});
 		
+		//Loop through all folders to showup inthe navigation panel
 		for(final Folder f: Main.getAllFolders()) {
 			int currentFolderIndex = f.getID();
 			FolderButton aFolderBtn = new FolderButton(f,this.frame); 
@@ -153,7 +160,7 @@ public class DesplayState2 {
 	               public void mousePressed(MouseEvent e) {
 	                  if (e.getButton() == MouseEvent.BUTTON3) {
 	                	  String newFolderName = (String)JOptionPane.showInputDialog(
-	                              frame,
+	                              null,
 	                              "Rename folder", 
 	                              "Rolder Renamer",            
 	                              JOptionPane.PLAIN_MESSAGE,
@@ -168,41 +175,55 @@ public class DesplayState2 {
 	            });
 		}
 		
+		//Loop through all tasks in the folder
+		int currentTaskNum = 1;
+		for(final Task t: this.folder.getTasks()) {
+			FolderButton taskButton = new FolderButton(t,this.frame); 
+			//taskButton.setBounds(50, 50+(currentTaskNum)*100, 50, 50);
+			taskButton.setBounds(10, 10+(currentTaskNum-1)*50, 500, 50);
+			//aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
+			panel.add(taskButton); 
+			
+			taskButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//runNewFolder(f,f.getID());
+				}
+			});
+			taskButton.addMouseListener(new MouseAdapter() {
+	               public void mousePressed(MouseEvent e) {
+	            	   
+	                  if (e.getButton() == MouseEvent.BUTTON3) {
+	                	  Object[] options = {"Delete",
+	                              "Edit","Cancel"};
+	                	  
+				          int response = JOptionPane.showOptionDialog(null,
+				              "What would you like to do?",
+				              "Options",
+				              JOptionPane.YES_NO_CANCEL_OPTION,
+				              JOptionPane.QUESTION_MESSAGE,
+				              null,
+				              options,
+				              options[2]);
+				          if (response==0) {
+				        	  folder.removeTask(t);
+				        	  Main.getAllTasks().remove(t);
+				          }
+				          else if (response==1) {
+				        	  KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(t,true,thisDesplay);
+				        	  frame2.setVisible(true);
+				          }
+	                	  runNewFolder(folder,folder.getID());
+	                  }
+	               }
+	            });
+			currentTaskNum+=1;
+		}
+		
 //		JButton Folder1 = new JButton("Folder 1");
 //		Folder1.setBackground(folder1Color);
 //		Folder1.setBounds(263, 10, 175, 89);
 //		panel_3.add(Folder1);
 //		Folder1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				runNewFolder(folder, 1);                     //change
-//			}
-//		});
-//		
-//		JButton Folder2 = new JButton("Folder 2");
-//		Folder2.setBackground(folder2Color);
-//		Folder2.setBounds(520, 10, 175, 89);
-//		panel_3.add(Folder2);
-//		Folder2.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				runNewFolder(folder, 2);                     //change
-//			}
-//		});
-//		
-//		JButton Folder3 = new JButton("Folder 3");
-//		Folder3.setBackground(folder3Color);
-//		Folder3.setBounds(766, 10, 175, 89);
-//		panel_3.add(Folder3);
-//		Folder3.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				runNewFolder(folder, 3);                     //change
-//			}
-//		});
-//		
-//		JButton Folder4 = new JButton("Folder 4");        //need to send it to the right folder form the array list of folders
-//		Folder4.setBackground(folder4Color);
-//		Folder4.setBounds(1020, 10, 175, 89);
-//		panel_3.add(Folder4);
-//		Folder4.addActionListener(new ActionListener() {
 //			public void actionPerformed(ActionEvent e) {
 //				runNewFolder(folder, 4);                     //change
 //			}
@@ -237,9 +258,8 @@ public class DesplayState2 {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
 //				task.setFolder(folder);
-				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task);
+				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,true,thisDesplay);
 				frame2.setVisible(true);
-				
 			}
 		});
 		AddNewTask.setBounds(1024, 516, 170, 170);
@@ -267,8 +287,19 @@ public class DesplayState2 {
 			e1.printStackTrace();
 		}
 	}
+	
+	public void runNewFolder() {
+		this.reborn();
+		try {
+			new DesplayState2(this.frame, this.folderID);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 	public void reborn() {
-		Rectangle bounds = this.frame.getContentPane().getBounds();
+		Rectangle bounds = frame.getContentPane().getBounds();
 		frame.getContentPane().removeAll();
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setVisible(true);

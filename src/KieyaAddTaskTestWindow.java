@@ -31,8 +31,10 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private JComboBox comboBox_2;
 	private JTextField txtAddDueDate;
 	private JTextField txtDue;
-	private String taskAreaDescription;
+	private JTextArea taskAreaDescription;
 	private Task task;
+	private boolean inFolder;
+	private DesplayState2 desplayState;
 
 	/**
 	 * Launch the application.
@@ -57,8 +59,20 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public KieyaAddTaskTestWindow(Task task) {
+	public KieyaAddTaskTestWindow(Task task, boolean inFolder, DesplayState2 desplayState) {
 		this.task = task;
+		this.desplayState=desplayState;
+		this.inFolder =inFolder;
+		this.runAddTaskWindow();
+	}
+	
+	public KieyaAddTaskTestWindow(Task task, boolean inFolder) {
+		this.task = task;
+		this.inFolder =inFolder;
+		this.runAddTaskWindow();
+	}
+	
+	public void runAddTaskWindow() {
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setBounds(17, 180, 741, 393);
@@ -72,7 +86,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		txtEnterTaskName.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtEnterTaskName.setBackground(Color.LIGHT_GRAY);
 		txtEnterTaskName.setForeground(new Color(0, 0, 0));
-		txtEnterTaskName.setText("Enter Task Name");
+		txtEnterTaskName.setText(this.task.getTitle());
 		txtEnterTaskName.setColumns(10);
 
 		
@@ -103,15 +117,15 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		//Need to sbring in stored folders
 		comboBox_1 = new JComboBox();
 		comboBox_1.setToolTipText("Select label");
-		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { "Label" }));
+		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { this.task.getLabels() }));
 
 		comboBox_2 = new JComboBox();
 		comboBox_2.setToolTipText("Select priority");
-		comboBox_2.setModel(new DefaultComboBoxModel(new String[] { "Priority", "Low", "Medium", "High" }));
+		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {this.task.getPriorityString(), "Low", "Medium", "High" }));
 
 		txtAddDueDate = new JTextField();
 		txtAddDueDate.setBackground(Color.LIGHT_GRAY);
-		txtAddDueDate.setText("YYYY/MM/DD");
+		txtAddDueDate.setText(this.task.getDueDate());
 		txtAddDueDate.setColumns(10);
 
 		
@@ -121,7 +135,8 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		textArea.setBackground(Color.LIGHT_GRAY);
 		textArea.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
 		textArea.setLineWrap(true);
-		this.taskAreaDescription = textArea.toString();
+		textArea.setText(this.task.getDescription());
+		this.taskAreaDescription = textArea;
 		
 		JButton btnNewButton = new JButton("Done!");
 		btnNewButton.setForeground(Color.BLACK);
@@ -201,6 +216,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+
 	
 //	private void checkTaskCompletion() {
 //		if(chckbxNewCheckBox.isEnabled()== true) {
@@ -223,10 +239,10 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		
 		//Main.addTaskToFolder(task, folder);
 		
-		task.setDescription(taskAreaDescription);
-		task.setDueDate(txtAddDueDate.toString());
+		task.setDescription(taskAreaDescription.getText());
+		task.setDueDate(txtAddDueDate.getText());
 		task.setLabel(comboBox_1.getSelectedItem().toString());
-		task.setTitle(txtEnterTaskName.toString());
+		task.setTitle(txtEnterTaskName.getText());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
 		
 		
@@ -235,6 +251,10 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		Main.getAllTasks().add(task);
 	
 		this.setVisible(false);
+		
+		if (this.inFolder) {
+			this.desplayState.runNewFolder();
+		}
 		
 	}
 }

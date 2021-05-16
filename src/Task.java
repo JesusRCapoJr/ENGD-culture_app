@@ -129,7 +129,29 @@ public class Task implements Serializable{
 		return this.priority; 
 	}
 	
+	public String getPriorityString() {
+		String priorityString = "";
+		switch (this.priority) {
+		case 0:
+			priorityString="Priority";
+		break;
+		case 1:
+			priorityString="Low";
+		break;
+		case 2:
+			priorityString="Medium";
+		break;
+		case 3:
+			priorityString="High";
+		break;
+		}
+		return priorityString; 
+	}
+	
 	public String getLabels(){
+		if (this.lable==null) {
+			return "Label";
+		}
 		return this.lable; 
 	}
 

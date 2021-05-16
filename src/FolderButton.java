@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 public class FolderButton extends Button {
 	private Folder folder;
+	private Task task;
 	private JFrame frame; 
 	private ActionListener al; 
 	
@@ -16,6 +17,15 @@ public class FolderButton extends Button {
 		this.frame = frame; 
 		this.world = PandativityFrame.getWorld(); 
 		this.setText(folder.getTitle());
+		this.createAction();
+	}
+	
+	public FolderButton(Task task, JFrame frame) { //? 
+		super(); 
+		this.task = task;
+		this.frame = frame; 
+		this.world = PandativityFrame.getWorld(); 
+		this.setText(task.getTitle());
 		this.createAction();
 	}
 	

@@ -135,6 +135,7 @@ import java.awt.Rectangle;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -250,7 +251,7 @@ public class DesplayState1 {
 		AddNewTask.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
-				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task);
+				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,false);
 				frame2.setVisible(true);
 				
 			}
@@ -281,6 +282,29 @@ public class DesplayState1 {
 					runNewFolder(f.getID());
 				}
 			});
+			aFolderBtn.addMouseListener(new MouseAdapter() {
+	               public void mousePressed(MouseEvent e) {
+	                  if (e.getButton() == MouseEvent.BUTTON3) {
+	                	  String newFolderName = (String)JOptionPane.showInputDialog(
+	                              null,
+	                              "Rename folder", 
+	                              "Rolder Renamer",            
+	                              JOptionPane.PLAIN_MESSAGE,
+	                              null,            
+	                              null, 
+	                              f.getTitle()
+	                           );
+	                	  f.setTitle(newFolderName);
+	                	  reborn();
+	                	  try {
+	                		  new DesplayState1(frame);
+	      				} catch (Throwable e1) {
+	      					// TODO Auto-generated catch block
+	      					e1.printStackTrace();
+	      				}
+	                  }
+	               }
+	            });
 		}
 		
 

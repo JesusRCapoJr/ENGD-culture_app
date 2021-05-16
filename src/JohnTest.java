@@ -84,7 +84,7 @@ public class JohnTest {
 			public void mouseClicked(MouseEvent e) {
 //				TaskWindow.initialize();
 				Task task = new Task();
-					new KieyaAddTaskTestWindow(task);
+					new KieyaAddTaskTestWindow(task,false);
 			}
 		});
 		AddTaskPanel.setBounds(10, 149, 704, 686);
@@ -100,7 +100,7 @@ public class JohnTest {
 		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
-				new KieyaAddTaskTestWindow(task).setVisible(true);
+				new KieyaAddTaskTestWindow(task,false).setVisible(true);
 				
 			}
 		});

@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -15,7 +16,17 @@ public class TaskButton extends ToggleButton{
 	private JTextArea details; 
 	private boolean selected; 
 	private final int FONT_SIZE = 8; 
-	private final int SHELL = 2; 
+	private final int SHELL = 2;
+	private JFrame frame; 
+	
+	public TaskButton(Task task, JFrame frame) { 
+		super(task.getTitle());
+		this.task = task;
+		this.frame = frame; 
+		this.world = PandativityFrame.getWorld(); 
+		this.setText(task.getTitle());
+		this.createAction();
+	}
 	
 	public TaskButton(JPanel world, Task task) {
 		super(task.getTitle()); 
