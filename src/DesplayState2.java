@@ -247,7 +247,7 @@ public class DesplayState2 {
 		sprite.update();
 
 	//
-		frame.getContentPane().add(SpritePanel);
+		frame.getContentPane().add(SpritePanel);  
 		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setValue(50);
