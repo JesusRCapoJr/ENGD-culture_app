@@ -15,6 +15,7 @@ public class Task implements Serializable{
 	private String lable;
 	private boolean completed;
 	private int rows = 1; 
+	private Folder folder;
 	
 	public Task() {
 //		this.title = title; 
@@ -23,7 +24,7 @@ public class Task implements Serializable{
 //		this.priority = priority; 
 //		this.label = label; 
 		this.setTitle(new String("Add Title Here"));
-		this.setDescription(new String("Add Description Here"));
+		this.setDescription(new String(""));
 		this.setDueDate(new String("yyyy/mm/dd"));
 		this.setPriority(new String("Priority"));
 		this.setLabel(new String("Lable"));
@@ -37,7 +38,9 @@ public class Task implements Serializable{
 //		this.label = label; 
 //	}
 //	
-	//setters 
+
+//SETTERS
+	
 	public void setTitle(String newTitle) {
 		this.title = newTitle; 
 	}
@@ -85,9 +88,13 @@ public class Task implements Serializable{
 	public void setCompleted(boolean completed) {
 		this.completed = completed;
 	}
+	
+	public void setFolder(Folder folder) {
+		this.folder=folder;
+	}
 
 	
-	//getters
+//GETTERS
 	public String getTitle() {
 		return this.title; 
 	}
@@ -123,7 +130,6 @@ public class Task implements Serializable{
 		return rows; 
 	}
 	
-	//public ??? getDue()
 	
 	public int getPriority() {
 		return this.priority; 
@@ -162,6 +168,10 @@ public class Task implements Serializable{
 
 	public boolean isCompleted() {
 		return completed;
+	}
+	
+	public Folder getFolder() {
+		return this.folder;
 	}
 
 }

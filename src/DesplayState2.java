@@ -168,7 +168,11 @@ public class DesplayState2 {
 	                              null, 
 	                              f.getTitle()
 	                           );
-	                	  f.setTitle(newFolderName);
+	                	  if (!newFolderName.isEmpty()) {
+	                		  f.setTitle(newFolderName);
+	                	  }
+	                		  
+	                	  
 	                	  runNewFolder(f,f.getID());
 	                  }
 	               }

@@ -65,7 +65,7 @@ public class Main {
 		frame = new JFrame();
 		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
 		
-//		//INITIALIZE FILES
+		//INITIALIZE FILES
 //		Folder folder1 = new Folder("folder1",1);
 //		Folder folder2 = new Folder("folder2",2);
 //		Folder folder3 = new Folder("folder3",3);
@@ -76,7 +76,7 @@ public class Main {
 //		foldersList.add(folder2);
 //		foldersList.add(folder3);
 //		foldersList.add(folder4);
-//		
+		
 		//READ DATA FROM FILES
 
 		final Saver saver = new Saver();

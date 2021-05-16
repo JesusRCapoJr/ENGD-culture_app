@@ -199,7 +199,7 @@ public class DesplayState1 {
 	 * @throws Throwable 
 	 */
 	private void initialize() throws Throwable {
-//		frame = new JFrame();
+		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(107, 142, 35));
 		frame.setBounds(0, 0, 1920, 1080);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -212,18 +212,20 @@ public class DesplayState1 {
 		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
 		frame.getContentPane().add(overviewPanel); 
 		overviewPanel.setBackground(new Color(105, 105, 105));
-		
+//		
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(new Color(255, 255, 255));
 		SpritePanel.setBounds(1028, 10, 241, 176);
 		
-		//
+		
+		
+		
 		
 			SpriteForPanels sprite = new SpriteForPanels(frame, SpritePanel);
 			sprite.Score = 2;
 			sprite.update();
 	
-		//
+		
 			
 		frame.getContentPane().add(SpritePanel);
 		
@@ -271,6 +273,34 @@ public class DesplayState1 {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		//Settings Button
+		JPanel settingsButtonPanel = new JPanel();
+		settingsButtonPanel.setBounds(1425, 5, 100, 100);
+		settingsButtonPanel.setBackground(Color.WHITE);
+		settingsButtonPanel.setLayout(null);
+		settingsButtonPanel.setVisible(true);
+		frame.add(settingsButtonPanel);
+		
+		JButton settingsButton = new JButton("Settings");
+		settingsButton.setBackground(Color.BLACK);
+		BufferedImage settingsIcon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
+		
+		settingsButton.setIcon(new ImageIcon(settingsIcon));
+		settingsButtonPanel.add(settingsButton);
+		settingsButton.setBounds(25, 25, 50, 50);
+		settingsButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		
+		//settingsButtonPanel.setVisible(true);
+		
 		//Adds all folder buttons with proper names
 		for(final Folder f: Main.getAllFolders()) {
 			int currentFolderIndex = f.getID();
@@ -294,7 +324,9 @@ public class DesplayState1 {
 	                              null, 
 	                              f.getTitle()
 	                           );
-	                	  f.setTitle(newFolderName);
+	                	  if (!newFolderName.isEmpty()) {
+	                		  f.setTitle(newFolderName);
+	                	  }
 	                	  reborn();
 	                	  try {
 	                		  new DesplayState1(frame);

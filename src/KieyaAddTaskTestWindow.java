@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JCheckBox;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
 
@@ -79,6 +80,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(102, 153, 51));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		this.setLocationRelativeTo(null);
 		setContentPane(contentPane);
 
 		txtEnterTaskName = new JTextField();
@@ -247,8 +249,26 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		
 		
 		Integer folderIndex = comboBox.getSelectedIndex();
-		Main.getAllFolders().get(folderIndex-1).addTask(task);
-		Main.getAllTasks().add(task);
+		
+		//If the folder does not already have the task then add it to the folder
+		if (!Main.getAllFolders().get(folderIndex-1).getTasks().contains(this.task)) {
+			Main.getAllFolders().get(folderIndex-1).addTask(this.task);
+		}
+		
+		//If the task does not exist in the tasks arraylist then add to the tasks arraylist
+		if (!Main.getAllTasks().contains(this.task)) {
+			Main.getAllTasks().add(task);
+		}
+		
+		//Remove task from folder if the old folder has changed
+		if (this.task.getFolder()!=null){
+			if (this.task.getFolder().getID()!=folderIndex) {
+				System.out.println(folderIndex);
+				this.task.getFolder().removeTask(this.task);
+			}
+		}
+		
+		task.setFolder(Main.getAllFolders().get(folderIndex-1));
 	
 		this.setVisible(false);
 		
