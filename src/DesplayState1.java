@@ -82,7 +82,7 @@ public class DesplayState1 {
 		Main.sprite.changeAttachments(frame, SpritePanel);
 //			SpriteForPanels sprite = new SpriteForPanels(frame, SpritePanel);
 //			sprite.Score = 2;
-			Main.sprite.update();
+		Main.sprite.update();
 	
 		
 			

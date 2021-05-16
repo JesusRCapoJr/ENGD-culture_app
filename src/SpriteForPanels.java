@@ -58,6 +58,7 @@ public class SpriteForPanels {
 		}
 //		this.world.remove(comp);
 		
+		
 		if(Score<0) {
 			Score=0;
 		}
