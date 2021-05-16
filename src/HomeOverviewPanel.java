@@ -20,6 +20,7 @@ public class HomeOverviewPanel extends JPanel{
 	private int width; 
 	private int height; 
 	private Folder folder = null; 
+	private Color color = new Color(143, 188, 143); 
 	
 	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
@@ -32,6 +33,20 @@ public class HomeOverviewPanel extends JPanel{
 	
 	private static ArrayList<TaskButton> allTaskButtons = new ArrayList<TaskButton>(); 
 	//TODO: get allTasks/allFolders
+	
+	public HomeOverviewPanel(Folder folder, int upperLeftX, int upperLeftY, int width, int height, Color color) {
+		super();
+		this.setBounds(upperLeftX, upperLeftY, width, height);
+		this.setLayout(null);
+		this.width = width;
+		this.height = height; 
+		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
+		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
+		this.folder = folder; 
+		this.color = color; 
+		
+		constructAllFolder(); 
+	}
 	
 	public HomeOverviewPanel(Folder folder, int upperLeftX, int upperLeftY, int width, int height) {
 		super();
@@ -77,7 +92,7 @@ public class HomeOverviewPanel extends JPanel{
 			i++; 
 		}
 		
-		this.setBackground(new Color(143, 188, 143)); 
+		this.setBackground(this.color); 
 	}
 	
 	public static void cleanAll() {

@@ -15,19 +15,19 @@ public class FolderButton extends Button {
 		super(); 
 		this.folder = folder;
 		this.frame = frame; 
-		this.world = PandativityFrame.getWorld(); 
+		//this.world = PandativityFrame.getWorld(); 
 		this.setText(folder.getTitle());
 		this.createAction();
 	}
 	
-	public FolderButton(Task task, JFrame frame) { //? 
-		super(); 
-		this.task = task;
-		this.frame = frame; 
-		this.world = PandativityFrame.getWorld(); 
-		this.setText(task.getTitle());
-		this.createAction();
-	}
+//	public FolderButton(Task task, JFrame frame) { //? 
+//		super(); 
+//		this.task = task;
+//		this.frame = frame; 
+//		this.world = PandativityFrame.getWorld(); 
+//		this.setText(task.getTitle());
+//		this.createAction();
+//	}
 	
 	public void createAction() {                  // Action
 		al = new ActionListener() {
@@ -67,12 +67,11 @@ public class FolderButton extends Button {
 //		panel_3.setLayout(null);
 		
 //--------Steven Xia: Above are code copied from DesplayState2 for constructing all panels---------
-
-//		PandativityFrame.reborn();
-//		DesplayState1.reborn();
-//		world.add(new HomeOverviewPanel(this.folder, 10, 131/2, 1205/2, 704/2)); 
 		
-		test(); 
+		DesplayState1.reborn();
+		new DesplayState2(frame, this.folder.getID()); 
+		
+		//test(); 
 	}
 	
 	/**
@@ -87,7 +86,7 @@ public class FolderButton extends Button {
 		la.addTask(tsk);
 		la.addTask(tsk2);
 		System.out.println("FolderButton pushed"); 
-		HomeOverviewPanel foP = new HomeOverviewPanel(la, 10, 131/2, 1205/2, 704/2); 
+		HomeOverviewPanel foP = new HomeOverviewPanel(la, 10, 131, 1205, 704); 
 		PandativityFrame.reborn();
 		world.add(foP); 
 		Main.registerFolder(la); 

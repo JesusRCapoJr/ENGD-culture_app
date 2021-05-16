@@ -297,7 +297,7 @@ public class DesplayState1 {
 		        	  Object[] helpOptions = {
 	                            "How to rename a folder","How to delete or edit a task","Done"};
 		        	  Object[] languageOptions = {
-	                            "English","普通话","Done"};
+	                            "English","简体中文","Done"};
 		        	  Object[] themeOptions = {
 	                            "Forest Green","Arctic Day","Moonlit Night","Done"};
               	  
@@ -379,36 +379,36 @@ public class DesplayState1 {
 			FolderButton aFolderBtn = new FolderButton(f,this.frame); 
 			aFolderBtn.setBounds(10+(currentFolderIndex-1)*188, 10, 120, 60);
 			panel.add(aFolderBtn); 
-			aFolderBtn.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					runNewFolder(f.getID());
-				}
-			});
-			aFolderBtn.addMouseListener(new MouseAdapter() {
-	               public void mousePressed(MouseEvent e) {
-	                  if (e.getButton() == MouseEvent.BUTTON3) {
-	                	  String newFolderName = (String)JOptionPane.showInputDialog(
-	                              null,
-	                              "Rename folder", 
-	                              "Rolder Renamer",            
-	                              JOptionPane.PLAIN_MESSAGE,
-	                              null,            
-	                              null, 
-	                              f.getTitle()
-	                           );
-	                	  if (!newFolderName.isEmpty()) {
-	                		  f.setTitle(newFolderName);
-	                	  }
-	                	  reborn();
-	                	  try {
-	                		  new DesplayState1(frame);
-	      				} catch (Throwable e1) {
-	      					// TODO Auto-generated catch block
-	      					e1.printStackTrace();
-	      				}
-	                  }
-	               }
-	            });
+//			aFolderBtn.addActionListener(new ActionListener() {
+//				public void actionPerformed(ActionEvent e) {
+//					runNewFolder(f.getID());
+//				}
+//			});
+//			aFolderBtn.addMouseListener(new MouseAdapter() {
+//	               public void mousePressed(MouseEvent e) {
+//	                  if (e.getButton() == MouseEvent.BUTTON3) {
+//	                	  String newFolderName = (String)JOptionPane.showInputDialog(
+//	                              null,
+//	                              "Rename folder", 
+//	                              "Rolder Renamer",            
+//	                              JOptionPane.PLAIN_MESSAGE,
+//	                              null,            
+//	                              null, 
+//	                              f.getTitle()
+//	                           );
+//	                	  if (!newFolderName.isEmpty()) {
+//	                		  f.setTitle(newFolderName);
+//	                	  }
+//	                	  reborn();
+//	                	  try {
+//	                		  new DesplayState1(frame);
+//	      				} catch (Throwable e1) {
+//	      					// TODO Auto-generated catch block
+//	      					e1.printStackTrace();
+//	      				}
+//	                  }
+//	               }
+//	            });
 		}
 		
 
