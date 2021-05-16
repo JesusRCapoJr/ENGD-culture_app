@@ -190,7 +190,7 @@ public class DesplayState2 {
 //			//aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
 //			panel.add(taskButton); 
 		
-		panel.add(new HomeOverviewPanel(this.folder, 0, 0, panel.getWidth(), panel.getHeight())); 
+		panel.add(new HomeOverviewPanel(this.folder, 0, 0, panel.getWidth(), panel.getHeight(),Main.getChosenTheme().get(1))); 
 			
 //			taskButton.addActionListener(new ActionListener() {
 //				public void actionPerformed(ActionEvent e) {

@@ -44,7 +44,7 @@ public class HomeOverviewPanel extends JPanel{
 		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
 		this.folder = folder; 
 		this.color = color; 
-		
+				
 		constructAllFolder(); 
 	}
 	
