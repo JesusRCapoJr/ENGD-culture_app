@@ -69,7 +69,7 @@ public class FolderButton extends Button {
 	 * For testing only
 	 */
 	public void test() {
-		Folder la = new Folder("la"); 
+		Folder la = new Folder("la",1); 
 		Task tsk = new Task(); 
 		tsk.setTitle("audwhaufhka");
 		Task tsk2 = new Task(); 

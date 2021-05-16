@@ -65,13 +65,13 @@ public class Main {
 		frame = new JFrame();
 		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
 		
-		//INITIALIZE FILES
-//		Folder folder1 = new Folder("folder1");
-//		Folder folder2 = new Folder("folder2");
-//		Folder folder3 = new Folder("folder3");
-//		Folder folder4 = new Folder("folder4");
-		
-		
+//		//INITIALIZE FILES
+//		Folder folder1 = new Folder("folder1",1);
+//		Folder folder2 = new Folder("folder2",2);
+//		Folder folder3 = new Folder("folder3",3);
+//		Folder folder4 = new Folder("folder4",4);
+//		
+//		
 //		foldersList.add(folder1);
 //		foldersList.add(folder2);
 //		foldersList.add(folder3);
@@ -175,9 +175,11 @@ public class Main {
 //	}
 	public static ArrayList<Folder> getAllFolders(){
 		return foldersList; 
-		
 	}
 	
+	public static ArrayList<Task> getAllTasks(){
+		return tasksList; 
+	}
 	
 	public static Set<Label> getAllLabels(){
 		return label2Tasks.keySet();  

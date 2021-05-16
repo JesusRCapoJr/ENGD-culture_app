@@ -103,7 +103,7 @@ public class PandativityFrame extends JFrame implements ComponentListener{
 		 * For test only
 		 */
 		public void test() {
-			FolderButton btn = new FolderButton(new Folder("Bruh"), frame); 
+			FolderButton btn = new FolderButton(new Folder("Bruh",1), frame); 
 			btn.setBounds(20, 20, 100, 50);
 			world.add(btn);  
 		}

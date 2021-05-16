@@ -78,9 +78,8 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		
 		String[] folderNames = new String[Main.getAllFolders().size()];
 		
-		//testing to see if I can access files, it says the foldersize is zero -Kieya
-		System.out.print(Main.getAllFolders().size());
-		//System.out.println(Main.getAllFolders().get(0).getTitle());
+		//testing to see if I can access folders
+		//System.out.print(Main.getAllFolders().size());
 		
 		int i = 0;
 		
@@ -99,7 +98,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		comboBox.setToolTipText("Select designation folder");
 		comboBox.setModel(new DefaultComboBoxModel(folderNames));
 		;
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Folder"}));;
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Folder",Main.getAllFolders().get(0).getTitle(),Main.getAllFolders().get(1).getTitle(),Main.getAllFolders().get(2).getTitle(),Main.getAllFolders().get(3).getTitle()}));;
 		
 		//Need to sbring in stored folders
 		comboBox_1 = new JComboBox();
@@ -213,8 +212,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		// TODO Auto-generated method stub
 		
 		Label currentLabel = new Label(comboBox_1.getSelectedItem().toString());
-		
-		Integer folderIndex = comboBox.getSelectedIndex();
+
 		// how do I access the folderlistfrom the saver, they should have an id right);
 		
 		// Main.addTaskToFolder(task,//folder  )
@@ -230,6 +228,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		task.setLabel(comboBox_1.getSelectedItem().toString());
 		task.setTitle(txtEnterTaskName.toString());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
+		
+		
+		Integer folderIndex = comboBox.getSelectedIndex();
+		Main.getAllFolders().get(folderIndex-1).addTask(task);
+		Main.getAllTasks().add(task);
 	
 		this.setVisible(false);
 		

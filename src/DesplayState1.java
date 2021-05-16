@@ -270,49 +270,27 @@ public class DesplayState1 {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		//Steven: To be used after Jesus found how to save and write
-//		for(Folder f: Main.getAllFolers()) {
-//			FolderButton aFolderBtn = new FolderButton(f,this.frame); 
-//			aFolderBtn.setBounds(10, 10, 120, 60);
-//			panel.add(aFolderBtn); 
-//		}
+		//Adds all folder buttons with proper names
+		for(final Folder f: Main.getAllFolders()) {
+			int currentFolderIndex = f.getID();
+			FolderButton aFolderBtn = new FolderButton(f,this.frame); 
+			aFolderBtn.setBounds(10+(currentFolderIndex-1)*188, 10, 120, 60);
+			panel.add(aFolderBtn); 
+			aFolderBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					runNewFolder(f.getID());
+				}
+			});
+		}
 		
-		
-		JButton Folder_1 = new JButton("Folder 1");
-		Folder_1.setBounds(10, 10, 120, 60);
-		panel.add(Folder_1); 
-		Folder_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(1);
-			}
-		});
-		
-		JButton Folder_2 = new JButton("Folder 2");
-		Folder_2.setBounds(200, 10, 120, 60);
-		panel.add(Folder_2);
-		Folder_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(2);
-			}
-		});
-		
-		JButton Folder_3 = new JButton("Folder 3");
-		Folder_3.setBounds(386, 10, 120, 60);
-		panel.add(Folder_3);
-		Folder_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(3);
-			}
-		});
-		
-		JButton Folder_4 = new JButton("Folder 4");
-		Folder_4.setBounds(574, 10, 120, 60);
-		panel.add(Folder_4);
-		Folder_4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(4);
-			}
-		});
+
+
+//		Folder_1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				runNewFolder(2);
+//			}
+//		});
+
 		
 //		JLabel BackDrop = new JLabel("");
 //		BackDrop.setIcon(new ImageIcon(DesplayState1.class.getResource("texture/BackDrop.png"))); // change to backround

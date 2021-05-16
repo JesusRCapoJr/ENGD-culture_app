@@ -9,9 +9,11 @@ public class Folder implements Serializable{
 	private ArrayList<Task> tasks;
 	private ArrayList<Label> labels; 
 	private String title; 
+	private int folderID; 
 	
-	public Folder(String title) {
+	public Folder(String title, int folderID) {
 		tasks = new ArrayList<Task>();  
+		this.folderID=folderID;
 		this.title = title; 
 	}
 	
@@ -21,6 +23,14 @@ public class Folder implements Serializable{
 	
 	public String getTitle() {
 		return this.title; 
+	}
+	
+	public void setTitle(String newTitle) {
+		this.title=newTitle; 
+	}
+	
+	public int getID() {
+		return this.folderID; 
 	}
 	
 	public ArrayList<Task> getTasks() {

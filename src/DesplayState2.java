@@ -3,11 +3,16 @@ import java.awt.EventQueue;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
@@ -20,6 +25,7 @@ public class DesplayState2 {
 	private JFrame frame = new JFrame();
 	private Folder folder;
 	private int folderID;
+	private ArrayList<Color> folderButtonColors;
 	
 	/**
 	 * Launch the application.
@@ -44,6 +50,7 @@ public class DesplayState2 {
 	 */
 	public DesplayState2(JFrame MainFrame, int folderID) throws Exception {
 		frame = MainFrame;
+		this.folderButtonColors = new ArrayList<Color>();
 		this.folderID=folderID;
 		initialize();
 	}
@@ -61,10 +68,11 @@ public class DesplayState2 {
 	public void initialize() throws Exception {
 		
 		Color homeColor = new Color(200, 250, 200);
-		Color folder1Color = new Color(255, 255, 255);
-		Color folder2Color = new Color(255, 255, 255);
-		Color folder3Color = new Color(255, 255, 255);
-		Color folder4Color = new Color(255, 255, 255);
+		Color folder1Color = new Color(255, 255, 255); 
+		Color folder2Color = new Color(255, 255, 255); 
+		Color folder3Color = new Color(255, 255, 255); 
+		Color folder4Color = new Color(255, 255, 255); 
+		
 		
 		switch(this.folderID) {
 			case 1:
@@ -80,6 +88,12 @@ public class DesplayState2 {
 				folder4Color = Color.YELLOW;
 				break;
 		}
+		
+		this.folderButtonColors.add(homeColor);
+		this.folderButtonColors.add(folder1Color);
+		this.folderButtonColors.add(folder2Color);
+		this.folderButtonColors.add(folder3Color);
+		this.folderButtonColors.add(folder4Color);
 		
 //		frame.removeAll();
 //		frame.getComponent(0);
@@ -106,8 +120,10 @@ public class DesplayState2 {
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
 		
+		//-----------
+		
 		JButton BackToHome = new JButton("Home");
-		BackToHome.setBackground(homeColor);
+		BackToHome.setBackground(this.folderButtonColors.get(0));
 		BackToHome.setBounds(10, 10, 175, 89);
 		panel_3.add(BackToHome);
 		BackToHome.addActionListener(new ActionListener() {
@@ -121,45 +137,76 @@ public class DesplayState2 {
 			}
 		});
 		
-		JButton Folder1 = new JButton("Folder 1");
-		Folder1.setBackground(folder1Color);
-		Folder1.setBounds(263, 10, 175, 89);
-		panel_3.add(Folder1);
-		Folder1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder, 1);                     //change
-			}
-		});
+		for(final Folder f: Main.getAllFolders()) {
+			int currentFolderIndex = f.getID();
+			FolderButton aFolderBtn = new FolderButton(f,this.frame); 
+			aFolderBtn.setBounds(250+(currentFolderIndex-1)*257, 10, 175, 89);
+			aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
+			panel_3.add(aFolderBtn); 
+			
+			aFolderBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					runNewFolder(f,f.getID());
+				}
+			});
+			aFolderBtn.addMouseListener(new MouseAdapter() {
+	               public void mousePressed(MouseEvent e) {
+	                  if (e.getButton() == MouseEvent.BUTTON3) {
+	                	  String newFolderName = (String)JOptionPane.showInputDialog(
+	                              frame,
+	                              "Rename folder", 
+	                              "Rolder Renamer",            
+	                              JOptionPane.PLAIN_MESSAGE,
+	                              null,            
+	                              null, 
+	                              f.getTitle()
+	                           );
+	                	  f.setTitle(newFolderName);
+	                	  runNewFolder(f,f.getID());
+	                  }
+	               }
+	            });
+		}
 		
-		JButton Folder2 = new JButton("Folder 2");
-		Folder2.setBackground(folder2Color);
-		Folder2.setBounds(520, 10, 175, 89);
-		panel_3.add(Folder2);
-		Folder2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder, 2);                     //change
-			}
-		});
-		
-		JButton Folder3 = new JButton("Folder 3");
-		Folder3.setBackground(folder3Color);
-		Folder3.setBounds(766, 10, 175, 89);
-		panel_3.add(Folder3);
-		Folder3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder, 3);                     //change
-			}
-		});
-		
-		JButton Folder4 = new JButton("Folder 4");        //need to send it to the right folder form the array list of folders
-		Folder4.setBackground(folder4Color);
-		Folder4.setBounds(1020, 10, 175, 89);
-		panel_3.add(Folder4);
-		Folder4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder, 4);                     //change
-			}
-		});
+//		JButton Folder1 = new JButton("Folder 1");
+//		Folder1.setBackground(folder1Color);
+//		Folder1.setBounds(263, 10, 175, 89);
+//		panel_3.add(Folder1);
+//		Folder1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				runNewFolder(folder, 1);                     //change
+//			}
+//		});
+//		
+//		JButton Folder2 = new JButton("Folder 2");
+//		Folder2.setBackground(folder2Color);
+//		Folder2.setBounds(520, 10, 175, 89);
+//		panel_3.add(Folder2);
+//		Folder2.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				runNewFolder(folder, 2);                     //change
+//			}
+//		});
+//		
+//		JButton Folder3 = new JButton("Folder 3");
+//		Folder3.setBackground(folder3Color);
+//		Folder3.setBounds(766, 10, 175, 89);
+//		panel_3.add(Folder3);
+//		Folder3.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				runNewFolder(folder, 3);                     //change
+//			}
+//		});
+//		
+//		JButton Folder4 = new JButton("Folder 4");        //need to send it to the right folder form the array list of folders
+//		Folder4.setBackground(folder4Color);
+//		Folder4.setBounds(1020, 10, 175, 89);
+//		panel_3.add(Folder4);
+//		Folder4.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				runNewFolder(folder, 4);                     //change
+//			}
+//		});
 		
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(Color.WHITE);
