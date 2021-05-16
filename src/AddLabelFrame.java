@@ -9,7 +9,15 @@ import javax.swing.JTextPane;
 
 public class AddLabelFrame extends JFrame{
 
+	private Label label; 
+	
 	public AddLabelFrame() {
+		this.label = new Label("lemon"); 
+		initiate(); 
+	}
+	
+	public AddLabelFrame(Label label) {
+		this.label = label; 
 		initiate(); 
 	}
 
@@ -47,5 +55,7 @@ public class AddLabelFrame extends JFrame{
 			frame.getContentPane().add(comboBox); 
 			
 			frame.setVisible(true);
+			
+			//ActionListenter and all fun stuff
 	}
 }
