@@ -192,7 +192,7 @@ public class DesplayState2 {
 			taskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					runNewFolder(f,f.getID());
-				}
+				} 
 			});
 			taskButton.addMouseListener(new MouseAdapter() {
 	               public void mousePressed(MouseEvent e) {
