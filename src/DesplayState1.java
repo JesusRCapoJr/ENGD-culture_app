@@ -150,24 +150,24 @@ import javax.swing.ImageIcon;
 
 public class DesplayState1 {
 
-	private static JFrame frame;
+	static JFrame frame;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DesplayState1 window = new DesplayState1();
-//					window.frame.getComponentAt(new Point(1300,100));
-					window.frame.setVisible(true);
-				} catch (Throwable e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					DesplayState1 window = new DesplayState1();
+////					window.frame.getComponentAt(new Point(1300,100));
+//					window.frame.setVisible(true);
+//				} catch (Throwable e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
