@@ -60,7 +60,7 @@ public class DesplayState1 {
 	 * @throws Throwable 
 	 */
 	private void initialize() throws Throwable {
-		frame = new JFrame();
+//		frame = new JFrame();
 		frame.getContentPane().setBackground(Main.getChosenTheme().get(0));
 		//frame.setBounds(0, 0, 1920, 1080);
 		frame.setBounds(0, 0, 1545, 950);

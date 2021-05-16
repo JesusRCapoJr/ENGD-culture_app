@@ -15,7 +15,7 @@ import javax.swing.SwingConstants;
 
 public class SpriteForPanels {
 	private ArrayList<File> fileList = new ArrayList<File>();
-	public double Score = 5;
+	public double Score = 0;
 	private int width = 300;
 	private int hight = 200;
 	private int yPoint = 20;

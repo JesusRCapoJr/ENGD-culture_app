@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -66,7 +67,8 @@ public class Main {
 	 * @param args
 	 *            ignored
 	 */
-	public static void main(String[] args) {		
+	public static void main(String[] args) {	
+		
 		updateSize(); 
 		frame = new JFrame();
 		JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
@@ -132,6 +134,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					createNewSprite();
 					DesplayState1 window = new DesplayState1();
 //					DesplayState1 window = new DesplayState1(this.sprite);   // new sprite methed Nathan
 //					window.frame.getComponentAt(new Point(1300,100));
@@ -303,5 +306,8 @@ public class Main {
 	public void taskConpleted() throws Exception {
 		this.sprite.taskConpleted();
 		}
+	private static void createNewSprite() throws HeadlessException, IOException {
+		sprite = new SpriteForPanels(new JFrame(), new JPanel());
+	}
 
 }

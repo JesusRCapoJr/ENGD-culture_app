@@ -291,14 +291,16 @@ public class DesplayState2 {
 		SpritePanel.setBackground(Color.WHITE);
 		SpritePanel.setBounds(1263, 10, 241, 176);
 		
-		SpriteForPanels sprite = new SpriteForPanels(frame,SpritePanel);
-		sprite.Score = 2;
-		sprite.update();
+//		SpriteForPanels sprite = new SpriteForPanels(frame,SpritePanel);
+//		sprite.Score = 2;
+//		sprite.update();
+		Main.sprite.changeAttachments(frame, SpritePanel);
+		Main.sprite.update();
 
 		frame.getContentPane().add(SpritePanel);
 		
 		JProgressBar progressBar = new JProgressBar();
-		progressBar.setValue(50);
+		progressBar.setValue((int) (Main.sprite.Score * 20));
 		progressBar.setBackground(Main.getChosenTheme().get(4));
 		progressBar.setBounds(1263, 192, 241, 14);
 		frame.getContentPane().add(progressBar);
