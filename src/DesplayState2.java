@@ -92,7 +92,7 @@ public class DesplayState2 {
 //		frame.getContentPane().removeAll();
 		frame.setBounds(0, 0, 1920, 1080);
 		panel.setBackground(new Color(143, 188, 143));
-		panel.setBounds(10, 131, 1205, 704);
+		panel.setBounds(10, 131, 1205, 704); 
 		frame.getContentPane().add(panel);
 		
 		JPanel panel_1 = new JPanel();
