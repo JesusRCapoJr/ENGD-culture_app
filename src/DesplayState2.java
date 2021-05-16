@@ -1,5 +1,6 @@
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
@@ -184,16 +186,48 @@ public class DesplayState2 {
 		int currentTaskNum = 1;
 		for(final Task t: this.folder.getTasks()) {
 			TaskButton taskButton = new TaskButton(t,this.frame); 
-			//taskButton.setBounds(50, 50+(currentTaskNum)*100, 50, 50);
+			JButton completedTaskButton = new JButton("Completed"); 
+			JButton taskDayLabel = new JButton(t.getDueDate());
+			
 			taskButton.setBounds(10, 10+(currentTaskNum-1)*55, 500, 50);
+			taskDayLabel.setBounds(10+600, 10+(currentTaskNum-1)*55, 200, 50);
+			completedTaskButton.setBounds(10+1000, 10+(currentTaskNum-1)*55, 100, 50);
+			
+			Color taskButtonBackground = new Color(255,255,255);	
+			
+			if (!t.isCompleted()) {
+				taskButtonBackground = Color.GRAY;
+			}
+			
+			taskDayLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
+			taskButton.setBackground(taskButtonBackground);
+			taskDayLabel.setBackground(taskButtonBackground);
+			completedTaskButton.setBackground(taskButtonBackground);
+			
 			//aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
 			panel.add(taskButton); 
+			panel.add(completedTaskButton);
+			panel.add(taskDayLabel);
 			
 			taskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					runNewFolder();
+		        	  KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(t,true,thisDesplay);
+		        	  frame2.setVisible(true);
 				} 
 			});
+			
+			completedTaskButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+				if (!t.isCompleted()) {
+					t.setCompleted(true);
+				} 
+				else {
+					t.setCompleted(false);
+				}
+			}
+			});
+			
+			
 			taskButton.addMouseListener(new MouseAdapter() {
 	               public void mousePressed(MouseEvent e) {
 	            	   
