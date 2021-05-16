@@ -1,12 +1,23 @@
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 public class LabelButton extends ToggleButton {
 	private Label label;
 	private boolean selected = false; 
 	
 	public LabelButton(Label label, int upperLeftX, int upperLeftY, int width, int height) { //? 
-		super(label.getText()); 
+		super(label.getText(), upperLeftX, upperLeftY, width, height); 
 		this.label=label;
 		this.createAction();
 	}
@@ -14,23 +25,47 @@ public class LabelButton extends ToggleButton {
 	public void createAction() {                  // Action
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//System.out.println("Put actions to be performed on click here");		// what it does goes here
-				//----Steven Xia: using ToggleButton instead----
-//				label.changeState();
-//				changeColorState();
-				//---------
-				
+				//System.out.println("Put actions to be performed on click here");		// what it does goes here				
 					if(selected) {
 						unClick(); 
 					}else {
 						FolderLabelsPanel.cleanAll();
-						displayTask(); 
+						
 						setSelected(true); 
 						selected = true; 
 					}
 				}
 			};
+			
+		//right click
+		MouseAdapter ml = new MouseAdapter() {
+			@SuppressWarnings("unchecked")
+			public void mousePressed(MouseEvent e) {
+				if (e.getButton() == MouseEvent.BUTTON3) {
+					Object[] options = {"Delete",
+                            "Edit","Cancel"};
+              	  
+			          int response = JOptionPane.showOptionDialog(null,
+				            "What would you like to do?",
+				            "Options",
+				            JOptionPane.YES_NO_CANCEL_OPTION,
+				            JOptionPane.QUESTION_MESSAGE,
+				            null,
+				            options,
+				            options[2]);
+			          if (response==0) {
+			        	  	FolderLabelsPanel.deleteLabel(label);
+			        	  	Main.getAllLabels().remove(label);
+			          }
+			          
+			          else if (response==1) {
+			        	  	new AddLabelFrame(); 
+			          }
+				}
+			}
+		}; 
 		addActionListener(al); 
+		addMouseListener(ml); 
 	}
 	
 	public void unClick() {
@@ -38,7 +73,7 @@ public class LabelButton extends ToggleButton {
 		this.setSelected(false);
 	}
 	
-	public void displayTask() {
+	public void displayLabel() {
 		
 	}
 }
