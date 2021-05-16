@@ -10,6 +10,7 @@ public class Task implements Serializable{
 	private String title;
 	private String description;
 	private String dueDate; //yyyy/mm/dd
+	private String dueTime; //00:00
 	private int priority;
 //	private Label label; 
 	private String lable;
@@ -29,6 +30,7 @@ public class Task implements Serializable{
 		this.setPriority(new String("Priority"));
 		this.setLabel(new String("Lable"));
 		this.setCompleted(false);
+		this.setDueTime(new String("00:00"));
 	}
 	
 //	public Task(String title, String description,/*??? due,*/ int priority, String label) {
@@ -83,6 +85,10 @@ public class Task implements Serializable{
 	
 	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
+	}
+	
+	public void setDueTime(String dueTime) {
+		this.dueTime = dueTime;
 	}
 	
 	public void setCompleted(boolean completed) {
@@ -164,6 +170,10 @@ public class Task implements Serializable{
 	
 	public String getDueDate() {
 		return dueDate;
+	}
+	
+	public String getDueTime() {
+		return this.dueTime;
 	}
 
 	public boolean isCompleted() {

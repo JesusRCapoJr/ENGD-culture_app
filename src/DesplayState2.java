@@ -23,6 +23,7 @@ import javax.swing.JPanel;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JProgressBar;
 
 public class DesplayState2 {
@@ -185,24 +186,36 @@ public class DesplayState2 {
 		//Loop through all tasks in the folder
 		int currentTaskNum = 1;
 		for(final Task t: this.folder.getTasks()) {
-			TaskButton taskButton = new TaskButton(t,this.frame); 
-			JButton completedTaskButton = new JButton("Completed"); 
+			JButton taskButton = new JButton(t.getTitle()); 
+			final JCheckBox completedTaskButton = new JCheckBox("");
+			if (t.isCompleted()==false) {
+				completedTaskButton.setSelected(false);
+			} 
+			else {
+				completedTaskButton.setSelected(true);
+			}
 			JButton taskDayLabel = new JButton(t.getDueDate());
+			JButton taskTimeLabel = new JButton(t.getDueTime());
 			
 			taskButton.setBounds(10, 10+(currentTaskNum-1)*55, 500, 50);
-			taskDayLabel.setBounds(10+600, 10+(currentTaskNum-1)*55, 200, 50);
-			completedTaskButton.setBounds(10+1000, 10+(currentTaskNum-1)*55, 100, 50);
+			taskDayLabel.setBounds(10+550, 10+(currentTaskNum-1)*55, 200, 50);
+			taskTimeLabel.setBounds(10+550, 10+(currentTaskNum-1)*55, 200, 50);
+			completedTaskButton.setBounds(10+1100, 10+(currentTaskNum-1)*55, 100, 50);
+			
+			
+			completedTaskButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			taskButton.setToolTipText(t.getDescription());
 			
 			Color taskButtonBackground = new Color(255,255,255);	
 			
-			if (!t.isCompleted()) {
+			if (t.isCompleted()) {
 				taskButtonBackground = Color.GRAY;
 			}
 			
 			taskDayLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			taskButton.setBackground(taskButtonBackground);
 			taskDayLabel.setBackground(taskButtonBackground);
-			completedTaskButton.setBackground(taskButtonBackground);
+			completedTaskButton.setBackground(Main.getChosenTheme().get(6));
 			
 			//aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
 			panel.add(taskButton); 
@@ -218,12 +231,15 @@ public class DesplayState2 {
 			
 			completedTaskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-				if (!t.isCompleted()) {
+				if (t.isCompleted()==false) {
 					t.setCompleted(true);
+					completedTaskButton.setSelected(true);
 				} 
 				else {
 					t.setCompleted(false);
+					completedTaskButton.setSelected(false);
 				}
+				runNewFolder();
 			}
 			});
 			
