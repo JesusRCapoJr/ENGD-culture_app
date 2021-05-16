@@ -46,7 +46,7 @@ public class Main {
 	private static ArrayList<Task> tasksList = new ArrayList<Task>();
 	private static ArrayList<Folder> foldersList = new ArrayList<Folder>();
 	private static ArrayList<Label> labelsList = new ArrayList<Label>();
-	private static ArrayList<String> preferencesList = new ArrayList<String>();
+	private static ArrayList<Integer> preferencesList = new ArrayList<Integer>();
 	
 	//color arrays
 	private static ArrayList<Color> forestGreenTheme = new ArrayList<Color>();
@@ -70,6 +70,30 @@ public class Main {
 		frame = new JFrame();
 		JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
 		
+		forestGreenTheme.add(new Color(107, 142, 35)); //Background color
+		forestGreenTheme.add(new Color(105, 105, 105));//OverviewPanel color
+		forestGreenTheme.add(new Color(255, 255, 255));//Spritepanel color
+		forestGreenTheme.add(new Color(112, 128, 144));//Taskpanel color
+		forestGreenTheme.add(new Color(34, 139, 34));//Progress bar color
+		forestGreenTheme.add(new Color(160, 82, 45));// Navigation Panel Color
+		forestGreenTheme.add(new Color(143, 188, 143));// Folder view color
+		
+		arcticDayTheme.add(new Color(240, 255, 255)); //Background color
+		arcticDayTheme.add(new Color(200, 240, 250));//OverviewPanel color
+		arcticDayTheme.add(new Color(200, 255, 255));//Spritepanel color
+		arcticDayTheme.add(new Color(200, 255, 255));//Taskpanel color
+		arcticDayTheme.add(new Color(200, 255, 255));//Progress bar color
+		arcticDayTheme.add(new Color(200, 255, 255));// Navigation Panel Color
+		arcticDayTheme.add(new Color(200, 255, 255));// Folder view color
+		
+		moonlitNightTheme.add(new Color(0, 20, 20)); //Background color
+		moonlitNightTheme.add(new Color(0, 40, 40));//OverviewPanel color
+		moonlitNightTheme.add(new Color(160, 160, 40));//Spritepanel color
+		moonlitNightTheme.add(new Color(0, 40, 40));//Taskpanel color
+		moonlitNightTheme.add(new Color(160, 160, 40));//Progress bar color
+		moonlitNightTheme.add(new Color(160, 160, 40));// Navigation Panel Color
+		moonlitNightTheme.add(new Color(0, 40, 40));// Folder view color
+		
 		//INITIALIZE FILES
 //		Folder folder1 = new Folder("folder1",1);
 //		Folder folder2 = new Folder("folder2",2);
@@ -82,7 +106,6 @@ public class Main {
 //		foldersList.add(folder3);
 //		foldersList.add(folder4);
 //		
-//		preferencesList.add(folder4);
 		
 		//READ DATA FROM FILES
 
@@ -108,6 +131,7 @@ public class Main {
 				}
 			}
 		});
+
 		
 //		//SETUP FRAMES
 //		JFrame pandativityFrame = new PandativityFrame();
@@ -204,9 +228,20 @@ public class Main {
 		return label2Tasks.get(label); 
 	}
 	
-	public static ArrayList<Task> getChosenTheme(Label label){
-		
-		return label2Tasks.get(label); 
+	public static ArrayList<Integer> getPreferences(){
+		return preferencesList; 
+	}
+	
+	public static ArrayList<Color> getChosenTheme(){
+		switch (preferencesList.get(1)) {
+			case 0:
+				return forestGreenTheme;
+			case 1:
+				return arcticDayTheme;
+			case 2:
+				return moonlitNightTheme;
+		}
+		return forestGreenTheme;
 	}
 	
 	public static void addTaskToFolder(Task task, Folder folder) {

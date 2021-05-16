@@ -18,7 +18,7 @@ public class Saver {
 	}
 	
 	
-	public void save(ArrayList<String> preferenceList, ArrayList<Task> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
+	public void save(ArrayList<Integer> preferenceList, ArrayList<Task> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
 	try {
 		FileOutputStream data = new FileOutputStream("data.txt",false);
 		FileOutputStream tasks = new FileOutputStream("tasks.txt",false);
@@ -47,7 +47,7 @@ public class Saver {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void read(ArrayList<String> preferenceList, ArrayList<Task> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
+	public void read(ArrayList<Integer> preferenceList, ArrayList<Task> taskList, ArrayList<Folder> folderList, ArrayList<Label> labelList) {
 		try {
 			
           FileInputStream dataStream = new FileInputStream("data.txt") ;
@@ -61,7 +61,7 @@ public class Saver {
           ObjectInputStream labelReader = new ObjectInputStream(labelStream);
           
           
-          for (String preference : (ArrayList<String>)dataReader.readObject()) {
+          for (Integer preference : (ArrayList<Integer>)dataReader.readObject()) {
         	  preferenceList.add(preference);
           }
           

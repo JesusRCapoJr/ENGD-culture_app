@@ -200,22 +200,22 @@ public class DesplayState1 {
 	 */
 	private void initialize() throws Throwable {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(107, 142, 35));
+		frame.getContentPane().setBackground(Main.getChosenTheme().get(0));
 		//frame.setBounds(0, 0, 1920, 1080);
 		frame.setBounds(0, 0, 1545, 950);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		final JPanel OverviewPanel = new JPanel();                    /// might not be finle
-		OverviewPanel.setBackground(new Color(105, 105, 105));
+		OverviewPanel.setBackground(Main.getChosenTheme().get(1));
 		OverviewPanel.setBounds(724, 208, 806, 627);
 		frame.getContentPane().add(OverviewPanel);
 		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
 		frame.getContentPane().add(overviewPanel); 
-		overviewPanel.setBackground(new Color(105, 105, 105));
+		overviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		
 		JPanel SpritePanel = new JPanel();
-		SpritePanel.setBackground(new Color(255, 255, 255));
+		SpritePanel.setBackground(Main.getChosenTheme().get(2));
 		SpritePanel.setBounds(1028, 10, 241, 176);
 		
 		
@@ -231,7 +231,7 @@ public class DesplayState1 {
 		frame.getContentPane().add(SpritePanel);
 		
 		JPanel AddTaskPanel = new JPanel();
-		AddTaskPanel.setBackground(new Color(112, 128, 144));
+		AddTaskPanel.setBackground(Main.getChosenTheme().get(3));
 		AddTaskPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -264,12 +264,12 @@ public class DesplayState1 {
 		
 		JProgressBar PandaProgressBar = new JProgressBar();
 		PandaProgressBar.setValue(50);
-		PandaProgressBar.setBackground(new Color(34, 139, 34));
+		PandaProgressBar.setBackground(Main.getChosenTheme().get(4));
 		PandaProgressBar.setBounds(1028, 183, 241, 14);
 		frame.getContentPane().add(PandaProgressBar);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(160, 82, 45));
+		panel.setBackground(Main.getChosenTheme().get(5));
 		panel.setBounds(10, 23, 704, 81);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -326,7 +326,7 @@ public class DesplayState1 {
 				          }
 			          }
 			          else if (optionsResponse==1) {
-				          int helpResponse = JOptionPane.showOptionDialog(null,
+				          int languageResponse = JOptionPane.showOptionDialog(null,
 					              "What language would you like?",
 					              "Language Selection",
 					              JOptionPane.YES_NO_CANCEL_OPTION,
@@ -336,7 +336,7 @@ public class DesplayState1 {
 					              languageOptions[2]);
 			          }
 			          else if (optionsResponse==2) {
-				          int helpResponse = JOptionPane.showOptionDialog(null,
+				          int themeResponse = JOptionPane.showOptionDialog(null,
 					              "How would you like the application to appear?",
 					              "Theme Selection",
 					              JOptionPane.YES_NO_CANCEL_OPTION,
@@ -344,6 +344,25 @@ public class DesplayState1 {
 					              null,
 					              themeOptions,
 					              themeOptions[3]);
+				          switch (themeResponse) {
+				          case 0:
+				        	  Main.getPreferences().set(1, 0);		        	  
+				        	  break;
+				          case 1:
+				        	  Main.getPreferences().set(1, 1); 
+				        	  break;
+				          case 2:
+				        	  Main.getPreferences().set(1, 2);
+				        	  break;
+		                	 
+		      				}
+				          reborn();
+	                	  try {
+	                		  new DesplayState1(frame);
+	      				} catch (Throwable e1) {
+	      					// TODO Auto-generated catch block
+	      					e1.printStackTrace();
+				          }
 			          }
 				} catch (Throwable e1) {
 					// TODO Auto-generated catch block

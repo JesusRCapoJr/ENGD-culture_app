@@ -112,17 +112,17 @@ public class DesplayState2 {
 //		frame.getContentPane().removeAll();
 		//frame.setBounds(0, 0, 1920, 1080);
 		frame.setBounds(0, 0, 1545, 950);
-		panel.setBackground(new Color(143, 188, 143));
+		panel.setBackground(Main.getChosenTheme().get(6));
 		panel.setBounds(10, 131, 1205, 704); 
 		frame.getContentPane().add(panel);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(112, 128, 144));
+		panel_1.setBackground(Main.getChosenTheme().get(3));
 		panel_1.setBounds(1225, 216, 305, 619);
 		frame.getContentPane().add(panel_1);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(new Color(160, 82, 45));
+		panel_3.setBackground(Main.getChosenTheme().get(5));
 		panel_3.setBounds(10, 10, 1205, 109);
 		frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
@@ -248,7 +248,7 @@ public class DesplayState2 {
 		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setValue(50);
-		progressBar.setBackground(new Color(34, 139, 34));
+		progressBar.setBackground(Main.getChosenTheme().get(4));
 		progressBar.setBounds(1263, 192, 241, 14);
 		frame.getContentPane().add(progressBar);
 		//frame.setBounds(0, 0, 1920, 1080);
