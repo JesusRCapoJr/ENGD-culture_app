@@ -87,6 +87,7 @@ public class DesplayState2 {
 //		frame.getContentPane().setLayout(null);
 //		
 		JPanel panel = new JPanel();
+		panel.setLayout(null);
 //		panel.removeAll();
 //		frame.getContentPane().removeAll();
 		frame.setBounds(0, 0, 1920, 1080);
