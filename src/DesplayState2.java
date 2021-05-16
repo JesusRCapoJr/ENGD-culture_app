@@ -191,7 +191,7 @@ public class DesplayState2 {
 			
 			taskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					runNewFolder(f,f.getID());
+					runNewFolder();
 				} 
 			});
 			taskButton.addMouseListener(new MouseAdapter() {
@@ -224,15 +224,15 @@ public class DesplayState2 {
 			currentTaskNum+=1;
 		}
 		
-		JButton Folder1 = new JButton("Folder 1");
-		Folder1.setBackground(folder1Color);
-		Folder1.setBounds(263, 10, 175, 89);
-		panel_3.add(Folder1);
-		Folder1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				runNewFolder(folder, 4);                     //change
-			}
-		});
+//		JButton Folder1 = new JButton("Folder 1");
+//		Folder1.setBackground(folder1Color);
+//		Folder1.setBounds(263, 10, 175, 89);
+//		panel_3.add(Folder1);
+//		Folder1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				runNewFolder(folder, 4);                     //change
+//			}
+//		});
 		
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(Color.WHITE);
