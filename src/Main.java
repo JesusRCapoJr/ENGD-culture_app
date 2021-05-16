@@ -69,8 +69,6 @@ public class Main {
 		updateSize(); 
 		frame = new JFrame();
 		JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
-		preferencesList.add(0); 
-		preferencesList.add(0); 
 		
 		forestGreenTheme.add(new Color(107, 142, 35)); //Background color
 		forestGreenTheme.add(new Color(105, 105, 105));//OverviewPanel color
@@ -108,6 +106,8 @@ public class Main {
 //		Folder folder3 = new Folder("folder3",3);
 //		Folder folder4 = new Folder("folder4",4);
 //		
+//		preferencesList.add(0); 
+//		preferencesList.add(0); 
 //		
 //		foldersList.add(folder1);
 //		foldersList.add(folder2);
