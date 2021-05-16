@@ -293,13 +293,13 @@ public class DesplayState1 {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Object[] optionsOptions = {
-                            "Help","Change Language","Change Theme","Cancel"};
+                            "Help","Change Language","Change Theme","Done"};
 		        	  Object[] helpOptions = {
-	                            "How to rename a folder","How to delete or edit a task","Cancel"};
+	                            "How to rename a folder","How to delete or edit a task","Done"};
 		        	  Object[] languageOptions = {
-	                            "English","普通话","Cancel"};
+	                            "English","普通话","Done"};
 		        	  Object[] themeOptions = {
-	                            "Forest Green","Arctic Day","Moonlit Night","Cancel"};
+	                            "Forest Green","Arctic Day","Moonlit Night","Done"};
               	  
 			          int optionsResponse = JOptionPane.showOptionDialog(null,
 			              "How may we best assist you today?",

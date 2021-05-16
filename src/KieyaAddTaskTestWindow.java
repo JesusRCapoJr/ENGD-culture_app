@@ -78,7 +78,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		setResizable(false);
 		setBounds(17, 180, 741, 393);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(102, 153, 51));
+		contentPane.setBackground(Main.getChosenTheme().get(7));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		this.setLocationRelativeTo(null);
 		setContentPane(contentPane);
@@ -151,7 +151,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Task Completed");
-		chckbxNewCheckBox.setBackground(new Color(102, 153, 0));
+		chckbxNewCheckBox.setBackground(Main.getChosenTheme().get(8)); //new Color(102, 153, 0)
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
 //		chckbxNewCheckBox.addActionListener(new ActionListener() {
 //		 public void actionPerformed(ActionEvent arg0) {
@@ -161,7 +161,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		
 		txtDue = new JTextField();
 		txtDue.setEditable(false);
-		txtDue.setBackground(new Color(102, 153, 0));
+		txtDue.setBackground(Main.getChosenTheme().get(8));
 		txtDue.setText("Due Date");
 		txtDue.setColumns(10);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);

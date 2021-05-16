@@ -77,6 +77,8 @@ public class Main {
 		forestGreenTheme.add(new Color(34, 139, 34));//Progress bar color
 		forestGreenTheme.add(new Color(160, 82, 45));// Navigation Panel Color
 		forestGreenTheme.add(new Color(143, 188, 143));// Folder view color
+		forestGreenTheme.add(new Color(102, 153, 51)); //Addtask panel color
+		forestGreenTheme.add(new Color(102, 153, 0)); //Addtask panel options 1 color
 		
 		arcticDayTheme.add(new Color(240, 255, 255)); //Background color
 		arcticDayTheme.add(new Color(200, 240, 250));//OverviewPanel color
@@ -85,6 +87,8 @@ public class Main {
 		arcticDayTheme.add(new Color(200, 255, 255));//Progress bar color
 		arcticDayTheme.add(new Color(200, 255, 255));// Navigation Panel Color
 		arcticDayTheme.add(new Color(200, 255, 255));// Folder view color
+		arcticDayTheme.add(new Color(230, 255, 255)); //Addtask panel color
+		arcticDayTheme.add(new Color(220, 255, 255)); //Addtask options 1 color
 		
 		moonlitNightTheme.add(new Color(0, 20, 20)); //Background color
 		moonlitNightTheme.add(new Color(0, 40, 40));//OverviewPanel color
@@ -93,6 +97,8 @@ public class Main {
 		moonlitNightTheme.add(new Color(160, 160, 40));//Progress bar color
 		moonlitNightTheme.add(new Color(160, 160, 40));// Navigation Panel Color
 		moonlitNightTheme.add(new Color(0, 40, 40));// Folder view color
+		moonlitNightTheme.add(new Color(0, 60, 60)); //Addtask panel color
+		moonlitNightTheme.add(new Color(80, 100, 170)); //Addtask panel options 1 color
 		
 		//INITIALIZE FILES
 //		Folder folder1 = new Folder("folder1",1);
