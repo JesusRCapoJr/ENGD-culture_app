@@ -199,11 +199,12 @@ public class DesplayState2 {
 			
 			taskButton.setBounds(10, 10+(currentTaskNum-1)*55, 500, 50);
 			taskDayLabel.setBounds(10+550, 10+(currentTaskNum-1)*55, 200, 50);
-			taskTimeLabel.setBounds(10+550, 10+(currentTaskNum-1)*55, 200, 50);
+			taskTimeLabel.setBounds(10+800, 10+(currentTaskNum-1)*55, 200, 50);
 			completedTaskButton.setBounds(10+1100, 10+(currentTaskNum-1)*55, 100, 50);
 			
 			
 			completedTaskButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			taskTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			taskButton.setToolTipText(t.getDescription());
 			
 			Color taskButtonBackground = new Color(255,255,255);	
@@ -215,12 +216,14 @@ public class DesplayState2 {
 			taskDayLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			taskButton.setBackground(taskButtonBackground);
 			taskDayLabel.setBackground(taskButtonBackground);
+			taskTimeLabel.setBackground(taskButtonBackground);
 			completedTaskButton.setBackground(Main.getChosenTheme().get(6));
 			
 			//aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
 			panel.add(taskButton); 
 			panel.add(completedTaskButton);
 			panel.add(taskDayLabel);
+			panel.add(taskTimeLabel);
 			
 			taskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
