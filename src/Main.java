@@ -3,6 +3,7 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.EventQueue;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Toolkit;
@@ -11,6 +12,7 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.awt.EventQueue;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -35,6 +37,8 @@ public class Main {
 	
 	//Multiple monitor
 	private static GraphicsDevice gd; 
+	private static JFrame frame;
+	
 	private static int width; 
 	private static int height; 
 	private static final Color[] BACKGROUND_COLORS = { Color.RED,
@@ -58,6 +62,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {		
 		updateSize(); 
+		frame = new JFrame();
 		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
 		
 		//INITIALIZE FILES
@@ -85,11 +90,23 @@ public class Main {
 	        }
 	    }, "Shutdown-thread"));
 		
-		//SETUP FRAMES
-		JFrame pandativityFrame = new PandativityFrame();
-		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		pandativityFrame.setSize(new Dimension(width,height));
-		JPanel navigationPanel = new JPanel();	
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DesplayState1 window = new DesplayState1();
+//					window.frame.getComponentAt(new Point(1300,100));
+					window.frame.setVisible(true);
+				} catch (Throwable e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+//		//SETUP FRAMES
+//		JFrame pandativityFrame = new PandativityFrame();
+//		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		pandativityFrame.setSize(new Dimension(width,height));
+//		JPanel navigationPanel = new JPanel();	
 
 //		
 //		try {
