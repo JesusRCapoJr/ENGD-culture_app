@@ -297,7 +297,7 @@ public class DesplayState1 {
 		        	  Object[] helpOptions = {
 	                            "How to rename a folder","How to delete or edit a task","Done"};
 		        	  Object[] languageOptions = {
-	                            "English","简体中文","Done"};
+	                            "English","aeef","Done"};
 		        	  Object[] themeOptions = {
 	                            "Forest Green","Arctic Day","Moonlit Night","Done"};
               	  
