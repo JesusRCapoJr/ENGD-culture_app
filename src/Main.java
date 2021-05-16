@@ -38,6 +38,7 @@ public class Main {
 	//Multiple monitor
 	private static GraphicsDevice gd; 
 	private static JFrame frame;
+	public SpriteForPanels sprite;
 	
 	private static int width; 
 	private static int height; 
@@ -132,6 +133,7 @@ public class Main {
 			public void run() {
 				try {
 					DesplayState1 window = new DesplayState1();
+//					DesplayState1 window = new DesplayState1(this.sprite);   // new sprite methed Nathan
 //					window.frame.getComponentAt(new Point(1300,100));
 					window.frame.setVisible(true);
 				} catch (Throwable e) {
@@ -290,5 +292,12 @@ public class Main {
 			return true; 
 		}
 	}
+	public void updateSprite() throws Exception {
+	this.sprite.update();
+	}
+	
+	public void taskConpleted() throws Exception {
+		this.sprite.taskConpleted();
+		}
 
 }
