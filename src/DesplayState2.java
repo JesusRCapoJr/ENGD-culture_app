@@ -110,7 +110,8 @@ public class DesplayState2 {
 		panel.setLayout(null);
 //		panel.removeAll();
 //		frame.getContentPane().removeAll();
-		frame.setBounds(0, 0, 1920, 1080);
+		//frame.setBounds(0, 0, 1920, 1080);
+		frame.setBounds(0, 0, 1545, 950);
 		panel.setBackground(new Color(143, 188, 143));
 		panel.setBounds(10, 131, 1205, 704); 
 		frame.getContentPane().add(panel);
@@ -184,7 +185,7 @@ public class DesplayState2 {
 		for(final Task t: this.folder.getTasks()) {
 			FolderButton taskButton = new FolderButton(t,this.frame); 
 			//taskButton.setBounds(50, 50+(currentTaskNum)*100, 50, 50);
-			taskButton.setBounds(10, 10+(currentTaskNum-1)*50, 500, 50);
+			taskButton.setBounds(10, 10+(currentTaskNum-1)*55, 500, 50);
 			//aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
 			panel.add(taskButton); 
 			
@@ -250,7 +251,8 @@ public class DesplayState2 {
 		progressBar.setBackground(new Color(34, 139, 34));
 		progressBar.setBounds(1263, 192, 241, 14);
 		frame.getContentPane().add(progressBar);
-		frame.setBounds(0, 0, 1920, 1080);
+		//frame.setBounds(0, 0, 1920, 1080);
+		frame.setBounds(0, 0, 1545, 950);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -305,7 +307,8 @@ public class DesplayState2 {
 	public void reborn() {
 		Rectangle bounds = frame.getContentPane().getBounds();
 		frame.getContentPane().removeAll();
-		frame.setBounds(0, 0, 1920, 1080);
+//		frame.setBounds(0, 0, 1920, 1080);
+		frame.setBounds(0, 0, 1545, 950);
 		frame.setVisible(true);
 		frame.repaint();
 		frame.getContentPane().repaint();

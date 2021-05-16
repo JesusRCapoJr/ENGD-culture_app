@@ -41,12 +41,17 @@ public class Main {
 	
 	private static int width; 
 	private static int height; 
-	private static final Color[] BACKGROUND_COLORS = { Color.RED,
-			Color.BLUE, Color.GREEN };
+//	private static final Color[] BACKGROUND_COLORS = { Color.RED,
+//			Color.BLUE, Color.GREEN };
 	private static ArrayList<Task> tasksList = new ArrayList<Task>();
 	private static ArrayList<Folder> foldersList = new ArrayList<Folder>();
 	private static ArrayList<Label> labelsList = new ArrayList<Label>();
 	private static ArrayList<String> preferencesList = new ArrayList<String>();
+	
+	//color arrays
+	private static ArrayList<Color> forestGreenTheme = new ArrayList<Color>();
+	private static ArrayList<Color> arcticDayTheme = new ArrayList<Color>();
+	private static ArrayList<Color> moonlitNightTheme = new ArrayList<Color>();
 			
 	private static HashMap<Folder, ArrayList<Task>> folder2Tasks = new HashMap<Folder, ArrayList<Task>>();
 	private static HashMap<Task, ArrayList<Label>> task2Labels = new HashMap<Task, ArrayList<Label>>(); 
@@ -63,7 +68,7 @@ public class Main {
 	public static void main(String[] args) {		
 		updateSize(); 
 		frame = new JFrame();
-		//JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
+		JFrame.setDefaultLookAndFeelDecorated(true);		//occasionally found code that makes the window slightly fancier
 		
 		//INITIALIZE FILES
 //		Folder folder1 = new Folder("folder1",1);
@@ -76,6 +81,8 @@ public class Main {
 //		foldersList.add(folder2);
 //		foldersList.add(folder3);
 //		foldersList.add(folder4);
+//		
+//		preferencesList.add(folder4);
 		
 		//READ DATA FROM FILES
 
@@ -194,6 +201,11 @@ public class Main {
 	}
 	
 	public static ArrayList<Task> getTasksByLabel(Label label){
+		return label2Tasks.get(label); 
+	}
+	
+	public static ArrayList<Task> getChosenTheme(Label label){
+		
 		return label2Tasks.get(label); 
 	}
 	

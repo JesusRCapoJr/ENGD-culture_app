@@ -201,7 +201,8 @@ public class DesplayState1 {
 	private void initialize() throws Throwable {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(107, 142, 35));
-		frame.setBounds(0, 0, 1920, 1080);
+		//frame.setBounds(0, 0, 1920, 1080);
+		frame.setBounds(0, 0, 1545, 950);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -281,17 +282,69 @@ public class DesplayState1 {
 		settingsButtonPanel.setVisible(true);
 		frame.add(settingsButtonPanel);
 		
-		JButton settingsButton = new JButton("Settings");
-		settingsButton.setBackground(Color.BLACK);
-		BufferedImage settingsIcon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
+		JButton settingsButton = new JButton();
+		//settingsButton.setBackground(Color.BLACK);
+		BufferedImage settingsIcon = ImageIO.read(new File("texture/resized_settings.png")); 
 		
 		settingsButton.setIcon(new ImageIcon(settingsIcon));
 		settingsButtonPanel.add(settingsButton);
-		settingsButton.setBounds(25, 25, 50, 50);
+		settingsButton.setBounds(0, 0, 100, 100);
 		settingsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					
+					Object[] optionsOptions = {
+                            "Help","Change Language","Change Theme","Cancel"};
+		        	  Object[] helpOptions = {
+	                            "How to rename a folder","How to delete or edit a task","Cancel"};
+		        	  Object[] languageOptions = {
+	                            "English","普通话","Cancel"};
+		        	  Object[] themeOptions = {
+	                            "Forest Green","Arctic Day","Moonlit Night","Cancel"};
+              	  
+			          int optionsResponse = JOptionPane.showOptionDialog(null,
+			              "How may we best assist you today?",
+			              "Options",
+			              JOptionPane.YES_NO_CANCEL_OPTION,
+			              JOptionPane.QUESTION_MESSAGE,
+			              null,
+			              optionsOptions,
+			              optionsOptions[3]);
+			          if (optionsResponse==0) {		              	  
+				          int helpResponse = JOptionPane.showOptionDialog(null,
+					              "What would you like help with?",
+					              "Help Menu",
+					              JOptionPane.YES_NO_CANCEL_OPTION,
+					              JOptionPane.QUESTION_MESSAGE,
+					              null,
+					              helpOptions,
+					              helpOptions[2]);
+				          if (helpResponse==0) {
+				        	  JOptionPane.showMessageDialog(null, "Right click a folder, write the new name, and confirm the change.");
+				          }
+				          else if (helpResponse==1) {
+				        	  JOptionPane.showMessageDialog(null, "Right click a task and you will be presented with the option to delete or edit the task.");
+				          }
+			          }
+			          else if (optionsResponse==1) {
+				          int helpResponse = JOptionPane.showOptionDialog(null,
+					              "What language would you like?",
+					              "Language Selection",
+					              JOptionPane.YES_NO_CANCEL_OPTION,
+					              JOptionPane.QUESTION_MESSAGE,
+					              null,
+					              languageOptions,
+					              languageOptions[2]);
+			          }
+			          else if (optionsResponse==2) {
+				          int helpResponse = JOptionPane.showOptionDialog(null,
+					              "How would you like the application to appear?",
+					              "Theme Selection",
+					              JOptionPane.YES_NO_CANCEL_OPTION,
+					              JOptionPane.QUESTION_MESSAGE,
+					              null,
+					              themeOptions,
+					              themeOptions[3]);
+			          }
 				} catch (Throwable e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
