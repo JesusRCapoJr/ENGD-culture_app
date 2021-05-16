@@ -35,6 +35,14 @@ public class Folder implements Serializable{
 		return this.labels; 
 	}
 	
+	public int countTasks() {
+		return this.tasks.size(); 
+	}
+	
+	public int countLabels() {
+		return this.labels.size(); 
+	}
+	
 	/**
 	 * Searches for and returns Task objects within this Folder with all Label objects specified. O(n)
 	 * TODO: test it

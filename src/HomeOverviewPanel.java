@@ -19,6 +19,7 @@ public class HomeOverviewPanel extends JPanel{
 	private final double THIS_H_RATIO = 0.666666667;
 	private int width; 
 	private int height; 
+	private Folder folder = null; 
 	
 	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
@@ -32,23 +33,22 @@ public class HomeOverviewPanel extends JPanel{
 	private static ArrayList<TaskButton> allTaskButtons = new ArrayList<TaskButton>(); 
 	//TODO: get allTasks/allFolders
 	
-//	public HomeOverviewPanel(JPanel world) {
-//		super(); 
-//		this.world = world; 
-//		this.setBounds((int)(Main.getWidth()*(1-THIS_W_RATIO)), 0, (int)(Main.getWidth()*THIS_W_RATIO), (int)(Main.getHeight()*THIS_H_RATIO));
-//		this.setLayout(null);
-//		this.width = (int) (Main.getWidth()*THIS_W_RATIO);
-//		this.height = (int) (Main.getHeight()*THIS_H_RATIO); 
-//		//System.out.println("This.bounds: ULX:"+(int)(Main.getWidth()*(1-THIS_W_RATIO))+" ULY:"+0+" W:"+(int)(Main.getWidth()*THIS_W_RATIO)+" H:"+(int)(Main.getHeight()*THIS_H_RATIO));
-//
-//		constructAll(); 
-//	}
-//	Using bounds just makes a hack lot more sense 
+	public HomeOverviewPanel(Folder folder, int upperLeftX, int upperLeftY, int width, int height) {
+		super();
+		this.setBounds(upperLeftX, upperLeftY, width, height);
+		this.setLayout(null);
+		this.width = width;
+		this.height = height; 
+		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
+		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
+		this.folder = folder; 
+		
+		constructAllFolder(); 
+	}
 	
 	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height) {
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
-		//this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.setLayout(null);
 		this.width = width;
 		this.height = height; 
@@ -63,9 +63,20 @@ public class HomeOverviewPanel extends JPanel{
 //		for(Folder folder:Main.getAllFolers()) {
 //			for(Task task:Main.getTasksByFolder(folder)) {
 //				constructButton(i,task); 
+//				i++; 
 //			}
 //		}
 		test(); 
+	}
+	
+	public void constructAllFolder() {
+		int i=0; 
+		for(Task task:this.folder.getTasks()) {
+			constructButton(i,task); 
+			i++; 
+		}
+		
+		this.setBackground(Color.BLUE); //For testing only 
 	}
 	
 	public static void cleanAll() {

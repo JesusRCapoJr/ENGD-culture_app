@@ -7,6 +7,7 @@ public class FolderOverviewPanel extends JPanel{
 	private int width;
 	private int height; 
 	private int btnHeight; 
+	private final int TASK_CAP = 16;
 	private final int GAP = 10; 
 	private Folder myFolder; 
 	
@@ -25,17 +26,15 @@ public class FolderOverviewPanel extends JPanel{
 	}
 	
 	public void constructAll() {
-		int iULY = 10; 
-		for(Task task:myFolder.getTasks()) {
-//			FolderTaskPanel taski = new FolderTaskPanel(10, iULY, width, btnHeight, task); 
-//			this.add(taski); 
-//			JPanel pnl = new JPanel(); 
-//			pnl.setBounds(10, iULY, width, btnHeight); 
-//			pnl.setBackground(Color.WHITE);
-			this.add(new TaskButton(this, task, 10, iULY, width, btnHeight));
-			System.out.println("Overview construct 2"); 
-			iULY += btnHeight+GAP; 
-		}
-		this.repaint();
+//		btnHeight = (this.height - (this.TASK_CAP+1)*this.GAP) / this.TASK_CAP; 
+//		int iULY = 10; 
+//		for(Task task:myFolder.getTasks()) {
+//			this.add(new TaskButton(this, task, 10, iULY, width, btnHeight));
+//			System.out.println("Overview construct 2"); 
+//			iULY += btnHeight+GAP; 
+//		}
+//		this.repaint();
+//		new HomeOverviewPanel(this.upperLeftX, this.upperLeftY, this.width, this.height); 
+		//Why do we even need this thing? 
 	}
 }

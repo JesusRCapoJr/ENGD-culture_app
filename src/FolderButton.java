@@ -39,21 +39,6 @@ public class FolderButton extends Button {
 	}
 	
 	public void constructAll() throws Exception {
-		//constructs everything 
-		//world.add(new Button("Wow!",100,100,100,100)); 
-		Folder la = new Folder("la"); 
-		Task tsk = new Task(); 
-		tsk.setTitle("audwhaufhka");
-		Task tsk2 = new Task(); 
-		tsk2.setTitle("efesgf");
-		la.addTask(tsk);
-		la.addTask(tsk2);
-		System.out.println("FolderButton pushed"); 
-		FolderOverviewPanel foP = new FolderOverviewPanel(10, 131/2, 1205/2, 704/2, la); 
-		PandativityFrame.reborn();
-		world.add(foP); 
-		Main.registerFolder(la); 
-		this.removeActionListener(al);
 		
 //		new DesplayState2(frame,this.folder);
 //		panel.setBackground(new Color(143, 188, 143));
@@ -71,6 +56,31 @@ public class FolderButton extends Button {
 //		frame.getContentPane().add(panel_3);
 //		panel_3.setLayout(null);
 		
+//--------Steven Xia: Above are code copied from DesplayState2 for constructing all panels---------
+
+//		PandativityFrame.reborn();
+//		DesplayState1.reborn();
+//		world.add(new HomeOverviewPanel(this.folder, 10, 131/2, 1205/2, 704/2)); 
+		
+		test(); 
+	}
+	
+	/**
+	 * For testing only
+	 */
+	public void test() {
+		Folder la = new Folder("la"); 
+		Task tsk = new Task(); 
+		tsk.setTitle("audwhaufhka");
+		Task tsk2 = new Task(); 
+		tsk2.setTitle("efesgf");
+		la.addTask(tsk);
+		la.addTask(tsk2);
+		System.out.println("FolderButton pushed"); 
+		HomeOverviewPanel foP = new HomeOverviewPanel(la, 10, 131/2, 1205/2, 704/2); 
+		PandativityFrame.reborn();
+		world.add(foP); 
+		Main.registerFolder(la); 
 	}
 
 }
