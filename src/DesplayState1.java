@@ -374,6 +374,7 @@ public class DesplayState1 {
 		//settingsButtonPanel.setVisible(true);
 		
 		//Adds all folder buttons with proper names
+		System.out.println("Folder Count: "+Main.getAllFolders().size());
 		for(final Folder f: Main.getAllFolders()) {
 			int currentFolderIndex = f.getID();
 			FolderButton aFolderBtn = new FolderButton(f,this.frame); 
