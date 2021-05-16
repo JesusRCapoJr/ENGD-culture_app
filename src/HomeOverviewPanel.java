@@ -67,6 +67,7 @@ public class HomeOverviewPanel extends JPanel{
 //			}
 //		}
 		test(); 
+		this.setBackground(new Color(105, 105, 105));
 	}
 	
 	public void constructAllFolder() {
@@ -76,7 +77,7 @@ public class HomeOverviewPanel extends JPanel{
 			i++; 
 		}
 		
-		this.setBackground(Color.BLUE); //For testing only 
+		this.setBackground(new Color(143, 188, 143)); 
 	}
 	
 	public static void cleanAll() {
