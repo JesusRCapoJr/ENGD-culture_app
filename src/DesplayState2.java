@@ -235,11 +235,21 @@ public class DesplayState2 {
 			completedTaskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				if (t.isCompleted()==false) {
-					t.setCompleted(true);
+					try {
+						t.setCompleted(true);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					completedTaskButton.setSelected(true);
 				} 
 				else {
-					t.setCompleted(false);
+					try {
+						t.setCompleted(false);
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					completedTaskButton.setSelected(false);
 				}
 				runNewFolder();

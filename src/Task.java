@@ -29,7 +29,12 @@ public class Task implements Serializable{
 		this.setDueDate(new String("yyyy/mm/dd"));
 		this.setPriority(new String("Priority"));
 		this.setLabel(new String("Lable"));
-		this.setCompleted(false);
+		try {
+			this.setCompleted(false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.setDueTime(new String("00:00"));
 	}
 	
@@ -91,8 +96,13 @@ public class Task implements Serializable{
 		this.dueTime = dueTime;
 	}
 	
-	public void setCompleted(boolean completed) {
+	public void setCompleted(boolean completed) throws Exception {
 		this.completed = completed;
+		if(this.completed==true) {
+			Main.sprite.taskConpleted();
+		}
+		
+//		Main.sprite.taskConpleted();
 	}
 	
 	public void setFolder(Folder folder) {

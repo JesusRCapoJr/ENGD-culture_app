@@ -23,8 +23,8 @@ public class SpriteForPanels {
 	private Color BGC = new Color(255,255,255); 
 	private JFrame world;
 	private JPanel panel;
-	private LocalTime updatedTime = null;  //1hr in seconds
-	private int timeCap = 10;
+	private LocalTime updatedTime = null;  
+	private int timeCap = 10; //1hr in seconds is 43200
 	
 	//
 //	startTime = System.startTime;
