@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 public class FolderButton extends Button {
 	private Folder folder;
 	private JFrame frame; 
+	private ActionListener al; 
 	
 	public FolderButton(Folder folder, JFrame frame) { //? 
 		super(); 
@@ -19,18 +20,19 @@ public class FolderButton extends Button {
 	}
 	
 	public void createAction() {                  // Action
-		ActionListener al = new ActionListener() {
+		al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//System.out.println("Put actions to be performed on click here");		// what it does goes here
 				//(IGNORE: Actually can not do for some wierd reason)There's gotta be some FolderViewPanel??? 
-				PandativityFrame.reborn();  //For testing only
+				//PandativityFrame.reborn();  //For testing only
 				//DesplayState1.reborn();
-				try {
-					constructAll();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} 
+					try {
+						System.out.println("tried"); 
+						constructAll();
+					} catch (Exception e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} 
 				}
 			};
 		addActionListener(al); 
@@ -45,11 +47,13 @@ public class FolderButton extends Button {
 		Task tsk2 = new Task(); 
 		tsk2.setTitle("efesgf");
 		la.addTask(tsk);
-		world.add(new FolderOverviewPanel(10, 131/2, 1205/2, 704/2, la)); 
+		la.addTask(tsk2);
+		System.out.println("FolderButton pushed"); 
+		FolderOverviewPanel foP = new FolderOverviewPanel(10, 131/2, 1205/2, 704/2, la); 
+		PandativityFrame.reborn();
+		world.add(foP); 
 		Main.registerFolder(la); 
-		
-		
-		
+		this.removeActionListener(al);
 		
 //		new DesplayState2(frame,this.folder);
 //		panel.setBackground(new Color(143, 188, 143));
@@ -68,16 +72,5 @@ public class FolderButton extends Button {
 //		panel_3.setLayout(null);
 		
 	}
-//	/**
-//	 * For test. Should be adapted into some FolderPanel in the future unless we decide on not having that
-//	 */
-//	public void test() {
-//		JPanel folderPanel = new JPanel(); 
-//		folderPanel.setBounds(0,0,Main.getWidth(),Main.getHeight());
-//		folderPanel.setBackground(Color.PINK);
-//		
-//		PandativityFrame.add(folderPanel); 
-//		folderPanel.setVisible(true);
-//	}
 
 }

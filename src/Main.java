@@ -76,7 +76,7 @@ public class Main {
 
 		final Saver saver = new Saver();
 		saver.read(preferencesList,tasksList,foldersList,labelsList);
-		System.out.println(foldersList.get(1).getTitle());
+		System.out.println(foldersList.size());
 		
 		Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
 	        public void run() {
@@ -90,7 +90,7 @@ public class Main {
 		pandativityFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pandativityFrame.setSize(new Dimension(width,height));
 		JPanel navigationPanel = new JPanel();	
-		
+
 //		
 //		try {
 //			//DATA

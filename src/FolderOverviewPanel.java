@@ -27,7 +27,12 @@ public class FolderOverviewPanel extends JPanel{
 	public void constructAll() {
 		int iULY = 10; 
 		for(Task task:myFolder.getTasks()) {
-			this.add(new FolderTaskPanel(10, iULY, width, btnHeight, task)); 
+//			FolderTaskPanel taski = new FolderTaskPanel(10, iULY, width, btnHeight, task); 
+//			this.add(taski); 
+//			JPanel pnl = new JPanel(); 
+//			pnl.setBounds(10, iULY, width, btnHeight); 
+//			pnl.setBackground(Color.WHITE);
+			this.add(new TaskButton(this, task, 10, iULY, width, btnHeight));
 			System.out.println("Overview construct 2"); 
 			iULY += btnHeight+GAP; 
 		}
