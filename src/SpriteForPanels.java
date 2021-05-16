@@ -81,7 +81,7 @@ public class SpriteForPanels {
 		//
 	}
 	
-	public void initializing() { 
+	private void initializing() { 
 		
 //	        panel.setBackground(BGC);
 //	        panel.setSize(width, hight);
@@ -93,7 +93,7 @@ public class SpriteForPanels {
 	        world.setVisible(true);
 	}
 	
-	public void displaySprite(int positionInList) throws IOException {    //main code from git hub
+	private void displaySprite(int positionInList) throws IOException {    //main code from git hub
 		 File panaFile = this.fileList.get((int) Score);
 		 ImageIcon icon = new ImageIcon(panaFile.toString());
 		 JLabel label = new JLabel(icon,SwingConstants.CENTER);
@@ -126,5 +126,10 @@ public class SpriteForPanels {
 	public void addFile(String newFileString) throws MalformedURLException {
 		File newFile = new File(newFileString);
 		this.fileList.add(newFile);
+	}
+	
+	public void changeAttachments(JFrame world ,JPanel panel ) {
+			this.world = world;
+			this.panel = panel;
 	}
 }

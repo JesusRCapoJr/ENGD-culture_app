@@ -38,7 +38,7 @@ public class Main {
 	//Multiple monitor
 	private static GraphicsDevice gd; 
 	private static JFrame frame;
-	public SpriteForPanels sprite;
+	public static SpriteForPanels sprite;
 	
 	private static int width; 
 	private static int height; 
@@ -292,6 +292,10 @@ public class Main {
 			return true; 
 		}
 	}
+	public SpriteForPanels getSprite() {
+		return this.sprite;
+		}
+	
 	public void updateSprite() throws Exception {
 	this.sprite.update();
 	}
