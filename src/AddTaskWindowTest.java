@@ -23,7 +23,7 @@ import java.util.Objects;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
 
-public class KieyaAddTaskTestWindow extends JFrame {
+public class AddTaskWindowTest extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtEnterTaskName;
@@ -36,7 +36,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private Task task;
 	private boolean inFolder;
 	private DesplayState2 desplayState;
-	private boolean isCompleted;
+
 	/**
 	 * Launch the application.
 	 */
@@ -59,15 +59,16 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @wbp.parser.constructor
 	 */
-	public KieyaAddTaskTestWindow(Task task, boolean inFolder, DesplayState2 desplayState) {
+	public AddTaskWindowTest(Task task, boolean inFolder, DesplayState2 desplayState) {
 		this.task = task;
 		this.desplayState=desplayState;
 		this.inFolder =inFolder;
 		this.runAddTaskWindow();
 	}
 	
-	public KieyaAddTaskTestWindow(Task task, boolean inFolder) {
+	public AddTaskWindowTest(Task task, boolean inFolder) {
 		this.task = task;
 		this.inFolder =inFolder;
 		this.runAddTaskWindow();
@@ -153,14 +154,10 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Task Completed");
 		chckbxNewCheckBox.setBackground(Main.getChosenTheme().get(8)); //new Color(102, 153, 0)
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-//		isCompleted = chckbxNewCheckBox.isEnabled();
 //		chckbxNewCheckBox.addActionListener(new ActionListener() {
 //		 public void actionPerformed(ActionEvent arg0) {
-//			
-//				checkTaskCompletion();
-//			
-//		 }	
-//			
+//			checkTaskCompletion();
+//		}
 //		});
 		
 		txtDue = new JTextField();
@@ -224,9 +221,10 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	}
 
 	
-//	private void checkTaskCompletion(){
-//			task.setCompleted(isCompleted);
-//	
+//	private void checkTaskCompletion() {
+//		if(chckbxNewCheckBox.isEnabled()== true) {
+//			
+//		}
 //	}
 
 	private void setTaskInformation() {
@@ -281,3 +279,4 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		
 	}
 }
+
