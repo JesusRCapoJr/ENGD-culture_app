@@ -349,7 +349,7 @@ public class Main {
 					}
 				}
 				currentMax = min; 
-				System.out.println("min value: "+min);
+				//System.out.println("min value: "+min);
 				dues.add(min); 
 			}
 			
@@ -436,9 +436,17 @@ public class Main {
 		String time = "00:00"; 
 		if(task.getDueDate() != null && !task.getDueDate().equals("yyyy/mm/dd")) {
 			date = task.getDueDate(); 
+			if(date.length() != 10) {
+				System.out.println("Due date has an error in format :( Expected yyyy/mm/dd, got "+date);
+				date = "2500/01/01"; 
+			}
 		}
 		if(task.getDueTime() != null) {
 			time = task.getDueTime(); 
+			if(time.length() != 5) {
+				System.out.println("Due time has an error in format :( Expected hh:mm, got "+time);
+				time = "00:00"; 
+			}
 		}
 		String dateTimeRaw = date.substring(0,4)+date.substring(5,7)+date.substring(8,10)+time.substring(0,2)+time.substring(3,5);
 		//System.out.println("date: "+date+" time: "+time+" dateTimeRaw: "+dateTimeRaw);

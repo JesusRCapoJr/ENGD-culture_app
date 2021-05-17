@@ -97,8 +97,10 @@ public class HomeOverviewPanel extends JPanel{
 	}
 	
 	public void constructAllFolder() {
+		ArrayList<Task> tasks = this.folder.getTasks(); 
+		Main.sortTasksBy(tasks, "dueAndPriority");
 		int i=0; 
-		for(Task task:this.folder.getTasks()) {
+		for(Task task:tasks) {
 			constructButton(i,task); 
 			i++; 
 		}
@@ -144,29 +146,34 @@ public class HomeOverviewPanel extends JPanel{
 			switch(j) {
 				case 0: 
 					tsk.setDescription("wawawawawawa");
+					tsk.setDueDate("2021/02/12");
 					break; 
 				case 1: 
 					tsk.setDescription("MA textbook P2.2, P3.4");
+					tsk.setDueDate("2026/08/24");
 					break;
 				case 2: 
 					tsk.setDescription(null);
+					tsk.setDueDate("2034/09/29");
 					break;
 				case 3: 
 					tsk.setDescription("1 meow meow meow meow 4 meow meow meow meow 8 meow meow meow meow 12 meow meow meow meow 16 meow meow meow meow 20 meow meow meow meow ");
+					tsk.setDueDate("2001/03/09");
 					break;
 				default: 
 					tsk.setDescription("bruh");
+					tsk.setDueDate("2021/02/12");
 			}
 		 
 		}
 		
-		int i = 0; 
-		for(Task t:allTasks) {
-			constructButton(i, t); 
-			i++; 
-		}
+//		int i = 0; 
+//		for(Task t:allTasks) {
+//			constructButton(i, t); 
+//			i++; 
+//		}
 		
-		setVisible(true); 
-		this.setBackground(Color.BLUE);
+//		setVisible(true); 
+//		this.setBackground(Color.BLUE);
 	}
 }
