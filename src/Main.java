@@ -309,5 +309,138 @@ public class Main {
 	private static void createNewSprite() throws HeadlessException, IOException {
 		sprite = new SpriteForPanels(new JFrame(), new JPanel());
 	}
+	
+	/**
+	 * Sorts tasks (ArrayList) by method specified. Options available for the second parameter are "due", "priority" and "dueAndPriority". 
+	 * WARNING: The limits of priority is hard-coded ([0,3]) in sort by priority option. 
+	 * @param tasks
+	 * @param method
+	 */
+	public static void sortTasksBy(ArrayList<Task> tasks, String method) {
+		
+		if(tasks == null) {
+			System.out.println("Main.sortTasksBy() says to you: Nope. ArrayList tasks is null!");
+			return; 
+		}
+		
+		if(method.equals("due")) {
+			
+			//Gets all due dates and store them together with all Tasks
+			HashMap<Double, ArrayList<Task>> dueTasks = new HashMap<Double, ArrayList<Task>>(); 
+			for(Task t:tasks) {
+				double rawDue = getDueRaw(t); 
+				if(dueTasks.get(rawDue) == null) {
+					dueTasks.put(rawDue, new ArrayList<Task>()); 
+				}
+				dueTasks.get(rawDue).add(t); 
+			}
+			
+			
+			//Sorts dues in an increasing order 
+			double min = 302105162202.0; //1000 year after I coded this, the program will no longer run... 
+			double currentMax = 0.0; 
+			ArrayList<Double> dues = new ArrayList<Double>(); 
+			
+			for(double j:dueTasks.keySet()) {
+				for(double i:dueTasks.keySet()) {
+					if(i < min && i >= currentMax) {
+						min = i; 
+					}
+				}
+				currentMax = min; 
+				dues.add(min); 
+			}
+			
+			
+			//Finally, put them back
+			tasks.clear();
+			
+			for(double j:dues) {
+				for(Task t: dueTasks.get(j)) {
+					tasks.add(t); 
+				}
+			}
+			
+			
+			
+		}else if(method.equals("priority")) {
+			
+			//Gets all priorities and store them together with all Tasks
+			HashMap<Integer, ArrayList<Task>> priorTasks = new HashMap<Integer, ArrayList<Task>>(); 
+			for(Task t:tasks) {
+				int priority = t.getPriority(); 
+				if(priorTasks.get(priority) == null) {
+					priorTasks.put(priority, new ArrayList<Task>()); 
+				}
+				priorTasks.get(priority).add(t); 
+			}
+			
+			//Put them back
+			tasks.clear();
+			
+			for(int i=0; i<5; i++) {
+				if(priorTasks.get(i) != null) {
+					for(Task t:priorTasks.get(i)) {
+						tasks.add(t); 
+					}
+				}
+			}
+			
+		}else if(method.equals("dueAndPriority")){
+			//Sort by due
+			sortTasksBy(tasks, "due"); 
+			
+			//Prepare and sort by priority in each time slot
+			ArrayList<ArrayList<Task>> tasksStrips = new ArrayList<ArrayList<Task>>(); 
+			double currentDue = 0; 
+			int index = -1; 
+			for(Task t:tasks) {
+				if(getDueRaw(t) != currentDue) {
+					ArrayList<Task> aStrip = new ArrayList<Task>(); 
+					aStrip.add(t); 
+					tasksStrips.add(aStrip); 
+					index++; 
+				}else {
+					tasksStrips.get(index).add(t); 
+				}
+			}
+			
+			for(int i=0;i<tasksStrips.size();i++) {
+				sortTasksBy(tasksStrips.get(i),"priority"); 
+			}
+			
+			//Finally, put them back
+			tasks.clear();
+			
+			for(int i=0;i<tasksStrips.size();i++) {
+				for(Task t:tasksStrips.get(i)) {
+					tasks.add(t); 
+				}
+			}
+			
+		}else {
+			System.out.println("Main.sortTasksBy() says to you: You made a typo :O");
+		}
+	}
+	
+	/**
+	 * Returns the raw form of due: yyyymmddhhmm in double. 
+	 * @param task
+	 * @return dateTimeRawInt
+	 */
+	public static double getDueRaw(Task task) {
+		String date = task.getDueDate(); 
+		String time = task.getDueTime(); 
+		String dateTimeRaw = date.substring(0,4)+date.substring(5,7)+date.substring(8,10)+time.substring(0,2)+time.substring(3,5);
+		System.out.println("date: "+date+"time: "+time+"dateTimeRaw: "+dateTimeRaw);
+		double dateTimeRawInt = 0.0; 
+		
+		int l = dateTimeRaw.length(); 
+		for(int i=0;i<l;i++) {
+			dateTimeRawInt += (double)(dateTimeRaw.charAt(l-i)) * Math.pow(10, i); 
+		}
+		
+		return dateTimeRawInt; 
+	}
 
 }
