@@ -83,18 +83,20 @@ public class AddLabelFrame extends JFrame{
 	
 	public void setupLabel() {
 		String selected = selectFolders.getSelectedItem().toString(); 
-		if(selected.equals(Main.getAllFolders().get(0).getTitle())) {
-			Main.getAllFolders().get(0).addLabel(label);
-		}else if(selected.equals(Main.getAllFolders().get(1).getTitle())) {
-			Main.getAllFolders().get(1).addLabel(label);
-		}else if(selected.equals(Main.getAllFolders().get(2).getTitle())) {
-			Main.getAllFolders().get(2).addLabel(label);
-		}else if(selected.equals(Main.getAllFolders().get(3).getTitle())) {
-			Main.getAllFolders().get(3).addLabel(label);
-		}else {
-			System.out.println("What???");
-		}
 		this.label.setText(textField.getText());
-		Main.registerLabel(label); 
+		if(Main.registerLabel(label)) {
+			if(selected.equals(Main.getAllFolders().get(0).getTitle())) {
+				Main.getAllFolders().get(0).addLabel(label);
+			}else if(selected.equals(Main.getAllFolders().get(1).getTitle())) {
+				Main.getAllFolders().get(1).addLabel(label);
+			}else if(selected.equals(Main.getAllFolders().get(2).getTitle())) {
+				Main.getAllFolders().get(2).addLabel(label);
+			}else if(selected.equals(Main.getAllFolders().get(3).getTitle())) {
+				Main.getAllFolders().get(3).addLabel(label);
+			}else {
+				System.out.println("What???");
+			}
+		}
+		
 	}
 }

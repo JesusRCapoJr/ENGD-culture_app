@@ -133,7 +133,9 @@ public class DesplayState1 {
 		panel.setLayout(null);
 		
 		//Steven Xia: For testing LabelButton only
-//		panel.add(new LabelButton(new Label("wa"), 10, 10, 120, 120));
+//		Folder newFolder = new Folder("la",4); 
+//		Label label = new Label("du"); 
+//		panel.add(new LabelButton(newFolder, label, 10, 10, 120, 120));
 		
 		//Settings Button
 		JPanel settingsButtonPanel = new JPanel();
