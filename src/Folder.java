@@ -13,11 +13,15 @@ public class Folder implements Serializable{
 	
 	public Folder(String title, int folderID) {
 		tasks = new ArrayList<Task>();  
-		this.folderID=folderID;
+		labels = new ArrayList<Label>(); 
+		this.folderID = folderID;
 		this.title = title; 
 	}
 	
 	public void addTask(Task task) {
+		if(this.tasks == null) {
+			this.tasks = new ArrayList<Task>(); 
+		}
 		this.tasks.add(task); 
 	}
 	
@@ -42,6 +46,9 @@ public class Folder implements Serializable{
 	}
 	
 	public void addLabel(Label label) {
+		if(this.labels == null) {
+			this.labels = new ArrayList<Label>(); 
+		}
 		this.labels.add(label); 
 	}
 	

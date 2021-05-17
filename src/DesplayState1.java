@@ -131,6 +131,7 @@ public class DesplayState1 {
 		panel.setBounds(10, 23, 704, 81);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
+		panel.add(new LabelButton(new Label("wa"), 10, 10, 120, 120));
 		
 		//Settings Button
 		JPanel settingsButtonPanel = new JPanel();

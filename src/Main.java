@@ -259,13 +259,12 @@ public class Main {
 	
 	public static void addTaskToFolder(Task task, Folder folder) {
 		registerFolder(folder); 
-		folder2Tasks.get(folder).add(task); 
+		folder.addTask(task);
 	}
 	
 	public static void addLabelToTask(Label label, Task task) {
 		registerLabel(label); 
-		task2Labels.get(task).add(label); 
-		label2Tasks.get(label).add(task); 
+		task.setLabel(label.getText());
 	}
 	
 	/**
@@ -274,10 +273,10 @@ public class Main {
 	 * @return
 	 */
 	public static boolean registerFolder(Folder folder) {
-		if(folder2Tasks.containsKey(folder)) {
+		if(foldersList.contains(folder)) {
 			return false; 
 		}else {
-			folder2Tasks.put(folder, new ArrayList<Task>()); 
+			foldersList.add(folder);
 			return true; 
 		}
 	}
@@ -288,13 +287,14 @@ public class Main {
 	 * @return
 	 */
 	public static boolean registerLabel(Label label) {
-		if(label2Tasks.containsKey(label)) {
+		if(labelsList.contains(label)) {
 			return false; 
 		}else {
-			label2Tasks.put(label, new ArrayList<Task>()); 
+			labelsList.add(label);
 			return true; 
 		}
 	}
+	
 	public SpriteForPanels getSprite() {
 		return this.sprite;
 		}
