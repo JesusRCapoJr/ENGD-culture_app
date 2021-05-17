@@ -304,7 +304,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 //			task.setCompleted(isCompleted);
 //	
 //	}
-
+ 
 	private void setTaskInformation() {
 		// TODO Auto-generated method stub
 
