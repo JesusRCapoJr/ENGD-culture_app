@@ -119,10 +119,15 @@ public class DesplayState2 {
 		panel.setBounds(10, 131, 1205, 704); 
 		frame.getContentPane().add(panel);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(Main.getChosenTheme().get(3));
-		panel_1.setBounds(1225, 216, 305, 619);
-		frame.getContentPane().add(panel_1);
+//		JPanel panel_1 = new JPanel();
+//		panel_1.setBackground(Main.getChosenTheme().get(3));
+//		panel_1.setBounds(1225, 216, 305, 619);
+//		frame.getContentPane().add(panel_1);
+		
+		FolderLabelsPanel flp = new FolderLabelsPanel(1225, 216, 305, 619, this.folder); 
+		frame.getContentPane().add(flp); 
+		flp.add(new LabelButton(flp, this.folder, new Label("wa"), 10, 10, 280, 30)); 
+		
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setBackground(Main.getChosenTheme().get(5));

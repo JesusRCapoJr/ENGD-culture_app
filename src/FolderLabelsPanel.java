@@ -9,6 +9,12 @@ public class FolderLabelsPanel extends JPanel{
 	private int width;
 	private int height; 
 	private static ArrayList<LabelButton> allLabelButtons = new ArrayList<LabelButton>(); 
+	private final double BUTTON_WIDTH_RATIO = 0.4; 
+	private final double BUTTON_CAP = 20; 
+	private final int BUTTON_GAP = 1; 
+	private int btnH; 
+	private int btnW; 
+	
 
 	public FolderLabelsPanel(int upperLeftX, int upperLeftY, int width, int height, Folder folder) {
 		super();
@@ -17,13 +23,21 @@ public class FolderLabelsPanel extends JPanel{
 		this.width = width;
 		this.height = height; 
 		this.folder = folder; 
+		this.setBackground(Main.getChosenTheme().get(3));
+		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
+		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
 		
 		constructAll(); 
 	}
 	
 	public void constructAll() {
+		int i = 0;
 		for(Label label:this.folder.getLabels()) {
-			
+			LabelButton btn = new LabelButton(this, this.folder, label, 10, 20+(i+1)*BUTTON_GAP+i*btnH, btnW, btnH);
+			btn.setBackground(Main.getChosenTheme().get(2));
+			allLabelButtons.add(btn); 
+			this.add(btn); 
+			i++; 
 		}
 	}
 	
@@ -43,5 +57,9 @@ public class FolderLabelsPanel extends JPanel{
 		}catch(Exception e) {
 			System.out.println("Label dosen't exist in this folder. Check your set-up. ");
 		}
+	}
+	
+	public void f5() {
+		this.repaint();
 	}
 }

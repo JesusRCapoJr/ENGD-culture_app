@@ -16,9 +16,11 @@ public class LabelButton extends ToggleButton {
 	private Label label;
 	private Folder folder; 
 	private boolean selected = false; 
+	private FolderLabelsPanel flp; 
 	
-	public LabelButton(Folder folder, Label label, int upperLeftX, int upperLeftY, int width, int height) { //? 
+	public LabelButton(FolderLabelsPanel flp, Folder folder, Label label, int upperLeftX, int upperLeftY, int width, int height) { //? 
 		super(label.getText(), upperLeftX, upperLeftY, width, height); 
+		this.flp = flp; 
 		this.label = label;
 		this.folder = folder; 
 		this.createAction();
@@ -75,6 +77,6 @@ public class LabelButton extends ToggleButton {
 	}
 	
 	public void displayLabel() {
-		
+		flp.f5();
 	}
 }

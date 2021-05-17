@@ -60,7 +60,8 @@ public class AddLabelFrame extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setupLabel(); 
-				frame.setEnabled(false);
+				frame.setVisible(false);
+				f5();
 			}
 			
 		});
@@ -99,5 +100,10 @@ public class AddLabelFrame extends JFrame{
 			}
 		}
 		
+	}
+	
+	public void f5() {
+		this.setVisible(false);
+		this.setVisible(true);
 	}
 }
