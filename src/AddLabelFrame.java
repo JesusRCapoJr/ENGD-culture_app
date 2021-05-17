@@ -22,7 +22,7 @@ public class AddLabelFrame extends JFrame{
 	private JComboBox selectFolders; 
 	
 	public AddLabelFrame() {
-		this.label = new Label(""); 
+		this.label = new Label("word"); 
 		this.folder = new Folder("words", 0); 
 		initiate(); 
 	}
@@ -33,7 +33,7 @@ public class AddLabelFrame extends JFrame{
 		}else {
 			this.folder = new Folder("words", 0); 
 		}
-		this.label = new Label(""); 
+		this.label = new Label("word"); 
 		initiate(); 
 	}
 	
@@ -41,14 +41,13 @@ public class AddLabelFrame extends JFrame{
 		if(label != null) {
 			this.label = label; 
 		}else {
-			this.label = new Label(""); 
+			this.label = new Label("word"); 
 		}
 		if(folder != null) {
 			this.folder = folder; 
 		}else {
 			this.folder = new Folder("words", 0); 
 		}
-		this.label = new Label(""); 
 		
 		initiate(); 
 	}
@@ -62,7 +61,7 @@ public class AddLabelFrame extends JFrame{
 	  	frame.setLayout(null);
 	  	
 	  	labelName = new JLabel();
-		labelName.setText("Label name: "); 
+		labelName.setText(Main.getLanguage().get("Label name: ")); 
 		labelName.setBounds(10, 10, 160, 20);
 		frame.getContentPane().add(labelName);
 		labelName.setBackground(new Color(0,0,0,0));
@@ -70,10 +69,11 @@ public class AddLabelFrame extends JFrame{
 	  	textField = new JTextField();
 		textField.setBounds(10, 32, 160, 20);
 		frame.getContentPane().add(textField);
+		//System.out.println("label"+this.label.getText()); 
 		textField.setText(this.label.getText());
 		textField.setColumns(1);
 		
-		doneBtn = new JButton("Done");
+		doneBtn = new JButton(Main.getLanguage().get("Done"));
 		doneBtn.setBounds(180, 10, frame.getHeight()-50, frame.getHeight()-50);
 		frame.getContentPane().add(doneBtn);
 		doneBtn.addActionListener(new ActionListener() {
@@ -87,7 +87,7 @@ public class AddLabelFrame extends JFrame{
 		});
 	  	
 	  	selectFolders = new JComboBox();
-			selectFolders.setToolTipText("Select designation folder");
+			selectFolders.setToolTipText(Main.getLanguage().get("Select designation folder"));
 			selectFolders.setBounds(10, 54, 160, 21);
 			selectFolders.setModel(new DefaultComboBoxModel(
 					new String[] {"Select Folder",

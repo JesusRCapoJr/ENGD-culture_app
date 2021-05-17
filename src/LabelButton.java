@@ -46,12 +46,12 @@ public class LabelButton extends ToggleButton {
 			@SuppressWarnings("unchecked")
 			public void mousePressed(MouseEvent e) {
 				if (e.getButton() == MouseEvent.BUTTON3) {
-					Object[] options = {"Delete",
-                            "Edit","Cancel"};
+					Object[] options = {Main.getLanguage().get("Delete"),
+							Main.getLanguage().get("Edit"),Main.getLanguage().get("Cancel")};
               	  
 			          int response = JOptionPane.showOptionDialog(null,
-				            "What would you like to do?",
-				            "Options",
+			        		Main.getLanguage().get("What would you like to do?"),
+			        		Main.getLanguage().get("Options"),
 				            JOptionPane.YES_NO_CANCEL_OPTION,
 				            JOptionPane.QUESTION_MESSAGE,
 				            null,

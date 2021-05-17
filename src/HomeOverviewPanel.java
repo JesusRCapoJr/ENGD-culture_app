@@ -105,8 +105,8 @@ public class HomeOverviewPanel extends JPanel{
 //		test(); 
 		this.setBackground(new Color(105, 105, 105));
 		
-		//sort by Due date, then priority
-		Main.sortTasksBy(tasks, "dueAndPriority");
+		//sort by Due date, then priority. TBC
+		//Main.sortTasksBy(tasks, "dueAndPriority");
 		
 		int i = 0; 
 		for(Task task:tasks) {
