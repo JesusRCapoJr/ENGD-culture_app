@@ -193,7 +193,7 @@ public class Main {
 		english.put("Low","Low"); //
 		english.put("Medium","Medium"); //
 		english.put("High","High"); //
-		english.put("Due Date:","Due Date:"); //
+		english.put("Due Date:","Due Date:"); // 
 		english.put("Time:","Time:"); //
 		english.put("Label","Label"); //
 		english.put("Priority","Priority"); //
