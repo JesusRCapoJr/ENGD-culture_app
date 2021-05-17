@@ -13,6 +13,8 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.EventQueue;
 
 import java.io.FileInputStream;
@@ -192,6 +194,24 @@ public class Main {
 //			e.printStackTrace();
 //			e.getStackTrace();
 //		}
+		
+		Timer timer = new Timer();
+		TimerTask task = new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				try {
+					Main.sprite.update();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+		};
+		timer.schedule(task, 1000);
+		
 	}
 
 
