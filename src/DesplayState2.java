@@ -352,6 +352,7 @@ public class DesplayState2 {
 		
 		try {
 			new DesplayState1(this.frame);
+			Main.sprite.update();
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
