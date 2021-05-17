@@ -132,7 +132,7 @@ public class DesplayState2 {
 		
 		//-----------
 		
-		JButton BackToHome = new JButton("Home");
+		JButton BackToHome = new JButton(Main.getLanguage().get("Home"));
 		BackToHome.setBackground(this.folderButtonColors.get(0));
 		BackToHome.setBounds(10, 10, 175, 89);
 		panel_3.add(BackToHome);
@@ -165,8 +165,8 @@ public class DesplayState2 {
 	                  if (e.getButton() == MouseEvent.BUTTON3) {
 	                	  String newFolderName = (String)JOptionPane.showInputDialog(
 	                              null,
-	                              "Rename folder", 
-	                              "Rolder Renamer",            
+	                              Main.getLanguage().get("Rename folder"), 
+	                              Main.getLanguage().get("Rename folder"),            
 	                              JOptionPane.PLAIN_MESSAGE,
 	                              null,            
 	                              null, 
@@ -194,9 +194,9 @@ public class DesplayState2 {
 			else {
 				completedTaskButton.setSelected(true);
 			}
-			JButton taskDayLabel = new JButton(t.getDueDate());
+			JButton taskDayLabel = new JButton(t.getDueDateString());
 			JButton taskTimeLabel = new JButton(t.getDueTime());
-			JButton deleteTaskButton = new JButton("Delete");
+			JButton deleteTaskButton = new JButton(Main.getLanguage().get("Delete"));
 			
 			taskButton.setBounds(10, 10+(currentTaskNum-1)*55, 500, 50);
 			taskDayLabel.setBounds(10+550, 10+(currentTaskNum-1)*55, 200, 50);
@@ -232,12 +232,12 @@ public class DesplayState2 {
 			
 			taskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					Object[] options = {"Delete",
-                            "Edit","Cancel"};
+					Object[] options = {Main.getLanguage().get("Delete"),
+							Main.getLanguage().get("Edit"),Main.getLanguage().get("Cancel")};
               	  
 			          int response = JOptionPane.showOptionDialog(null,
-			              "What would you like to do?",
-			              "Options",
+			        		  Main.getLanguage().get("What would you like to do?"),
+			              Main.getLanguage().get("Options"),
 			              JOptionPane.YES_NO_CANCEL_OPTION,
 			              JOptionPane.QUESTION_MESSAGE,
 			              null,

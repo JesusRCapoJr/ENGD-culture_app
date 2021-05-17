@@ -268,7 +268,7 @@ public class AddTaskWindowTest extends JFrame {
 		//Main.addTaskToFolder(task, folder);
 		
 		task.setDescription(taskAreaDescription.getText());
-		task.setDueDate("test");
+		//task.setDueDateString("test");
 		task.setLabel(comboBox_1.getSelectedItem().toString());
 		task.setTitle(txtEnterTaskName.getText());
 		task.setPriority(comboBox_2.getSelectedItem().toString());

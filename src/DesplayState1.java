@@ -20,6 +20,7 @@ import javax.swing.ImageIcon;
 public class DesplayState1 {
 
 	static JFrame frame;
+	private DesplayState1 thisDesplay;
 
 	/**
 	 * Launch the application.
@@ -61,6 +62,7 @@ public class DesplayState1 {
 	 */
 	private void initialize() throws Throwable {
 //		frame = new JFrame();
+		this.thisDesplay=this;
 		frame.getContentPane().setBackground(Main.getChosenTheme().get(0));
 		//frame.setBounds(0, 0, 1920, 1080);
 		frame.setBounds(0, 0, 1545, 950);
@@ -104,6 +106,7 @@ public class DesplayState1 {
 		AddTaskPanel.setLayout(null);
 		
 		JButton AddNewTask = new JButton();
+		AddNewTask.setBackground(Main.getChosenTheme().get(3));
 		//
 			BufferedImage icon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
 		
@@ -112,7 +115,7 @@ public class DesplayState1 {
 		AddNewTask.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
-				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,false);
+				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,false,thisDesplay,frame);
 				frame2.setVisible(true);
 				
 			}
@@ -146,6 +149,7 @@ public class DesplayState1 {
 		frame.add(settingsButtonPanel);
 		
 		JButton settingsButton = new JButton(); 
+		settingsButton.setBackground(Main.getChosenTheme().get(5));
 		//settingsButton.setBackground(Color.BLACK);
 		BufferedImage settingsIcon = ImageIO.read(new File("texture/resized_settings.png")); 
 		
@@ -156,17 +160,17 @@ public class DesplayState1 {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					Object[] optionsOptions = {
-                            "Help","Change Language","Change Theme","Done"};
+                            Main.getLanguage().get("Help"),Main.getLanguage().get("Change Language"),Main.getLanguage().get("Change Theme"),Main.getLanguage().get("Done")}; //"Help","Change Language","Change Theme","Done"
 		        	  Object[] helpOptions = {
-	                            "How to rename a folder","How to delete or edit a task","Done"};
+		        			  Main.getLanguage().get("How to rename a folder"),Main.getLanguage().get("How to delete or edit a task"),Main.getLanguage().get("Done")};//"How to rename a folder","How to delete or edit a task","Done"
 		        	  Object[] languageOptions = {
-	                            "English","简体中文","Done"};
+	                            "English","简体中文","Done"};//"English","简体中文","Done"
 		        	  Object[] themeOptions = {
-	                            "Forest Green","Arctic Day","Moonlit Night","Done"};
+		        			  Main.getLanguage().get("Forest Green"),Main.getLanguage().get("Arctic Day"),Main.getLanguage().get("Moonlit Night"),Main.getLanguage().get("Done")};//"Forest Green","Arctic Day","Moonlit Night","Done"
               	  
 			          int optionsResponse = JOptionPane.showOptionDialog(null,
-			              "How may we best assist you today?",
-			              "Options",
+			        		  Main.getLanguage().get("How may we best assist you today?"),
+			        		  Main.getLanguage().get("Options"),
 			              JOptionPane.YES_NO_CANCEL_OPTION,
 			              JOptionPane.QUESTION_MESSAGE,
 			              null,
@@ -174,34 +178,51 @@ public class DesplayState1 {
 			              optionsOptions[3]);
 			          if (optionsResponse==0) {		              	  
 				          int helpResponse = JOptionPane.showOptionDialog(null,
-					              "What would you like help with?",
-					              "Help Menu",
+				        		  Main.getLanguage().get("What would you like help with?"),
+				        		  Main.getLanguage().get("Help Menu"),
 					              JOptionPane.YES_NO_CANCEL_OPTION,
 					              JOptionPane.QUESTION_MESSAGE,
 					              null,
 					              helpOptions,
 					              helpOptions[2]);
 				          if (helpResponse==0) {
-				        	  JOptionPane.showMessageDialog(null, "Right click a folder, write the new name, and confirm the change.");
+				        	  JOptionPane.showMessageDialog(null, Main.getLanguage().get("Right click a folder, write the new name, and confirm the change."));
 				          }
 				          else if (helpResponse==1) {
-				        	  JOptionPane.showMessageDialog(null, "Right click a task and you will be presented with the option to delete or edit the task.");
+				        	  JOptionPane.showMessageDialog(null, Main.getLanguage().get("Right click a task and you will be presented with the option to delete or edit the task."));
 				          }
 			          }
 			          else if (optionsResponse==1) {
 				          int languageResponse = JOptionPane.showOptionDialog(null,
-					              "What language would you like?",
-					              "Language Selection",
+					              Main.getLanguage().get("What language would you like?"),
+					              Main.getLanguage().get("Language Selection"),
 					              JOptionPane.YES_NO_CANCEL_OPTION,
 					              JOptionPane.QUESTION_MESSAGE,
 					              null,
 					              languageOptions,
 					              languageOptions[2]);
+				          switch (languageResponse) {
+				          case 0:
+				        	  Main.getPreferences().set(0, 0);		        	  
+				        	  break;
+				          case 1:
+				        	  Main.getPreferences().set(0, 1); 
+				        	  break;
+		                	 
+		      				}
+				          reborn();
+	                	  try {
+	                		  new DesplayState1(frame);
+	      				} catch (Throwable e1) {
+	      					// TODO Auto-generated catch block
+	      					e1.printStackTrace();
+				          }
 			          }
+			          
 			          else if (optionsResponse==2) {
 				          int themeResponse = JOptionPane.showOptionDialog(null,
-					              "How would you like the application to appear?",
-					              "Theme Selection",
+				        		  Main.getLanguage().get("How would you like the application to appear?"),
+				        		  Main.getLanguage().get("Theme Selection"),
 					              JOptionPane.YES_NO_CANCEL_OPTION,
 					              JOptionPane.QUESTION_MESSAGE,
 					              null,
@@ -240,7 +261,8 @@ public class DesplayState1 {
 		System.out.println("Folder Count: "+Main.getAllFolders().size());
 		for(final Folder f: Main.getAllFolders()) {
 			int currentFolderIndex = f.getID();
-			FolderButton aFolderBtn = new FolderButton(f,this.frame); 
+			FolderButton aFolderBtn = new FolderButton(f,this.frame);
+			aFolderBtn.setBackground(Color.WHITE);
 			aFolderBtn.setBounds(10+(currentFolderIndex-1)*188, 10, 120, 60);
 			panel.add(aFolderBtn); 
 //			aFolderBtn.addActionListener(new ActionListener() {
@@ -253,8 +275,8 @@ public class DesplayState1 {
 	                  if (e.getButton() == MouseEvent.BUTTON3) {
 	                	  String newFolderName = (String)JOptionPane.showInputDialog(
 	                              null,
-	                              "Rename folder", 
-	                              "Rolder Renamer",            
+	                              Main.getLanguage().get("Rename folder"), 
+	                              Main.getLanguage().get("Rename folder"),            
 	                              JOptionPane.PLAIN_MESSAGE,
 	                              null,            
 	                              null, 
@@ -263,13 +285,7 @@ public class DesplayState1 {
 	                	  if (!newFolderName.isEmpty()) {
 	                		  f.setTitle(newFolderName);
 	                	  }
-	                	  reborn();
-	                	  try {
-	                		  new DesplayState1(frame);
-	      				} catch (Throwable e1) {
-	      					// TODO Auto-generated catch block
-	      					e1.printStackTrace();
-	      				}
+	                	  
 	                  }
 	               }
 	            });

@@ -46,17 +46,19 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private JSpinner hours;
 	private JSpinner minutes;
 	private JDateChooser dateChooser;
+	private JFrame comingFrame;
 	
 	// private JTextField txtAddDueDate;
 	// private JTextField txtDue;
 	private JTextArea taskAreaDescription;
 	private Task task;
 	private boolean inFolder;
-	private DesplayState2 desplayState;
+	private DesplayState2 desplayState2;
+	private DesplayState1 desplayState1;
 	private boolean isCompleted;
 	private int taskDueDateHour;
 	private int taskDueDateMinute;
-	private String taskDueDate;
+	private Date taskDueDate;
 
 	/**
 	 * Launch the application.
@@ -83,8 +85,16 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	 */
 	public KieyaAddTaskTestWindow(Task task, boolean inFolder, DesplayState2 desplayState) {
 		this.task = task;
-		this.desplayState = desplayState;
+		this.desplayState2 = desplayState;
 		this.inFolder = inFolder;
+		this.runAddTaskWindow();
+	}
+	
+	public KieyaAddTaskTestWindow(Task task, boolean inFolder, DesplayState1 desplayState, JFrame frame) {
+		this.task = task;
+		this.desplayState1 = desplayState;
+		this.inFolder = inFolder;
+		this.comingFrame=frame;
 		this.runAddTaskWindow();
 	}
 
@@ -128,29 +138,37 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 		}
 
-		JLabel lblNewLabel = new JLabel("Description:");
+		JLabel lblNewLabel = new JLabel(Main.getLanguage().get("Description"));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
 		// Need to bring in stored folders
 		comboBox = new JComboBox();
-		comboBox.setToolTipText("Select designation folder");
+		comboBox.setToolTipText(Main.getLanguage().get("Select designation folder"));
 		comboBox.setModel(new DefaultComboBoxModel(folderNames));
 		;
 		comboBox.setModel(new DefaultComboBoxModel(
-				new String[] { "Folder", Main.getAllFolders().get(0).getTitle(), Main.getAllFolders().get(1).getTitle(),
+				new String[] { Main.getLanguage().get("Folder"), Main.getAllFolders().get(0).getTitle(), Main.getAllFolders().get(1).getTitle(),
 						Main.getAllFolders().get(2).getTitle(), Main.getAllFolders().get(3).getTitle() }));
 		;
+		
+		if (task.getFolder()!=null) {
+			comboBox.setSelectedItem(task.getFolder().getTitle());
+		}
 
 		// Need to sbring in stored folders
 		comboBox_1 = new JComboBox();
-		comboBox_1.setToolTipText("Select label");
+		comboBox_1.setToolTipText(Main.getLanguage().get("Select label"));
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { this.task.getLabels() }));
 
 		comboBox_2 = new JComboBox();
-		comboBox_2.setToolTipText("Select priority");
+		comboBox_2.setToolTipText(Main.getLanguage().get("Select priority"));
 		comboBox_2.setModel(
-				new DefaultComboBoxModel(new String[] { this.task.getPriorityString(), "Low", "Medium", "High" }));
-
+				new DefaultComboBoxModel(new String[] {Main.getLanguage().get("Priority"), Main.getLanguage().get("Low"), Main.getLanguage().get("Medium"), Main.getLanguage().get("High") }));
+		
+		if (task.getPriority()!=0) {
+			comboBox_2.setSelectedItem(task.getPriorityString());
+		}
+			
 //		txtAddDueDate = new JTextField();
 //		txtAddDueDate.setBackground(Color.LIGHT_GRAY);
 //		txtAddDueDate.setText(this.task.getDueDate());
@@ -175,6 +193,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Task Completed");
+		//chckbxNewCheckBox.setVisible(false);
 		chckbxNewCheckBox.setBackground(Main.getChosenTheme().get(8)); // new Color(102, 153, 0)
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
 //		isCompleted = chckbxNewCheckBox.isEnabled();
@@ -188,14 +207,17 @@ public class KieyaAddTaskTestWindow extends JFrame {
 //		});
 		
 		//CHOOSE DATE
-		JLabel lblNewLabel_1 = new JLabel("Due Date:");
+		JLabel lblNewLabel_1 = new JLabel(Main.getLanguage().get("Due Date:"));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		this.dateChooser = new JDateChooser();
 		dateChooser.setDateFormatString("yyyy/MM/dd");
 	    
-	    if (dateChooser.getDate()==null) {
+		if (task.getDueDate()==null) {
 	    	dateChooser.setDate(new Date());
+	    }
+		else {
+	    	dateChooser.setDate(task.getDueDate());
 	    }
 		
 
@@ -203,17 +225,17 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		
 		//System.out.print(date);
 
-		JLabel lblNewLabel_2 = new JLabel("Time:");
+		JLabel lblNewLabel_2 = new JLabel(Main.getLanguage().get("Time:"));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		//JSpinField spinField = new JSpinField();
 		this.hours = new JSpinner(
-				 new SpinnerNumberModel(1, 0, 23, 1));
+				 new SpinnerNumberModel(task.getDueHour(), 0, 23, 1));
 
 		
 		
 		this.minutes = new JSpinner(
-				 new SpinnerNumberModel(0, 0, 59, 1));
+				 new SpinnerNumberModel(task.getDueMinute(), 0, 59, 1));
 		this.taskDueDateMinute = (int) minutes.getValue();
 		JLabel lblNewLabel_3 = new JLabel(":");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
@@ -319,18 +341,17 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		}
  
 		// Main.addTaskToFolder(task, folder);
-		
-		this.taskDueDateHour = (int) this.hours.getValue();
-		this.taskDueDateMinute = (int) this.minutes.getValue();
+				
 	    Date dateFromDateChooser = dateChooser.getDate();
-	    this.taskDueDate = String.format("%1$ty/%1$tm/%1$td", dateFromDateChooser);
-
+	    //this.taskDueDate = String.format("%1$ty/%1$tm/%1$td", dateFromDateChooser);
+	    this.taskDueDate=dateFromDateChooser;
+	    
 		task.setDescription(taskAreaDescription.getText());
 		task.setDueDate(taskDueDate);
 		task.setLabel(comboBox_1.getSelectedItem().toString());
 		task.setTitle(txtEnterTaskName.getText());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
-		task.setDueTime(taskDueDateHour + ":" + taskDueDateMinute);
+		task.setDueTime((int) this.hours.getValue(),(int) this.minutes.getValue());
 		
 		Integer folderIndex = comboBox.getSelectedIndex();
 
@@ -358,7 +379,16 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		this.setVisible(false);
 
 		if (this.inFolder) {
-			this.desplayState.runNewFolder();
+			this.desplayState2.runNewFolder();
+		}
+		else {
+			this.desplayState1.reborn();
+      	  try {
+      		  new DesplayState1(this.comingFrame);
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 
 	}

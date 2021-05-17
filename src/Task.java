@@ -1,4 +1,5 @@
  import java.io.Serializable;
+import java.util.Date;
 
 public class Task implements Serializable{
 //	//TODO: implement due. Argue on setLabels() method
@@ -9,8 +10,10 @@ public class Task implements Serializable{
 	private static final long serialVersionUID = -8052698667359727655L;
 	private String title;
 	private String description;
-	private String dueDate; //yyyy/mm/dd
+	private Date dueDate; //yyyy/mm/dd
 	private String dueTime; //00:00
+	private int dueMinute;
+	private int dueHour;
 	private int priority;
 //	private Label label; 
 	private String lable;
@@ -24,18 +27,19 @@ public class Task implements Serializable{
 //		//this.due = due; 
 //		this.priority = priority; 
 //		this.label = label; 
-		this.setTitle(new String("Add Title Here"));
+		this.setTitle(Main.getLanguage().get("Title"));
 		this.setDescription(new String(""));
-		this.setDueDate(new String("yyyy/mm/dd"));
-		this.setPriority(new String("Priority"));
-		this.setLabel(new String("Lable"));
+		//this.setDueDate(new String("yyyy/mm/dd"));
+		//this.setPriority(Main.getLanguage().get("Priority"));
+		this.setLabel(Main.getLanguage().get("Label"));
+		this.priority=0;
 		try {
 			this.setCompleted(false);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.setDueTime(new String("00:00"));
+		this.setDueTime(0,0);
 	}
 	
 //	public Task(String title, String description,/*??? due,*/ int priority, String label) {
@@ -88,12 +92,27 @@ public class Task implements Serializable{
 		//TODO: Do we want to completely reset every time? Or do we want to add and delete one by one? 
 	}
 	
-	public void setDueDate(String dueDate) {
+	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
 	}
 	
-	public void setDueTime(String dueTime) {
-		this.dueTime = dueTime;
+	public void setDueTime(int dueHour, int dueMinute) {
+		
+		this.dueHour=dueHour;
+		this.dueMinute=dueMinute;
+		
+		String dueHoursString = String.valueOf(dueHour);
+		if (dueHour < 10) {
+			dueHoursString = "0"+String.valueOf(dueHour);
+		}
+		
+		String dueMinuteString = String.valueOf(dueMinute);
+		if (dueMinute < 10) {
+			dueMinuteString = "0"+String.valueOf(dueMinuteString);
+		}
+		
+		this.dueTime = dueHoursString + ":" + dueMinuteString;
+		
 	}
 	
 	public void setCompleted(boolean completed) throws Exception {
@@ -158,16 +177,16 @@ public class Task implements Serializable{
 		String priorityString = "";
 		switch (this.priority) {
 		case 0:
-			priorityString="Priority";
+			priorityString=Main.getLanguage().get("Priority");
 		break;
 		case 1:
-			priorityString="Low";
+			priorityString=Main.getLanguage().get("Low");
 		break;
 		case 2:
-			priorityString="Medium";
+			priorityString=Main.getLanguage().get("Medium");
 		break;
 		case 3:
-			priorityString="High";
+			priorityString=Main.getLanguage().get("High");
 		break;
 		}
 		return priorityString; 
@@ -181,12 +200,24 @@ public class Task implements Serializable{
 	}
 
 	
-	public String getDueDate() {
+	public Date getDueDate() {
 		return dueDate;
+	}
+	
+	public String getDueDateString() {
+		return String.format("%1$ty/%1$tm/%1$td", this.dueDate);
 	}
 	
 	public String getDueTime() {
 		return this.dueTime;
+	}
+	
+	public int getDueMinute() {
+		return this.dueMinute;
+	}
+	
+	public int getDueHour() {
+		return this.dueHour;
 	}
 
 	public boolean isCompleted() {

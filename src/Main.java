@@ -56,6 +56,10 @@ public class Main {
 	private static ArrayList<Color> forestGreenTheme = new ArrayList<Color>();
 	private static ArrayList<Color> arcticDayTheme = new ArrayList<Color>();
 	private static ArrayList<Color> moonlitNightTheme = new ArrayList<Color>();
+	
+	//languages
+	private static HashMap<String, String> chinese = new HashMap<String, String>();
+	private static HashMap<String, String> english = new HashMap<String, String>();
 			
 	private static HashMap<Folder, ArrayList<Task>> folder2Tasks = new HashMap<Folder, ArrayList<Task>>();
 	private static HashMap<Task, ArrayList<Label>> task2Labels = new HashMap<Task, ArrayList<Label>>(); 
@@ -105,24 +109,132 @@ public class Main {
 		moonlitNightTheme.add(new Color(0, 60, 60)); //Addtask panel color
 		moonlitNightTheme.add(new Color(80, 100, 170)); //Addtask panel options 1 color
 		
+		//GENERAL
+		english.put("Done", "Done"); //
+		english.put("Cancel","Cancel"); //
+		english.put("Options", "Options");
+		english.put("What would you like to do?", "What would you like to do?"); //
+		
+		chinese.put("Done", "1"); //
+		chinese.put("Cancel","2"); //
+		chinese.put("Options", "3");
+		chinese.put("What would you like to do?", "4"); //
+		
+		//OPTIONS MENU options
+		english.put("Options", "Options");
+		english.put("How may we best assist you today?", "How may we best assist you today?");
+		english.put("Help", "Help"); //
+		english.put("Change Language","Change Language"); //
+		english.put("Change Theme","Change Theme"); //
+		
+		chinese.put("Options", "5");
+		chinese.put("How may we best assist you today?", "6");
+		chinese.put("Help", "7"); //
+		chinese.put("Change Language","8"); //
+		chinese.put("Change Theme","9"); //
+		
+		//HELP MENU options
+		english.put("Help Menu", "Help Menu"); //
+		english.put("What would you like help with?","What would you like help with?"); //
+		english.put("How to rename a folder","How to rename a folder"); //
+		english.put("How to delete or edit a task","How to delete or edit a task"); //
+		
+		chinese.put("Help Menu", "10"); //
+		chinese.put("What would you like help with?","11"); //
+		chinese.put("How to rename a folder","12"); //
+		chinese.put("How to delete or edit a task","13"); //
+		
+		//HELP MENU results
+		english.put("Right click a folder, write the new name, and confirm the change.", "Right click a folder, write the new name, and confirm the change."); //
+		english.put("Right click a task and you will be presented with the option to delete or edit the task.", "Right click a task and you will be presented with the option to delete or edit the task."); //
+		
+		chinese.put("Right click a folder, write the new name, and confirm the change.", "14"); //
+		chinese.put("Right click a task and you will be presented with the option to delete or edit the task.", "15"); //
+		
+		//LANGUAGES MENU options
+		english.put("Language Selection", "Language Selection"); //
+		english.put("What language would you like?", "What language would you like?"); //
+		
+		chinese.put("Language Selection", "16"); //
+		chinese.put("What language would you like?", "17"); //
+		
+		//THEMES options
+		english.put("Theme Selection", "Theme Selection");
+		english.put("How would you like the application to appear?","How would you like the application to appear?");
+		english.put("Forest Green","Forest Green"); //
+		english.put("Arctic Day","Arctic Day"); //
+		english.put("Moonlit Night","Moonlit Night"); //
+		
+		chinese.put("Theme Selection", "18");
+		chinese.put("How would you like the application to appear?","19");
+		chinese.put("Forest Green","20"); //
+		chinese.put("Arctic Day","21"); //
+		chinese.put("Moonlit Night","22"); //
+		
+		//MISC
+		english.put("Rename folder","Rename folder"); //
+		english.put("Home","Home"); //
+		english.put("Delete","Delete"); //
+		english.put("Edit","Edit"); //
+		
+		chinese.put("Rename folder","23"); //
+		chinese.put("Home","24"); //
+		chinese.put("Delete","25"); //
+		chinese.put("Edit","26"); //
+		
+		//ADD TASK PANEL
+		english.put("Title","Title"); //
+		english.put("Description","Description"); //
+		english.put("Select designation folder","Select designation folder"); //
+		english.put("Folder","Folder"); //
+		english.put("Select label","Select label"); //
+		english.put("Select priority","Select priority"); //
+		english.put("Low","Low"); //
+		english.put("Medium","Medium"); //
+		english.put("High","High"); //
+		english.put("Due Date:","Due Date:"); //
+		english.put("Time:","Time:"); //
+		english.put("Label","Label"); //
+		english.put("Priority","Priority"); //
+		english.put("Title","Title"); //
+		
+		chinese.put("Title","27"); //
+		chinese.put("Description","28"); //
+		chinese.put("Select designation folder","29"); //
+		chinese.put("Folder","30"); //
+		chinese.put("Select label","31"); //
+		chinese.put("Select priority","32"); //
+		chinese.put("Low","33"); //
+		chinese.put("Medium","34"); //
+		chinese.put("High","35"); //
+		chinese.put("Due Date:","36"); //
+		chinese.put("Time:","37"); //
+		chinese.put("Label","38"); //
+		chinese.put("Priority","39"); //
+		chinese.put("Title","40"); //
+		
 		//INITIALIZE FILES
 //		Folder folder1 = new Folder("folder1",1);
 //		Folder folder2 = new Folder("folder2",2);
 //		Folder folder3 = new Folder("folder3",3);
 //		Folder folder4 = new Folder("folder4",4);
 //		
-//		preferencesList.add(0); 
-//		preferencesList.add(0); 
 //		
 //		foldersList.add(folder1);
 //		foldersList.add(folder2);
 //		foldersList.add(folder3);
 //		foldersList.add(folder4);
 //		
+//		preferencesList.add(0); 
+//		preferencesList.add(0); 
+//		
+		
+//		
 		
 		//READ DATA FROM FILES
 
 		final Saver saver = new Saver();
+		//saver.save(preferencesList,tasksList,foldersList,labelsList); 
 		saver.read(preferencesList,tasksList,foldersList,labelsList);
 		System.out.println(foldersList.size());
 		
@@ -275,6 +387,16 @@ public class Main {
 				return moonlitNightTheme;
 		}
 		return forestGreenTheme;
+	}
+	
+	public static HashMap<String, String> getLanguage(){
+		switch (preferencesList.get(0)) {
+			case 0:
+				return english;
+			case 1:
+				return chinese;
+		}
+		return english;
 	}
 	
 	public static void addTaskToFolder(Task task, Folder folder) {
@@ -459,7 +581,7 @@ public class Main {
 		String date = "2500/01/01"; 
 		String time = "00:00"; 
 		if(task.getDueDate() != null && !task.getDueDate().equals("yyyy/mm/dd")) {
-			date = task.getDueDate(); 
+			date = task.getDueDateString(); 
 			if(date.length() != 10) {
 				System.out.println("Due date has an error in format :( Expected yyyy/mm/dd, got "+date);
 				date = "2500/01/01"; 
