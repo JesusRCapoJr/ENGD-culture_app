@@ -42,7 +42,7 @@ public class AddLabelFrame extends JFrame{
 	  	frame.setLayout(null);
 	  	
 	  	labelName = new JLabel();
-		labelName.setText("Label name: ");
+		labelName.setText("Label name: "); 
 		labelName.setBounds(10, 10, 160, 20);
 		frame.getContentPane().add(labelName);
 		labelName.setBackground(new Color(0,0,0,0));
