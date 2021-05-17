@@ -10,7 +10,7 @@ public class FolderLabelsPanel extends JPanel{
 	private int height; 
 	private static ArrayList<LabelButton> allLabelButtons = new ArrayList<LabelButton>(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
-	private final double BUTTON_CAP = 20; 
+	private final double BUTTON_CAP = 40; 
 	private final int BUTTON_GAP = 1; 
 	private int btnH; 
 	private int btnW; 
@@ -24,16 +24,20 @@ public class FolderLabelsPanel extends JPanel{
 		this.height = height; 
 		this.folder = folder; 
 		this.setBackground(Main.getChosenTheme().get(3));
-		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
+		this.btnH = (int) ((height-(BUTTON_CAP+1)*(BUTTON_GAP/2))/(BUTTON_CAP/2)); 
 		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
 		
 		constructAll(); 
 	}
 	
 	public void constructAll() {
+		
 		int i = 0;
+		if(this.folder.getLabels() == null) {
+			return; 
+		}
 		for(Label label:this.folder.getLabels()) {
-			LabelButton btn = new LabelButton(this, this.folder, label, 10, 20+(i+1)*BUTTON_GAP+i*btnH, btnW, btnH);
+			LabelButton btn = new LabelButton(this, this.folder, label, 10+(i%2)*(btnW+BUTTON_GAP), 50+((i/2)+1)*BUTTON_GAP/2+i*btnH, btnW, btnH);
 			btn.setBackground(Main.getChosenTheme().get(2));
 			allLabelButtons.add(btn); 
 			this.add(btn); 

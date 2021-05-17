@@ -27,9 +27,29 @@ public class AddLabelFrame extends JFrame{
 		initiate(); 
 	}
 	
+	public AddLabelFrame(Folder folder) {
+		if(folder != null) {
+			this.folder = folder; 
+		}else {
+			this.folder = new Folder("words", 0); 
+		}
+		this.label = new Label(""); 
+		initiate(); 
+	}
+	
 	public AddLabelFrame(Label label, Folder folder) {
-		this.folder = folder; 
-		this.label = label; 
+		if(label != null) {
+			this.label = label; 
+		}else {
+			this.label = new Label(""); 
+		}
+		if(folder != null) {
+			this.folder = folder; 
+		}else {
+			this.folder = new Folder("words", 0); 
+		}
+		this.label = new Label(""); 
+		
 		initiate(); 
 	}
 

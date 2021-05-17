@@ -6,34 +6,26 @@ import javax.swing.JOptionPane;
 
 public class AddLabelButton extends Button {
 	private JPanel world;
-	public static final double ADD_TASK_PANEL_X_RATIO = 0.3;
-	public static final double ADD_TASK_PANEL_Y_RATIO = 0.5;
 	private Color BGC = new Color(255, 0, 0, 0);
+	private Folder folder; 
 
-	public AddLabelButton(JPanel world, double upperX, double upperY, double width, double height) {
-		this.world = world;
+	public AddLabelButton(double upperX, double upperY, double width, double height) {
+		super("addLabel",upperX, upperY, width, height); 
+		this.folder = new Folder("lemon",0); 
+	}
+	
+	public AddLabelButton(Folder folder, double upperX, double upperY, double width, double height) {
+		super("addLabel",upperX, upperY, width, height); 
+		this.folder = folder; 
 	}
 
 	public void createAction() { // Action
 		ActionListener al = new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			addLabel();
+				new AddLabelFrame(folder); 
 			}
 		};
 		addActionListener(al);
-		
-	}
-
-	/*
-	 * When the method is called, it creates a new label. It is dependent on the
-	 * action listener for the addLabelButton
-	 * 
-	 * How should we access the panel/
-	 */
-	public void addLabel() {
-		final String labelName = JOptionPane.showInputDialog("Name of Label: ");
-		Label newLabel = new Label(labelName);
-		//world.addLabel(newLabel) ??? what do I access to add the label button
 		
 	}
 
