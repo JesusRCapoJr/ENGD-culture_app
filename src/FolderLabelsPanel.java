@@ -47,19 +47,21 @@ public class FolderLabelsPanel extends JPanel{
 		}
 	}
 	
-	/** 
-	 * Doesn't quite make sense here, but yeah here it is. May move to Main later. 
-	 * @param label
-	 */
-	public static void deleteLabel(Label label) {
-		try {
-			folder.getLabels().remove(label); 
-		}catch(Exception e) {
-			System.out.println("Label dosen't exist in this folder. Check your set-up. ");
-		}
-	}
+	//Steven Xia: no longer useful 
+//	/** 
+//	 * Doesn't quite make sense here, but yeah here it is. May move to Main later. 
+//	 * @param label
+//	 */
+//	public static void deleteLabel(Label label) {
+//		try {
+//			folder.getLabels().remove(label); 
+//		}catch(Exception e) {
+//			System.out.println("Label dosen't exist in this folder. Check your set-up. ");
+//		}
+//	}
 	
 	public void f5() {
 		this.repaint();
+		System.out.println("FolderLabelPanel: f5() called");
 	}
 }

@@ -23,7 +23,7 @@ public class AddLabelFrame extends JFrame{
 	
 	public AddLabelFrame() {
 		this.label = new Label(""); 
-		this.folder = new Folder("words", -1); 
+		this.folder = new Folder("words", 0); 
 		initiate(); 
 	}
 	
@@ -77,7 +77,7 @@ public class AddLabelFrame extends JFrame{
 							Main.getAllFolders().get(3).getTitle()}
 					)
 				);
-			selectFolders.setSelectedIndex(folder.getID()+1);
+			selectFolders.setSelectedIndex(folder.getID());
 		frame.getContentPane().add(selectFolders); 
 		
 		frame.setVisible(true); 
@@ -86,7 +86,7 @@ public class AddLabelFrame extends JFrame{
 	public void setupLabel() {
 		String selected = selectFolders.getSelectedItem().toString(); 
 		this.label.setText(textField.getText());
-		if(Main.registerLabel(label)) {
+		if(!Main.registerLabel(label)) {
 			if(selected.equals(Main.getAllFolders().get(0).getTitle())) {
 				Main.getAllFolders().get(0).addLabel(label);
 			}else if(selected.equals(Main.getAllFolders().get(1).getTitle())) {
@@ -103,7 +103,6 @@ public class AddLabelFrame extends JFrame{
 	}
 	
 	public void f5() {
-		this.setVisible(false);
-		this.setVisible(true);
+		this.repaint();
 	}
 }

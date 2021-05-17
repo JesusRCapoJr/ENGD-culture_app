@@ -15,7 +15,7 @@ import javax.swing.JTextPane;
 public class LabelButton extends ToggleButton {
 	private Label label;
 	private Folder folder; 
-	private boolean selected = false; 
+	private boolean selected; 
 	private FolderLabelsPanel flp; 
 	
 	public LabelButton(FolderLabelsPanel flp, Folder folder, Label label, int upperLeftX, int upperLeftY, int width, int height) { //? 
@@ -23,6 +23,7 @@ public class LabelButton extends ToggleButton {
 		this.flp = flp; 
 		this.label = label;
 		this.folder = folder; 
+		this.selected = false; 
 		this.createAction();
 	}
 	
@@ -34,7 +35,6 @@ public class LabelButton extends ToggleButton {
 						unClick(); 
 					}else {
 						FolderLabelsPanel.cleanAll();
-						
 						setSelected(true); 
 						selected = true; 
 					}
@@ -60,9 +60,11 @@ public class LabelButton extends ToggleButton {
 			          if (response == 0) {
 			        	  	folder.removeLabel(label);
 			        	  	Main.getAllLabels().remove(label);
+			        	  	flp.f5(); 
 			        	  	
 			          }else if (response == 1) {
-			        	  	new AddLabelFrame(); 
+			        	  	new AddLabelFrame(label, folder); 
+			        	  	flp.f5();
 			          }
 				}
 			}
@@ -78,5 +80,13 @@ public class LabelButton extends ToggleButton {
 	
 	public void displayLabel() {
 		flp.f5();
+	}
+	
+	public boolean getSelected() {
+		return this.selected; 
+	}
+	
+	public Label getThisLabel() {
+		return this.label; 
 	}
 }
