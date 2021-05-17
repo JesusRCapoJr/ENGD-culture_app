@@ -306,7 +306,7 @@ public class Main {
 //			e.printStackTrace();
 //			e.getStackTrace();
 //		}
-		
+		System.out.println("we are outside of the timer");
 		Timer timer = new Timer();
 		TimerTask task = new TimerTask() {
 
@@ -322,7 +322,8 @@ public class Main {
 			}
 			
 		};
-		timer.schedule(task, 1000);
+		timer.schedule(task, 10);
+		System.out.println("look the timer worked");
 		
 	}
 

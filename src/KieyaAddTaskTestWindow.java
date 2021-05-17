@@ -6,6 +6,8 @@ import javax.swing.JPanel;
 import javax.swing.JSpinner;
 import javax.swing.border.EmptyBorder;
 
+import com.toedter.calendar.JDateChooser;
+
 //import org.jdatepicker.JDatePicker;
 
 import javax.swing.GroupLayout;
@@ -33,8 +35,6 @@ import java.util.Objects;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
 
-import com.toedter.calendar.JDateChooser;
-import com.toedter.components.JSpinField;
 
 public class KieyaAddTaskTestWindow extends JFrame {
 

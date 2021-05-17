@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import com.toedter.calendar.JDateChooser;
+import com.toedter.components.JSpinField;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
@@ -22,8 +26,6 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
-import com.toedter.calendar.JDateChooser;
-import com.toedter.components.JSpinField;
 
 public class AddTaskWindowTest extends JFrame {
 
