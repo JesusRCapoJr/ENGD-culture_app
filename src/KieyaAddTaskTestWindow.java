@@ -192,13 +192,13 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (task.getFolder()!=null) {
+				//if (task.getFolder()!=null) {
 					setTaskInformation();
-				}
-				else {
+				//}
+				//else {
 					//JOptionPane.showMessageDialog(null, Main.getLanguage().get("Please select a folder!"));
 				}
-			}
+			//}
 		});
 
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
