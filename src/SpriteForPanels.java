@@ -54,7 +54,7 @@ public class SpriteForPanels {
 	}
 	public void update() throws Exception {// need a way to check time elapsed in the system
 		//mabe use a time maker that updates and keeps track of the 
-		System.out.println("we are in sprite update");
+//		System.out.println("we are in sprite update");
 		LocalTime timeDifrance = (java.time.LocalTime.now().minusSeconds(this.updatedTime.getSecond()));
 		
 		if(timeDifrance.getSecond() > timeCap) {
@@ -72,7 +72,7 @@ public class SpriteForPanels {
 			Score=6;
 		}
 		
-		System.out.println("the score is: " + Score);
+//		System.out.println("the score is: " + Score);
 		
 		if(this.Score<1) {//gifs for each score 0-1 = low
 			this.displaySprite(0);

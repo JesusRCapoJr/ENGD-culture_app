@@ -65,10 +65,12 @@ public class CheckButton extends JToggleButton{
 		}
 		private void changeState() throws Exception { 
 			if (this.toggle == false) {
+				this.toggle = true;
 				this.task.setCompleted(true);
 				System.out.println("changed to true");
 			}
 			else {
+				this.toggle = false;
 				this.task.setCompleted(false);
 				System.out.println("changed to false");
 			}
