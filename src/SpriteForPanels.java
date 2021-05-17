@@ -15,12 +15,12 @@ import javax.swing.SwingConstants;
 
 public class SpriteForPanels {
 	private ArrayList<File> fileList = new ArrayList<File>();
-	public double Score = 0;
-	private int width = 300;
-	private int hight = 200;
-	private int yPoint = 20;
-	private int xPoint = 1600;
-	private Color BGC = new Color(255,255,255); 
+	public int Score = 0;
+//	private int width = 300;
+//	private int hight = 200;
+//	private int yPoint = 20;
+//	private int xPoint = 1600;
+//	private Color BGC = new Color(255,255,255); 
 	private JFrame world;
 	private JPanel panel;
 	private LocalTime updatedTime = null;  
@@ -50,6 +50,7 @@ public class SpriteForPanels {
 	}
 	public void update() throws Exception {// need a way to check time elapsed in the system
 		//mabe use a time maker that updates and keeps track of the 
+		System.out.println("we are in sprite update");
 		LocalTime timeDifrance = (java.time.LocalTime.now().minusSeconds(this.updatedTime.getSecond()));
 		
 		if(timeDifrance.getSecond() > timeCap) {
@@ -63,6 +64,12 @@ public class SpriteForPanels {
 			Score=0;
 		}
 		
+		if(Score>6) {
+			Score=6;
+		}
+		
+		System.out.println("the score is: " + Score);
+		
 		if(this.Score<1) {//gifs for each score 0-1 = low
 			this.displaySprite(0);
 		}
@@ -75,7 +82,7 @@ public class SpriteForPanels {
 		else if(this.Score<4) {//gifs for each score 3-4 = mid-high
 			this.displaySprite(3);
 		}
-		else if(this.Score>=4) {//gifs for each score 5+ = high
+		else  {//gifs for each score 5+ = high
 			this.displaySprite(4);
 		}
 		this.panel.revalidate();
@@ -95,7 +102,7 @@ public class SpriteForPanels {
 	}
 	
 	private void displaySprite(int positionInList) throws IOException {    //main code from git hub
-		 File panaFile = this.fileList.get((int) Score);
+		 File panaFile = this.fileList.get(positionInList);
 		 ImageIcon icon = new ImageIcon(panaFile.toString());
 		 JLabel label = new JLabel(icon,SwingConstants.CENTER);
 		 	this.panel.removeAll();
@@ -124,7 +131,7 @@ public class SpriteForPanels {
 //	        world.setVisible(true);
 //		    
 //	}
-	public void addFile(String newFileString) throws MalformedURLException {
+	public void addFile(String newFileString) throws MalformedURLException { ///not used i dont think
 		File newFile = new File(newFileString);
 		this.fileList.add(newFile);
 	}
@@ -133,4 +140,5 @@ public class SpriteForPanels {
 			this.world = world;
 			this.panel = panel;
 	}
+	
 }
