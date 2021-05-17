@@ -115,10 +115,11 @@ public class Main {
 		english.put("Options", "Options");
 		english.put("What would you like to do?", "What would you like to do?"); //
 		
-		chinese.put("Done", "1"); //
-		chinese.put("Cancel","2"); //
-		chinese.put("Options", "3");
-		chinese.put("What would you like to do?", "4"); //
+		chinese.put("Done", "完成"); //
+		chinese.put("Cancel","取消"); //
+		chinese.put("Options", "选项");
+		chinese.put("What would you like to do?", "您想做什么？"); //
+		//chinese.put("What would you like to do?", "则撒？"); //A more aggressive way of asking... 
 		
 		//OPTIONS MENU options
 		english.put("Options", "Options");
@@ -127,11 +128,11 @@ public class Main {
 		english.put("Change Language","Change Language"); //
 		english.put("Change Theme","Change Theme"); //
 		
-		chinese.put("Options", "5");
-		chinese.put("How may we best assist you today?", "6");
-		chinese.put("Help", "7"); //
-		chinese.put("Change Language","8"); //
-		chinese.put("Change Theme","9"); //
+		chinese.put("Options", "选项");
+		chinese.put("How may we best assist you today?", "您希望我做什么？");
+		chinese.put("Help", "帮助"); //
+		chinese.put("Change Language","更改语言"); //
+		chinese.put("Change Theme","更改颜色主题"); //
 		
 		//HELP MENU options
 		english.put("Help Menu", "Help Menu"); //
@@ -139,24 +140,24 @@ public class Main {
 		english.put("How to rename a folder","How to rename a folder"); //
 		english.put("How to delete or edit a task","How to delete or edit a task"); //
 		
-		chinese.put("Help Menu", "10"); //
-		chinese.put("What would you like help with?","11"); //
-		chinese.put("How to rename a folder","12"); //
-		chinese.put("How to delete or edit a task","13"); //
+		chinese.put("Help Menu", "帮助菜单"); //
+		chinese.put("What would you like help with?","如何..."); //
+		chinese.put("How to rename a folder","重命名文件夹"); //
+		chinese.put("How to delete or edit a task","编辑或删除任务"); //
 		
 		//HELP MENU results
 		english.put("Right click a folder, write the new name, and confirm the change.", "Right click a folder, write the new name, and confirm the change."); //
 		english.put("Right click a task and you will be presented with the option to delete or edit the task.", "Right click a task and you will be presented with the option to delete or edit the task."); //
 		
-		chinese.put("Right click a folder, write the new name, and confirm the change.", "14"); //
-		chinese.put("Right click a task and you will be presented with the option to delete or edit the task.", "15"); //
+		chinese.put("Right click a folder, write the new name, and confirm the change.", "右键文件夹以重命名"); //
+		chinese.put("Right click a task and you will be presented with the option to delete or edit the task.", "右键任务以编辑或删除"); //
 		
 		//LANGUAGES MENU options
 		english.put("Language Selection", "Language Selection"); //
 		english.put("What language would you like?", "What language would you like?"); //
 		
-		chinese.put("Language Selection", "16"); //
-		chinese.put("What language would you like?", "17"); //
+		chinese.put("Language Selection", "选择语言"); //
+		chinese.put("What language would you like?", "您说什么语言？"); //
 		
 		//THEMES options
 		english.put("Theme Selection", "Theme Selection");
@@ -165,11 +166,11 @@ public class Main {
 		english.put("Arctic Day","Arctic Day"); //
 		english.put("Moonlit Night","Moonlit Night"); //
 		
-		chinese.put("Theme Selection", "18");
-		chinese.put("How would you like the application to appear?","19");
-		chinese.put("Forest Green","20"); //
-		chinese.put("Arctic Day","21"); //
-		chinese.put("Moonlit Night","22"); //
+		chinese.put("Theme Selection", "选择颜色主题");
+		chinese.put("How would you like the application to appear?","更改颜色主题");
+		chinese.put("Forest Green","森林"); //
+		chinese.put("Arctic Day","北极"); //
+		chinese.put("Moonlit Night","月夜"); //
 		
 		//MISC
 		english.put("Rename folder","Rename folder"); //
@@ -177,10 +178,10 @@ public class Main {
 		english.put("Delete","Delete"); //
 		english.put("Edit","Edit"); //
 		
-		chinese.put("Rename folder","23"); //
-		chinese.put("Home","24"); //
-		chinese.put("Delete","25"); //
-		chinese.put("Edit","26"); //
+		chinese.put("Rename folder","重命名文件夹"); //
+		chinese.put("Home","返回主页"); //
+		chinese.put("Delete","删除"); //
+		chinese.put("Edit","编辑"); //
 		
 		//ADD TASK PANEL
 		english.put("Title","Title"); //
@@ -196,22 +197,27 @@ public class Main {
 		english.put("Time:","Time:"); //
 		english.put("Label","Label"); //
 		english.put("Priority","Priority"); //
-		english.put("Title","Title"); //
+		//english.put("Title","Title"); //
 		
-		chinese.put("Title","27"); //
-		chinese.put("Description","28"); //
-		chinese.put("Select designation folder","29"); //
-		chinese.put("Folder","30"); //
-		chinese.put("Select label","31"); //
-		chinese.put("Select priority","32"); //
-		chinese.put("Low","33"); //
-		chinese.put("Medium","34"); //
-		chinese.put("High","35"); //
-		chinese.put("Due Date:","36"); //
-		chinese.put("Time:","37"); //
-		chinese.put("Label","38"); //
-		chinese.put("Priority","39"); //
-		chinese.put("Title","40"); //
+		chinese.put("Title","任务名（必填）"); //
+		chinese.put("Description","描述"); //
+		chinese.put("Select designation folder","选择文件夹（必填）"); //
+		chinese.put("Folder","选择文件夹"); //
+		chinese.put("Select label","选择标签"); //
+		chinese.put("Select priority","选择优先度"); //
+		chinese.put("Low","低"); //
+		//chinese.put("Low","别忘了就好"); //More of the same meaning... 
+		chinese.put("Medium","中"); //
+		chinese.put("High","高"); //
+		chinese.put("Due Date:","计划完成日期"); //
+		chinese.put("Time:","时间"); //
+		chinese.put("Label","标签"); //
+		chinese.put("Priority","优先度"); //
+		//chinese.put("Title","40"); //
+		
+		//AddLabelFrame
+		english.put("Label name: ", "Label name: "); 
+		chinese.put("Label name: ", "标签名"); 
 		
 		//INITIALIZE FILES
 //		Folder folder1 = new Folder("folder1",1);

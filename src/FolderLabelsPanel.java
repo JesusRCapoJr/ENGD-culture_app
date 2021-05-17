@@ -11,7 +11,7 @@ public class FolderLabelsPanel extends JPanel{
 	private static ArrayList<LabelButton> allLabelButtons = new ArrayList<LabelButton>(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
 	private final double BUTTON_CAP = 40; 
-	private final int BUTTON_GAP = 1; 
+	private final int BUTTON_GAP = 10; 
 	private int btnH; 
 	private int btnW; 
 	
@@ -36,11 +36,12 @@ public class FolderLabelsPanel extends JPanel{
 			return; 
 		}
 		
-		AddLabelButton addLabel = new AddLabelButton(this.folder, 10, 10, btnW, btnH); 
+		AddLabelButton addLabel = new AddLabelButton(this.folder, 10, 10, 2*btnW, 30); 
+		this.add(addLabel); 
 		
 		int i = 0;
 		for(Label label:this.folder.getLabels()) {
-			LabelButton btn = new LabelButton(this, this.folder, label, 10+(i%2)*(btnW+BUTTON_GAP), 50+((i/2)+1)*BUTTON_GAP/2+i*btnH, btnW, btnH);
+			LabelButton btn = new LabelButton(this, this.folder, label, 10+(i%2)*(btnW+BUTTON_GAP), 50+((int)(i/2)+1)*(btnH+BUTTON_GAP)+i*btnH, btnW, btnH);
 			btn.setBackground(Main.getChosenTheme().get(2));
 			allLabelButtons.add(btn); 
 			this.add(btn); 
@@ -69,6 +70,6 @@ public class FolderLabelsPanel extends JPanel{
 	
 	public void f5() {
 		this.repaint();
-		System.out.println("FolderLabelPanel: f5() called");
+//		System.out.println("FolderLabelPanel: f5() called");
 	}
 }
