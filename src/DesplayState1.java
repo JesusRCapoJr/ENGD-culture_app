@@ -145,7 +145,7 @@ public class DesplayState1 {
 		settingsButtonPanel.setVisible(true);
 		frame.add(settingsButtonPanel);
 		
-		JButton settingsButton = new JButton();
+		JButton settingsButton = new JButton(); 
 		//settingsButton.setBackground(Color.BLACK);
 		BufferedImage settingsIcon = ImageIO.read(new File("texture/resized_settings.png")); 
 		
