@@ -101,6 +101,9 @@ public class Task implements Serializable{
 		if(this.completed==true) {
 			Main.sprite.taskConpleted();
 		}
+		else {
+			Main.sprite.taskUnConpleted();
+		}
 		
 //		Main.sprite.taskConpleted();
 	}

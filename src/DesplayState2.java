@@ -314,9 +314,10 @@ public class DesplayState2 {
 //		sprite.Score = 2;
 //		sprite.update();
 		Main.sprite.changeAttachments(frame, SpritePanel);
-		Main.sprite.update();
+		
 
 		frame.getContentPane().add(SpritePanel);
+		
 		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setValue((int) (Main.sprite.Score * 20));
@@ -327,6 +328,7 @@ public class DesplayState2 {
 		frame.setBounds(0, 0, 1545, 950);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Main.sprite.update();
 		
 //		
 		JButton AddNewTask = new JButton();

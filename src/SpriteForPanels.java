@@ -48,6 +48,10 @@ public class SpriteForPanels {
 		updatedTime = java.time.LocalTime.now();
 		this.update();
 	}
+	public void taskUnConpleted() throws Exception {
+		Score--;
+		this.update();
+	}
 	public void update() throws Exception {// need a way to check time elapsed in the system
 		//mabe use a time maker that updates and keeps track of the 
 		System.out.println("we are in sprite update");
