@@ -40,7 +40,7 @@ public class FolderButton extends Button {
 				//PandativityFrame.reborn();  //For testing only
 				//DesplayState1.reborn();
 					try {
-						System.out.println("tried"); 
+						//System.out.println("tried"); 
 						constructAll();
 					} catch (Exception e1) {
 						// TODO Auto-generated catch block
