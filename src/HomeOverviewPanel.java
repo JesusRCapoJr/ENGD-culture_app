@@ -21,7 +21,7 @@ public class HomeOverviewPanel extends JPanel{
 	private int height; 
 	private Folder folder = null; 
 	private Color color = new Color(143, 188, 143); 
-	private ArrayList<Task> tsks = new ArrayList<Task>(); 
+	private ArrayList<Task> tasks = new ArrayList<Task>(); 
 	
 	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
@@ -78,21 +78,17 @@ public class HomeOverviewPanel extends JPanel{
 		
 		for(Folder folder:Main.getAllFolders()) {
 			for(Task task:folder.getTasks()) {
-				 tsks.add(task); 
+				 tasks.add(task); 
 			}
 		}
 //		test(); 
 		this.setBackground(new Color(105, 105, 105));
 		
 		//sort by Due date, then priority
-		HashMap<Task, Double> dues = new HashMap<Task, Double>(); 
-		for(Task task:tsks) {
-			double dateTimeRaw = Main.getDueRaw(task); 
-			dues.put(task, dateTimeRaw); 
-		}
+		Main.sortTasksBy(tasks, "dueAndPriority");
 		
 		int i = 0; 
-		for(Task task:tsks) {
+		for(Task task:tasks) {
 			constructButton(i,task); 
 			i++;
 		}

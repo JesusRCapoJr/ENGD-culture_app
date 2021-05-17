@@ -343,11 +343,13 @@ public class Main {
 			
 			for(double j:dueTasks.keySet()) {
 				for(double i:dueTasks.keySet()) {
+					//System.out.println("i value: "+i);
 					if(i < min && i >= currentMax) {
 						min = i; 
 					}
 				}
 				currentMax = min; 
+				System.out.println("min value: "+min);
 				dues.add(min); 
 			}
 			
@@ -387,6 +389,7 @@ public class Main {
 			}
 			
 		}else if(method.equals("dueAndPriority")){
+			
 			//Sort by due
 			sortTasksBy(tasks, "due"); 
 			
@@ -429,7 +432,7 @@ public class Main {
 	 * @return dateTimeRawInt
 	 */
 	public static double getDueRaw(Task task) {
-		String date = "3000/01/01"; 
+		String date = "2500/01/01"; 
 		String time = "00:00"; 
 		if(task.getDueDate() != null && !task.getDueDate().equals("yyyy/mm/dd")) {
 			date = task.getDueDate(); 
@@ -438,14 +441,47 @@ public class Main {
 			time = task.getDueTime(); 
 		}
 		String dateTimeRaw = date.substring(0,4)+date.substring(5,7)+date.substring(8,10)+time.substring(0,2)+time.substring(3,5);
-		System.out.println("date: "+date+" time: "+time+" dateTimeRaw: "+dateTimeRaw);
+		//System.out.println("date: "+date+" time: "+time+" dateTimeRaw: "+dateTimeRaw);
 		double dateTimeRawInt = 0.0; 
 		
 		int l = dateTimeRaw.length() - 1; 
-		for(int i=0;i<l;i++) {
-			dateTimeRawInt += (double)(dateTimeRaw.charAt(l-i)) * Math.pow(10, i); 
-		}
+		for(int i=0; i<=l; i++) {
+			double digit = 0; 
+			switch(dateTimeRaw.charAt(l-i)) {
+			case '1': 
+				digit = 1; 
+				break; 
+			case '2': 
+				digit = 2;
+				break;
+			case '3':
+				digit = 3;
+				break; 
+			case '4':
+				digit = 4;
+				break; 
+			case '5': 
+				digit = 5;
+				break; 
+			case '6': 
+				digit = 6;
+				break; 
+			case '7': 
+				digit = 7; 
+				break; 
+			case '8': 
+				digit = 8; 
+				break; 
+			case '9': 
+				digit = 9; 
+				break; 
+			default: 
+			}
+			dateTimeRawInt += digit * Math.pow(10, i); 
+			//System.out.println("What the hack: "+(double)(dateTimeRaw.charAt(l-i))+" pow: "+Math.pow(10, i));
+		} 
 		
+		//System.out.println(dateTimeRawInt);
 		return dateTimeRawInt; 
 	}
 
