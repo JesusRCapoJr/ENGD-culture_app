@@ -227,7 +227,7 @@ public class DesplayState2 {
 			panel.add(taskButton); 
 			panel.add(completedTaskButton);
 			panel.add(taskDayLabel);
-			panel.add(taskTimeLabel);
+			panel.add(taskTimeLabel); 
 			
 			
 			taskButton.addActionListener(new ActionListener() {
