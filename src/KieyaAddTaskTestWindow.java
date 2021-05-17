@@ -3,13 +3,18 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JSpinner;
 import javax.swing.border.EmptyBorder;
+
+//import org.jdatepicker.JDatePicker;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.SwingConstants;
@@ -19,9 +24,15 @@ import javax.swing.JTextArea;
 import javax.swing.JCheckBox;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
+import java.beans.EventHandler;
+//import java.sql.Date;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Objects;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
+
 import com.toedter.calendar.JDateChooser;
 import com.toedter.components.JSpinField;
 
@@ -32,6 +43,10 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private JComboBox comboBox;
 	private JComboBox comboBox_1;
 	private JComboBox comboBox_2;
+	private JSpinner hours;
+	private JSpinner minutes;
+	private JDateChooser dateChooser;
+	
 	// private JTextField txtAddDueDate;
 	// private JTextField txtDue;
 	private JTextArea taskAreaDescription;
@@ -79,7 +94,9 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		this.runAddTaskWindow();
 	}
 
+	@SuppressWarnings("deprecation")
 	public void runAddTaskWindow() {
+
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setBounds(17, 180, 750, 380);
@@ -169,27 +186,40 @@ public class KieyaAddTaskTestWindow extends JFrame {
 //		 }	
 //			
 //		});
+		
+		//CHOOSE DATE
 		JLabel lblNewLabel_1 = new JLabel("Due Date:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JDateChooser dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("YYYY/MM/d");
-		this.taskDueDate = dateChooser.getDateFormatString();
+		this.dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("yyyy/mm/dd");
+	    
+	    if (dateChooser.getDate()==null) {
+	    	dateChooser.setDate(new Date());
+	    }
+		
+
+	    //this.taskDueDate=String.valueOf(dateChooser.get);
+		
+		//System.out.print(date);
 
 		JLabel lblNewLabel_2 = new JLabel("Time:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
-		JSpinField spinField = new JSpinField();
-		spinField.setMaximum(23);
-		spinField.setMinimum(00);
-		this.taskDueDateHour = spinField.getValue();
-		JSpinField spinField_1 = new JSpinField();
-		spinField_1.setMaximum(59);
-		spinField_1.setMinimum(00);
-		this.taskDueDateMinute = spinField.getValue();
+		//JSpinField spinField = new JSpinField();
+		this.hours = new JSpinner(
+				 new SpinnerNumberModel(1, 1, 12, 1));
+
+		
+		
+		this.minutes = new JSpinner(
+				 new SpinnerNumberModel(0, 0, 59, 1));
+		this.taskDueDateMinute = (int) minutes.getValue();
 		JLabel lblNewLabel_3 = new JLabel(":");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		//System.out.println(taskDueDateHour);
+		System.out.println(this.taskDueDateMinute);
 
 //		txtDue = new JTextField();
 //		txtDue.setEditable(false);
@@ -222,12 +252,12 @@ public class KieyaAddTaskTestWindow extends JFrame {
 								.addPreferredGap(ComponentPlacement.UNRELATED)
 								.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_contentPane.createSequentialGroup()
-												.addComponent(spinField, GroupLayout.PREFERRED_SIZE, 39,
+												.addComponent(hours, GroupLayout.PREFERRED_SIZE, 39,
 														GroupLayout.PREFERRED_SIZE)
 												.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
 												.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 6,
 														GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.RELATED).addComponent(spinField_1,
+												.addPreferredGap(ComponentPlacement.RELATED).addComponent(minutes,
 														GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
 										.addComponent(dateChooser, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
 						.addGroup(gl_contentPane.createSequentialGroup().addGap(17).addComponent(textArea,
@@ -252,9 +282,9 @@ public class KieyaAddTaskTestWindow extends JFrame {
 												.addComponent(lblNewLabel_3)
 												.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 19,
 														GroupLayout.PREFERRED_SIZE)
-												.addComponent(spinField_1, GroupLayout.PREFERRED_SIZE,
+												.addComponent(minutes, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-												.addComponent(spinField, GroupLayout.PREFERRED_SIZE,
+												.addComponent(hours, GroupLayout.PREFERRED_SIZE,
 														GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 						.addPreferredGap(ComponentPlacement.RELATED)
 						.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE).addGap(18)
@@ -289,6 +319,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		}
  
 		// Main.addTaskToFolder(task, folder);
+		
+		this.taskDueDateHour = (int) this.hours.getValue();
+		this.taskDueDateMinute = (int) this.minutes.getValue();
+	    Date dateFromDateChooser = dateChooser.getDate();
+	    this.taskDueDate = String.format("%1$ty/%1$tm/%1$td", dateFromDateChooser);
 
 		task.setDescription(taskAreaDescription.getText());
 		task.setDueDate(taskDueDate);
@@ -296,7 +331,6 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		task.setTitle(txtEnterTaskName.getText());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
 		task.setDueTime(taskDueDateHour + ":" + taskDueDateMinute);
-		//System.out.print("%i" + ":" + "%i", taskDueDateHour, taskDueDateMinute);
 		
 		Integer folderIndex = comboBox.getSelectedIndex();
 
