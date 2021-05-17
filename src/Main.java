@@ -306,26 +306,31 @@ public class Main {
 //			e.printStackTrace();
 //			e.getStackTrace();
 //		}
-		System.out.println("we are outside of the timer");
-		Timer timer = new Timer();
-		TimerTask task = new TimerTask() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				try {
-					Main.sprite.update();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-			
-		};
-		timer.schedule(task, 10);
-		System.out.println("look the timer worked");
 		
-	}
+		
+//		System.out.println("we are outside of the timer");     // atemped one in having a globle update...
+//		Timer timer = new Timer();
+//		TimerTask task = new TimerTask() {
+//
+//			@Override
+//			public void run() {
+//				// TODO Auto-generated method stub
+//				try {
+//					Main.sprite.update();
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//			
+//		};
+//		timer.schedule(task, 10);
+//		System.out.println("look the timer worked");
+		
+		GlobleUpdate GU = new GlobleUpdate();
+		GU.start();
+		
+	}// end of main
 
 
 	public static int getWidth() {
