@@ -74,14 +74,14 @@ public class HomeOverviewPanel extends JPanel{
 	}
 	
 	public void constructAll() {
-//		int i = 0; 
-//		for(Folder folder:Main.getAllFolers()) {
-//			for(Task task:Main.getTasksByFolder(folder)) {
-//				constructButton(i,task); 
-//				i++; 
-//			}
-//		}
-		test(); 
+		int i = 0; 
+		for(Folder folder:Main.getAllFolders()) {
+			for(Task task:folder.getTasks()) {
+				constructButton(i,task); 
+				i++; 
+			}
+		}
+//		test(); 
 		this.setBackground(new Color(105, 105, 105));
 	}
 	

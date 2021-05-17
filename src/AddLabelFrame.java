@@ -6,6 +6,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
@@ -15,7 +16,7 @@ public class AddLabelFrame extends JFrame{
 	private Folder folder; 
 	
 	private JFrame frame; 
-	private JTextPane txtpnLabelName; 
+	private JLabel labelName; 
 	private JTextField textField; 
 	private JButton doneBtn; 
 	private JComboBox selectFolders; 
@@ -40,12 +41,12 @@ public class AddLabelFrame extends JFrame{
 	  	frame.setBackground(Main.getChosenTheme().get(7));
 	  	frame.setLayout(null);
 	  	
-	  	txtpnLabelName = new JTextPane();
-		txtpnLabelName.setText("Label name: ");
-		txtpnLabelName.setBounds(10, 10, 160, 20);
-		frame.getContentPane().add(txtpnLabelName);
-		txtpnLabelName.setBackground(new Color(0,0,0,0));
-	  	
+	  	labelName = new JLabel();
+		labelName.setText("Label name: ");
+		labelName.setBounds(10, 10, 160, 20);
+		frame.getContentPane().add(labelName);
+		labelName.setBackground(new Color(0,0,0,0));
+		
 	  	textField = new JTextField();
 		textField.setBounds(10, 32, 160, 20);
 		frame.getContentPane().add(textField);
