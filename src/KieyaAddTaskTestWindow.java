@@ -187,7 +187,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		textArea.setText(this.task.getDescription());
 		this.taskAreaDescription = textArea;
 
-		JButton btnNewButton = new JButton("Done!");
+		JButton btnNewButton = new JButton(Main.getLanguage().get("Done"));
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
