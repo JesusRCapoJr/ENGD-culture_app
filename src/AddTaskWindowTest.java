@@ -22,6 +22,8 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.components.JSpinField;
 
 public class AddTaskWindowTest extends JFrame {
 
@@ -30,8 +32,6 @@ public class AddTaskWindowTest extends JFrame {
 	private JComboBox comboBox;
 	private JComboBox comboBox_1;
 	private JComboBox comboBox_2;
-	private JTextField txtAddDueDate;
-	private JTextField txtDue;
 	private JTextArea taskAreaDescription;
 	private Task task;
 	private boolean inFolder;
@@ -77,7 +77,7 @@ public class AddTaskWindowTest extends JFrame {
 	public void runAddTaskWindow() {
 		setAlwaysOnTop(true);
 		setResizable(false);
-		setBounds(17, 180, 741, 393);
+		setBounds(17, 180, 750, 380);
 		contentPane = new JPanel();
 		contentPane.setBackground(Main.getChosenTheme().get(7));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -126,11 +126,6 @@ public class AddTaskWindowTest extends JFrame {
 		comboBox_2.setToolTipText("Select priority");
 		comboBox_2.setModel(new DefaultComboBoxModel(new String[] {this.task.getPriorityString(), "Low", "Medium", "High" }));
 
-		txtAddDueDate = new JTextField();
-		txtAddDueDate.setBackground(Color.LIGHT_GRAY);
-		txtAddDueDate.setText(this.task.getDueDate());
-		txtAddDueDate.setColumns(10);
-
 		
 
 		JTextArea textArea = new JTextArea();
@@ -154,17 +149,27 @@ public class AddTaskWindowTest extends JFrame {
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Task Completed");
 		chckbxNewCheckBox.setBackground(Main.getChosenTheme().get(8)); //new Color(102, 153, 0)
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-//		chckbxNewCheckBox.addActionListener(new ActionListener() {
-//		 public void actionPerformed(ActionEvent arg0) {
-//			checkTaskCompletion();
-//		}
-//		});
 		
-		txtDue = new JTextField();
-		txtDue.setEditable(false);
-		txtDue.setBackground(Main.getChosenTheme().get(8));
-		txtDue.setText("Due Date");
-		txtDue.setColumns(10);
+		JLabel lblNewLabel_1 = new JLabel("Due Date:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JDateChooser dateChooser = new JDateChooser();
+		dateChooser.setDateFormatString("YYYY/MM/d");
+		
+		JLabel lblNewLabel_2 = new JLabel("Time:");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
+		JSpinField spinField = new JSpinField();
+		spinField.setMaximum(23);
+		spinField.setMinimum(00);
+		JSpinField spinField_1 = new JSpinField();
+		spinField_1.setMaximum(59);
+		spinField_1.setMinimum(00);
+		
+		JLabel lblNewLabel_3 = new JLabel(":");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -177,36 +182,56 @@ public class AddTaskWindowTest extends JFrame {
 							.addComponent(comboBox_1, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
 							.addComponent(comboBox_2, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
 							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(19)
+							.addGap(16)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 93, GroupLayout.PREFERRED_SIZE)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(chckbxNewCheckBox, GroupLayout.PREFERRED_SIZE, 160, GroupLayout.PREFERRED_SIZE)
+									.addComponent(chckbxNewCheckBox)
+									.addGap(18)
+									.addComponent(txtEnterTaskName, GroupLayout.PREFERRED_SIZE, 361, GroupLayout.PREFERRED_SIZE)))
+							.addGap(18)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 69, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_2))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(spinField, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+									.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 6, GroupLayout.PREFERRED_SIZE)
 									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtEnterTaskName, GroupLayout.PREFERRED_SIZE, 331, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(txtDue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(txtAddDueDate, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+									.addComponent(spinField_1, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+								.addComponent(dateChooser, GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(17)
-							.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 693, Short.MAX_VALUE)))
+							.addComponent(textArea, GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)))
 					.addGap(17))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(20)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(txtAddDueDate, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
-						.addComponent(txtEnterTaskName, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE)
-						.addComponent(chckbxNewCheckBox)
-						.addComponent(txtDue, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(20)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(chckbxNewCheckBox)
+								.addComponent(txtEnterTaskName, GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblNewLabel))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(24)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(dateChooser, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_3)
+								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+								.addComponent(spinField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(spinField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(textArea, GroupLayout.PREFERRED_SIZE, 171, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
@@ -243,7 +268,7 @@ public class AddTaskWindowTest extends JFrame {
 		//Main.addTaskToFolder(task, folder);
 		
 		task.setDescription(taskAreaDescription.getText());
-		task.setDueDate(txtAddDueDate.getText());
+		task.setDueDate("test");
 		task.setLabel(comboBox_1.getSelectedItem().toString());
 		task.setTitle(txtEnterTaskName.getText());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
