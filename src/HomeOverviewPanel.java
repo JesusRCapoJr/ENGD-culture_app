@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -141,9 +143,13 @@ public class HomeOverviewPanel extends JPanel{
 		
 		Color taskButtonBackground = new Color(255,255,255);	
 		
+		JButton deleteTaskButton = new JButton(Main.getLanguage().get("Delete"));
+		deleteTaskButton.setBounds((width/2 + (width/2-btnW)/2)+200, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-200, btnH);
+		deleteTaskButton.setBackground(Color.RED);
+		
 		if (task.isCompleted()) {
 			taskButtonBackground = Color.GRAY;
-			//panel.add(deleteTaskButton);
+			this.add(deleteTaskButton);
 		}
 		
 		TaskButton btn = new TaskButton(this, task, 10, 20+(i+1)*BUTTON_GAP+i*btnH, btnW, btnH,this.desplayState,frame);
@@ -168,7 +174,7 @@ public class HomeOverviewPanel extends JPanel{
 //		this.add(chkbtn);
 		
 		final JCheckBox chkbtn = new JCheckBox("");
-		chkbtn.setBounds((width/2 + (width/2-btnW)/2)+250, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-300, btnH);
+		chkbtn.setBounds((width/2 + (width/2-btnW)/2)+150, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-300, btnH);
 		chkbtn.setBackground(taskButtonBackground);
 		if (task.isCompleted()==false) {
 			chkbtn.setSelected(false);
@@ -206,7 +212,23 @@ public class HomeOverviewPanel extends JPanel{
 					e1.printStackTrace();
 				}
 		}
+			
+
+	            
 		});
+		
+		deleteTaskButton.addMouseListener(new MouseAdapter() {
+            public void mousePressed(MouseEvent e) {
+		        	  task.getFolder().removeTask(task);
+		        	  Main.getAllTasks().remove(task);
+		        	  desplayState.reborn();
+			      	  try {
+			      		  new DesplayState1(frame);
+						} catch (Throwable e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						} }
+            });
 		
 		
 		
