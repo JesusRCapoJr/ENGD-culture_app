@@ -18,6 +18,7 @@ public class TaskButton extends ToggleButton{
 	private final int FONT_SIZE = 8; 
 	private final int SHELL = 2;
 	private JFrame frame; 
+	private DesplayState1 desplayState;
 	
 	public TaskButton(Task task, JFrame frame) { 
 		super(task.getTitle());
@@ -43,6 +44,18 @@ public class TaskButton extends ToggleButton{
 		selected = false; 
 		//System.out.println("TaskButton Bounds: "+upperLeftX+", "+upperLeftY+", "+width+", "+height); 
 	}
+	
+	public TaskButton(JPanel world, Task task, double upperLeftX, double upperLeftY, double width, double height, DesplayState1 desplayState, JFrame frame) {
+		super(task.getTitle(), upperLeftX, upperLeftY, width, height); 
+		this.world = world; 
+		this.task = task; 
+		this.details = new JTextArea(); 
+		world.add(btnPanel); 
+		selected = false; 
+		this.desplayState=desplayState;
+		this.frame = frame;
+		//System.out.println("TaskButton Bounds: "+upperLeftX+", "+upperLeftY+", "+width+", "+height); 
+	}
 
 	@Override 
 	public void createAction() {                  // Action
@@ -53,9 +66,11 @@ public class TaskButton extends ToggleButton{
 					unClick(); 
 				}else {
 					HomeOverviewPanel.cleanAll();
-					displayTask(); 
+					//displayTask(); 
 					setSelected(true); 
 					selected = true; 
+		        	KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,false,desplayState,frame);
+		        	frame2.setVisible(true);
 				}
 			}
 		}; 

@@ -248,7 +248,7 @@ public class DesplayState2 {
 			        	  Main.getAllTasks().remove(t);
 			          }
 			          else if (response==1) {
-			        	  KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(t,true,thisDesplay);
+			        	  KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(t,true, folderID,thisDesplay);
 			        	  frame2.setVisible(true);
 			          }
               	  runNewFolder(folder,folder.getID());
@@ -338,11 +338,12 @@ public class DesplayState2 {
 			public void actionPerformed(ActionEvent e) {
 				Task task = new Task();
 //				task.setFolder(folder);
-				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,true,thisDesplay);
+				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,true,folderID,thisDesplay);
 				frame2.setVisible(true);
 			}
 		});
 		AddNewTask.setBounds(1024, 516, 170, 170);
+
 		panel.add(AddNewTask);
 	}
 	//

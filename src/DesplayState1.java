@@ -73,7 +73,7 @@ public class DesplayState1 {
 //		OverviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		OverviewPanel.setBounds(724, 208, 806, 627);
 //		frame.getContentPane().add(OverviewPanel);
-		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
+		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627,this.thisDesplay,frame); 
 		frame.getContentPane().add(overviewPanel); 
 		overviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		
@@ -106,7 +106,7 @@ public class DesplayState1 {
 		AddTaskPanel.setLayout(null);
 		
 		JButton AddNewTask = new JButton();
-		AddNewTask.setBackground(Main.getChosenTheme().get(3));
+		//AddNewTask.setBackground(Main.getChosenTheme().get(1));
 		//
 			BufferedImage icon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
 		
@@ -120,7 +120,8 @@ public class DesplayState1 {
 				
 			}
 		});
-		AddNewTask.setBounds(534, 516, 170, 170);
+		//AddNewTask.setBounds(534, 516, 170, 170);
+		AddNewTask.setBounds(270, 225, 170, 170);
 		AddTaskPanel.add(AddNewTask);
 		
 		JProgressBar PandaProgressBar = new JProgressBar();
@@ -285,7 +286,13 @@ public class DesplayState1 {
 	                	  if (!newFolderName.isEmpty()) {
 	                		  f.setTitle(newFolderName);
 	                	  }
-	                	  
+	                	  reborn();
+	        	      	  try {
+	        	      		  new DesplayState1(frame);
+	        				} catch (Throwable e1) {
+	        					// TODO Auto-generated catch block
+	        					e1.printStackTrace();
+	        				}
 	                  }
 	               }
 	            });

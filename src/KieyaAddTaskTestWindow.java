@@ -47,6 +47,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private JSpinner minutes;
 	private JDateChooser dateChooser;
 	private JFrame comingFrame;
+	private int folderID;
 	
 	// private JTextField txtAddDueDate;
 	// private JTextField txtDue;
@@ -83,10 +84,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public KieyaAddTaskTestWindow(Task task, boolean inFolder, DesplayState2 desplayState) {
+	public KieyaAddTaskTestWindow(Task task, boolean inFolder, int folderID, DesplayState2 desplayState) {
 		this.task = task;
 		this.desplayState2 = desplayState;
 		this.inFolder = inFolder;
+		this.folderID = folderID;
 		this.runAddTaskWindow();
 	}
 	
@@ -153,6 +155,9 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		
 		if (task.getFolder()!=null) {
 			comboBox.setSelectedItem(task.getFolder().getTitle());
+		}
+		else if (inFolder) {
+			comboBox.setSelectedItem(Main.getAllFolders().get(folderID-1).getTitle());
 		}
 
 		// Need to sbring in stored folders

@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -9,6 +11,7 @@ import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -22,6 +25,8 @@ public class HomeOverviewPanel extends JPanel{
 	private Folder folder = null; 
 	private Color color = new Color(143, 188, 143); 
 	private ArrayList<Task> tasks = new ArrayList<Task>(); 
+	private DesplayState1 desplayState;
+	private JFrame frame;
 	
 	//private static ButtonGroup allTaskButtons = new ButtonGroup(); 
 	private final double BUTTON_WIDTH_RATIO = 0.4; 
@@ -74,6 +79,20 @@ public class HomeOverviewPanel extends JPanel{
 		constructAll(); 
 	}
 	
+	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, DesplayState1 desplayState, JFrame frame) {
+		super();
+		this.desplayState = desplayState;
+		this.frame=frame;
+		this.setBounds(upperLeftX, upperLeftY, width, height);
+		this.setLayout(null);
+		this.width = width;
+		this.height = height; 
+		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
+		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
+		
+		constructAll(); 
+	}
+	
 	public void constructAll() {
 		
 		for(Folder folder:Main.getAllFolders()) {
@@ -115,29 +134,82 @@ public class HomeOverviewPanel extends JPanel{
 	}
 	
 	
-	public void constructButton(int i, Task task) {
+	public void constructButton(int i, final Task task) {
 		//System.out.println(width); 
 		//System.out.println("TaskButton Const");
 		//TaskButton btn = new TaskButton(this, task, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
-		TaskButton btn = new TaskButton(this, task, 10, 10+(i+1)*BUTTON_GAP+i*btnH, btnW, btnH);
-		btn.setBackground(Color.WHITE);
+		
+		Color taskButtonBackground = new Color(255,255,255);	
+		
+		if (task.isCompleted()) {
+			taskButtonBackground = Color.GRAY;
+			//panel.add(deleteTaskButton);
+		}
+		
+		TaskButton btn = new TaskButton(this, task, 10, 20+(i+1)*BUTTON_GAP+i*btnH, btnW, btnH,this.desplayState,frame);
+		btn.setBackground(taskButtonBackground);
+		btn.setToolTipText(task.getDescription());
 		
 		allTaskButtons.add(btn); 
 		this.add(btn); 
 		
 		JButton taskDayLabel = new JButton(task.getDueDateString());
-		taskDayLabel.setBounds(400, 10+(i+1)*BUTTON_GAP+i*btnH, btnW/3, btnH);
-		taskDayLabel.setBackground(Color.WHITE);
+		taskDayLabel.setBounds(338, 20+(i+1)*BUTTON_GAP+i*btnH, btnW/3, btnH);
+		taskDayLabel.setBackground(taskButtonBackground);
 		this.add(taskDayLabel);
 		
 		JButton taskTimeLabel = new JButton(task.getDueTime());
-		taskTimeLabel.setBounds(550, 10+(i+1)*BUTTON_GAP+i*btnH, btnW/3, btnH);
-		taskTimeLabel.setBackground(Color.WHITE);
+		taskTimeLabel.setBounds(450, 20+(i+1)*BUTTON_GAP+i*btnH, btnW/3, btnH);
+		taskTimeLabel.setBackground(taskButtonBackground);
 		this.add(taskTimeLabel); 
 		
-		CheckButton chkbtn = new CheckButton("", task, (width/2 + (width/2-btnW)/2)+250, 10+(i+1)*BUTTON_GAP+i*btnH, btnW-275, btnH);
-		chkbtn.setBackground(Color.WHITE);
+//		CheckButton chkbtn = new CheckButton("", task, (width/2 + (width/2-btnW)/2)+250, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-275, btnH);
+//		chkbtn.setBackground(taskButtonBackground);
+//		this.add(chkbtn);
+		
+		final JCheckBox chkbtn = new JCheckBox("");
+		chkbtn.setBounds((width/2 + (width/2-btnW)/2)+250, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-300, btnH);
+		chkbtn.setBackground(taskButtonBackground);
+		if (task.isCompleted()==false) {
+			chkbtn.setSelected(false);
+		} 
+		else {
+			chkbtn.setSelected(true);
+		}
 		this.add(chkbtn);
+		
+		chkbtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			if (task.isCompleted()==false) {
+				try {
+					task.setCompleted(true);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				chkbtn.setSelected(true);
+			} 
+			else {
+				try {
+					task.setCompleted(false);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				chkbtn.setSelected(false);
+			}
+			desplayState.reborn();
+	      	  try {
+	      		  new DesplayState1(frame);
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		}
+		});
+		
+		
+		
 	}
 	
 	/**
