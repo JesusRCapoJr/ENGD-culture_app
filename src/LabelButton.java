@@ -14,11 +14,13 @@ import javax.swing.JTextPane;
 
 public class LabelButton extends ToggleButton {
 	private Label label;
+	private Folder folder; 
 	private boolean selected = false; 
 	
-	public LabelButton(Label label, int upperLeftX, int upperLeftY, int width, int height) { //? 
+	public LabelButton(Folder folder, Label label, int upperLeftX, int upperLeftY, int width, int height) { //? 
 		super(label.getText(), upperLeftX, upperLeftY, width, height); 
-		this.label=label;
+		this.label = label;
+		this.folder = folder; 
 		this.createAction();
 	}
 	
@@ -37,7 +39,7 @@ public class LabelButton extends ToggleButton {
 				}
 			};
 			
-		//right click
+		//right click, code inspired by Jesus
 		MouseAdapter ml = new MouseAdapter() {
 			@SuppressWarnings("unchecked")
 			public void mousePressed(MouseEvent e) {
@@ -53,12 +55,11 @@ public class LabelButton extends ToggleButton {
 				            null,
 				            options,
 				            options[2]);
-			          if (response==0) {
-			        	  	FolderLabelsPanel.deleteLabel(label);
+			          if (response == 0) {
+			        	  	folder.removeLabel(label);
 			        	  	Main.getAllLabels().remove(label);
-			          }
-			          
-			          else if (response==1) {
+			        	  	
+			          }else if (response == 1) {
 			        	  	new AddLabelFrame(); 
 			          }
 				}

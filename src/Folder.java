@@ -29,6 +29,10 @@ public class Folder implements Serializable{
 		this.tasks.remove(task); 
 	}
 	
+	public void removeLabel(Label label) {
+		this.labels.remove(label); 
+	}
+	
 	public String getTitle() {
 		return this.title; 
 	}
