@@ -192,7 +192,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
 		this.dateChooser = new JDateChooser();
-		dateChooser.setDateFormatString("yyyy/mm/dd");
+		dateChooser.setDateFormatString("yyyy/MM/dd");
 	    
 	    if (dateChooser.getDate()==null) {
 	    	dateChooser.setDate(new Date());
@@ -208,7 +208,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 		//JSpinField spinField = new JSpinField();
 		this.hours = new JSpinner(
-				 new SpinnerNumberModel(1, 1, 12, 1));
+				 new SpinnerNumberModel(1, 0, 23, 1));
 
 		
 		
