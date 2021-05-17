@@ -196,27 +196,31 @@ public class DesplayState2 {
 			}
 			JButton taskDayLabel = new JButton(t.getDueDate());
 			JButton taskTimeLabel = new JButton(t.getDueTime());
+			JButton deleteTaskButton = new JButton("Delete");
 			
 			taskButton.setBounds(10, 10+(currentTaskNum-1)*55, 500, 50);
 			taskDayLabel.setBounds(10+550, 10+(currentTaskNum-1)*55, 200, 50);
 			taskTimeLabel.setBounds(10+800, 10+(currentTaskNum-1)*55, 200, 50);
-			completedTaskButton.setBounds(10+1100, 10+(currentTaskNum-1)*55, 100, 50);
-			
+			completedTaskButton.setBounds(10+1035, 25+(currentTaskNum-1)*55, 20, 20);
+			deleteTaskButton.setBounds(10+1080, 10+(currentTaskNum-1)*55, 100, 50);
 			
 			completedTaskButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			taskTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+			deleteTaskButton.setFont(new Font("Tahoma", Font.PLAIN, 15));;
 			taskButton.setToolTipText(t.getDescription());
 			
 			Color taskButtonBackground = new Color(255,255,255);	
 			
 			if (t.isCompleted()) {
 				taskButtonBackground = Color.GRAY;
+				panel.add(deleteTaskButton);
 			}
 			
 			taskDayLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 			taskButton.setBackground(taskButtonBackground);
 			taskDayLabel.setBackground(taskButtonBackground);
 			taskTimeLabel.setBackground(taskButtonBackground);
+			deleteTaskButton.setBackground(Color.RED);
 			completedTaskButton.setBackground(Main.getChosenTheme().get(6));
 			
 			//aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
@@ -225,10 +229,29 @@ public class DesplayState2 {
 			panel.add(taskDayLabel);
 			panel.add(taskTimeLabel);
 			
+			
 			taskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-		        	  KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(t,true,thisDesplay);
-		        	  frame2.setVisible(true);
+					Object[] options = {"Delete",
+                            "Edit","Cancel"};
+              	  
+			          int response = JOptionPane.showOptionDialog(null,
+			              "What would you like to do?",
+			              "Options",
+			              JOptionPane.YES_NO_CANCEL_OPTION,
+			              JOptionPane.QUESTION_MESSAGE,
+			              null,
+			              options,
+			              options[2]);
+			          if (response==0) {
+			        	  folder.removeTask(t);
+			        	  Main.getAllTasks().remove(t);
+			          }
+			          else if (response==1) {
+			        	  KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(t,true,thisDesplay);
+			        	  frame2.setVisible(true);
+			          }
+              	  runNewFolder(folder,folder.getID());
 				} 
 			});
 			
@@ -260,28 +283,14 @@ public class DesplayState2 {
 			taskButton.addMouseListener(new MouseAdapter() {
 	               public void mousePressed(MouseEvent e) {
 	            	   
-	                  if (e.getButton() == MouseEvent.BUTTON3) {
-	                	  Object[] options = {"Delete",
-	                              "Edit","Cancel"};
-	                	  
-				          int response = JOptionPane.showOptionDialog(null,
-				              "What would you like to do?",
-				              "Options",
-				              JOptionPane.YES_NO_CANCEL_OPTION,
-				              JOptionPane.QUESTION_MESSAGE,
-				              null,
-				              options,
-				              options[2]);
-				          if (response==0) {
-				        	  folder.removeTask(t);
-				        	  Main.getAllTasks().remove(t);
-				          }
-				          else if (response==1) {
-				        	  KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(t,true,thisDesplay);
-				        	  frame2.setVisible(true);
-				          }
-	                	  runNewFolder(folder,folder.getID());
-	                  }
+	               }	               
+	            });
+			
+			deleteTaskButton.addMouseListener(new MouseAdapter() {
+	               public void mousePressed(MouseEvent e) {
+			        	  folder.removeTask(t);
+			        	  Main.getAllTasks().remove(t);
+			        	  runNewFolder(folder,folder.getID());
 	               }
 	            });
 			currentTaskNum+=1;
