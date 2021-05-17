@@ -120,12 +120,16 @@ public class HomeOverviewPanel extends JPanel{
 	public void constructButton(int i, Task task) {
 		//System.out.println(width); 
 		//System.out.println("TaskButton Const");
-		TaskButton btn = new TaskButton(this, task, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
+		//TaskButton btn = new TaskButton(this, task, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
+		TaskButton btn = new TaskButton(this, task, 10, 10+(i+1)*BUTTON_GAP+i*btnH, btnW, btnH);
+		btn.setBackground(Color.WHITE);
+		
 		allTaskButtons.add(btn); 
 		this.add(btn); 
 		
 		
-		CheckButton chkbtn = new CheckButton("", task, (width/2 + (width/2-btnW)/2)-50, (i+1)*BUTTON_GAP+i*btnH, btnW-275, btnH);
+		CheckButton chkbtn = new CheckButton("", task, (width/2 + (width/2-btnW)/2)+250, 10+(i+1)*BUTTON_GAP+i*btnH, btnW-275, btnH);
+		chkbtn.setBackground(Color.WHITE);
 		this.add(chkbtn);
 	}
 	
