@@ -15,6 +15,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTextField;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
@@ -191,8 +192,12 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setTaskInformation();
-
+				if (task.getFolder()!=null) {
+					setTaskInformation();
+				}
+				else {
+					//JOptionPane.showMessageDialog(null, Main.getLanguage().get("Please select a folder!"));
+				}
 			}
 		});
 
