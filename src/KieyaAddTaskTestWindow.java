@@ -41,6 +41,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private boolean isCompleted;
 	private int taskDueDateHour;
 	private int taskDueDateMinute;
+	private String taskDueDate;
 
 	/**
 	 * Launch the application.
@@ -173,6 +174,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 		JDateChooser dateChooser = new JDateChooser();
 		dateChooser.setDateFormatString("YYYY/MM/d");
+		this.taskDueDate = dateChooser.getDateFormatString();
 
 		JLabel lblNewLabel_2 = new JLabel("Time:");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -285,11 +287,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		if (Main.registerLabel(currentLabel) == false) {
 			Main.addLabelToTask(currentLabel, task);
 		}
-
+ 
 		// Main.addTaskToFolder(task, folder);
 
 		task.setDescription(taskAreaDescription.getText());
-		task.setDueDate("test");
+		task.setDueDate(taskDueDate);
 		task.setLabel(comboBox_1.getSelectedItem().toString());
 		task.setTitle(txtEnterTaskName.getText());
 		task.setPriority(comboBox_2.getSelectedItem().toString());
