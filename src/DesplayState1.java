@@ -67,10 +67,10 @@ public class DesplayState1 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		final JPanel OverviewPanel = new JPanel();                    /// might not be finle
-		OverviewPanel.setBackground(Main.getChosenTheme().get(1));
-		OverviewPanel.setBounds(724, 208, 806, 627);
-		frame.getContentPane().add(OverviewPanel);
+//		final JPanel OverviewPanel = new JPanel();                    /// might not be finle
+//		OverviewPanel.setBackground(Main.getChosenTheme().get(1));
+//		OverviewPanel.setBounds(724, 208, 806, 627);
+//		frame.getContentPane().add(OverviewPanel);
 		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627); 
 		frame.getContentPane().add(overviewPanel); 
 		overviewPanel.setBackground(Main.getChosenTheme().get(1));
@@ -131,7 +131,9 @@ public class DesplayState1 {
 		panel.setBounds(10, 23, 704, 81);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
-		panel.add(new LabelButton(new Label("wa"), 10, 10, 120, 120));
+		
+		//Steven Xia: For testing LabelButton only
+//		panel.add(new LabelButton(new Label("wa"), 10, 10, 120, 120));
 		
 		//Settings Button
 		JPanel settingsButtonPanel = new JPanel();
@@ -156,7 +158,7 @@ public class DesplayState1 {
 		        	  Object[] helpOptions = {
 	                            "How to rename a folder","How to delete or edit a task","Done"};
 		        	  Object[] languageOptions = {
-	                            "English","aeef","Done"};
+	                            "English","简体中文","Done"};
 		        	  Object[] themeOptions = {
 	                            "Forest Green","Arctic Day","Moonlit Night","Done"};
               	  
