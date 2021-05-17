@@ -429,16 +429,16 @@ public class Main {
 	 * @return dateTimeRawInt
 	 */
 	public static double getDueRaw(Task task) {
-		String date = "10000000"; 
-		String time = "1000"; 
-		if(task.getDueDate() != null) {
+		String date = "3000/01/01"; 
+		String time = "00:00"; 
+		if(task.getDueDate() != null && !task.getDueDate().equals("yyyy/mm/dd")) {
 			date = task.getDueDate(); 
 		}
 		if(task.getDueTime() != null) {
 			time = task.getDueTime(); 
 		}
-		String dateTimeRaw = date.substring(0,3)+date.substring(5,6)+date.substring(8,9)+time.substring(0,1)+time.substring(3,4);
-		System.out.println("date: "+date+"time: "+time+"dateTimeRaw: "+dateTimeRaw);
+		String dateTimeRaw = date.substring(0,4)+date.substring(5,7)+date.substring(8,10)+time.substring(0,2)+time.substring(3,5);
+		System.out.println("date: "+date+" time: "+time+" dateTimeRaw: "+dateTimeRaw);
 		double dateTimeRawInt = 0.0; 
 		
 		int l = dateTimeRaw.length() - 1; 
