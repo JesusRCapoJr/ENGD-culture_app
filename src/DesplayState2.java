@@ -126,7 +126,6 @@ public class DesplayState2 {
 		
 		FolderLabelsPanel flp = new FolderLabelsPanel(1225, 216, 305, 619, this.folder); 
 		frame.getContentPane().add(flp); 
-		flp.add(new LabelButton(flp, this.folder, new Label("wa"), 10, 10, 280, 30)); 
 		
 		
 		JPanel panel_3 = new JPanel();

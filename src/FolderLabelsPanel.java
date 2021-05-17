@@ -32,10 +32,13 @@ public class FolderLabelsPanel extends JPanel{
 	
 	public void constructAll() {
 		
-		int i = 0;
 		if(this.folder.getLabels() == null) {
 			return; 
 		}
+		
+		AddLabelButton addLabel = new AddLabelButton(this.folder, 10, 10, btnW, btnH); 
+		
+		int i = 0;
 		for(Label label:this.folder.getLabels()) {
 			LabelButton btn = new LabelButton(this, this.folder, label, 10+(i%2)*(btnW+BUTTON_GAP), 50+((i/2)+1)*BUTTON_GAP/2+i*btnH, btnW, btnH);
 			btn.setBackground(Main.getChosenTheme().get(2));
