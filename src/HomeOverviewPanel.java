@@ -119,7 +119,7 @@ public class HomeOverviewPanel extends JPanel{
 	
 	public void constructAllFolder() {
 		ArrayList<Task> tasks = this.folder.getTasks(); 
-		Main.sortTasksBy(tasks, "dueAndPriority");
+		//Main.sortTasksBy(tasks, "dueAndPriority");
 		int i=0; 
 		for(Task task:Main.getAllTasks()) {
 			constructButton(i,task); 
