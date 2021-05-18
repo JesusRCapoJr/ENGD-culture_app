@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-
+//Author: Steven Xia
 public class FolderLabelsPanel extends JPanel{
 	
 	private static Folder folder; 
@@ -16,6 +16,14 @@ public class FolderLabelsPanel extends JPanel{
 	private int btnW; 
 	
 
+	/**
+	 * Constructs a FolderLabelsPanel of folder. 
+	 * @param upperLeftX
+	 * @param upperLeftY
+	 * @param width
+	 * @param height
+	 * @param folder
+	 */
 	public FolderLabelsPanel(int upperLeftX, int upperLeftY, int width, int height, Folder folder) {
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
@@ -30,6 +38,9 @@ public class FolderLabelsPanel extends JPanel{
 		constructAll(); 
 	}
 	
+	/**
+	 * Constructs all LabelButtons in this.folder. Does nothing if this.folder.getLabels == null. 
+	 */
 	public void constructAll() {
 		
 		if(this.folder.getLabels() == null) {
@@ -49,27 +60,19 @@ public class FolderLabelsPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Unclicks all LabelButton. 
+	 */
 	public static void cleanAll() {
 		for(LabelButton i: allLabelButtons) {
 			i.unClick();
 		}
 	}
 	
-	//Steven Xia: no longer useful 
-//	/** 
-//	 * Doesn't quite make sense here, but yeah here it is. May move to Main later. 
-//	 * @param label
-//	 */
-//	public static void deleteLabel(Label label) {
-//		try {
-//			folder.getLabels().remove(label); 
-//		}catch(Exception e) {
-//			System.out.println("Label dosen't exist in this folder. Check your set-up. ");
-//		}
-//	}
-	
+	/**
+	 * Theoretically does what a F5 button does. Did not use in the program but may show up in the future. 
+	 */
 	public void f5() {
 		this.repaint();
-//		System.out.println("FolderLabelPanel: f5() called");
 	}
 }
