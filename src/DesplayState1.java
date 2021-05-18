@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JProgressBar;
 import javax.imageio.ImageIO;

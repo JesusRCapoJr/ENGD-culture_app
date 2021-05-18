@@ -1,10 +1,13 @@
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
@@ -14,8 +17,10 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JOptionPane;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -25,6 +30,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JProgressBar;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
 public class DesplayState2 {
 
@@ -33,6 +41,7 @@ public class DesplayState2 {
 	private int folderID;
 	private ArrayList<Color> folderButtonColors;
 	private DesplayState2 thisDesplay;
+	private int scrollOffset;
 	
 	/**
 	 * Launch the application.
@@ -57,6 +66,17 @@ public class DesplayState2 {
 	 */
 	public DesplayState2(JFrame MainFrame, int folderID) throws Exception {
 		frame = MainFrame;
+		this.scrollOffset=0;
+		this.thisDesplay=this;
+		this.folderButtonColors = new ArrayList<Color>();
+		this.folderID=folderID;
+		this.folder=Main.getAllFolders().get(folderID-1);
+		initialize();
+	}
+	
+	public DesplayState2(JFrame MainFrame, int folderID, int scrollOffset) throws Exception {
+		frame = MainFrame;
+		this.scrollOffset=scrollOffset;
 		this.thisDesplay=this;
 		this.folderButtonColors = new ArrayList<Color>();
 		this.folderID=folderID;
@@ -109,16 +129,53 @@ public class DesplayState2 {
 //		frame.getContentPane().setBackground(new Color(34, 139, 34));
 //		frame.getContentPane().setLayout(null);
 //		
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
-//		panel.removeAll();
-//		frame.getContentPane().removeAll();
-		//frame.setBounds(0, 0, 1920, 1080);
-		frame.setBounds(0, 0, 1545, 950);
-		panel.setBackground(Main.getChosenTheme().get(6));
-		panel.setBounds(10, 131, 1205, 704); 
-		frame.getContentPane().add(panel);
 		
+		//TASK PANEL AN SCROLL PANEL HOLDER
+		JLayeredPane pane = new JLayeredPane();
+		pane.setBounds(10, 131, 1205, 704);
+		
+		//TASK PANEL
+		final JPanel panel = new JPanel();
+		panel.setLayout(null);
+										//		panel.removeAll();
+										//		frame.getContentPane().removeAll();
+												//frame.setBounds(0, 0, 1920, 1080);
+		frame.setBounds(0, 0, 1545, 950);
+		frame.getContentPane().add(pane);
+		
+		panel.setBackground(Main.getChosenTheme().get(6));
+		panel.setBounds(10, 0, 1205, 704); 
+		//panel.setOpaque(false);
+		
+		//ADD SCROLLING FUNCTIONALITY
+		JPanel scrollPanel = new JPanel();
+		scrollPanel.setLayout(new BorderLayout());
+		scrollPanel.setBounds(1187, 0, 18, 704);
+		scrollPanel.setOpaque(true);
+		
+		//JScrollBar hbar=new JScrollBar(JScrollBar.HORIZONTAL, 30, 20, 0, 500);
+        JScrollBar vbar=new JScrollBar(JScrollBar.VERTICAL, 0, 40, 0, 500);
+        vbar.setVisibleAmount(200);
+        
+        class MyAdjustmentListener implements AdjustmentListener {
+            public void adjustmentValueChanged(AdjustmentEvent e) {
+            	  scrollOffset = -1*e.getValue();
+            	  panel.removeAll();
+            	  buildTasks(panel,scrollOffset);
+            }
+        }
+        
+        //hbar.addAdjustmentListener(new MyAdjustmentListener( ));
+        vbar.addAdjustmentListener(new MyAdjustmentListener( ));
+        
+        //scrollPanel.add(hbar, BorderLayout.SOUTH);
+        scrollPanel.add(vbar, BorderLayout.EAST);
+        //scrollPanel.add(label, BorderLayout.CENTER);
+        //scrollPanel.setVisible(true);
+		
+        pane.add(scrollPanel, 2, 0);
+        pane.add(panel, 1, 0);
+
 //		JPanel panel_1 = new JPanel();
 //		panel_1.setBackground(Main.getChosenTheme().get(3));
 //		panel_1.setBounds(1225, 216, 305, 619);
@@ -187,6 +244,66 @@ public class DesplayState2 {
 	            });
 		}
 		
+		buildTasks(panel, scrollOffset);
+		
+//		JButton Folder1 = new JButton("Folder 1");
+//		Folder1.setBackground(folder1Color);
+//		Folder1.setBounds(263, 10, 175, 89);
+//		panel_3.add(Folder1);
+//		Folder1.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				runNewFolder(folder, 4);                     //change
+//			}
+//		});
+		
+		JPanel SpritePanel = new JPanel();
+		SpritePanel.setBackground(Color.WHITE);
+		SpritePanel.setBounds(1263, 10, 241, 176);
+		
+//		SpriteForPanels sprite = new SpriteForPanels(frame,SpritePanel);
+//		sprite.Score = 2;
+//		sprite.update();
+		Main.sprite.changeAttachments(frame, SpritePanel);
+		
+
+		frame.getContentPane().add(SpritePanel);
+		
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setValue((int) (Main.sprite.Score * 20));
+		progressBar.setBackground(Main.getChosenTheme().get(4));
+		progressBar.setBounds(1263, 192, 241, 14);
+		frame.getContentPane().add(progressBar);
+		//frame.setBounds(0, 0, 1920, 1080);
+		frame.setBounds(0, 0, 1545, 950);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Main.sprite.update();
+		
+//		
+		JButton AddNewTask = new JButton();
+			BufferedImage icon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
+			AddNewTask.setIcon(new ImageIcon(icon));
+		AddNewTask.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Task task = new Task();
+//				task.setFolder(folder);
+				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,true,folderID,thisDesplay);
+				frame2.setVisible(true);
+			}
+		});
+		AddNewTask.setBounds(1000, 516, 170, 170);
+		AddNewTask.setOpaque(false);
+//		AddNewTask.setContentAreaFilled(false);
+//		AddNewTask.setBorderPainted(false);
+		pane.add(AddNewTask,3,0);
+		
+	      }
+	
+	
+	/////////////////////////
+	
+	private void buildTasks(JPanel panel, int offset) {
 		//Loop through all tasks in the folder
 		int currentTaskNum = 1;
 		for(final Task t: this.folder.getTasks()) {
@@ -202,11 +319,11 @@ public class DesplayState2 {
 			JButton taskTimeLabel = new JButton(t.getDueTime());
 			JButton deleteTaskButton = new JButton(Main.getLanguage().get("Delete"));
 			
-			taskButton.setBounds(10, 10+(currentTaskNum-1)*55, 500, 50);
-			taskDayLabel.setBounds(10+550, 10+(currentTaskNum-1)*55, 200, 50);
-			taskTimeLabel.setBounds(10+800, 10+(currentTaskNum-1)*55, 200, 50);
-			completedTaskButton.setBounds(10+1035, 25+(currentTaskNum-1)*55, 20, 20);
-			deleteTaskButton.setBounds(10+1080, 10+(currentTaskNum-1)*55, 100, 50);
+			taskButton.setBounds(10, 10+(currentTaskNum-1)*55+offset, 500, 50);
+			taskDayLabel.setBounds(10+550, 10+(currentTaskNum-1)*55+offset, 200, 50);
+			taskTimeLabel.setBounds(10+800, 10+(currentTaskNum-1)*55+offset, 200, 50);
+			completedTaskButton.setBounds(10+1035, 25+(currentTaskNum-1)*55+offset, 20, 20);
+			deleteTaskButton.setBounds(10+1080, 10+(currentTaskNum-1)*55+offset, 100, 50);
 			
 			completedTaskButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			taskTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -299,59 +416,8 @@ public class DesplayState2 {
 	            });
 			currentTaskNum+=1;
 		}
-		
-//		JButton Folder1 = new JButton("Folder 1");
-//		Folder1.setBackground(folder1Color);
-//		Folder1.setBounds(263, 10, 175, 89);
-//		panel_3.add(Folder1);
-//		Folder1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				runNewFolder(folder, 4);                     //change
-//			}
-//		});
-		
-		JPanel SpritePanel = new JPanel();
-		SpritePanel.setBackground(Color.WHITE);
-		SpritePanel.setBounds(1263, 10, 241, 176);
-		
-//		SpriteForPanels sprite = new SpriteForPanels(frame,SpritePanel);
-//		sprite.Score = 2;
-//		sprite.update();
-		Main.sprite.changeAttachments(frame, SpritePanel);
-		
-
-		frame.getContentPane().add(SpritePanel);
-		
-		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setValue((int) (Main.sprite.Score * 20));
-		progressBar.setBackground(Main.getChosenTheme().get(4));
-		progressBar.setBounds(1263, 192, 241, 14);
-		frame.getContentPane().add(progressBar);
-		//frame.setBounds(0, 0, 1920, 1080);
-		frame.setBounds(0, 0, 1545, 950);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Main.sprite.update();
-		
-//		
-		JButton AddNewTask = new JButton();
-			BufferedImage icon = ImageIO.read(new File("texture/rsz_1plus-icon-13078_1.png")); 
-			AddNewTask.setIcon(new ImageIcon(icon));
-		AddNewTask.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				Task task = new Task();
-//				task.setFolder(folder);
-				KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(task,true,folderID,thisDesplay);
-				frame2.setVisible(true);
-			}
-		});
-		AddNewTask.setBounds(1024, 516, 170, 170);
-
-		panel.add(AddNewTask);
+		panel.repaint();
 	}
-	//
-	
 	private void backToHome() throws Throwable {
 		this.reborn();
 		
@@ -378,6 +444,16 @@ public class DesplayState2 {
 		this.reborn();
 		try {
 			new DesplayState2(this.frame, this.folderID);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
+	public void runNewFolder(int scrollOffset) {
+		this.reborn();
+		try {
+			new DesplayState2(this.frame, this.folderID, scrollOffset);
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
