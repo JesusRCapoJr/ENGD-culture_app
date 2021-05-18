@@ -109,7 +109,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 	@SuppressWarnings("deprecation")
 	public void runAddTaskWindow() {
-		this.setOpacity(0.85f);
+		this.setOpacity(0.98f);
 		setAlwaysOnTop(true);
 		setResizable(false);
 		setBounds(17, 180, 750, 380);
