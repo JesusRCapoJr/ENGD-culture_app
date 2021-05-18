@@ -1,17 +1,11 @@
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
-import java.util.Set;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -40,8 +34,16 @@ public class HomeOverviewPanel extends JPanel{
 	private int btnH;
 	
 	private static ArrayList<TaskButton> allTaskButtons = new ArrayList<TaskButton>(); 
-	//TODO: get allTasks/allFolders
 	
+	/**
+	 * Serves as a FolderOverviewPanel. This one also defines Color of the Panel. 
+	 * @param folder
+	 * @param upperLeftX
+	 * @param upperLeftY
+	 * @param width
+	 * @param height
+	 * @param color
+	 */
 	public HomeOverviewPanel(Folder folder, int upperLeftX, int upperLeftY, int width, int height, Color color) {
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
@@ -56,6 +58,15 @@ public class HomeOverviewPanel extends JPanel{
 		constructAllFolder(); 
 	}
 	
+	/**
+	 * Serves as a FolderOverviewPanel since the two panels are similar. On debate of whether or not to actually merge them.
+	 * Did not end up using but may return in the future.  
+	 * @param folder
+	 * @param upperLeftX
+	 * @param upperLeftY
+	 * @param width
+	 * @param height
+	 */
 	public HomeOverviewPanel(Folder folder, int upperLeftX, int upperLeftY, int width, int height) {
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
@@ -69,6 +80,14 @@ public class HomeOverviewPanel extends JPanel{
 		constructAllFolder(); 
 	}
 	
+	/**
+	 * Constructs a HomeOverviewPanel at (upperLeftX, upperLeftY) with size (width, height).
+	 * Did not end up using but may return in the future. 
+	 * @param upperLeftX
+	 * @param upperLeftY
+	 * @param width
+	 * @param height
+	 */
 	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height) {
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
@@ -81,8 +100,18 @@ public class HomeOverviewPanel extends JPanel{
 		constructAll(); 
 	}
 	
+	/**
+	 * What is actually used. Constructs a HomeOverviewPanel at (upperLeftX, upperLeftY) with size (width, height).
+	 * @param upperLeftX
+	 * @param upperLeftY
+	 * @param width
+	 * @param height
+	 * @param desplayState
+	 * @param frame
+	 */
 	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, DesplayState1 desplayState, JFrame frame) {
 		super();
+		//desplayState and frame are for later use in refreshing the page 
 		this.desplayState = desplayState;
 		this.frame=frame;
 		this.setBounds(upperLeftX, upperLeftY, width, height);
@@ -95,6 +124,9 @@ public class HomeOverviewPanel extends JPanel{
 		constructAll(); 
 	}
 	
+	/**
+	 * Constructs all stuff to show all Tasks. 
+	 */
 	public void constructAll() {
 		
 		for(Folder folder:Main.getAllFolders()) {
@@ -117,6 +149,10 @@ public class HomeOverviewPanel extends JPanel{
 		//TODO: make finished tasksd dark and have a delete option
 	}
 	
+	/**
+	 * Construct all stuff to show all Tasks in the Folder. 
+	 * Did not end up using but may return in the future. 
+	 */
 	public void constructAllFolder() {
 		ArrayList<Task> tasks = this.folder.getTasks(); 
 		//Main.sortTasksBy(tasks, "dueAndPriority");
@@ -129,17 +165,21 @@ public class HomeOverviewPanel extends JPanel{
 		this.setBackground(this.color); 
 	}
 	
+	/**
+	 * Unclicks all TaskButtons. 
+	 */
 	public static void cleanAll() {
 		for(TaskButton i: allTaskButtons) {
 			i.unClick();
 		}
 	}
 	
-	
+	/**
+	 * Constructs a single group of stuff showing info of a Task. Is used in constructAll() and constructAllFolder(). 
+	 * @param i
+	 * @param task
+	 */
 	public void constructButton(int i, final Task task) {
-		//System.out.println(width); 
-		//System.out.println("TaskButton Const");
-		//TaskButton btn = new TaskButton(this, task, width/2 + (width/2-btnW)/2, (i+1)*BUTTON_GAP+i*btnH, btnW, btnH); 
 		
 		Color taskButtonBackground = new Color(255,255,255);	
 		
@@ -169,10 +209,6 @@ public class HomeOverviewPanel extends JPanel{
 		taskTimeLabel.setBackground(taskButtonBackground);
 		this.add(taskTimeLabel); 
 		
-//		CheckButton chkbtn = new CheckButton("", task, (width/2 + (width/2-btnW)/2)+250, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-275, btnH);
-//		chkbtn.setBackground(taskButtonBackground);
-//		this.add(chkbtn);
-		
 		final JCheckBox chkbtn = new JCheckBox("");
 		chkbtn.setBounds((width/2 + (width/2-btnW)/2)+150, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-300, btnH);
 		chkbtn.setBackground(taskButtonBackground);
@@ -190,7 +226,6 @@ public class HomeOverviewPanel extends JPanel{
 				try {
 					task.setCompleted(true);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				chkbtn.setSelected(true);
@@ -199,7 +234,6 @@ public class HomeOverviewPanel extends JPanel{
 				try {
 					task.setCompleted(false);
 				} catch (Exception e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				chkbtn.setSelected(false);
@@ -208,7 +242,6 @@ public class HomeOverviewPanel extends JPanel{
 	      	  try {
 	      		  new DesplayState1(frame);
 				} catch (Throwable e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 		}
@@ -225,7 +258,6 @@ public class HomeOverviewPanel extends JPanel{
 			      	  try {
 			      		  new DesplayState1(frame);
 						} catch (Throwable e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						} }
             });
