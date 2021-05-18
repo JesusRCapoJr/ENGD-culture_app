@@ -92,7 +92,7 @@ public class FolderButton extends Button {
 		la.addTask(tsk2);
 		System.out.println("FolderButton pushed"); 
 		HomeOverviewPanel foP = new HomeOverviewPanel(la, 10, 131, 1205, 704); 
-		PandativityFrame.reborn();
+		//PandativityFrame.reborn();
 		world.add(foP); 
 		Main.registerFolder(la); 
 	}

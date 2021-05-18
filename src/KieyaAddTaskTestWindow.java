@@ -112,7 +112,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		this.setOpacity(0.98f);
 		setAlwaysOnTop(true);
 		setResizable(false);
-		setBounds(17, 180, 750, 380);
+		setBounds(17, 180, 800, 380);
 		contentPane = new JPanel();
 		contentPane.setBackground(Main.getChosenTheme().get(7));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

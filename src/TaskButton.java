@@ -24,7 +24,7 @@ public class TaskButton extends ToggleButton{
 		super(task.getTitle());
 		this.task = task;
 		this.frame = frame; 
-		this.world = PandativityFrame.getWorld(); 
+		//this.world = PandativityFrame.getWorld(); 
 		this.setText(task.getTitle());
 		this.createAction();
 	}
