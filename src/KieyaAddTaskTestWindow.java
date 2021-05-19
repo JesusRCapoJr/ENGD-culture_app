@@ -35,10 +35,18 @@ import java.text.SimpleDateFormat;
 import java.util.Objects;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
-
+/**
+ * This class opens the add task window when the user wants to add a task
+ * 
+ * Contributors: Kieya, Jesus
+ * 
+ * @author mcclunk
+ *
+ */
 
 public class KieyaAddTaskTestWindow extends JFrame {
 
+	// instance variables 
 	private JPanel contentPane;
 	private JTextField txtEnterTaskName;
 	private JComboBox comboBox;
@@ -49,9 +57,6 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private JDateChooser dateChooser;
 	private JFrame comingFrame;
 	private int folderID;
-	
-	// private JTextField txtAddDueDate;
-	// private JTextField txtDue;
 	private JTextArea taskAreaDescription;
 	private Task task;
 	private boolean inFolder;
@@ -63,7 +68,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private Date taskDueDate;
 
 	/**
-	 * Launch the application.
+	 * launchs the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -83,8 +88,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Three ways to create the frame 
+	 * @param task, boolean, folderID, DesplayState2
 	 */
+	
+	//#1
 	public KieyaAddTaskTestWindow(Task task, boolean inFolder, int folderID, DesplayState2 desplayState) {
 		this.task = task;
 		this.desplayState2 = desplayState;
@@ -93,6 +101,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		this.runAddTaskWindow();
 	}
 	
+	//#2
 	public KieyaAddTaskTestWindow(Task task, boolean inFolder, DesplayState1 desplayState, JFrame frame) {
 		this.task = task;
 		this.desplayState1 = desplayState;
@@ -101,14 +110,20 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		this.runAddTaskWindow();
 	}
 
+	//#3
 	public KieyaAddTaskTestWindow(Task task, boolean inFolder) {
 		this.task = task;
 		this.inFolder = inFolder;
 		this.runAddTaskWindow();
 	}
 
+	/*
+	 * shows the add task frame and sets up it general information
+	 */
 	@SuppressWarnings("deprecation")
 	public void runAddTaskWindow() {
+		
+		// sets general size and location
 		this.setOpacity(0.98f);
 		setAlwaysOnTop(true);
 		setResizable(false);
@@ -119,6 +134,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		this.setLocationRelativeTo(null);
 		setContentPane(contentPane);
 
+		// creates task name text field with its general information
 		txtEnterTaskName = new JTextField();
 		txtEnterTaskName.setHorizontalAlignment(SwingConstants.LEFT);
 		txtEnterTaskName.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -127,13 +143,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		txtEnterTaskName.setText(this.task.getTitle());
 		txtEnterTaskName.setColumns(10);
 
-		String[] folderNames = new String[Main.getAllFolders().size()];
-
+		// obtains folders from main and puts their title name in a arrayList of folders
 		// testing to see if I can access folders
 		// System.out.print(Main.getAllFolders().size());
-
+		String[] folderNames = new String[Main.getAllFolders().size()];
 		int i = 0;
-
 		for (Folder currentFolder : Main.getAllFolders()) {
 			folderNames[i] = currentFolder.getTitle();
 			System.out.print(currentFolder.getTitle());
@@ -141,10 +155,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 		}
 
+		// general description label over descrption box
 		JLabel lblNewLabel = new JLabel(Main.getLanguage().get("Description"));
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 16));
 
-		// Need to bring in stored folders
+		// creates combo box contained with folders accessed from main
 		comboBox = new JComboBox();
 		comboBox.setToolTipText(Main.getLanguage().get("Select designation folder"));
 		comboBox.setModel(new DefaultComboBoxModel(folderNames));
@@ -153,7 +168,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 				new String[] { Main.getLanguage().get("Folder"), Main.getAllFolders().get(0).getTitle(), Main.getAllFolders().get(1).getTitle(),
 						Main.getAllFolders().get(2).getTitle(), Main.getAllFolders().get(3).getTitle() }));
 		;
-		
+		// Who added this? 
 		if (task.getFolder()!=null) {
 			comboBox.setSelectedItem(task.getFolder().getTitle());
 		}
@@ -161,16 +176,18 @@ public class KieyaAddTaskTestWindow extends JFrame {
 			comboBox.setSelectedItem(Main.getAllFolders().get(folderID-1).getTitle());
 		}
 
-		// Need to sbring in stored folders
+		// creates combo box for labels
 		comboBox_1 = new JComboBox();
 		comboBox_1.setToolTipText(Main.getLanguage().get("Select label"));
 		comboBox_1.setModel(new DefaultComboBoxModel(new String[] { this.task.getLabels() }));
 
+		// creates combo box for priorities
 		comboBox_2 = new JComboBox();
 		comboBox_2.setToolTipText(Main.getLanguage().get("Select priority"));
 		comboBox_2.setModel(
 				new DefaultComboBoxModel(new String[] {Main.getLanguage().get("Priority"), Main.getLanguage().get("Low"), Main.getLanguage().get("Medium"), Main.getLanguage().get("High") }));
 		
+		// what does this do
 		if (task.getPriority()!=0) {
 			comboBox_2.setSelectedItem(task.getPriorityString());
 		}
@@ -180,6 +197,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 //		txtAddDueDate.setText(this.task.getDueDate());
 //		txtAddDueDate.setColumns(10);
 
+		// creates text area for description so user can type information abotu the task
 		JTextArea textArea = new JTextArea();
 		textArea.setWrapStyleWord(true);
 		textArea.setBackground(Color.LIGHT_GRAY);
@@ -188,6 +206,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		textArea.setText(this.task.getDescription());
 		this.taskAreaDescription = textArea;
 
+		// general done button
 		JButton btnNewButton = new JButton(Main.getLanguage().get("Done"));
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -201,6 +220,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 			//}
 		});
 
+		// check box for task completion
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Task Completed");
 		//chckbxNewCheckBox.setVisible(false);
@@ -216,10 +236,11 @@ public class KieyaAddTaskTestWindow extends JFrame {
 //			
 //		});
 		
-		//CHOOSE DATE
+		// due date label
 		JLabel lblNewLabel_1 = new JLabel(Main.getLanguage().get("Due Date:"));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 
+		// calendar feature so user can choose due date
 		this.dateChooser = new JDateChooser();
 		dateChooser.setDateFormatString("yyyy/MM/dd");
 	    
@@ -234,30 +255,32 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	    //this.taskDueDate=String.valueOf(dateChooser.get);
 		
 		//System.out.print(date);
-
+		
+		
+		// time label with spinfield in 24 hr 
 		JLabel lblNewLabel_2 = new JLabel(Main.getLanguage().get("Time:"));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-
 		//JSpinField spinField = new JSpinField();
 		this.hours = new JSpinner(
 				 new SpinnerNumberModel(task.getDueHour(), 0, 23, 1));
-
-		
 		
 		this.minutes = new JSpinner(
 				 new SpinnerNumberModel(task.getDueMinute(), 0, 59, 1));
 		this.taskDueDateMinute = (int) minutes.getValue();
+		
 		JLabel lblNewLabel_3 = new JLabel(":");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		//System.out.println(taskDueDateHour);
 		System.out.println(this.taskDueDateMinute);
-
+		
+		
 //		txtDue = new JTextField();
 //		txtDue.setEditable(false);
 //		txtDue.setBackground(Main.getChosenTheme().get(8));
 //		txtDue.setText("Due Date");
 //		txtDue.setColumns(10);
+		
+		// setting location of every element 
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(gl_contentPane.createParallelGroup(Alignment.LEADING).addGroup(gl_contentPane
 				.createSequentialGroup()
@@ -337,25 +360,26 @@ public class KieyaAddTaskTestWindow extends JFrame {
 //	
 //	}
  
+	/**
+	 * This method sets the task information based on the user input
+	 */
 	private void setTaskInformation() {
 		// TODO Auto-generated method stub
 
 		Label currentLabel = new Label(comboBox_1.getSelectedItem().toString());
 
-		// how do I access the folderlistfrom the saver, they should have an id right);
-
-		// Main.addTaskToFolder(task,//folder )
-
+		// checks if label is created already,
 		if (Main.registerLabel(currentLabel) == false) {
 			Main.addLabelToTask(currentLabel, task);
 		}
- 
-		// Main.addTaskToFolder(task, folder);
 				
+		// adds due date from datechooser
 	    Date dateFromDateChooser = dateChooser.getDate();
 	    //this.taskDueDate = String.format("%1$ty/%1$tm/%1$td", dateFromDateChooser);
 	    this.taskDueDate=dateFromDateChooser;
 	    
+	    
+	    // setting other information
 		task.setDescription(taskAreaDescription.getText());
 		task.setDueDate(taskDueDate);
 		task.setLabel(comboBox_1.getSelectedItem().toString());
@@ -388,6 +412,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 		this.setVisible(false);
 
+		// what does this do? 
 		if (this.inFolder) {
 			this.desplayState2.runNewFolder();
 		}
