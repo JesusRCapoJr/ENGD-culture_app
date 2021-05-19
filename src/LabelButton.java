@@ -1,3 +1,5 @@
+//Author: Steven Xia
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +20,16 @@ public class LabelButton extends ToggleButton {
 	private boolean selected; 
 	private FolderLabelsPanel flp; 
 	
+	/**
+	 * Constructs a LabelButton. Upon right click it will prompt delete or edit, and (Not yet) upon left click it searches for Tasks with this.label. 
+	 * @param flp
+	 * @param folder
+	 * @param label
+	 * @param upperLeftX
+	 * @param upperLeftY
+	 * @param width
+	 * @param height
+	 */
 	public LabelButton(FolderLabelsPanel flp, Folder folder, Label label, int upperLeftX, int upperLeftY, int width, int height) { //? 
 		super(label.getText(), upperLeftX, upperLeftY, width, height); 
 		this.flp = flp; 
@@ -27,21 +39,24 @@ public class LabelButton extends ToggleButton {
 		this.createAction();
 	}
 	
-	public void createAction() {                  // Action
+	
+	public void createAction() {    
+		
+		//Left click
 		ActionListener al = new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//System.out.println("Put actions to be performed on click here");		// what it does goes here				
+			public void actionPerformed(ActionEvent e) {			
 					if(selected) {
 						unClick(); 
 					}else {
 						FolderLabelsPanel.cleanAll();
 						setSelected(true); 
 						selected = true; 
+						//folder.getTasksByLabel(label); 
 					}
 				}
 			};
 			
-		//right click, code inspired by Jesus
+		//Right click, code inspired by Jesus Capo
 		MouseAdapter ml = new MouseAdapter() {
 			@SuppressWarnings("unchecked")
 			public void mousePressed(MouseEvent e) {
@@ -69,10 +84,15 @@ public class LabelButton extends ToggleButton {
 				}
 			}
 		}; 
+		
 		addActionListener(al); 
 		addMouseListener(ml); 
+		
 	}
 	
+	/**
+	 * Unclicks the button. 
+	 */
 	public void unClick() {
 		selected = false; 
 		this.setSelected(false);

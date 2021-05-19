@@ -1,8 +1,8 @@
+//Author: Steven Xia
 
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-//Author: Steven Xia
 public class FolderLabelsPanel extends JPanel{
 	
 	private static Folder folder; 
@@ -75,4 +75,5 @@ public class FolderLabelsPanel extends JPanel{
 	public void f5() {
 		this.repaint();
 	}
+	
 }

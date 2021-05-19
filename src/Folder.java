@@ -1,10 +1,10 @@
+//Author: Steven Xia, Jesus Capo
+
 import java.util.ArrayList;
 import java.io.Serializable;
 
 public class Folder implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -5502867876331652655L;
 	private ArrayList<Task> tasks;
 	private ArrayList<Label> labels; 
@@ -16,6 +16,7 @@ public class Folder implements Serializable{
 		labels = new ArrayList<Label>(); 
 		this.folderID = folderID;
 		this.title = title; 
+		Main.registerFolder(this); 
 	}
 	
 	public void addTask(Task task) {
@@ -30,7 +31,14 @@ public class Folder implements Serializable{
 	}
 	
 	public void removeLabel(Label label) {
-		this.labels.remove(label); 
+		if(this.labels.contains(label)) {
+			this.labels.remove(label); 
+			Main.removeLabel(label); 
+		}else {
+			//It does because I used a temporary Folder for registering Label... 
+			//System.out.println("Folder: label doesn't exist. This shouldn't happen???");
+			return; 
+		}
 	}
 	
 	public String getTitle() {
@@ -52,8 +60,11 @@ public class Folder implements Serializable{
 	public void addLabel(Label label) {
 		if(this.labels == null) {
 			this.labels = new ArrayList<Label>(); 
+		}else if(this.labels.contains(label)) {
+			return; 
 		}
 		this.labels.add(label); 
+		Main.registerLabel(label); 
 	}
 	
 	public ArrayList<Label> getLabels(){
@@ -69,20 +80,23 @@ public class Folder implements Serializable{
 	}
 	
 	/**
-	 * Searches for and returns Task objects within this Folder with all Label objects specified. O(n)
-	 * TODO: test it
+	 * Searches for and returns Task objects within this Folder with the Label objects specified. 
+	 * Not yet useful. 
+	 * Only supports one Label right now. 
 	 * 
 	 * @param labels: ArrayList<Label>
 	 * @return tasksFound: tasks containing all labels. Note they may have more labels than specified. 
 	 */
-	public ArrayList<Task> getTasksByLabels(ArrayList<Label> labels){
+	//reserved for future support of multiple Labels 
+//	public ArrayList<Task> getTasksByLabels(ArrayList<Label> labels){
+	public ArrayList<Task> getTasksByLabel(Label label){
+		
 		ArrayList<Task> tasksFound = new ArrayList<Task>(); 
+		
 		for(Task i: tasks) {
 			
-			//COMMENTED OUT BY JESUS
-			//ArrayList<Label> labelsInTask = i.getLabels();  -----------------------------------------------------
-			
-//			boolean matches = true; 
+			//reserved for future support of multiple Labels. MAY NEED TESTING AND DEBUGGING
+//			boolean matches = true; 		
 //			for(Label ii: labels) {
 //				if(!labelsInTask.contains(ii)) {
 //					matches = false; 
@@ -91,7 +105,10 @@ public class Folder implements Serializable{
 //			if(matches) {
 //				tasksFound.add(i); 
 //			}
-			//COMMENTED OUT BY JESUS
+			
+			if(i.getLabels().equals(label.getText())) {
+				tasksFound.add(i); 
+			}
 		}
 		
 		return tasksFound; 

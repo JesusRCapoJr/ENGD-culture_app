@@ -208,7 +208,7 @@ public class DesplayState2 {
 			}
 		});
 		
-		//Loop through all folders to showup inthe navigation panel
+		//Loop through all folders to show up in the navigation panel
 		for(final Folder f: Main.getAllFolders()) {
 			int currentFolderIndex = f.getID();
 			FolderButton aFolderBtn = new FolderButton(f,this.frame); 

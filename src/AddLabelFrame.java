@@ -1,3 +1,5 @@
+//Author: Steven Xia
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,8 +10,6 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
-//Author: Steven Xia
 
 public class AddLabelFrame extends JFrame{
 
@@ -28,7 +28,7 @@ public class AddLabelFrame extends JFrame{
 	 * They will be initiated as new Objects if not passed in, so Main.registerLabel() can handle that. 
 	 */
 	public AddLabelFrame() {
-		this.label = new Label("word"); 
+		this.label = new Label(""); 
 		this.folder = new Folder("words", 0); 
 		initiate(); 
 	}
@@ -43,7 +43,7 @@ public class AddLabelFrame extends JFrame{
 		}else {
 			this.folder = new Folder("words", 0); 
 		}
-		this.label = new Label("word"); 
+		this.label = new Label(""); 
 		initiate(); 
 	}
 	
@@ -53,11 +53,13 @@ public class AddLabelFrame extends JFrame{
 	 * @param folder
 	 */
 	public AddLabelFrame(Label label, Folder folder) {
+		
 		if(label != null) {
 			this.label = label; 
 		}else {
-			this.label = new Label("word"); 
+			this.label = new Label(""); 
 		}
+		
 		if(folder != null) {
 			this.folder = folder; 
 		}else {
@@ -122,29 +124,34 @@ public class AddLabelFrame extends JFrame{
 		frame.setVisible(true); 
 	}
 	
+	/**
+	 * Delete the label from registration in Folder and Main, then add it to the selected Folder and set the text to the text input. 
+	 */
 	public void setupLabel() {
-		//Mutate label. 
+
+		this.folder.removeLabel(label); 
+		
 		String selected = selectFolders.getSelectedItem().toString(); 
-		this.label.setText(textField.getText());
-		//Try to register label in Main. If success (label did not exist), add it in the correct Folder. If not, leave as it is mutated already. 
-		if(!Main.registerLabel(label)) {
-			if(selected.equals(Main.getAllFolders().get(0).getTitle())) {
-				Main.getAllFolders().get(0).addLabel(label);
-			}else if(selected.equals(Main.getAllFolders().get(1).getTitle())) {
-				Main.getAllFolders().get(1).addLabel(label);
-			}else if(selected.equals(Main.getAllFolders().get(2).getTitle())) {
-				Main.getAllFolders().get(2).addLabel(label);
-			}else if(selected.equals(Main.getAllFolders().get(3).getTitle())) {
-				Main.getAllFolders().get(3).addLabel(label);
-			}else {
-				System.out.println("What???");
-			}
+		
+		if(selected.equals(Main.getAllFolders().get(0).getTitle())) {
+			Main.getAllFolders().get(0).addLabel(label);
+		}else if(selected.equals(Main.getAllFolders().get(1).getTitle())) {
+			Main.getAllFolders().get(1).addLabel(label);
+		}else if(selected.equals(Main.getAllFolders().get(2).getTitle())) {
+			Main.getAllFolders().get(2).addLabel(label);
+		}else if(selected.equals(Main.getAllFolders().get(3).getTitle())) {
+			Main.getAllFolders().get(3).addLabel(label);
+		}else {
+			System.out.println("What???");
 		}
+		
+		this.label.setText(textField.getText());
 		
 	}
 	
 	/**
-	 * Exactly what a F5 button does... or at least I tried. Did not end up using, may show up in the future. 
+	 * Exactly what a F5 button does... or at least I tried. 
+	 * Did not end up using, may show up in the future. 
 	 */
 	public void f5() {
 		this.repaint();
