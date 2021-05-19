@@ -27,6 +27,8 @@ import javax.swing.JTextArea;
 import javax.swing.JCheckBox;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.beans.EventHandler;
 //import java.sql.Date;
 import java.util.Date;
@@ -66,6 +68,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	private int taskDueDateHour;
 	private int taskDueDateMinute;
 	private Date taskDueDate;
+	private KieyaAddTaskTestWindow thisWindow;
 
 	/**
 	 * launchs the application
@@ -94,6 +97,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	
 	//#1
 	public KieyaAddTaskTestWindow(Task task, boolean inFolder, int folderID, DesplayState2 desplayState) {
+		this.thisWindow=this;
 		this.task = task;
 		this.desplayState2 = desplayState;
 		this.inFolder = inFolder;
@@ -103,6 +107,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	
 	//#2
 	public KieyaAddTaskTestWindow(Task task, boolean inFolder, DesplayState1 desplayState, JFrame frame) {
+		this.thisWindow=this;
 		this.task = task;
 		this.desplayState1 = desplayState;
 		this.inFolder = inFolder;
@@ -112,6 +117,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 	//#3
 	public KieyaAddTaskTestWindow(Task task, boolean inFolder) {
+		this.thisWindow=this;
 		this.task = task;
 		this.inFolder = inFolder;
 		this.runAddTaskWindow();
@@ -120,7 +126,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 	/*
 	 * shows the add task frame and sets up it general information
 	 */
-	@SuppressWarnings("deprecation")
+
 	public void runAddTaskWindow() {
 		
 		// sets general size and location
@@ -163,7 +169,7 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		comboBox = new JComboBox();
 		comboBox.setToolTipText(Main.getLanguage().get("Select designation folder"));
 		comboBox.setModel(new DefaultComboBoxModel(folderNames));
-		;
+		
 		comboBox.setModel(new DefaultComboBoxModel(
 				new String[] { Main.getLanguage().get("Folder"), Main.getAllFolders().get(0).getTitle(), Main.getAllFolders().get(1).getTitle(),
 						Main.getAllFolders().get(2).getTitle(), Main.getAllFolders().get(3).getTitle() }));
@@ -211,13 +217,40 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		btnNewButton.setForeground(Color.BLACK);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//if (task.getFolder()!=null) {
+				if (comboBox.getSelectedIndex()!=0) {
 					setTaskInformation();
-				//}
-				//else {
-					//JOptionPane.showMessageDialog(null, Main.getLanguage().get("Please select a folder!"));
 				}
-			//}
+				else {
+					JOptionPane.showMessageDialog(thisWindow, Main.getLanguage().get("Please select a folder!"));
+
+	            }
+			}
+		});
+		
+		this.getRootPane().setDefaultButton(btnNewButton);
+		this.addKeyListener(new KeyListener() {public void keyPressed(KeyEvent e) {
+		    if (e.getKeyCode()==KeyEvent.VK_ENTER){
+		    	if (comboBox.getSelectedIndex()!=0) {
+					setTaskInformation();
+				}
+				else {
+					JOptionPane.showMessageDialog(thisWindow, Main.getLanguage().get("Please select a folder!"));
+
+	            }
+		    }
+		    }
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 		});
 
 		// check box for task completion

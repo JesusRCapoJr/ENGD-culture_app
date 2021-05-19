@@ -1,3 +1,5 @@
+//AUTHOR: Nathan Atkinson
+//Additional Contributors: Jesus, Steven, Kieya 
 
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -10,6 +12,7 @@ import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -41,7 +44,14 @@ public class DesplayState2 {
 	private int folderID;
 	private ArrayList<Color> folderButtonColors;
 	private DesplayState2 thisDesplay;
+	
+	//SCROLL VARS
+	
 	private int scrollOffset;
+	private int scrollIncrement;
+	private int scrollMaximum;
+	private int scrollVisible;
+	private JScrollBar vbar;
 	
 	/**
 	 * Launch the application.
@@ -95,6 +105,8 @@ public class DesplayState2 {
 	 * @throws Exception 
 	 */
 	public void initialize() throws Exception {
+		
+		this.setupScrollVars();
 		
 		Color homeColor = new Color(200, 250, 200);
 		Color folder1Color = new Color(255, 255, 255); 
@@ -154,8 +166,9 @@ public class DesplayState2 {
 		scrollPanel.setOpaque(true);
 		
 		//JScrollBar hbar=new JScrollBar(JScrollBar.HORIZONTAL, 30, 20, 0, 500);
-        JScrollBar vbar=new JScrollBar(JScrollBar.VERTICAL, 0, 40, 0, 500);
-        vbar.setVisibleAmount(200);
+        this.vbar = new JScrollBar(JScrollBar.VERTICAL, 0, this.scrollIncrement, 0, this.scrollMaximum); //this.scrollMaximum
+        vbar.setAutoscrolls(true);
+        vbar.setVisibleAmount(this.scrollVisible);
         
         class MyAdjustmentListener implements AdjustmentListener {
             public void adjustmentValueChanged(AdjustmentEvent e) {
@@ -164,6 +177,12 @@ public class DesplayState2 {
             	  buildTasks(panel,scrollOffset);
             }
         }
+        
+        panel.addMouseWheelListener(new MouseAdapter() {
+            public void mouseWheelMoved(MouseWheelEvent  e) {
+         	   vbar.setValue(vbar.getValue()+e.getWheelRotation()*10);
+            }	               
+         });
         
         //hbar.addAdjustmentListener(new MyAdjustmentListener( ));
         vbar.addAdjustmentListener(new MyAdjustmentListener( ));
@@ -246,16 +265,6 @@ public class DesplayState2 {
 		
 		buildTasks(panel, scrollOffset);
 		
-//		JButton Folder1 = new JButton("Folder 1");
-//		Folder1.setBackground(folder1Color);
-//		Folder1.setBounds(263, 10, 175, 89);
-//		panel_3.add(Folder1);
-//		Folder1.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				runNewFolder(folder, 4);                     //change
-//			}
-//		});
-		
 		JPanel SpritePanel = new JPanel();
 		SpritePanel.setBackground(Color.WHITE);
 		SpritePanel.setBounds(1263, 10, 241, 176);
@@ -299,11 +308,28 @@ public class DesplayState2 {
 		pane.add(AddNewTask,3,0);
 		
 	      }
-	
-	
+
 	/////////////////////////
 	
-	private void buildTasks(JPanel panel, int offset) {
+	
+	private void setupScrollVars() {
+		int tasksNum = this.folder.countTasks();
+		int supplementalTasksNum = tasksNum-9;
+		
+		if (tasksNum<=9) {
+			this.scrollIncrement=0;
+			this.scrollMaximum=0;
+			this.scrollVisible=0;
+		}
+		else {
+			this.scrollIncrement=1;
+			this.scrollMaximum=55*(supplementalTasksNum);
+			this.scrollVisible=this.scrollMaximum-55*(supplementalTasksNum);
+		}
+		
+	}
+	
+	private void buildTasks(final JPanel panel, int offset) {
 		//Loop through all tasks in the folder
 		int currentTaskNum = 1;
 		for(final Task t: this.folder.getTasks()) {
@@ -372,7 +398,9 @@ public class DesplayState2 {
 			        	  KieyaAddTaskTestWindow frame2 = new KieyaAddTaskTestWindow(t,true, folderID,thisDesplay);
 			        	  frame2.setVisible(true);
 			          }
-              	  runNewFolder(folder,folder.getID());
+              	  //runNewFolder(folder,folder.getID());
+			          panel.removeAll();
+			          buildTasks(panel,scrollOffset);
 				} 
 			});
 			
@@ -396,7 +424,8 @@ public class DesplayState2 {
 					}
 					completedTaskButton.setSelected(false);
 				}
-				runNewFolder();
+				panel.removeAll();
+				buildTasks(panel,scrollOffset);
 			}
 			});
 			
@@ -411,7 +440,8 @@ public class DesplayState2 {
 	               public void mousePressed(MouseEvent e) {
 			        	  folder.removeTask(t);
 			        	  Main.getAllTasks().remove(t);
-			        	  runNewFolder(folder,folder.getID());
+						  panel.removeAll();
+						  buildTasks(panel,scrollOffset);
 	               }
 	            });
 			currentTaskNum+=1;
