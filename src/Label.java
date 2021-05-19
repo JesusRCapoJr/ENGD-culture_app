@@ -1,3 +1,6 @@
+//Author: Jesus Capo
+//Additional Contributors: Steven Xia
+
 import java.awt.Color;
 import java.io.Serializable;
 

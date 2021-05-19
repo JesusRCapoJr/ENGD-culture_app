@@ -1,13 +1,17 @@
 
 public class GlobleUpdate extends Thread {
 
+	int modulus;
 
  public void run(){
 
  while(true) {
 
 try {
+	if (modulus%10==10) {
 	Main.sprite.update();
+	}
+	Main.timeLabel.update();
 } catch (Exception e1) {
 	// TODO Auto-generated catch block
 	e1.printStackTrace();
@@ -15,7 +19,7 @@ try {
 
 try {
 
-Thread.sleep(10000);
+Thread.sleep(1000);
 
 } catch (InterruptedException e) {
 

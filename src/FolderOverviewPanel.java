@@ -1,3 +1,5 @@
+//CLASS NOT USED, MAY BE USED IN THE FUTURE
+
 import java.awt.Color;
 
 import javax.swing.JPanel;

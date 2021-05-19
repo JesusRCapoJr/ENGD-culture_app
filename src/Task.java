@@ -1,4 +1,7 @@
- import java.io.Serializable;
+ //Author: Jesus Capo
+//Additional Constributors: Steven Xia
+
+import java.io.Serializable;
 import java.util.Date;
 
 public class Task implements Serializable{
@@ -74,7 +77,7 @@ public class Task implements Serializable{
 		else if(newPriority.matches(new String("Medium"))) {
 			this.priority = 2;
 		}
-		else if (newPriority.matches(new String("Hight"))) {
+		else if (newPriority.matches(new String("High"))) {
 			this.priority = 3;
 		}
 		else {

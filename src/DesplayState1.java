@@ -1,4 +1,8 @@
+//Author: Nathan Atkinson
+//Additional Contributors: Jesus Capo, Steven Xia, Kieya McClung
+
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Rectangle;
 
 import javax.swing.JFrame;
@@ -12,6 +16,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JProgressBar;
@@ -125,6 +131,9 @@ public class DesplayState1 {
 		AddNewTask.setBounds(270, 225, 170, 170);
 		AddTaskPanel.add(AddNewTask);
 		
+		Main.getTimeLabel().create(0, 795, 157, 40);
+		frame.add(Main.getTimeLabel(),1,0);
+		
 		JProgressBar PandaProgressBar = new JProgressBar();
 		PandaProgressBar.setValue((int) (Main.sprite.Score * 20));
 		PandaProgressBar.setBackground(Main.getChosenTheme().get(4));
@@ -168,7 +177,7 @@ public class DesplayState1 {
 		        	  Object[] languageOptions = {
 	                            "English","简体中文","Done"};//"English","简体中文","Done"
 		        	  Object[] themeOptions = {
-		        			  Main.getLanguage().get("Forest Green"),Main.getLanguage().get("Arctic Day"),Main.getLanguage().get("Moonlit Night"),Main.getLanguage().get("Done")};//"Forest Green","Arctic Day","Moonlit Night","Done"
+		        			  Main.getLanguage().get("Forest Green"),Main.getLanguage().get("Arctic Day"),Main.getLanguage().get("Moonlit Night"),Main.getLanguage().get("Volcano Paradise"),Main.getLanguage().get("Done")};//"Forest Green","Arctic Day","Moonlit Night","Done"
               	  
 			          int optionsResponse = JOptionPane.showOptionDialog(null,
 			        		  Main.getLanguage().get("How may we best assist you today?"),
@@ -229,7 +238,7 @@ public class DesplayState1 {
 					              JOptionPane.QUESTION_MESSAGE,
 					              null,
 					              themeOptions,
-					              themeOptions[3]);
+					              themeOptions[4]);
 				          switch (themeResponse) {
 				          case 0:
 				        	  Main.getPreferences().set(1, 0);		        	  
@@ -239,6 +248,9 @@ public class DesplayState1 {
 				        	  break;
 				          case 2:
 				        	  Main.getPreferences().set(1, 2);
+				        	  break;
+				          case 3:
+				        	  Main.getPreferences().set(1, 3);
 				        	  break;
 		                	 
 		      				}

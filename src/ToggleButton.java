@@ -1,3 +1,7 @@
+//CLASS NOT USED, MAY BE USED IN THE FUTURE
+
+//Author: Steven Xia?
+
 import java.awt.Color;
 import java.awt.Point;
 import java.awt.event.ActionEvent;

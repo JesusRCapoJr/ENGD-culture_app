@@ -1,3 +1,12 @@
+/**
+ * This opens the add task window when the user wants to add a task
+ * 
+ * Contributors: Kieya, Jesus
+ * 
+ * @author mcclunk
+ *
+ */
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -37,14 +46,6 @@ import java.text.SimpleDateFormat;
 import java.util.Objects;
 import java.awt.event.ActionEvent;
 import javax.swing.DropMode;
-/**
- * This class opens the add task window when the user wants to add a task
- * 
- * Contributors: Kieya, Jesus
- * 
- * @author mcclunk
- *
- */
 
 public class KieyaAddTaskTestWindow extends JFrame {
 

@@ -117,16 +117,16 @@ public class DesplayState2 {
 		
 		switch(this.folderID) {
 			case 1:
-				folder1Color = Color.YELLOW;
+				folder1Color = Main.getChosenTheme().get(9);
 				break;
 			case 2:
-				folder2Color = Color.YELLOW;
+				folder2Color = Main.getChosenTheme().get(9);
 				break;
 			case 3:
-				folder3Color = Color.YELLOW;
+				folder3Color = Main.getChosenTheme().get(9);
 				break;
 			case 4:
-				folder4Color = Color.YELLOW;
+				folder4Color = Main.getChosenTheme().get(9);
 				break;
 		}
 		
@@ -153,7 +153,7 @@ public class DesplayState2 {
 										//		frame.getContentPane().removeAll();
 												//frame.setBounds(0, 0, 1920, 1080);
 		frame.setBounds(0, 0, 1545, 950);
-		frame.getContentPane().add(pane);
+		frame.getContentPane().add(pane,0,0);
 		
 		panel.setBackground(Main.getChosenTheme().get(6));
 		panel.setBounds(10, 0, 1205, 704); 
@@ -306,7 +306,6 @@ public class DesplayState2 {
 //		AddNewTask.setContentAreaFilled(false);
 //		AddNewTask.setBorderPainted(false);
 		pane.add(AddNewTask,3,0);
-		
 	      }
 
 	/////////////////////////
@@ -330,6 +329,7 @@ public class DesplayState2 {
 	}
 	
 	private void buildTasks(final JPanel panel, int offset) {
+		
 		//Loop through all tasks in the folder
 		int currentTaskNum = 1;
 		for(final Task t: this.folder.getTasks()) {
@@ -344,22 +344,40 @@ public class DesplayState2 {
 			JButton taskDayLabel = new JButton(t.getDueDateString());
 			JButton taskTimeLabel = new JButton(t.getDueTime());
 			JButton deleteTaskButton = new JButton(Main.getLanguage().get("Delete"));
+			JButton priorityIndicator = new JButton();
 			
-			taskButton.setBounds(10, 10+(currentTaskNum-1)*55+offset, 500, 50);
+			taskButton.setBounds(10, 10+(currentTaskNum-1)*55+offset, 400, 50);
 			taskDayLabel.setBounds(10+550, 10+(currentTaskNum-1)*55+offset, 200, 50);
 			taskTimeLabel.setBounds(10+800, 10+(currentTaskNum-1)*55+offset, 200, 50);
 			completedTaskButton.setBounds(10+1035, 25+(currentTaskNum-1)*55+offset, 20, 20);
-			deleteTaskButton.setBounds(10+1080, 10+(currentTaskNum-1)*55+offset, 100, 50);
+			deleteTaskButton.setBounds(10+1070, 10+(currentTaskNum-1)*55+offset, 90, 50);
+			priorityIndicator.setBounds(10+400, 10+(currentTaskNum-1)*55+offset, 80, 50);
 			
 			completedTaskButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			taskTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 			deleteTaskButton.setFont(new Font("Tahoma", Font.PLAIN, 15));;
 			taskButton.setToolTipText(t.getDescription());
 			
+			switch (t.getPriority()) {
+			case 1:
+				priorityIndicator.setText("Low");
+				priorityIndicator.setBackground(Color.GREEN);
+				break;
+			case 2:
+				priorityIndicator.setText("Medium");
+				priorityIndicator.setBackground(Color.YELLOW);
+				break;
+			case 3:
+				priorityIndicator.setText("High");
+				priorityIndicator.setBackground(Color.RED);
+				break;
+			}
+			
 			Color taskButtonBackground = new Color(255,255,255);	
 			
 			if (t.isCompleted()) {
 				taskButtonBackground = Color.GRAY;
+				priorityIndicator.setBackground(Color.GRAY);
 				panel.add(deleteTaskButton);
 			}
 			
@@ -371,12 +389,15 @@ public class DesplayState2 {
 			completedTaskButton.setBackground(Main.getChosenTheme().get(6));
 			
 			//aFolderBtn.setBackground(this.folderButtonColors.get(currentFolderIndex));
-			panel.add(taskButton); 
-			panel.add(completedTaskButton);
-			panel.add(taskDayLabel);
-			panel.add(taskTimeLabel); 
+			panel.add(taskButton,0); 
+			panel.add(completedTaskButton,0);
+			panel.add(taskDayLabel,0);
+			panel.add(taskTimeLabel,0); 
+			if (t.getPriority() != 0) {
+			panel.add(priorityIndicator,0);
+			}
 			
-			
+			//TASK BUTTON
 			taskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					Object[] options = {Main.getLanguage().get("Delete"),
@@ -404,6 +425,7 @@ public class DesplayState2 {
 				} 
 			});
 			
+			//COMPLETED TASK BUTTON
 			completedTaskButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				if (t.isCompleted()==false) {
@@ -447,6 +469,9 @@ public class DesplayState2 {
 			currentTaskNum+=1;
 		}
 		panel.repaint();
+		Main.getTimeLabel().create(0, 795, 157, 40);
+		frame.add(Main.getTimeLabel(),10,0);
+		frame.repaint();
 	}
 	private void backToHome() throws Throwable {
 		this.reborn();
