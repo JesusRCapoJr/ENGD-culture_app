@@ -34,7 +34,7 @@ public class LabelButton extends ToggleButton {
 		super(label.getText(), upperLeftX, upperLeftY, width, height); 
 		this.flp = flp; 
 		this.label = label;
-		this.folder = folder; 
+		this.folder = folder;  
 		this.selected = false; 
 		this.createAction();
 	}
