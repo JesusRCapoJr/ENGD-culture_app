@@ -1,9 +1,12 @@
 
 /**
- * This opens the add task window when the user wants to add a task. It will take in a new task, 
- * boolean ( if its in a folder or not), folder Id, frame , and DesplayState1 or DesplayState2.
+ * Summary:
+ *    This class connects with the desplaystate windows when the addtask buttons are clicked. 
+ *    Also when the task panels are clicked on to see saved inputted data.This opens the add 
+ *    task window when the user wants to add a task. It will take in a new task, 
+ *    boolean(if its in a folder or not), folder Id, frame , and DesplayState1 or DesplayState2.
  * 
- * 
+ *
  * Contributors: Kieya, Jesus
  * 
  * @author mcclunk
@@ -258,15 +261,18 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		// chckbxNewCheckBox.setVisible(false);
 		chckbxNewCheckBox.setBackground(Main.getChosenTheme().get(8)); // new Color(102, 153, 0)
 		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 15));
-//		isCompleted = chckbxNewCheckBox.isEnabled();
-//		chckbxNewCheckBox.addActionListener(new ActionListener() {
-//		 public void actionPerformed(ActionEvent arg0) {
-//			
-//				checkTaskCompletion();
-//			
-//		 }	
-//			
-//		});
+		isCompleted = chckbxNewCheckBox.isEnabled();
+		chckbxNewCheckBox.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent arg0) {
+				try {
+					checkTaskCompletion();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		 }	
+			
+		});
 
 		// Creates due date label
 		JLabel lblNewLabel_1 = new JLabel(Main.getLanguage().get("Due Date:"));
@@ -377,10 +383,13 @@ public class KieyaAddTaskTestWindow extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 	}
 
-//	private void checkTaskCompletion(){
-//			task.setCompleted(isCompleted);
-//	
-//	}
+	/**
+	 * Updates task completion based on activity of check box button
+	 */
+	
+	private void checkTaskCompletion() throws Exception{
+			task.setCompleted(isCompleted);
+	}
 
 	/**
 	 * This method sets the task information based on the users input
@@ -432,7 +441,8 @@ public class KieyaAddTaskTestWindow extends JFrame {
 
 		this.setVisible(false);
 
-		// what does this do?
+		// This checks to see if the current view is in a folder or the home view. 
+		//It directs how it will update the task based on the view
 		if (this.inFolder) {
 			this.desplayState2.runNewFolder();
 		} else {
