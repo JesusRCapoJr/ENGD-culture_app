@@ -118,6 +118,11 @@ public class Task implements Serializable{
 		
 	}
 	
+	/**
+	 * An exception is thrown if there is no spirit in Main. 
+	 * @param completed
+	 * @throws Exception
+	 */
 	public void setCompleted(boolean completed) throws Exception {
 		this.completed = completed;
 		if(this.completed==true) {
