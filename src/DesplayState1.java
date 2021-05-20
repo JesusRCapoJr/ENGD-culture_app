@@ -329,7 +329,7 @@ public class DesplayState1 {
 	
 	private void runNewFolder(int folderID) {
 //		frame.setVisible(false);
-		reborn();
+		reborn(); 
 		
 		try {
 			new DesplayState2(frame,folderID);
