@@ -2,6 +2,7 @@
 //Additional Contributors: Steven Xia, John Chung
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -35,6 +36,8 @@ public class HomeOverviewPanel extends JPanel{
 	
 	private int btnW; 
 	private int btnH;
+	
+	private String sortMethod;
 	
 	private static ArrayList<TaskButton> allTaskButtons = new ArrayList<TaskButton>(); 
 	
@@ -112,7 +115,7 @@ public class HomeOverviewPanel extends JPanel{
 	 * @param desplayState
 	 * @param frame
 	 */
-	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, DesplayState1 desplayState, JFrame frame) {
+	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, DesplayState1 desplayState, JFrame frame, String sortMethod) {
 		super();
 		//desplayState and frame are for later use in refreshing the page 
 		this.desplayState = desplayState;
@@ -124,6 +127,8 @@ public class HomeOverviewPanel extends JPanel{
 		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
 		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
 		
+		this.sortMethod=sortMethod;
+		
 		constructAll(); 
 	}
 	
@@ -131,28 +136,26 @@ public class HomeOverviewPanel extends JPanel{
 	 * Constructs all stuff to show all Tasks. 
 	 */
 	public void constructAll() {
-		
-//		for(Folder folder:Main.getAllFolders()) {
-//			for(Task task:folder.getTasks()) {
-//				 tasks.add(task); 
-//			}
-//		}
+		tasks.removeAll(tasks);
+		for(Folder folder:Main.getAllFolders()) {
+			for(Task task:folder.getTasks()) {
+				 tasks.add(task); 
+				 System.out.println("1");
+			}
+		}
+		System.out.println(tasks.size());
 //		test(); 
-		this.setBackground(new Color(105, 105, 105));
+		//this.setBackground(new Color(105, 105, 105));
 		
 		//sort by Due date, then priority. TBC
 		//Main.sortTasksBy(tasks, "dueAndPriority");
 		
 		int i = 0; 
-//		for(Task task:tasks) {
-//			constructButton(i,task); 
-//			i++;
-//		}
 		
-//		for(Task task:Main.sortTasksBy(Main.getAllTasks(), "due")) {
-//			constructButton(i,task); 
-//			i++; 
-//		}
+		for(Task task:Main.sortTasksBy(tasks, "due")) {
+			constructButton(i,task); 
+			i++; 
+		}
 		
 		//TODO: make finished tasksd dark and have a delete option
 	}
@@ -162,13 +165,13 @@ public class HomeOverviewPanel extends JPanel{
 	 * Did not end up using but may return in the future. 
 	 */
 	public void constructAllFolder() {
-//		ArrayList<Task> tasks = this.folder.getTasks(); 
-//		//Main.sortTasksBy(tasks, "dueAndPriority");
-//		int i=0; 
-//		for(Task task:Main.sortTasksBy(Main.getAllTasks(), "due")) {
-//			constructButton(i,task); 
-//			i++; 
-//		}
+		ArrayList<Task> tasks = this.folder.getTasks(); 
+		//Main.sortTasksBy(tasks, "dueAndPriority");
+		int i=0; 
+		for(Task task:Main.sortTasksBy(Main.getAllTasks(), "due")) {
+			constructButton(i,task); 
+			i++; 
+		}
 		
 		this.setBackground(this.color); 
 	}
@@ -188,15 +191,36 @@ public class HomeOverviewPanel extends JPanel{
 	 * @param task
 	 */
 	public void constructButton(int i, final Task task) {
-		
+		System.out.println("here");
 		Color taskButtonBackground = new Color(255,255,255);	
 		
 		JButton deleteTaskButton = new JButton(Main.getLanguage().get("Delete"));
-		deleteTaskButton.setBounds((width/2 + (width/2-btnW)/2)+200, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-200, btnH);
+		deleteTaskButton.setBounds((width/2 + (width/2-btnW)/2)+250, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-200, btnH);
 		deleteTaskButton.setBackground(Color.RED);
+
+		JButton priorityIndicator = new JButton();
+		priorityIndicator.setBounds(10+btnW, 20+(i+1)*BUTTON_GAP+i*btnH, 30, btnH);
+		switch (task.getPriority()) {
+		case 1:
+			//priorityIndicator.setText("Low");
+			priorityIndicator.setBackground(Color.GREEN);
+			this.add(priorityIndicator);
+			break;
+		case 2:
+			//priorityIndicator.setText("Medium");
+			priorityIndicator.setBackground(Color.YELLOW);
+			this.add(priorityIndicator);
+			break;
+		case 3:
+			//priorityIndicator.setText("High");
+			priorityIndicator.setBackground(Color.RED);
+			this.add(priorityIndicator);
+			break;
+		}
 		
 		if (task.isCompleted()) {
 			taskButtonBackground = Color.GRAY;
+			priorityIndicator.setBackground(Color.GRAY);
 			this.add(deleteTaskButton);
 		}
 		
@@ -208,25 +232,26 @@ public class HomeOverviewPanel extends JPanel{
 		this.add(btn); 
 		
 		JButton taskDayLabel = new JButton(task.getDueDateString());
-		taskDayLabel.setBounds(338, 20+(i+1)*BUTTON_GAP+i*btnH, btnW/3, btnH);
+		taskDayLabel.setBounds(370, 20+(i+1)*BUTTON_GAP+i*btnH, btnW/3, btnH);
 		taskDayLabel.setBackground(taskButtonBackground);
 		this.add(taskDayLabel);
 		
 		JButton taskTimeLabel = new JButton(task.getDueTime());
-		taskTimeLabel.setBounds(450, 20+(i+1)*BUTTON_GAP+i*btnH, btnW/3, btnH);
+		taskTimeLabel.setBounds(480, 20+(i+1)*BUTTON_GAP+i*btnH, btnW/3, btnH);
 		taskTimeLabel.setBackground(taskButtonBackground);
 		this.add(taskTimeLabel); 
 		
 		final JCheckBox chkbtn = new JCheckBox("");
-		chkbtn.setBounds((width/2 + (width/2-btnW)/2)+150, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-300, btnH);
+		chkbtn.setBounds((width/2 + (width/2-btnW)/2)+180, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-300, btnH);
 		chkbtn.setBackground(taskButtonBackground);
+		this.add(chkbtn);
+
 		if (task.isCompleted()==false) {
 			chkbtn.setSelected(false);
 		} 
 		else {
 			chkbtn.setSelected(true);
 		}
-		this.add(chkbtn);
 		
 		chkbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

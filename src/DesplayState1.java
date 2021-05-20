@@ -28,6 +28,7 @@ public class DesplayState1 {
 
 	static JFrame frame;
 	private DesplayState1 thisDesplay;
+	private String sortMethod;
 
 	/**
 	 * Launch the application.
@@ -52,12 +53,14 @@ public class DesplayState1 {
 	 */
 	public DesplayState1() throws Throwable {
 		frame = new JFrame();
+		this.sortMethod ="due";
 		initialize();
 		Main.sprite.Score = 2;
 	}
 	
 	public DesplayState1(JFrame frame) throws Throwable {
 		this.frame = frame;
+		this.sortMethod="due";
 		initialize();
 		
 	}
@@ -80,7 +83,7 @@ public class DesplayState1 {
 //		OverviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		OverviewPanel.setBounds(724, 208, 806, 627);
 //		frame.getContentPane().add(OverviewPanel);
-		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627,this.thisDesplay,frame); 
+		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627,this.thisDesplay,frame,"due"); 
 		frame.getContentPane().add(overviewPanel); 
 		overviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		
@@ -167,6 +170,10 @@ public class DesplayState1 {
 		settingsButton.setIcon(new ImageIcon(settingsIcon));
 		settingsButtonPanel.add(settingsButton);
 		settingsButton.setBounds(0, 0, 100, 100);
+		
+		settingsButtonPanel.add(settingsButton);
+		settingsButton.setBounds(0, 0, 100, 100);
+		
 		settingsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -269,7 +276,40 @@ public class DesplayState1 {
 			}
 		});
 		
-		//settingsButtonPanel.setVisible(true);
+		//Sort Button
+		JPanel sortButtonPanel = new JPanel();
+		sortButtonPanel.setBounds(1425, 150, 100, 40);
+		sortButtonPanel.setBackground(Main.getChosenTheme().get(5));
+		sortButtonPanel.setLayout(null);
+		sortButtonPanel.setVisible(true);
+		frame.add(sortButtonPanel);
+		
+		JButton sortButton = new JButton("Sort"); 
+		sortButton.setBackground(Main.getChosenTheme().get(5));
+		
+		sortButtonPanel.add(sortButton);
+		sortButton.setBounds(0, 0, 100, 40);
+		
+		sortButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				switch (sortMethod) {
+				case "priority":
+					sortMethod="due";
+					break;
+				case "due":
+					sortMethod="priority";
+					break;
+				}
+				
+				reborn();
+				try {
+          		  new DesplayState1(frame);
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+		          }
+			}
+		});
 		
 		//Adds all folder buttons with proper names
 		System.out.println("Folder Count: "+Main.getAllFolders().size());

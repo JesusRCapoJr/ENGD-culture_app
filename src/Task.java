@@ -115,7 +115,6 @@ public class Task implements Serializable{
 		}
 		
 		this.dueTime = dueHoursString + ":" + dueMinuteString;
-		
 	}
 	
 	/**

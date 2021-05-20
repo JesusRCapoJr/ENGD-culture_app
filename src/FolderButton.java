@@ -84,20 +84,20 @@ public class FolderButton extends Button {
 	/**
 	 * For testing only
 	 */
-	public void test() {
-		Folder la = new Folder("la",1); 
-		Task tsk = new Task(); 
-		tsk.setTitle("audwhaufhka");
-		Task tsk2 = new Task(); 
-		tsk2.setTitle("efesgf");
-		la.addTask(tsk);
-		la.addTask(tsk2);
-		System.out.println("FolderButton pushed"); 
-		HomeOverviewPanel foP = new HomeOverviewPanel(la, 10, 131, 1205, 704); 
-		//PandativityFrame.reborn();
-		world.add(foP); 
-		Main.registerFolder(la); 
-	}
+//	public void test() {
+//		Folder la = new Folder("la",1); 
+//		Task tsk = new Task(); 
+//		tsk.setTitle("audwhaufhka");
+//		Task tsk2 = new Task(); 
+//		tsk2.setTitle("efesgf");
+//		la.addTask(tsk);
+//		la.addTask(tsk2);
+//		System.out.println("FolderButton pushed"); 
+//		HomeOverviewPanel foP = new HomeOverviewPanel(la, 10, 131, 1205, 704); 
+//		//PandativityFrame.reborn();
+//		world.add(foP); 
+//		Main.registerFolder(la); 
+//	}
 
 	
 }
