@@ -1,4 +1,4 @@
-//Author: Steven Xia?
+//Author: John Chung 
 
 import java.awt.Color;
 import java.awt.Point;

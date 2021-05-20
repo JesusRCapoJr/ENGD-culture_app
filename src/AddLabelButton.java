@@ -1,9 +1,10 @@
+//Author: Steven Xia
+
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 
-//Author: Steven Xia
 public class AddLabelButton extends Button {
 	private JPanel world;
 	private Color BGC = new Color(255, 0, 0, 0);
