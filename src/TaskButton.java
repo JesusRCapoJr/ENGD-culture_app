@@ -1,4 +1,4 @@
-//Author: Steven Xia?
+//Author: Steven Xia 
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -22,6 +22,11 @@ public class TaskButton extends ToggleButton{
 	private JFrame frame; 
 	private DesplayState1 desplayState;
 	
+	/**
+	 * Constructs a TaskButton
+	 * @param task
+	 * @param frame
+	 */
 	public TaskButton(Task task, JFrame frame) { 
 		super(task.getTitle());
 		this.task = task;
@@ -83,6 +88,10 @@ public class TaskButton extends ToggleButton{
 		this.description = this.task.getDescription();
 	}
 	
+	/**
+	 * Shows description on the side upon click. 
+	 * Discarded but kept as reference for the future. 
+	 */
 	public void displayTask() {
 		updateDescription(); 
 		
@@ -121,7 +130,9 @@ public class TaskButton extends ToggleButton{
 		btnPanel.add(details); 
 		
 	}
-	
+	/**
+	 * Unclicks the button, which also hides the panel of description. 
+	 */
 	public void unClick() {
 		btnPanel.setVisible(false);
 		selected = false; 

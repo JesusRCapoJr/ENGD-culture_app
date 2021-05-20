@@ -1,6 +1,5 @@
-//CLASS NOT USED, MAY BE USED IN THE FUTURE
-
-//Author: Steven Xia?
+//Author: Steven Xia
+//Most methods copied from Button class
 
 import java.awt.Color;
 import java.awt.Point;
@@ -61,6 +60,7 @@ public class ToggleButton extends JToggleButton{
 		public void setAppearance(/* appearance */) { // Appearance
 
 		}
+		
 		public void changeColorState() { 
 			if (this.color == new Color(255,255,255)) {
 				this.color = new Color(0,0,0);

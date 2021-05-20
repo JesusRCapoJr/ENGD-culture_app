@@ -1,5 +1,5 @@
 //Author: Jesus Capo
-//Additional Constributors: Steven Xia
+//Additional Constributors: Steven Xia, Nathan Atkinson
 import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
