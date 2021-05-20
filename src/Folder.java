@@ -11,6 +11,11 @@ public class Folder implements Serializable{
 	private String title; 
 	private int folderID; 
 	
+	/**
+	 * Constructs a Folder and register it to Main
+	 * @param title
+	 * @param folderID
+	 */
 	public Folder(String title, int folderID) {
 		tasks = new ArrayList<Task>();  
 		labels = new ArrayList<Label>(); 

@@ -98,14 +98,25 @@ public class LabelButton extends ToggleButton {
 		this.setSelected(false);
 	}
 	
+	/**
+	 * Not useful yet. 
+	 */
 	public void displayLabel() {
 		flp.f5();
 	}
 	
+	/**
+	 * 
+	 * @return if the button is selected
+	 */
 	public boolean getSelected() {
 		return this.selected; 
 	}
 	
+	/**
+	 * 
+	 * @return the Label of the button
+	 */
 	public Label getThisLabel() {
 		return this.label; 
 	}

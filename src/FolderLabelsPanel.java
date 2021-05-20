@@ -70,7 +70,8 @@ public class FolderLabelsPanel extends JPanel{
 	}
 	
 	/**
-	 * Theoretically does what a F5 button does. Did not use in the program but may show up in the future. 
+	 * Theoretically does what a F5 button does. 
+	 * Did not use in the program but may show up in the future. 
 	 */
 	public void f5() {
 		this.repaint();
