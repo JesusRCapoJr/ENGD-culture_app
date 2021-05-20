@@ -8,7 +8,7 @@ public class GlobleUpdate extends Thread {
  while(true) {
 
 try {
-	if (modulus%10==10) {
+	if (modulus%10==6) {
 	Main.sprite.update();
 	}
 	Main.timeLabel.update();
