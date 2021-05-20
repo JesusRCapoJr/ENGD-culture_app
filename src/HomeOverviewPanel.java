@@ -132,11 +132,11 @@ public class HomeOverviewPanel extends JPanel{
 	 */
 	public void constructAll() {
 		
-		for(Folder folder:Main.getAllFolders()) {
-			for(Task task:folder.getTasks()) {
-				 tasks.add(task); 
-			}
-		}
+//		for(Folder folder:Main.getAllFolders()) {
+//			for(Task task:folder.getTasks()) {
+//				 tasks.add(task); 
+//			}
+//		}
 //		test(); 
 		this.setBackground(new Color(105, 105, 105));
 		
@@ -144,10 +144,15 @@ public class HomeOverviewPanel extends JPanel{
 		//Main.sortTasksBy(tasks, "dueAndPriority");
 		
 		int i = 0; 
-		for(Task task:tasks) {
-			constructButton(i,task); 
-			i++;
-		}
+//		for(Task task:tasks) {
+//			constructButton(i,task); 
+//			i++;
+//		}
+		
+//		for(Task task:Main.sortTasksBy(Main.getAllTasks(), "due")) {
+//			constructButton(i,task); 
+//			i++; 
+//		}
 		
 		//TODO: make finished tasksd dark and have a delete option
 	}
@@ -157,13 +162,13 @@ public class HomeOverviewPanel extends JPanel{
 	 * Did not end up using but may return in the future. 
 	 */
 	public void constructAllFolder() {
-		ArrayList<Task> tasks = this.folder.getTasks(); 
-		//Main.sortTasksBy(tasks, "dueAndPriority");
-		int i=0; 
-		for(Task task:Main.getAllTasks()) {
-			constructButton(i,task); 
-			i++; 
-		}
+//		ArrayList<Task> tasks = this.folder.getTasks(); 
+//		//Main.sortTasksBy(tasks, "dueAndPriority");
+//		int i=0; 
+//		for(Task task:Main.sortTasksBy(Main.getAllTasks(), "due")) {
+//			constructButton(i,task); 
+//			i++; 
+//		}
 		
 		this.setBackground(this.color); 
 	}
