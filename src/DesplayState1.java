@@ -31,36 +31,26 @@ public class DesplayState1 {
 	String sortMethod;
 
 	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					DesplayState1 window = new DesplayState1();
-////					window.frame.getComponentAt(new Point(1300,100));
-//					window.frame.setVisible(true);
-//				} catch (Throwable e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
-
-	/**
 	 * Create the application.
 	 * @throws Throwable 
 	 */
 	public DesplayState1() throws Throwable {
 		frame = new JFrame();
+		this.sortMethod="due";
 		initialize();
 		Main.sprite.Score = 2;
 	}
 	
+	public DesplayState1(JFrame frame, String sortMethod) throws Throwable {
+		this.frame = frame;
+		this.sortMethod=sortMethod;
+		initialize();
+	}
+	
 	public DesplayState1(JFrame frame) throws Throwable {
 		this.frame = frame;
+		this.sortMethod="due";
 		initialize();
-		
 	}
 
 	/**
@@ -81,7 +71,7 @@ public class DesplayState1 {
 //		OverviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		OverviewPanel.setBounds(724, 208, 806, 627);
 //		frame.getContentPane().add(OverviewPanel);
-		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627,this.thisDesplay,frame); 
+		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627,this.thisDesplay,frame,this.sortMethod); 
 		frame.getContentPane().add(overviewPanel); 
 		overviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		
@@ -228,7 +218,7 @@ public class DesplayState1 {
 		      				}
 				          reborn();
 	                	  try {
-	                		  new DesplayState1(frame);
+	                		  new DesplayState1(frame, sortMethod);
 	      				} catch (Throwable e1) {
 	      					// TODO Auto-generated catch block
 	      					e1.printStackTrace();
@@ -261,7 +251,7 @@ public class DesplayState1 {
 		      				}
 				          reborn();
 	                	  try {
-	                		  new DesplayState1(frame);
+	                		  new DesplayState1(frame,sortMethod);
 	      				} catch (Throwable e1) {
 	      					// TODO Auto-generated catch block
 	      					e1.printStackTrace();
@@ -276,22 +266,33 @@ public class DesplayState1 {
 		
 		//Sort Button
 		JPanel sortButtonPanel = new JPanel();
-		sortButtonPanel.setBounds(1425, 150, 100, 40);
+		sortButtonPanel.setBounds(1325, 150, 200, 40);
 		sortButtonPanel.setBackground(Main.getChosenTheme().get(5));
 		sortButtonPanel.setLayout(null);
 		sortButtonPanel.setVisible(true);
 		frame.add(sortButtonPanel);
 		
-		JButton sortButton = new JButton("Sort"); 
+		String sortString="";
+		switch (sortMethod) {
+		case "priority":
+			sortString="Sorting by Priority";
+			break;
+		case "due":
+			sortString="Sorting by Due Date";
+			break;
+		}
+		
+		JButton sortButton = new JButton(sortString); 
 		sortButton.setBackground(Main.getChosenTheme().get(5));
 		
 		sortButtonPanel.add(sortButton);
-		sortButton.setBounds(0, 0, 100, 40);
+		sortButton.setBounds(0, 0, 200, 40);
 		
 		sortButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (sortMethod) {
 				case "priority":
+					sortMethod="due";
 					break;
 				case "due":
 					sortMethod="priority";
@@ -300,7 +301,7 @@ public class DesplayState1 {
 
 				reborn();
 				try {
-          		  new DesplayState1(frame);
+          		  new DesplayState1(frame, sortMethod);
 				} catch (Throwable e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -338,7 +339,7 @@ public class DesplayState1 {
 	                	  }
 	                	  reborn();
 	        	      	  try {
-	        	      		  new DesplayState1(frame);
+	        	      		  new DesplayState1(frame,sortMethod);
 	        				} catch (Throwable e1) {
 	        					// TODO Auto-generated catch block
 	        					e1.printStackTrace();

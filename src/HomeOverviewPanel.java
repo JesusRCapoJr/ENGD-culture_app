@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -36,6 +37,8 @@ public class HomeOverviewPanel extends JPanel{
 	
 	private int btnW; 
 	private int btnH;
+	
+	private String sortMethod;
 	
 	private static ArrayList<TaskButton> allTaskButtons = new ArrayList<TaskButton>(); 
 	
@@ -91,8 +94,9 @@ public class HomeOverviewPanel extends JPanel{
 	 * @param upperLeftY
 	 * @param width
 	 * @param height
+	 * @throws ParseException 
 	 */
-	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height) {
+	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height) throws ParseException {
 		super();
 		this.setBounds(upperLeftX, upperLeftY, width, height);
 		this.setLayout(null);
@@ -112,8 +116,9 @@ public class HomeOverviewPanel extends JPanel{
 	 * @param height
 	 * @param desplayState
 	 * @param frame
+	 * @throws ParseException 
 	 */
-	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, DesplayState1 desplayState, JFrame frame) {
+	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, DesplayState1 desplayState, JFrame frame, String sortMethod) throws ParseException {
 		super();
 		//desplayState and frame are for later use in refreshing the page 
 		this.desplayState = desplayState;
@@ -125,13 +130,16 @@ public class HomeOverviewPanel extends JPanel{
 		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
 		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
 		
+		this.sortMethod = sortMethod;
+		
 		constructAll(); 
 	}
 	
 	/**
 	 * Constructs all stuff to show all Tasks. 
+	 * @throws ParseException 
 	 */
-	public void constructAll() {
+	public void constructAll() throws ParseException {
 		tasks.removeAll(tasks);
 		for(Folder folder:Main.getAllFolders()) {
 			for(Task task:folder.getTasks()) {
@@ -142,7 +150,7 @@ public class HomeOverviewPanel extends JPanel{
 		
 		int i = 0; 
 
-		for(Task task:Main.sortTasksBy(tasks, "priority")) {
+		for(Task task:Main.sortTasksBy(tasks, this.sortMethod)) {
 			constructButton(i,task); 
 			i++; 
 		}
