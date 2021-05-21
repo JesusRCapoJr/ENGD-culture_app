@@ -30,6 +30,7 @@ public class AddLabelFrame extends JFrame{
 	public AddLabelFrame() {
 		this.label = new Label(""); 
 		this.folder = new Folder("words", 0); 
+		Main.removeFolder(this.folder); 
 		initiate(); 
 	}
 	
@@ -42,6 +43,7 @@ public class AddLabelFrame extends JFrame{
 			this.folder = folder; 
 		}else {
 			this.folder = new Folder("words", 0); 
+			Main.removeFolder(this.folder); 
 		}
 		this.label = new Label(""); 
 		initiate(); 
@@ -64,6 +66,7 @@ public class AddLabelFrame extends JFrame{
 			this.folder = folder; 
 		}else {
 			this.folder = new Folder("words", 0); 
+			Main.removeFolder(this.folder); 
 		}
 		
 		initiate(); 
