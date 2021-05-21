@@ -283,7 +283,7 @@ public class DesplayState1 {
 		}
 		
 		JButton sortButton = new JButton(sortString); 
-		sortButton.setBackground(Main.getChosenTheme().get(5));
+		sortButton.setBackground(Color.LIGHT_GRAY);
 		
 		sortButtonPanel.add(sortButton);
 		sortButton.setBounds(0, 0, 200, 40);

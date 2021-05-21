@@ -193,7 +193,7 @@ public class HomeOverviewPanel extends JPanel{
 		Color taskButtonBackground = new Color(255,255,255);	
 		
 		JButton deleteTaskButton = new JButton(Main.getLanguage().get("Delete"));
-		deleteTaskButton.setBounds((width/2 + (width/2-btnW)/2)+250, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-200, btnH);
+		deleteTaskButton.setBounds((width/2 + (width/2-btnW)/2)+230, 20+(i+1)*BUTTON_GAP+i*btnH, btnW-200, btnH);
 		deleteTaskButton.setBackground(Color.RED);
 
 		JButton priorityIndicator = new JButton();
