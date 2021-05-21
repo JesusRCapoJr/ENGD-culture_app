@@ -1,3 +1,4 @@
+//Author: Nathan Atkinson  added to by Jesus Capo
 
 public class GlobleUpdate extends Thread {
 
@@ -7,7 +8,7 @@ public class GlobleUpdate extends Thread {
 
  while(true) {
 
-try {
+try {								//sub program that is running in the background and updating the program clock and updating the panda
 	seconds++;
 	if (seconds%10==0) {
 	Main.sprite.update();
@@ -21,7 +22,7 @@ try {
 
 try {
 
-Thread.sleep(1000);
+Thread.sleep(1000); 				// stops for a little bit
 
 } catch (InterruptedException e) {
 
