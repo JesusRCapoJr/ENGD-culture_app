@@ -28,7 +28,7 @@ public class DesplayState1 {
 
 	static JFrame frame;
 	private DesplayState1 thisDesplay;
-	private String sortMethod;
+	String sortMethod;
 
 	/**
 	 * Launch the application.
@@ -53,14 +53,12 @@ public class DesplayState1 {
 	 */
 	public DesplayState1() throws Throwable {
 		frame = new JFrame();
-		this.sortMethod ="due";
 		initialize();
 		Main.sprite.Score = 2;
 	}
 	
 	public DesplayState1(JFrame frame) throws Throwable {
 		this.frame = frame;
-		this.sortMethod="due";
 		initialize();
 		
 	}
@@ -83,7 +81,7 @@ public class DesplayState1 {
 //		OverviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		OverviewPanel.setBounds(724, 208, 806, 627);
 //		frame.getContentPane().add(OverviewPanel);
-		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627,this.thisDesplay,frame,"due"); 
+		HomeOverviewPanel overviewPanel = new HomeOverviewPanel(724, 208, 806, 627,this.thisDesplay,frame); 
 		frame.getContentPane().add(overviewPanel); 
 		overviewPanel.setBackground(Main.getChosenTheme().get(1));
 //		
@@ -294,13 +292,12 @@ public class DesplayState1 {
 			public void actionPerformed(ActionEvent arg0) {
 				switch (sortMethod) {
 				case "priority":
-					sortMethod="due";
 					break;
 				case "due":
 					sortMethod="priority";
 					break;
 				}
-				
+
 				reborn();
 				try {
           		  new DesplayState1(frame);

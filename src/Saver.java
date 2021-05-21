@@ -1,7 +1,6 @@
 //Author: Jesus Capo
 
 import java.io.Serializable;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.io.BufferedWriter;
 import java.io.FileInputStream;

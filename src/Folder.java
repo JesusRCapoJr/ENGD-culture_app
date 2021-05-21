@@ -5,7 +5,16 @@ import java.io.Serializable;
 
 public class Folder implements Serializable{
 	
-	private static final long serialVersionUID = -5502867876331652655L;
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2327209892796676160L;
+//	private static final long serialVersionUID = -5502867876331652655L;
+	
+	/**
+	 * 
+	 */
+	
 	private ArrayList<Task> tasks;
 	private ArrayList<Label> labels; 
 	private String title; 

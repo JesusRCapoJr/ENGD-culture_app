@@ -37,8 +37,6 @@ public class HomeOverviewPanel extends JPanel{
 	private int btnW; 
 	private int btnH;
 	
-	private String sortMethod;
-	
 	private static ArrayList<TaskButton> allTaskButtons = new ArrayList<TaskButton>(); 
 	
 	/**
@@ -61,7 +59,7 @@ public class HomeOverviewPanel extends JPanel{
 		this.folder = folder; 
 		this.color = color; 
 				
-		constructAllFolder(); 
+		//constructAllFolder(); 
 	}
 	
 	/**
@@ -83,7 +81,7 @@ public class HomeOverviewPanel extends JPanel{
 		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
 		this.folder = folder; 
 		
-		constructAllFolder(); 
+		//constructAllFolder(); 
 	}
 	
 	/**
@@ -115,7 +113,7 @@ public class HomeOverviewPanel extends JPanel{
 	 * @param desplayState
 	 * @param frame
 	 */
-	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, DesplayState1 desplayState, JFrame frame, String sortMethod) {
+	public HomeOverviewPanel(int upperLeftX, int upperLeftY, int width, int height, DesplayState1 desplayState, JFrame frame) {
 		super();
 		//desplayState and frame are for later use in refreshing the page 
 		this.desplayState = desplayState;
@@ -126,8 +124,6 @@ public class HomeOverviewPanel extends JPanel{
 		this.height = height; 
 		this.btnH = (int) ((height-(BUTTON_CAP+1)*BUTTON_GAP)/BUTTON_CAP); 
 		this.btnW = (int) (width*BUTTON_WIDTH_RATIO); 
-		
-		this.sortMethod=sortMethod;
 		
 		constructAll(); 
 	}
@@ -140,19 +136,13 @@ public class HomeOverviewPanel extends JPanel{
 		for(Folder folder:Main.getAllFolders()) {
 			for(Task task:folder.getTasks()) {
 				 tasks.add(task); 
-				 System.out.println("1");
 			}
 		}
-		System.out.println(tasks.size());
-//		test(); 
-		//this.setBackground(new Color(105, 105, 105));
-		
-		//sort by Due date, then priority. TBC
-		//Main.sortTasksBy(tasks, "dueAndPriority");
+
 		
 		int i = 0; 
-		
-		for(Task task:Main.sortTasksBy(tasks, "due")) {
+
+		for(Task task:Main.sortTasksBy(tasks, "priority")) {
 			constructButton(i,task); 
 			i++; 
 		}
@@ -164,17 +154,17 @@ public class HomeOverviewPanel extends JPanel{
 	 * Construct all stuff to show all Tasks in the Folder. 
 	 * Did not end up using but may return in the future. 
 	 */
-	public void constructAllFolder() {
-		ArrayList<Task> tasks = this.folder.getTasks(); 
-		//Main.sortTasksBy(tasks, "dueAndPriority");
-		int i=0; 
-		for(Task task:Main.sortTasksBy(Main.getAllTasks(), "due")) {
-			constructButton(i,task); 
-			i++; 
-		}
-		
-		this.setBackground(this.color); 
-	}
+//	public void constructAllFolder() {
+//		ArrayList<Task> tasks = this.folder.getTasks(); 
+//		//Main.sortTasksBy(tasks, "dueAndPriority");
+//		int i=0; 
+//		for(Task task:Main.sortTasksBy(Main.getAllTasks(), "due")) {
+//			constructButton(i,task); 
+//			i++; 
+//		}
+//		
+//		this.setBackground(this.color); 
+//	}
 	
 	/**
 	 * Unclicks all TaskButtons. 
@@ -191,7 +181,7 @@ public class HomeOverviewPanel extends JPanel{
 	 * @param task
 	 */
 	public void constructButton(int i, final Task task) {
-		System.out.println("here");
+		
 		Color taskButtonBackground = new Color(255,255,255);	
 		
 		JButton deleteTaskButton = new JButton(Main.getLanguage().get("Delete"));

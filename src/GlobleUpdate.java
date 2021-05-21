@@ -13,7 +13,7 @@ try {
 	Main.sprite.update();
 	}
 	Main.timeLabel.update();
-	Main.sprite.update();
+
 } catch (Exception e1) {
 	// TODO Auto-generated catch block
 	e1.printStackTrace();

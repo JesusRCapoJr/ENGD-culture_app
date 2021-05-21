@@ -5,12 +5,16 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Task implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 //	//TODO: implement due. Argue on setLabels() method
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8052698667359727655L;
+	
 	private String title;
 	private String description;
 	private Date dueDate; //yyyy/mm/dd
