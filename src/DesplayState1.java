@@ -195,7 +195,7 @@ public class DesplayState1 {
 				        	  JOptionPane.showMessageDialog(null, Main.getLanguage().get("Right click a folder, write the new name, and confirm the change."));
 				          }
 				          else if (helpResponse==1) {
-				        	  JOptionPane.showMessageDialog(null, Main.getLanguage().get("Right click a task and you will be presented with the option to delete or edit the task."));
+				        	  JOptionPane.showMessageDialog(null, Main.getLanguage().get("Click a task and you will be presented with the option to delete or edit the task."));
 				          }
 			          }
 			          else if (optionsResponse==1) {
